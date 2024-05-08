@@ -17,19 +17,6 @@ Novara est une application conçue pour vérifier la validité des ordonnances m
 1. **Portail du Médecin** : Les médecins peuvent se connecter à l'application en utilisant leurs identifiants et générer en toute sécurité des ordonnances. Ils peuvent ensuite envoyer ces ordonnances directement aux pharmacies ou fournir des copies numériques aux patients.
 2. **Portail du Pharmacien** : Les pharmaciens peuvent se connecter à l'application en utilisant leurs identifiants et récupérer les ordonnances de manière sécurisée. Ils peuvent vérifier l'authenticité des ordonnances et les délivrer en conséquence, assurant la sécurité des patients.
 
-## Contribuer
-
-Nous accueillons les contributions de la communauté pour améliorer et enrichir Novara. Si vous souhaitez contribuer, veuillez suivre ces directives :
-
-1. Forker le dépôt et créer votre branche : `git checkout -b feature/VotreFonctionnalité`
-2. Effectuez vos modifications : `git commit -am 'Ajouter VotreFonctionnalité'`
-3. Poussez vos modifications sur votre branche : `git push origin feature/VotreFonctionnalité`
-4. Soumettez une pull request détaillant vos modifications et leur objectif.
-
-## Licence
-
-Novara est sous licence [MIT](LICENSE).
-
 ## Contact
 
 Pour toute question ou assistance, veuillez nous contacter à support@novara.com.
