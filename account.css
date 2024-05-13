@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0ece2; /* Couleur de fond terre cuite */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#login-container {
+    text-align: center;
+}
+
+#login-form {
+    display: inline-block;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    width: 200px;
+    padding: 10px;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+}
