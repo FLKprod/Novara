@@ -1,26 +1,70 @@
+html{
+    height: 100vh;
+    width: 100vw;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0ece2; /* Couleur de fond terre cuite */
+    width: 100%;
+    height: 100%;
+    background-color: #f0ece2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-#logo{
+.logo{
+    margin-top: 1em;
     width: 10em;
 }
 
-#center {
-    padding: 20px;
-    width: 100%;
+.menu{
+
+    background-color: black;
+    color: white;
+    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #f0ece2; /* Couleur de fond terre cuite */
+    height: 100%;
 }
 
+.title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3em;
+}
+
+button{
+    border-radius: 1em;
+    height: 3em;
+    width: auto;
+    background-color: #b65cff;
+    color: white;
+}
+.tools{
+    top:0;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+.down{
+    position: absolute;
+    display: flex;
+    background-color: #333333;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    bottom: 0 !important;
+}
 .section {
-    margin-bottom: 20px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -31,18 +75,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px;
+    margin:1em 2em;
     width: 100%;
 }
 
 .input-group input[type="text"] {
-    flex: 1;
+    width: 80%;
     padding: 10px;
 }
 
 .input-group button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #b65cff;
     color: white;
     border: none;
     cursor: pointer;
@@ -54,7 +98,6 @@ body {
 
 #project-info {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 #project-info img {

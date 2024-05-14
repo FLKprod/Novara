@@ -7,31 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="up">
-        <img src="logo.png" alt="Logo DropSecure" id="logo">
-        <span>DropSecure</span>
-        <p id="user"> - Utilisateur: </p>
-    </div>
-    <div id="center">
-        <div class="section">
-            <div class="input-group">
-                <input type="text" placeholder="Entrez l'URL à vérifier">
-                <button>Vérifier</button>
-            </div>
-            <label class="indicator">Indicateur de sécurité</label>
+        <div class="menu">
+            <button type="submit" onclick="window.location.href='index.html'">Deconnexion</button>
+            <img class="logo" src="logo.png" alt="Logo DropSecure" >
+            <p class="title">DropSecure</span>
+            <p id="user"> - Utilisateur: </p>
         </div>
-        <div class="section">
-            <div class="input-group">
-                <input type="file" id="fileInput" placeholder="Télécharger la pièce jointe à analyser">
-                <button>Vérifier</button>
+        <div class="tools">
+            <div class="section">
+                <div class="input-group">
+                    <input type="text" placeholder="Entrez l'URL à vérifier">
+                    <button>Vérifier</button>
+                </div>
+                <label class="indicator">Indicateur de sécurité</label>
             </div>
-            <label class="indicator">Indicateur de sécurité</label>
+            <div class="section">
+                <div class="input-group">
+                    <input type="file" id="fileInput" placeholder="Télécharger la pièce jointe à analyser">
+                    <button>Vérifier</button>
+                </div>
+                <label class="indicator">Indicateur de sécurité</label>
+            </div>
+            <div class="down">
+                <p>Ce projet est protégé par une licence. Tous droits réservés.</p>
+            </div>
         </div>
-    </div>
-    <div id="down">
-        <button type="submit" onclick="window.location.href='index.html'">Deconnexion</button>
-        <p>Ce projet est protégé par une licence. Tous droits réservés.</p>
-    </div>
     <script src="api.js"></script>
 </body>
 </html>
