@@ -9,6 +9,15 @@ body {
     height: 100vh;
 }
 
+button{
+    border-radius: 1em;
+    height: 3em;
+    width: auto;
+    border-color: #b65cff;
+    background-color: #b65cff;
+    color: white;
+}
+
 #login-container {
     text-align: center;
 }
@@ -36,4 +45,30 @@ body {
 .logo {
     width: 100px;
     height: 100px;
+}
+
+
+form {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: whitesmoke; /* Couleur de fond noire */
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+/* Styles pour le formulaire */
+
+input {
+    width: 80%;
+    margin-bottom: 1em;
+    padding: 1em;
+    background-color: white; /* Couleur de fond grise foncée pour les champs de saisie */
+    border: none;
+    color: black; /* Couleur du texte blanc */
 }

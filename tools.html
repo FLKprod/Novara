@@ -17,10 +17,10 @@
         <div class="tools">
             <div class="section">
                 <div class="input-group">
-                    <input type="text" placeholder="Entrez l'URL à vérifier">
-                    <button>Vérifier</button>
+                    <input id="urlInput" type="text" placeholder="Entrez l'URL à vérifier">
+                    <button onclick="checkUrl()">Vérifier</button>
                 </div>
-                <label class="indicator">Indicateur de sécurité</label>
+                <label id="result" class="indicator">Indicateur de sécurité</label>
             </div>
             <div class="section">
                 <div class="input-group">

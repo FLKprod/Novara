@@ -42,6 +42,7 @@ button{
     border-radius: 1em;
     height: 3em;
     width: auto;
+    border-color: #b65cff;
     background-color: #b65cff;
     color: white;
 }
