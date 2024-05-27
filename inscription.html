@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DropSecure</title>
+    <link rel="icon" href="logo.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="account.css">
@@ -12,12 +13,11 @@
     
     <form id="inscription-form">
         <h2>Créer un compte</h2>
-        <input type="text" id="firstName" placeholder="Prénom" required>
-        <input type="text" id="lastName" placeholder="Nom" required>
+        <input type="text" id="firstName" placeholder="Nom d'utilisateur" required>
+        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
         <input type="email" id="email" placeholder="Email" required>
         <input type="text" id="license" placeholder="Licence" required>
-        <button type="submit" >Créer le compte</button>
-        
+        <button type="submit" onclick="window.location.href='index.html';">Créer le compte</button>
     </form>
     <script src="account.js"></script>
 </body>

@@ -20,14 +20,17 @@ button{
 
 #login-container {
     text-align: center;
+    width: 50%;
 }
 
 #login-form {
     display: inline-block;
+    width: 100%;
 }
 
 .input-group {
     margin-bottom: 10px;
+
 }
 
 .input-group label {
@@ -38,8 +41,9 @@ button{
 
 .input-group input[type="text"],
 .input-group input[type="password"] {
-    width: 200px;
-    padding: 10px;
+    width: -webkit-fill-available;
+    margin-right: 1em;
+    padding: 1em;color: black;
 }
 
 .logo {
@@ -49,7 +53,6 @@ button{
 
 
 form {
-    width: 80%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -65,10 +68,14 @@ form {
 /* Styles pour le formulaire */
 
 input {
-    width: 80%;
+    width: 50%;
     margin-bottom: 1em;
     padding: 1em;
     background-color: white; /* Couleur de fond grise foncée pour les champs de saisie */
     border: none;
     color: black; /* Couleur du texte blanc */
+}
+
+#inscription-form{
+    width: 50%;
 }
