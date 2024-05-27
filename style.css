@@ -115,3 +115,12 @@ button{
     padding: 20px;
     color: #333; /* Couleur de texte foncé */
 }
+
+.indicator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 20px;
+    color: #b65cff;
+    background-color: #b65cff;
+}

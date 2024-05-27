@@ -1,6 +1,5 @@
 const username = localStorage.getItem("user");
-
-// Mettre à jour le nom d'utilisateur dans la page
+const apiKey = '714a19d995448c198dc77aa6a59f6822497ed95f5899221d155787c9faa6cce7';
 if (username) {
     const userSpan = document.getElementById("user");
     userSpan.textContent = ` - Utilisateur: ${username}`;
@@ -31,27 +30,69 @@ document.body.addEventListener('drop', (e) => {
 });
 
 
-async function checkUrl() {
-    const apiKey = '714a19d995448c198dc77aa6a59f6822497ed95f5899221d155787c9faa6cce7'; // Remplacez 'YOUR_API_KEY' par votre clé d'API VirusTotal
+document.getElementById('urlForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
     const url = document.getElementById('urlInput').value;
 
-    // Vérifier si l'URL est vide
-    if (!url) {
-        alert("Veuillez entrer un lien à vérifier.");
-        return;
-    }
-
-    // Effectuer une requête à l'API VirusTotal
-    const response = await fetch(`https://www.virustotal.com/vtapi/v2/url/scan?apikey=${apiKey}&url=${encodeURIComponent(url)}`, {
-        method: 'POST'
+    fetch('http://localhost:3000/scan', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url: url })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const scanId = data.scan_id;
+        checkUrlReport(scanId);
+    })
+    .catch(error => {
+        document.getElementById('result').textContent = 'Erreur lors de la soumission de l\'URL.';
+        console.error('Erreur:', error);
     });
+});
 
-    // Vérifier si la requête a réussi
-    if (response.ok) {
-        const data = await response.json();
-        // Afficher le résultat
-        document.getElementById('result').innerText = JSON.stringify(data, null, 2);
-    } else {
-        alert("Une erreur s'est produite lors de la vérification de l'URL.");
-    }
+function checkUrlReport(scanId) {
+    setTimeout(() => {
+        fetch(`http://localhost:3000/report/${scanId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.response_code === 1) {
+                displayResult(data);
+            } else {
+                document.getElementById('result').textContent = 'Aucun rapport disponible. Réessayez plus tard.';
+            }
+        })
+        .catch(error => {
+            document.getElementById('result').textContent = 'Erreur lors de la récupération du rapport.';
+            console.error('Erreur:', error);
+        });
+    }, 3000); // Attendez 3 secondes avant de vérifier le rapport
+}
+
+
+
+function displayResult(data) {
+    const positives = data.positives;
+    const total = data.total;
+    const resultText = `L'URL a été détectée comme malveillante par ${positives} sur ${total} scanners.`;
+    document.getElementById('result').textContent = resultText;
+
+     // Récupérer le nombre de scanners détectant l'URL comme malveillante
+     const maliciousScannersCount = data.positives;
+
+     // Définir la couleur en fonction du nombre de scanners malveillants détectés
+     let color;
+     if (maliciousScannersCount < 15) {
+         color = 'green';
+     } else if (maliciousScannersCount < 45) {
+         color = 'orange';
+     } else {
+         color = 'red';
+     }
+     // Mettre à jour la couleur de l'indicateur
+     const indicator = document.getElementById('colorIndicator');
+     indicator.style.backgroundColor = color;
 }
