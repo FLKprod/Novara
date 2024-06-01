@@ -20,7 +20,7 @@ def index():
 @app.route('/accueil')
 def accueil():
     app.logger.debug('Serving accueil.html')
-    return render_template('accueil.html')
+    return render_template('index.html')
 
 @app.route('/entreprise')
 def entreprise():

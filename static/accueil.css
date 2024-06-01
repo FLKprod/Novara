@@ -1,0 +1,645 @@
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    color: #8158BF; /* Couleur du texte VeriFile */
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.logo-link {
+    text-decoration: none; /* Supprime le soulignement */
+    color: #8158BF; /* Couleur du texte VeriFile */
+}
+
+.logo-link:hover {
+    color: #460F9B; /* Change la couleur au survol */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #8158BF; /* Couleur du texte des catégories */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.account-btn {
+    background-color: #8158BF; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-btn:hover {
+    background-color: #68409A; /* Couleur du bouton au survol */
+}
+
+.info-box {
+    background-color: #f0ecec; /* Couleur de fond de la box */
+    display: flex;
+    padding: 20px;
+    margin: 40px auto; /* Espacement en haut et centré horizontalement */
+    border-radius: 30px; /* Bords plus arrondis de la box */
+    max-width: 50%; /* Réduit la largeur de la box */
+}
+
+.info-left {
+    flex: 1; /* 1/4 de la box */
+    color: #8158BF;
+    font-size: 32px; /* Augmente la taille du texte */
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+}
+
+.box-logo {
+    height: 40px; /* Ajustez la taille du logo si nécessaire */
+    margin-right: 10px;
+}
+
+.info-right {
+    flex: 3; /* 3/4 de la box */
+    color: #484444;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column; /* Aligne le texte verticalement */
+    align-items: flex-start; /* Aligne le texte à gauche */
+    justify-content: center; /* Centre le texte verticalement */
+    padding-left: 20px; /* Espacement entre les deux zones */
+}
+
+.simple {
+    color: #460F9B;
+    font-weight: bold;
+}
+
+.efficace {
+    color: #8158BF;
+    font-weight: bold;
+}
+
+.indispensable {
+    color: #F0ACDB;
+    font-weight: bold;
+}
+
+.tagline {
+    text-align: center;
+    margin: 20px 0;
+    color: #F0ACDB; /* Couleur de la phrase */
+    font-style: italic; /* Italique */
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px; /* Bords plus arrondis */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
+    text-align: center;
+    margin: auto;
+    max-width: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #484444; /* Couleur de la phrase */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    display: none; /* Masquer le champ de fichier par défaut */
+}
+
+.upload-btn {
+    display: inline-block;
+    background-color: #8158BF; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px;
+    border-radius: 5px; /* Bords légèrement arrondis */
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background-color: #68409A; /* Couleur du bouton au survol */
+}
+
+#result {
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px 0;
+}
+
+.footer-links {
+    font-size: 0.9em;
+    color: #484444;
+}
+
+.footer-links a {
+    color: #484444;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    font-size: 0.8em;
+    color: #484444;
+    margin-top: 10px;
+}
+
+.portfolio {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.portfolio .element-portfolio-site-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  border: 1px solid transparent;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.portfolio .element-portfolio-site {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.portfolio .d-couvrez-la {
+  width: 100%; /* Change to 100% for responsive width */
+  max-width: 755px; /* Maximum width to maintain design consistency */
+  margin: 20px auto; /* Center the element horizontally */
+  font-family: "Inter-SemiBold Italic", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  color: #b55cff;
+  font-size: 18px;
+  text-align: center;
+  line-height: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  position: relative; /* Change to relative for proper positioning in flow */
+}
+
+.portfolio .line {
+  width: 100%; /* Largeur responsive */
+  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  height: 1px;
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #b55cff; /* Couleur pour la ligne */
+  display: block;
+}
+
+.portfolio .image {
+  width: 100%; /* Largeur responsive */
+  max-width: 1403px; /* Largeur maximale pour la cohérence du design */
+  height: auto; /* Hauteur auto pour la responsivité */
+  margin: 70px auto; /* Centre l'élément horizontalement avec un espacement vertical */
+  background-color: #efeded;
+  overflow: hidden;
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  border-radius: 20px;
+  align-items: center;
+  padding: 30px;
+  display: flex;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
+}
+
+.portfolio .verifile-section {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    margin-left: 40px;
+}
+
+.portfolio .verifile {
+    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+    font-size: 54px;
+    font-weight: 700;
+    color: #b55cff;
+    margin: 0;
+  }
+
+.portfolio .line2 {
+  width: 2px; /* Width of the vertical line */
+  height: 150px; /* Full height of the container */
+  background-color: #b55cff;
+  margin: 0 50px;
+}
+
+.portfolio .description-section {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio .description {
+  font-family: "Inter-SemiBold", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+}
+
+.portfolio .quote-left, .quote-right {
+  font-family: "Montaga-Regular", Helvetica, Arial, sans-serif;
+  font-size: 70px;
+  font-weight: 400;
+  color: #b55cff;
+  position: absolute;
+}
+
+.portfolio .quote-left {
+  top: -45px; /* Adjust position as needed */
+  left: 0px; /* Adjust position as needed */
+}
+
+.portfolio .quote-right {
+  bottom: -100px; /* Adjust position as needed */
+  right: 75px; /* Adjust position as needed */
+}
+
+.portfolio .description .highlight {
+  font-weight: 600;
+  color: #b55cff;
+}
+
+.portfolio .span {
+  font-family: "Inter-Medium", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  color: #000000;
+}
+
+.portfolio .div {
+  position: relative; /* Change from absolute to relative for better alignment */
+  width: 100%; /* Responsive width */
+  max-width: 1058px; /* Maximum width for design consistency */
+  height: auto; /* Auto height for responsiveness */
+  margin: 20px auto; /* Center the element horizontally with vertical spacing */
+  font-family: "Montaga-Regular", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #b55cff;
+  font-size: 96px;
+  letter-spacing: 0;
+  line-height: 144px;
+  text-align: center; /* Center text within the element */
+}
+
+.portfolio .line3 {
+  width: 100%; /* Largeur responsive */
+  max-width: 100px; /* Largeur maximale pour la cohérence du design */
+  height: 2px;
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #000; /* Couleur pour la ligne */
+  display: block;
+}
+
+.portfolio .analyse-d-URL {
+  width: 100%; /* Largeur responsive */
+  max-width: 1326px; /* Largeur maximale pour la cohérence du design */
+  margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+  font-family: "Poppins-SemiBold", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #000000;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: -1.06px;
+  line-height: normal;
+  position: relative; /* Positionnement relatif pour éviter les conflits */
+}
+
+.portfolio .p {
+  width: 100%; /* Largeur responsive */
+  max-width: 1023px; /* Largeur maximale pour la cohérence du design */
+  margin: 20px auto 100px; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+  font-family: "Poppins-SemiBold", Helvetica, Arial, sans-serif;
+  color: #5a5858;
+  font-size: 28px;
+  text-align: center;
+  line-height: 42px;
+  font-weight: 600;
+  letter-spacing: 0;
+  position: relative; /* Positionnement relatif pour éviter les conflits */
+  height: auto; /* Ajuste la hauteur automatiquement pour la responsivité */
+}
+
+.portfolio .content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20;
+  box-sizing: border-box;
+}
+
+.portfolio .image-2 {
+  width: 5%;
+  background-color: #b55cff;
+  border-radius: 0px 20px 20px 0; /* Arrondi les deux coins supérieurs */
+  box-shadow: 4px 4px 40px #515050bf;
+  padding: 175px;
+  box-sizing: border-box;
+  color: #fff; /* Assuming text color should be white */
+  margin-left: 0; /* Remove left margin */
+  margin-top: 20px; /* Ajouter de l'espace en haut */
+  margin-bottom: 150px; /* Ajouter de l'espace en haut */
+}
+
+.portfolio .proteger-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin-top: -130px; /* Ajouter de l'espace en haut */
+}
+
+.portfolio .proteger {
+  width: 100%;
+  max-width: 275px;
+  height: auto;
+  object-fit: cover;
+}
+
+.portfolio .image-3 {
+  width: 70%;
+  background-color: #b55cff;
+  border-radius: 20px 0 0px 20px; /* Arrondi les deux coins inférieurs */
+  box-shadow: 4px 4px 40px #515050bf;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #fff; /* Assuming text color should be white */
+  margin-right: 0; /* Remove right margin */
+  margin-top: 20px; /* Ajouter de l'espace en haut */
+  margin-bottom: 150px; /* Ajouter de l'espace en haut */
+}
+
+.element-portfolio-site .line-3 {
+  width: 100%;
+  max-width: 328px;
+  height: 2px;
+  margin-bottom: 20px auto; /* Center the line horizontally */
+  margin-left: 150px;
+  margin-top: 20px;
+  background-color: #ffffff;
+}
+
+.element-portfolio-site .group {
+  width: 100%;
+  max-width: 318px;
+  margin-left: 20px auto; /* Add margin to separate from other elements */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -30px;
+  left: 730px;
+}
+
+.element-portfolio-site .overlap-group-2 {
+  width: 100%;
+  max-width: 314px;
+  height: 69px;
+  position: relative;
+}
+
+.element-portfolio-site .div-2 {
+  width: 69px;
+  height: 69px;
+  background-color: #efa8f5;
+  border-radius: 34.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -4px;
+  left: 0;
+}
+
+.element-portfolio-site .d-couvrez-la-2 {
+  width: 63px;
+  height: 42px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #5a5858;
+  font-size: 28px;
+  text-align: center;
+  line-height: 42px;
+  position: absolute;
+  top: 12px;
+  left: 2px;
+}
+
+.element-portfolio-site .d-couvrez-la-3 {
+  width: 262px;
+  height: 42px;
+  font-family: "Inter-SemiBold", Helvetica;
+  color: #ffffff;
+  font-size: 28px;
+  text-align: center;
+  line-height: 42px;
+  position: absolute;
+  font-weight: 600;
+  top: 10px;
+  left: 52px;
+}
+
+.element-portfolio-site .group-2 {
+  width: 100%;
+  max-width: 335px;
+  margin: 20px auto; /* Add margin to separate from other elements */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -10px;
+  left: 25px;
+}
+
+.element-portfolio-site .d-couvrez-la-4 {
+  width: 262px;
+  height: 42px;
+  font-family: "Inter-SemiBold", Helvetica;
+  color: #ffffff;
+  font-size: 28px;
+  text-align: center;
+  line-height: 42px;
+  position: absolute;
+  font-weight: 600;
+  top: 10px;
+  left: 69px;
+}
+
+.element-portfolio-site .group-3 {
+  width: 100%;
+  max-width: 336px;
+  margin-right: 100px; /* Add margin to separate from other elements */
+  margin-left: 30px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.element-portfolio-site .overlap {
+  width: 69px;
+  height: 69px;
+  background-color: #efa8f5;
+  border-radius: 34.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+.element-portfolio-site .d-couvrez-la-5 {
+  width: 262px;
+  height: 84px;
+  font-family: "Inter-SemiBold", Helvetica;
+  color: #ffffff;
+  font-size: 28px;
+  text-align: center;
+  line-height: 42px;
+  position: absolute;
+  font-weight: 600;
+  top: 0;
+  left: 70px;
+}
+
+.element-portfolio-site .d-couvrez-la-6 {
+  width: 100%;
+  max-width: 1000px;
+  height: 84px;
+  font-family: "Poppins-Medium", Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 42px;
+  position: relative; /* Change to relative for better alignment */
+  font-weight: 500;
+  margin-left: 40px; /* Center the element horizontally with vertical spacing */
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.element-portfolio-site .text-wrapper-5 {
+  width: 100%;
+  max-width: 810px;
+  height: 40px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 54px;
+  position: relative; /* Change to relative for better alignment */
+  margin-left: 40px; /* Center the element horizontally with vertical spacing */
+  margin-top: 0px;
+  padding-top: 20px;
+}
+
+
+/* Responsive Styles */
+@media (min-width: 1200px) {
+  .portfolio {
+    flex-direction: row; /* Row direction for larger screens */
+  }
+}
+
+@media (max-width: 1199px) {
+  .portfolio {
+    flex-direction: column;
+  }
+
+  .portfolio .element-portfolio-site-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .portfolio .element-portfolio-site {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio .element-portfolio-site-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .portfolio .element-portfolio-site {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio {
+    flex-direction: column;
+  }
+
+  .portfolio .element-portfolio-site-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .portfolio .element-portfolio-site {
+    width: 100%;
+    height: auto;
+  }
+}
+
+

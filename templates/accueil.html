@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - VeriFile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='accueil.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
 </head>
 <body>
@@ -24,53 +26,65 @@
         </nav>
     </header>
     
-    <div class="info-box">
-        <div class="info-left">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="box-logo">
-            <p>VeriFile</p>
-        </div>
-        <div class="info-right">
-            <p>Votre bouclier numérique contre le phishing. Nous utilisons une technologie avancée, alliant IA et questions stratégique pour détecter les menaces.</p>
-            <p>En 3 mots : <span class="simple">simple</span>, <span class="efficace">efficace</span>, <span class="indispensable">indispensable</span>.</p>
-        </div>
-    </div>
+    <div class="portfolio">
+        <div class="element-portfolio-site-wrapper">
+          <div class="element-portfolio-site">
+            <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
+            <img class="line" src="img/line-1.svg" />
+            <div class="image">
+              <div class="verifile-section">
+                <p class="verifile">VeriFile</p>
+              </div>
+              <img class="line2" src="img/line-6.svg" />
+              <div class="description-section">
+                <p class="quote-left">“</p>
+                <p class="description">
+                  <span class="highlight">Votre bouclier numérique contre le phishing.</span> Utilisant une technologie avancée, alliant IA et questions stratégiques pour détecter les menaces. <span class="highlight">Simple, efficace et indispensable.</span>
+                </p>
+                <p class="quote-right">”</p>
+              </div>
+            </div>
+            <img class="line3" src="img/line-1.svg" />
+            <div class="analyse-d-URL">Sécurisez vos communications professionnelles</div>
+            <p class="p">
+              Les pièces jointes malveillantes peuvent infiltrer votre réseau en un clic. Avec VeriFile, analysez chaque
+              fichier et URL pour garantir la sécurité de vos échanges professionnels.
+            </p>
+            <div class="content-wrapper">
+              <div class="image-2">
+                <!-- Contenu de l'image-2 -->
+                <p></p>
+              </div>
+              <div class="proteger-wrapper">
+                <img class="proteger" src="{{ url_for('static', filename='proteger.png') }}" alt="Image entre les deux">
+              </div>
+              <div class="image-3">
 
-    <!-- Ajout du texte sous la box -->
-    <div class="secure-message">
-        <p>Sécurisez vos communications professionnelles</p>
-    </div>
-
-    <!-- Ajout du nouveau texte -->
-    <div class="warning-message">
-        <p>Les pièces jointes malveillantes peuvent infiltrer votre réseau en un clic. Avec VeriFile, analysez chaque fichier et URL pour garantir la sécurité de vos échanges professionnels.</p>
-    </div>
-    
-    <!-- Ajout du bandeau -->
-    <div class="protection-banner">
-        <h2>Comment nous vous protégeons ?</h2>
-        <p>VeriFile étudie chaque fichier avec la puissance de plus de 100 antivirus en simultané. Pour cela, il vous suffit de :</p>
-        <ul>
-            <li>1. Déposer le fichier ou l'URL</li>
-            <li>2. Attendre que nous analysions le fichier</li>
-            <li>3. Obtenir un retour ludique</li>
-        </ul>
-    </div>
-    
-    <!-- Ajout du texte sous le bandeau -->
-    <div class="enhance-security-message">
-        <p>Renforcez votre cybersécurité avec VeriFile</p>
-    </div>
-    
-    <div class="solution-message">
-        <p>Notre solution vous protège contre les principales menaces numériques. Assurez la sécurité de vos échanges en ligne avec VeriFile, même en dehors d'un réseau sécurisé.</p>
-    </div>
-    
-    <!-- Ajout de l'image du bandeau juste au-dessus du footer -->
-    <div class="footer-banner">
-        <img src="{{ url_for('static', filename='footer.png') }}" alt="Footer Banner">
-    </div>
-    
-    <!-- Ajout du pied de page -->
+                <p class="text-wrapper-5">Comment nous vous protégeons ?</p>
+                <img class="line-3" src="img/line-8.svg" />
+                <p class="d-couvrez-la-6">
+                    VeriFile étudie chaque fichier avec la puissance de plus de 100 antivirus en simultané. Pour cela, voici les 3 étapes clés :
+                </p>
+                <div class="group-3">
+                  <div class="overlap"><div class="d-couvrez-la-2">1</div></div>
+                  <p class="d-couvrez-la-5">Déposer le fichier ou l’URL</p>
+                </div>
+                <div class="group-2">
+                  <div class="div-2"><div class="d-couvrez-la-2">2</div></div>
+                  <div class="d-couvrez-la-4">Analyse du fichier</div>
+                </div>
+                <div class="group">
+                  <div class="overlap-group-2">
+                    <div class="div-2"></div>
+                    <div class="d-couvrez-la-2">3</div>
+                    <div class="d-couvrez-la-3">Retour ludique</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <footer>
         <div class="footer-links">
             <a href="#">Conditions d'utilisation</a> | 
@@ -79,7 +93,6 @@
         </div>
         <div class="footer-copyright">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
-        </div>
     </footer>
 </body>
 </html>
