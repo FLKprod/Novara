@@ -1,0 +1,362 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Change le fond du site en blanc */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
+    color: #8158BF;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    color: #8158BF; /* Couleur du texte VeriFile */
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.logo-link {
+    text-decoration: none; /* Supprime le soulignement */
+    color: #8158BF; /* Couleur du texte VeriFile */
+}
+
+.logo-link:hover {
+    color: #460F9B; /* Change la couleur au survol */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #8158BF; /* Couleur du texte des catégories */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.account-btn {
+    background-color: #8158BF; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.account-btn:hover {
+    background-color: #68409A; /* Couleur du bouton au survol */
+}
+
+.info-box {
+    background-color: #f0ecec; /* Couleur de fond de la box */
+    display: flex;
+    padding: 20px;
+    margin: 40px auto; /* Espacement en haut et centré horizontalement */
+    border-radius: 30px; /* Bords plus arrondis de la box */
+    max-width: 50%; /* Réduit la largeur de la box */
+}
+
+.info-left {
+    flex: 1; /* 1/4 de la box */
+    color: #8158BF;
+    font-size: 32px; /* Augmente la taille du texte */
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+}
+
+.box-logo {
+    height: 40px; /* Ajustez la taille du logo si nécessaire */
+    margin-right: 10px;
+}
+
+.info-right {
+    flex: 3; /* 3/4 de la box */
+    color: #484444;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column; /* Aligne le texte verticalement */
+    align-items: flex-start; /* Aligne le texte à gauche */
+    justify-content: center; /* Centre le texte verticalement */
+    padding-left: 20px; /* Espacement entre les deux zones */
+}
+
+.simple {
+    color: #460F9B;
+    font-weight: bold;
+}
+
+.efficace {
+    color: #8158BF;
+    font-weight: bold;
+}
+
+.indispensable {
+    color: #F0ACDB;
+    font-weight: bold;
+}
+
+.tagline {
+    text-align: center;
+    margin: 20px 0;
+    color: #F0ACDB; /* Couleur de la phrase */
+    font-style: italic; /* Italique */
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px; /* Bords plus arrondis */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
+    text-align: center;
+    margin: auto;
+    max-width: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #484444; /* Couleur de la phrase */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    display: none; /* Masquer le champ de fichier par défaut */
+}
+
+.upload-btn {
+    display: inline-block;
+    background-color: #8158BF; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px;
+    border-radius: 5px; /* Bords légèrement arrondis */
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background-color: #68409A; /* Couleur du bouton au survol */
+}
+
+#result {
+    margin-top: 20px;
+}
+
+.footer-banner {
+    width: 100%;
+    height: 100px; /* Réduire l'épaisseur de la bannière */
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0; /* Enlever la marge négative */
+}
+
+.footer-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+footer {
+    background-color: #460F9B; /* Couleur du fond du pied de page */
+    width: 100%; /* Prend toute la largeur de l'écran */
+    text-align: center;
+    padding: 20px 0;
+    color: white; /* Texte en blanc */
+    margin: 0;
+}
+
+.footer-links {
+    font-size: 0.9em;
+    color: white; /* Texte des liens en blanc */
+}
+
+.footer-links a {
+    color: white; /* Texte des liens en blanc */
+    text-decoration: none;
+    margin: 0 10px; /* Espacement entre les liens */
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    font-size: 0.8em;
+    color: white; /* Texte en blanc */
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.result-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.status-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.status-indicator.orange {
+    background-color: orange;
+}
+
+.status-indicator.red {
+    background-color: red;
+}
+
+.status-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.status-link.orange {
+    color: white;
+    background-color: #F0ACDB;
+    border: 2px solid #F0ACDB;
+}
+
+.status-link.orange:hover {
+    background-color: #D08AB3;
+    box-shadow: 0 0 10px rgba(240, 172, 219, 0.5);
+}
+
+.status-link.red {
+    color: white;
+    background-color: #FF4C4C;
+    border: 2px solid #FF4C4C;
+}
+
+.status-link.red:hover {
+    background-color: #D9534F;
+    box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
+}
+
+.info-message {
+    text-align: center;
+    color: #F0ACDB;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Styles existants */
+
+.secure-message {
+    text-align: center;
+    font-size: 28px; /* Plus gros */
+    font-weight: bold; /* En gras */
+    color: #460F9B; /* Couleur spécifiée */
+    margin-top: 20px; /* Espacement au-dessus du texte */
+}
+
+.warning-message {
+    text-align: center;
+    font-size: 16px; /* Un peu plus petit */
+    color: #484444; /* Couleur spécifiée */
+    max-width: 40%; /* Réduit la largeur du texte */
+    margin: 20px auto; /* Centré avec espacement au-dessus et en-dessous */
+}
+
+.protection-banner {
+    background-color: #8158BF; /* Couleur du bandeau */
+    color: white; /* Couleur du texte */
+    padding: 60px 0; /* Augmenté pour rendre le bandeau plus épais */
+    text-align: center;
+    width: 100%; /* Prend toute la largeur de l'écran */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour faire ressortir */
+    margin: 60px 0 80px 0; /* Plus d'espace au-dessus et encore plus d'espace en dessous du bandeau */
+}
+
+.protection-banner h2 {
+    margin: 0 0 20px 0; /* Espacement au-dessous du titre */
+    font-size: 24px; /* Taille du titre */
+}
+
+.protection-banner p {
+    margin: 0 0 20px 0; /* Espacement au-dessous du paragraphe */
+    font-size: 16px; /* Taille du texte */
+}
+
+.protection-banner ul {
+    list-style-type: none; /* Supprime les puces */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.protection-banner li {
+    font-size: 16px; /* Taille du texte des points */
+    margin: 0 15px; /* Espacement entre les points */
+}
+
+.enhance-security-message {
+    text-align: center;
+    font-size: 28px; /* Taille identique à "Sécurisez vos communications professionnelles" */
+    font-weight: bold; /* En gras */
+    color: #460F9B; /* Couleur identique */
+    margin: 20px 0; /* Espacement au-dessus et en dessous */
+}
+
+.solution-message {
+    text-align: center;
+    font-size: 16px; /* Taille identique à "Les pièces jointes malveillantes..." */
+    color: #484444; /* Couleur identique */
+    max-width: 40%; /* Réduit la largeur du texte */
+    margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
+}
