@@ -23,7 +23,7 @@ def index():
 @app.route('/accueil')
 def accueil():
     app.logger.debug('Serving accueil.html')
-    return render_template('index.html')
+    return render_template('accueil.html')
 
 @app.route('/entreprise')
 def entreprise():
@@ -40,7 +40,10 @@ def apropos():
     app.logger.debug('Serving apropos.html')
     return render_template('apropos.html')
 
-
+@app.route('/cookies')
+def cookies():
+    app.logger.debug('Serving cookies.html')
+    return render_template('cookies.html')
 
 
 @app.route('/uploadfile', methods=['POST'])

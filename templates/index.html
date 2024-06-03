@@ -15,7 +15,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="{{ url_for('accueil') }}">Accuei</a></li>
+                <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
                 <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
@@ -54,7 +54,7 @@
         <div class="footer-links">
             <a href="#">Conditions d'utilisation</a> | 
             <a href="#">Conditions générales</a> | 
-            <a href="#">Politique des cookies</a>
+            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
@@ -62,5 +62,6 @@
     </footer>
     
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
 </body>
 </html>
