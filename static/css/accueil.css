@@ -96,11 +96,6 @@ nav ul li a {
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-
 
 .account-btn:hover {
     background-color: #68409A; /* Couleur du bouton au survol */
