@@ -1,4 +1,72 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('/path/to/your/fonts/poppins-regular.woff2') format('woff2'),
+       url('/path/to/your/fonts/poppins-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('/path/to/your/fonts/poppins-semibold.woff2') format('woff2'),
+       url('/path/to/your/fonts/poppins-semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.account-btn {
+  background-color: #8158bf; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.account-btn:hover {
+  background-color: #68409A; /* Couleur du bouton au survol */
+}
+
+#urlInput::placeholder {
+  /* Styles pour le placeholder */
+  color: #747474; /* Couleur du texte */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  position:relative;
+  top: 3%;
+}
+
+#urlInput:focus::placeholder {
+  /* Style du placeholder lors de la mise au point (focus) */
+  color: transparent;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Change le fond du site en blanc */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none; /* Masquer la barre de défilement */
+}
+
+html {
+    overflow-x: hidden; /* Masque le débordement horizontal au niveau du document */
+    overflow-y: hidden;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
+    color: #8158bf;
+}
 
 .logo {
     display: flex;
@@ -11,14 +79,16 @@
 }
 
 .logo span {
-    color: #8158BF; /* Couleur du texte VeriFile */
     font-weight: bold;
     font-size: 24px;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #8158bf;
 }
 
 .logo-link {
     text-decoration: none; /* Supprime le soulignement */
-    color: #8158BF; /* Couleur du texte VeriFile */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #8158bf;
 }
 
 .logo-link:hover {
@@ -43,9 +113,10 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #8158BF; /* Couleur du texte des catégories */
+    color: #8158bf; /* Couleur du texte des catégories */
     text-decoration: none;
     font-weight: bold;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
 nav ul li a:hover {
@@ -53,12 +124,13 @@ nav ul li a:hover {
 }
 
 .account-btn {
-    background-color: #8158BF; /* Couleur de fond du bouton */
+    background-color: #8158bf; /* Couleur de fond du bouton */
     color: white; /* Couleur du texte */
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
 .account-btn:hover {
@@ -82,6 +154,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center; /* Centrer verticalement */
     justify-content: center; /* Centrer horizontalement */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
 .box-logo {
@@ -122,18 +195,6 @@ nav ul li a:hover {
     font-style: italic; /* Italique */
 }
 
-.container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 30px; /* Bords plus arrondis */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
-    text-align: center;
-    margin: auto;
-    max-width: 500px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
 h1 {
     margin-bottom: 20px;
     color: #484444; /* Couleur de la phrase */
@@ -152,11 +213,19 @@ input[type="file"] {
 
 .upload-btn {
     display: inline-block;
-    background-color: #8158BF; /* Couleur de fond du bouton */
+    background-color: #8158bf; /* Couleur de fond du bouton */
     color: white; /* Couleur du texte */
-    padding: 10px 20px;
-    border-radius: 5px; /* Bords légèrement arrondis */
+    padding: 30px;
+    border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    height: 35px; /* Réduire l'épaisseur de la bannière */
+    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    border: 2px solid black;
+    position: relative;
 }
 
 .upload-btn:hover {
@@ -164,7 +233,24 @@ input[type="file"] {
 }
 
 #result {
-    margin-top: 20px;
+    color: #8158bf;
+    position: relative;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    top: -10%;
+}
+
+.footer-banner {
+    width: 100%;
+    height: 100px; /* Réduire l'épaisseur de la bannière */
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0; /* Enlever la marge négative */
+}
+
+.footer-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 footer {
@@ -174,7 +260,8 @@ footer {
 }
 
 .footer-links {
-    font-size: 0.9em;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 12px;
     color: #484444;
 }
 
@@ -188,12 +275,142 @@ footer {
 }
 
 .footer-copyright {
-    font-size: 0.8em;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 12px;
     color: #484444;
-    margin-top: 10px;
 }
 
-.portfolio {
+.result-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: -2%;
+}
+
+.status-indicator {
+    width: 20px;
+    height: 19px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.status-indicator.orange {
+    background-color: orange;
+    border: 1px solid black;
+}
+
+.status-indicator.red {
+    background-color: red;
+    border: 1px solid black;
+}
+
+.status-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    padding: 2px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 5%;
+}
+
+.status-link.orange {
+    color: #460F9B;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.status-link.orange:hover {
+    background-color: #D08AB3;
+    box-shadow: 0 0 10px rgba(240, 172, 219, 0.5);
+}
+
+.status-link.red {
+    color: white;
+    background-color: #FF4C4C;
+    border: 2px solid #FF4C4C;
+}
+
+.status-link.red:hover {
+    background-color: #D9534F;
+    box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
+}
+
+/* Styles existants */
+
+.secure-message {
+    text-align: center;
+    font-size: 28px; /* Plus gros */
+    font-weight: bold; /* En gras */
+    color: #460F9B; /* Couleur spécifiée */
+    margin-top: 20px; /* Espacement au-dessus du texte */
+}
+
+.warning-message {
+    text-align: center;
+    font-size: 16px; /* Un peu plus petit */
+    color: #484444; /* Couleur spécifiée */
+    max-width: 40%; /* Réduit la largeur du texte */
+    margin: 20px auto; /* Centré avec espacement au-dessus et en-dessous */
+}
+
+.protection-banner {
+    background-color: #8158BF; /* Couleur du bandeau */
+    color: white; /* Couleur du texte */
+    padding: 60px 0; /* Augmenté pour rendre le bandeau plus épais */
+    text-align: center;
+    width: 100%; /* Prend toute la largeur de l'écran */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour faire ressortir */
+    margin: 60px 0 80px 0; /* Plus d'espace au-dessus et encore plus d'espace en dessous du bandeau */
+}
+
+.protection-banner h2 {
+    margin: 0 0 20px 0; /* Espacement au-dessous du titre */
+    font-size: 24px; /* Taille du titre */
+}
+
+.protection-banner p {
+    margin: 0 0 20px 0; /* Espacement au-dessous du paragraphe */
+    font-size: 16px; /* Taille du texte */
+}
+
+.protection-banner ul {
+    list-style-type: none; /* Supprime les puces */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.protection-banner li {
+    font-size: 16px; /* Taille du texte des points */
+    margin: 0 15px; /* Espacement entre les points */
+}
+
+.enhance-security-message {
+    text-align: center;
+    font-size: 28px; /* Taille identique à "Sécurisez vos communications professionnelles" */
+    font-weight: bold; /* En gras */
+    color: #460F9B; /* Couleur identique */
+    margin: 20px 0; /* Espacement au-dessus et en dessous */
+}
+
+.solution-message {
+    text-align: center;
+    font-size: 16px; /* Taille identique à "Les pièces jointes malveillantes..." */
+    color: #484444; /* Couleur identique */
+    max-width: 40%; /* Réduit la largeur du texte */
+    margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
+}
+
+/* Page Accueil " */
+.accueil {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -201,7 +418,7 @@ footer {
   width: 100%;
 }
 
-.portfolio .element-portfolio-site-wrapper {
+.accueil .element-accueil-site-wrapper {
   background-color: #ffffff;
   overflow: hidden;
   border: 1px solid transparent;
@@ -210,19 +427,19 @@ footer {
   height: auto;
 }
 
-.portfolio .element-portfolio-site {
+.accueil .element-accueil-site {
   position: relative;
   width: 100%;
   height: auto;
 }
 
-.portfolio .d-couvrez-la {
+.accueil .d-couvrez-la {
   width: 100%; /* Change to 100% for responsive width */
   max-width: 755px; /* Maximum width to maintain design consistency */
   margin: 20px auto; /* Center the element horizontally */
-  font-family: "Inter-SemiBold Italic", Helvetica, Arial, sans-serif;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-style: italic;
-  color: #b55cff;
+  color: #8158bf;
   font-size: 18px;
   text-align: center;
   line-height: 13px;
@@ -231,18 +448,18 @@ footer {
   position: relative; /* Change to relative for proper positioning in flow */
 }
 
-.portfolio .line {
+.accueil .line {
   width: 100%; /* Largeur responsive */
   max-width: 300px; /* Largeur maximale pour la cohérence du design */
   height: 1px;
   margin: 0 auto; /* Centre l'élément horizontalement */
   position: relative; /* Positionnement relatif pour l'alignement correct */
-  background-color: #b55cff; /* Couleur pour la ligne */
+  background-color: #8158bf; /* Couleur pour la ligne */
   display: block;
 }
 
-.portfolio .image {
-  width: 100%; /* Largeur responsive */
+.accueil .image {
+  width: 70%; /* Largeur responsive */
   max-width: 1403px; /* Largeur maximale pour la cohérence du design */
   height: auto; /* Hauteur auto pour la responsivité */
   margin: 70px auto; /* Centre l'élément horizontalement avec un espacement vertical */
@@ -256,87 +473,87 @@ footer {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
 }
 
-.portfolio .verifile-section {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    margin-left: 40px;
+.accueil .verifile-section {
+  flex: 0 0 auto;
+  margin-right: 20px;
+  margin-left: 40px;
 }
 
-.portfolio .verifile {
-    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-    font-size: 54px;
-    font-weight: 700;
-    color: #b55cff;
-    margin: 0;
-  }
+.accueil .verifile {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-size: 54px;
+  font-weight: 700;
+  color: #8158bf;
+  margin: 0;
+}
 
-.portfolio .line2 {
+.accueil .line2 {
   width: 2px; /* Width of the vertical line */
   height: 150px; /* Full height of the container */
-  background-color: #b55cff;
+  background-color: #8158bf;
   margin: 0 50px;
 }
 
-.portfolio .description-section {
+.accueil .description-section {
   flex: 1;
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.portfolio .description {
-  font-family: "Inter-SemiBold", Helvetica, Arial, sans-serif;
+.accueil .description {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-size: 25px;
   font-weight: 500;
   color: #000;
   margin: 0;
 }
 
-.portfolio .quote-left, .quote-right {
+.accueil .quote-left, .quote-right {
   font-family: "Montaga-Regular", Helvetica, Arial, sans-serif;
   font-size: 70px;
   font-weight: 400;
-  color: #b55cff;
+  color: #8158bf;
   position: absolute;
 }
 
-.portfolio .quote-left {
+.accueil .quote-left {
   top: -45px; /* Adjust position as needed */
   left: 0px; /* Adjust position as needed */
 }
 
-.portfolio .quote-right {
+.accueil .quote-right {
   bottom: -100px; /* Adjust position as needed */
-  right: 75px; /* Adjust position as needed */
+  right: 15px; /* Adjust position as needed */
 }
 
-.portfolio .description .highlight {
+.accueil .description .highlight {
   font-weight: 600;
-  color: #b55cff;
+  color: #8158bf;
 }
 
-.portfolio .span {
-  font-family: "Inter-Medium", Helvetica, Arial, sans-serif;
+.accueil .span {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-weight: 500;
   color: #000000;
 }
 
-.portfolio .div {
+.accueil .div {
   position: relative; /* Change from absolute to relative for better alignment */
   width: 100%; /* Responsive width */
   max-width: 1058px; /* Maximum width for design consistency */
   height: auto; /* Auto height for responsiveness */
   margin: 20px auto; /* Center the element horizontally with vertical spacing */
-  font-family: "Montaga-Regular", Helvetica, Arial, sans-serif;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-weight: 400;
-  color: #b55cff;
+  color: #8158bf;
   font-size: 96px;
   letter-spacing: 0;
   line-height: 144px;
   text-align: center; /* Center text within the element */
 }
 
-.portfolio .line3 {
+.accueil .line3 {
   width: 100%; /* Largeur responsive */
   max-width: 100px; /* Largeur maximale pour la cohérence du design */
   height: 2px;
@@ -346,27 +563,27 @@ footer {
   display: block;
 }
 
-.portfolio .analyse-d-URL {
+.accueil .analyse-d-URL {
   width: 100%; /* Largeur responsive */
   max-width: 1326px; /* Largeur maximale pour la cohérence du design */
-  margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-  font-family: "Poppins-SemiBold", Helvetica, Arial, sans-serif;
+  margin: 50px auto 20px; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-weight: 700;
   color: #000000;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
   letter-spacing: -1.06px;
   line-height: normal;
   position: relative; /* Positionnement relatif pour éviter les conflits */
 }
 
-.portfolio .p {
+.accueil .p {
   width: 100%; /* Largeur responsive */
   max-width: 1023px; /* Largeur maximale pour la cohérence du design */
   margin: 20px auto 100px; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-  font-family: "Poppins-SemiBold", Helvetica, Arial, sans-serif;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   color: #5a5858;
-  font-size: 28px;
+  font-size: 24px;
   text-align: center;
   line-height: 42px;
   font-weight: 600;
@@ -375,271 +592,226 @@ footer {
   height: auto; /* Ajuste la hauteur automatiquement pour la responsivité */
 }
 
-.portfolio .content-wrapper {
+.accueil .content-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 20;
+  height: 100%;
+  max-height: 1000px;
   box-sizing: border-box;
+  position: relative;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
-.portfolio .image-2 {
-  width: 5%;
-  background-color: #b55cff;
+.accueil .image-2 {
+  width:15%;
+  background-color: #8158bf;
   border-radius: 0px 20px 20px 0; /* Arrondi les deux coins supérieurs */
   box-shadow: 4px 4px 40px #515050bf;
-  padding: 175px;
+  height: 300px;
   box-sizing: border-box;
   color: #fff; /* Assuming text color should be white */
-  margin-left: 0; /* Remove left margin */
-  margin-top: 20px; /* Ajouter de l'espace en haut */
-  margin-bottom: 150px; /* Ajouter de l'espace en haut */
+  position: relative;
 }
 
-.portfolio .proteger-wrapper {
+.accueil .proteger-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 30%;
-  margin-top: -130px; /* Ajouter de l'espace en haut */
 }
 
-.portfolio .proteger {
+.accueil .proteger {
   width: 100%;
   max-width: 275px;
   height: auto;
   object-fit: cover;
 }
 
-.portfolio .image-3 {
+.accueil .image-3 {
   width: 70%;
-  background-color: #b55cff;
+  background-color: #8158bf;
   border-radius: 20px 0 0px 20px; /* Arrondi les deux coins inférieurs */
   box-shadow: 4px 4px 40px #515050bf;
   padding: 20px;
+  height: 325px;
   box-sizing: border-box;
   color: #fff; /* Assuming text color should be white */
-  margin-right: 0; /* Remove right margin */
-  margin-top: 20px; /* Ajouter de l'espace en haut */
-  margin-bottom: 150px; /* Ajouter de l'espace en haut */
+  position: relative;
 }
 
-.element-portfolio-site .line-3 {
+.element-accueil-site .text-wrapper-5 {
+  width: 100%;
+  max-width: 810px;
+  height: 40px;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 26px;
+  line-height: 54px;
+  position: relative; /* Change to relative for better alignment */
+  margin: 1%;
+  left: 2.5%
+}
+
+.element-accueil-site .line-3 {
   width: 100%;
   max-width: 328px;
   height: 2px;
-  margin-bottom: 20px auto; /* Center the line horizontally */
-  margin-left: 150px;
-  margin-top: 20px;
   background-color: #ffffff;
+  position: relative;
+  left: 16%;
 }
 
-.element-portfolio-site .group {
+.element-accueil-site .d-couvrez-la-6 {
   width: 100%;
-  max-width: 318px;
-  margin-left: 20px auto; /* Add margin to separate from other elements */
+  max-width: 950px;
+  height: 84px;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #ffffff;
+  font-size: 26px;
+  line-height: 42px;
+  position: relative; /* Change to relative for better alignment */
+  font-weight: 500;
+  left: 3.8%;
+  margin-bottom: 7%;
+}
+
+.element-accueil-site .group-3 {
+  width: 100%;
+  max-width: 336px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  top: -30px;
-  left: 730px;
+  top: -18%;
+  left: 3.7%;
 }
 
-.element-portfolio-site .overlap-group-2 {
+.element-accueil-site .overlap {
+  width: 100%;
+  max-width: 69px;
+  height: 69px;
+  background-color: #efa8f5;
+  border-radius: 34.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -80%;
+}
+
+.element-accueil-site .d-couvrez-la-5 {
+  width: 100%;
+  max-width: 262px;
+  height: 84px;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 42px;
+  position: relative;
+  font-weight: 600;
+  top: 30%;
+}
+
+.element-accueil-site .group-2 {
+  width: 100%;
+  max-width: 335px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -53%;
+  left: 33%;
+}
+
+.element-accueil-site .d-couvrez-la-4 {
+  width: 100%;
+  max-width: 262px;
+  height: 42px;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #ffffff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 42px;
+  position: relative;
+  font-weight: 600;
+  left: 10%;
+}
+
+.element-accueil-site .div {
+  width: 100%;
+  max-width: 69px;
+  height: 69px;
+  background-color: #efa8f5;
+  border-radius: 34.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 15%;
+  top: -90%;
+}
+
+.element-accueil-site .group {
+  width: 100%;
+  max-width: 318px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -85%;
+  left: 68%;
+}
+
+.element-accueil-site .overlap-group-2 {
   width: 100%;
   max-width: 314px;
   height: 69px;
   position: relative;
 }
 
-.element-portfolio-site .div-2 {
-  width: 69px;
+.element-accueil-site .div-2 {
+  width: 100%;
+  max-width: 69px;
   height: 69px;
   background-color: #efa8f5;
   border-radius: 34.5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: -4px;
-  left: 0;
+  position: relative;
+  left: 5%;
 }
 
-.element-portfolio-site .d-couvrez-la-2 {
-  width: 63px;
+.element-accueil-site .d-couvrez-la-2 {
+  width: 100%;
+  max-width: 63px;
   height: 42px;
-  font-family: "Inter-SemiBold", Helvetica;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-weight: 600;
   color: #5a5858;
   font-size: 28px;
   text-align: center;
   line-height: 42px;
-  position: absolute;
-  top: 12px;
-  left: 2px;
-}
-
-.element-portfolio-site .d-couvrez-la-3 {
-  width: 262px;
-  height: 42px;
-  font-family: "Inter-SemiBold", Helvetica;
-  color: #ffffff;
-  font-size: 28px;
-  text-align: center;
-  line-height: 42px;
-  position: absolute;
-  font-weight: 600;
-  top: 10px;
-  left: 52px;
-}
-
-.element-portfolio-site .group-2 {
-  width: 100%;
-  max-width: 335px;
-  margin: 20px auto; /* Add margin to separate from other elements */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: -10px;
-  left: 25px;
-}
-
-.element-portfolio-site .d-couvrez-la-4 {
-  width: 262px;
-  height: 42px;
-  font-family: "Inter-SemiBold", Helvetica;
-  color: #ffffff;
-  font-size: 28px;
-  text-align: center;
-  line-height: 42px;
-  position: absolute;
-  font-weight: 600;
-  top: 10px;
-  left: 69px;
-}
-
-.element-portfolio-site .group-3 {
-  width: 100%;
-  max-width: 336px;
-  margin-right: 100px; /* Add margin to separate from other elements */
-  margin-left: 30px;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 
-.element-portfolio-site .overlap {
-  width: 69px;
-  height: 69px;
-  background-color: #efa8f5;
-  border-radius: 34.5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 6px;
-  left: 0;
-}
-
-.element-portfolio-site .d-couvrez-la-5 {
-  width: 262px;
-  height: 84px;
-  font-family: "Inter-SemiBold", Helvetica;
+.element-accueil-site .d-couvrez-la-3 {
+  width: 100%;
+  max-width: 262px;
+  height: 42px;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   color: #ffffff;
-  font-size: 28px;
+  font-size: 24px;
   text-align: center;
   line-height: 42px;
-  position: absolute;
+  position: relative;
   font-weight: 600;
-  top: 0;
-  left: 70px;
+  left : 16%;
+  top: -80%;
 }
-
-.element-portfolio-site .d-couvrez-la-6 {
-  width: 100%;
-  max-width: 1000px;
-  height: 84px;
-  font-family: "Poppins-Medium", Helvetica, Arial, sans-serif;
-  color: #ffffff;
-  font-size: 30px;
-  line-height: 42px;
-  position: relative; /* Change to relative for better alignment */
-  font-weight: 500;
-  margin-left: 40px; /* Center the element horizontally with vertical spacing */
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.element-portfolio-site .text-wrapper-5 {
-  width: 100%;
-  max-width: 810px;
-  height: 40px;
-  font-family: "Inter-Bold", Helvetica;
-  font-weight: 800;
-  color: #ffffff;
-  font-size: 30px;
-  line-height: 54px;
-  position: relative; /* Change to relative for better alignment */
-  margin-left: 40px; /* Center the element horizontally with vertical spacing */
-  margin-top: 0px;
-  padding-top: 20px;
-}
-
-
-/* Responsive Styles */
-@media (min-width: 1200px) {
-  .portfolio {
-    flex-direction: row; /* Row direction for larger screens */
-  }
-}
-
-@media (max-width: 1199px) {
-  .portfolio {
-    flex-direction: column;
-  }
-
-  .portfolio .element-portfolio-site-wrapper {
-    width: 100%;
-    height: auto;
-  }
-
-  .portfolio .element-portfolio-site {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .portfolio .element-portfolio-site-wrapper {
-    width: 100%;
-    height: auto;
-  }
-
-  .portfolio .element-portfolio-site {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .portfolio {
-    flex-direction: column;
-  }
-
-  .portfolio .element-portfolio-site-wrapper {
-    width: 100%;
-    height: auto;
-  }
-
-  .portfolio .element-portfolio-site {
-    width: 100%;
-    height: auto;
-  }
-}
-
-

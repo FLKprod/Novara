@@ -62,6 +62,11 @@ def apropos():
     app.logger.debug('Serving apropos.html')
     return render_template('apropos.html')
 
+@app.route('/question')
+def question():
+    app.logger.debug('Serving question.html')
+    return render_template('question.html')
+
 @app.route('/cookies')
 def cookies():
     app.logger.debug('Serving cookies.html')
@@ -129,37 +134,10 @@ def inscription():
         
         return render_template('inscription.html', form=form)
 
-
 @login_manager.user_loader
 def load_user(user_id):
     # Chargez et retournez l'utilisateur à partir de la base de données en utilisant l'ID fourni
     return User.query.get(int(user_id))  # Assurez-vous d'avoir défini la classe User et sa structure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @app.route('/uploadfile', methods=['POST'])
 def upload_file():
@@ -200,7 +178,7 @@ def upload_file():
                         app.logger.info('Analysis queued')
                 
                 attempts += 1
-                time.sleep(15)
+                time.sleep(10)
             
             app.logger.error('Analysis timed out')
             return jsonify({'error': 'Analysis timed out'}), 408

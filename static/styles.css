@@ -1,450 +1,811 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: white; /* Change le fond du site en blanc */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+@font-face {
+    font-family: 'Poppins';
+    src: url('/path/to/your/fonts/poppins-regular.woff2') format('woff2'),
+         url('/path/to/your/fonts/poppins-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/path/to/your/fonts/poppins-semibold.woff2') format('woff2'),
+         url('/path/to/your/fonts/poppins-semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  #urlInput::placeholder {
+    /* Styles pour le placeholder */
+    color: #747474; /* Couleur du texte */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    position:relative;
+    top: 3%;
+  }
+  
+  #urlInput:focus::placeholder {
+    /* Style du placeholder lors de la mise au point (focus) */
+    color: transparent;
+  }
+  
+  body {
+      font-family: Arial, sans-serif;
+      background-color: white; /* Change le fond du site en blanc */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: auto;
+      scrollbar-width: none; /* Masquer la barre de défilement */
+  }
+  
+  html {
+      overflow-x: hidden; /* Masque le débordement horizontal au niveau du document */
+      overflow-y: hidden;
+  }
+  
+  
+  header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 10px 20px;
+      border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
+      color: #8158bf;
+  }
+  
+  .logo {
+      display: flex;
+      align-items: center;
+  }
+  
+  .logo img {
+      height: 40px;
+      margin-right: 10px;
+  }
+  
+  .logo span {
+      font-weight: bold;
+      font-size: 24px;
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+      color: #8158bf;
+  }
+  
+  .logo-link {
+      text-decoration: none; /* Supprime le soulignement */
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+      color: #8158bf;
+  }
+  
+  .logo-link:hover {
+      color: #460F9B; /* Change la couleur au survol */
+  }
+  
+  nav {
+      display: flex;
+      align-items: center;
+  }
+  
+  nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
+  }
+  
+  nav ul li {
+      margin: 0 15px;
+  }
+  
+  nav ul li a {
+      color: #8158BF; /* Couleur du texte des catégories */
+      text-decoration: none;
+      font-weight: bold;
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  }
+  
+  nav ul li a:hover {
+      text-decoration: underline;
+  }
+  
+  .account-btn {
+      background-color: #8158BF;/* Couleur de fond du bouton */
+      color: white; /* Couleur du texte */
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  }
+  
+  .account-btn:hover {
+      background-color: #68409A; /* Couleur du bouton au survol */
+  }
+  
+  .info-box {
+      background-color: #f0ecec; /* Couleur de fond de la box */
+      display: flex;
+      padding: 20px;
+      margin: 40px auto; /* Espacement en haut et centré horizontalement */
+      border-radius: 30px; /* Bords plus arrondis de la box */
+      max-width: 50%; /* Réduit la largeur de la box */
+  }
+  
+  .info-left {
+      flex: 1; /* 1/4 de la box */
+      color: #8158BF;
+      font-size: 32px; /* Augmente la taille du texte */
+      font-weight: bold;
+      display: flex;
+      align-items: center; /* Centrer verticalement */
+      justify-content: center; /* Centrer horizontalement */
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  }
+  
+  .box-logo {
+      height: 40px; /* Ajustez la taille du logo si nécessaire */
+      margin-right: 10px;
+  }
+  
+  .info-right {
+      flex: 3; /* 3/4 de la box */
+      color: #484444;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column; /* Aligne le texte verticalement */
+      align-items: flex-start; /* Aligne le texte à gauche */
+      justify-content: center; /* Centre le texte verticalement */
+      padding-left: 20px; /* Espacement entre les deux zones */
+  }
+  
+  .simple {
+      color: #460F9B;
+      font-weight: bold;
+  }
+  
+  .efficace {
+      color: #8158BF;
+      font-weight: bold;
+  }
+  
+  .indispensable {
+      color: #F0ACDB;
+      font-weight: bold;
+  }
+  
+  .tagline {
+      text-align: center;
+      margin: 20px 0;
+      color: #F0ACDB; /* Couleur de la phrase */
+      font-style: italic; /* Italique */
+  }
+  
+  h1 {
+      margin-bottom: 20px;
+      color: #484444; /* Couleur de la phrase */
+  }
+  
+  form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+  
+  input[type="file"] {
+      display: none; /* Masquer le champ de fichier par défaut */
+  }
+  
+  .upload-btn {
+      display: inline-block;
+      background-color: #8158bf; /* Couleur de fond du bouton */
+      color: white; /* Couleur du texte */
+      padding: 30px;
+      border-radius: 20px; /* Bords légèrement arrondis */
+      cursor: pointer;
+      width: 100%;
+      max-width: 400px;
+      height: 35px; /* Réduire l'épaisseur de la bannière */
+      font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      border: 2px solid black;
+      position: relative;
+  }
+  
+  .upload-btn:hover {
+      background-color: #68409A; /* Couleur du bouton au survol */
+  }
+  
+  #result {
+      color: #8158bf;
+      position: relative;
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+      top: -10%;
+  }
+  
+  .footer-banner {
+      width: 100%;
+      height: 100px; /* Réduire l'épaisseur de la bannière */
+      margin: 0;
+      padding: 0;
+      margin-bottom: 0; /* Enlever la marge négative */
+  }
+  
+  .footer-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+  }
+  
+  footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 10px 0;
+  }
+  
+  .footer-links {
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+      font-size: 12px;
+      color: #484444;
+  }
+  
+  .footer-links a {
+      color: #484444;
+      text-decoration: none;
+  }
+  
+  .footer-links a:hover {
+      text-decoration: underline;
+  }
+  
+  .footer-copyright {
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+      font-size: 12px;
+      color: #484444;
+  }
+  
+  .result-status {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: -2%;
+  }
+  
+  .status-indicator {
+      width: 20px;
+      height: 19px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px;
+  }
+  
+  .status-indicator.orange {
+      background-color: orange;
+      border: 1px solid black;
+  }
+  
+  .status-indicator.red {
+      background-color: red;
+      border: 1px solid black;
+  }
+  
+  .status-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
+      padding: 2px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin-bottom: 5%;
+  }
+  
+  .status-link.orange {
+      color: #460F9B;
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 20px;
+  }
+  
+  .status-link.orange:hover {
+      background-color: #D08AB3;
+      box-shadow: 0 0 10px rgba(240, 172, 219, 0.5);
+  }
+  
+  .status-link.red {
+      color: white;
+      background-color: #FF4C4C;
+      border: 2px solid #FF4C4C;
+  }
+  
+  .status-link.red:hover {
+      background-color: #D9534F;
+      box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
+  }
+  
+  /* Styles existants */
+  
+  .secure-message {
+      text-align: center;
+      font-size: 28px; /* Plus gros */
+      font-weight: bold; /* En gras */
+      color: #460F9B; /* Couleur spécifiée */
+      margin-top: 20px; /* Espacement au-dessus du texte */
+  }
+  
+  .warning-message {
+      text-align: center;
+      font-size: 16px; /* Un peu plus petit */
+      color: #484444; /* Couleur spécifiée */
+      max-width: 40%; /* Réduit la largeur du texte */
+      margin: 20px auto; /* Centré avec espacement au-dessus et en-dessous */
+  }
+  
+  .protection-banner {
+      background-color: #8158BF; /* Couleur du bandeau */
+      color: white; /* Couleur du texte */
+      padding: 60px 0; /* Augmenté pour rendre le bandeau plus épais */
+      text-align: center;
+      width: 100%; /* Prend toute la largeur de l'écran */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour faire ressortir */
+      margin: 60px 0 80px 0; /* Plus d'espace au-dessus et encore plus d'espace en dessous du bandeau */
+  }
+  
+  .protection-banner h2 {
+      margin: 0 0 20px 0; /* Espacement au-dessous du titre */
+      font-size: 24px; /* Taille du titre */
+  }
+  
+  .protection-banner p {
+      margin: 0 0 20px 0; /* Espacement au-dessous du paragraphe */
+      font-size: 16px; /* Taille du texte */
+  }
+  
+  .protection-banner ul {
+      list-style-type: none; /* Supprime les puces */
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+  }
+  
+  .protection-banner li {
+      font-size: 16px; /* Taille du texte des points */
+      margin: 0 15px; /* Espacement entre les points */
+  }
+  
+  .enhance-security-message {
+      text-align: center;
+      font-size: 28px; /* Taille identique à "Sécurisez vos communications professionnelles" */
+      font-weight: bold; /* En gras */
+      color: #460F9B; /* Couleur identique */
+      margin: 20px 0; /* Espacement au-dessus et en dessous */
+  }
+  
+  .solution-message {
+      text-align: center;
+      font-size: 16px; /* Taille identique à "Les pièces jointes malveillantes..." */
+      color: #484444; /* Couleur identique */
+      max-width: 40%; /* Réduit la largeur du texte */
+      margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
+  }
+
+/* ............................................. Page Index ............................................. */
+.index {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 10px 20px;
-    border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
-    color: #8158BF;
+.index .element-index-site-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  border: 1px solid transparent;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
-input[type="url"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
+.index .element-index-site {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10%;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
+.index .d-couvrez-la {
+  width: 100%; /* Change to 100% for responsive width */
+  max-width: 755px; /* Maximum width to maintain design consistency */
+  margin: 20px auto; /* Center the element horizontally */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-style: italic;
+  color: #8158bf;
+  font-size: 18px;
+  text-align: center;
+  line-height: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  position: relative; /* Change to relative for proper positioning in flow */
 }
 
-.logo img {
-    height: 40px;
-    margin-right: 10px;
+.index .line {
+  width: 100%; /* Largeur responsive */
+  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  height: 1px;
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #8158bf; /* Couleur pour la ligne */
+  display: block;
 }
 
-.logo span {
-    color: #8158BF; /* Couleur du texte VeriFile */
-    font-weight: bold;
-    font-size: 24px;
+.index .verifile-section {
+  flex: 0 0 auto;
 }
 
-.logo-link {
-    text-decoration: none; /* Supprime le soulignement */
-    color: #8158BF; /* Couleur du texte VeriFile */
+.index .verifile {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-size: 54px;
+  font-weight: 700;
+  color: #8158bf;
 }
 
-.logo-link:hover {
-    color: #460F9B; /* Change la couleur au survol */
+.index .line2 {
+  width: 2px; /* Width of the vertical line */
+  height: 150px; /* Full height of the container */
+  background-color: #8158bf;
 }
 
-nav {
-    display: flex;
-    align-items: center;
+.index .carré {
+  width: 100%; /* Largeur responsive */
+  max-width: 200px; /* Largeur maximale pour la cohérence du design */
+  height: 50px; /* Hauteur auto pour la responsivité */
+  margin: auto; /* Centre l'élément horizontalement avec un espacement vertical */
+  background-color: white;
+  overflow: hidden;
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  border-radius: 20px;
+  align-items: center;
+  padding: 30px;
+  display: flex;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
+  top: 58%;
+  left: -13%;
+  border: 2px solid #8158bf;
 }
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
+.element-index-site .group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 20vh; /* Exemple pour remplir toute la hauteur de l'écran */
+  z-index: 2; /* Mettre .group2 en dessous de .group */
 }
 
-nav ul li {
-    margin: 0 15px;
+.element-index-site .overlap-group {
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  position: relative;
+  top: -17%; /* Ajustement pour le décalage initial */
+  left: -30%; /* Ajustement pour le décalage initial */
 }
 
-nav ul li a {
-    color: #8158BF; /* Couleur du texte des catégories */
-    text-decoration: none;
-    font-weight: bold;
+.index .logo {
+  display: flex;
+  align-items: center;
+  width: 30%;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
+.index .logo .img {
+  width: 400px;
+  max-width: 500px;
+  height: 40px;
+  margin-right: 10px;
+  margin-left: 14px; /* Remove left margin */
+  margin-top: 10px; /* Ajouter de l'espace en haut */
+  margin-bottom: 15px; /* Ajouter de l'espace en haut */
+  transform: scale(1.8); /* Agrandir l'image à 150% de sa taille originale */
+  transform-origin: center center; /* Agrandir à partir du centre de l'image */
 }
 
-.account-btn {
-    background-color: #8158BF; /* Couleur de fond du bouton */
-    color: white; /* Couleur du texte */
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.index .text-wrapper {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-size: 35px;
+  font-weight: 800;
+  color: #8158bf;
+  margin-top: 33px; /* Ajouter de l'espace en haut */
+  margin-left: 14px; /* Ajouter de l'espace en haut */
 }
 
-.account-btn:hover {
-    background-color: #68409A; /* Couleur du bouton au survol */
+.element-index-site .group2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 80vh; /* Exemple pour remplir toute la hauteur de l'écran */
+  z-index: 1; /* Mettre .group2 en dessous de .group */
 }
 
-.info-box {
-    background-color: #f0ecec; /* Couleur de fond de la box */
-    display: flex;
-    padding: 20px;
-    margin: 40px auto; /* Espacement en haut et centré horizontalement */
-    border-radius: 30px; /* Bords plus arrondis de la box */
-    max-width: 50%; /* Réduit la largeur de la box */
-}
-
-.info-left {
-    flex: 1; /* 1/4 de la box */
-    color: #8158BF;
-    font-size: 32px; /* Augmente la taille du texte */
-    font-weight: bold;
-    display: flex;
-    align-items: center; /* Centrer verticalement */
-    justify-content: center; /* Centrer horizontalement */
-}
-
-.box-logo {
-    height: 40px; /* Ajustez la taille du logo si nécessaire */
-    margin-right: 10px;
-}
-
-.info-right {
-    flex: 3; /* 3/4 de la box */
-    color: #484444;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column; /* Aligne le texte verticalement */
-    align-items: flex-start; /* Aligne le texte à gauche */
-    justify-content: center; /* Centre le texte verticalement */
-    padding-left: 20px; /* Espacement entre les deux zones */
-}
-
-.simple {
-    color: #460F9B;
-    font-weight: bold;
-}
-
-.efficace {
-    color: #8158BF;
-    font-weight: bold;
-}
-
-.indispensable {
-    color: #F0ACDB;
-    font-weight: bold;
-}
-
-.tagline {
-    text-align: center;
-    margin: 20px 0;
-    color: #F0ACDB; /* Couleur de la phrase */
-    font-style: italic; /* Italique */
+.element-index-site .overlap-group2 {
+  width: 100%;
+  max-width: 500px;
+  height: 200px;
+  position: relative;
+  top: -40%; /* Ajustement pour le décalage initial */
+  left: -30%; /* Ajustement pour le décalage initial */
 }
 
 .container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 30px; /* Bords plus arrondis */
+    background-color: #efeded;
+    padding: 90px;
+    border-radius: 20px; /* Bords plus arrondis */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
     text-align: center;
-    margin: auto;
-    max-width: 500px;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-h1 {
-    margin-bottom: 20px;
-    color: #484444; /* Couleur de la phrase */
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-input[type="file"] {
-    display: none; /* Masquer le champ de fichier par défaut */
-}
-
-.upload-btn {
-    display: inline-block;
-    background-color: #8158BF; /* Couleur de fond du bouton */
-    color: white; /* Couleur du texte */
-    padding: 10px 20px;
-    border-radius: 5px; /* Bords légèrement arrondis */
-    cursor: pointer;
-}
-
-.upload-btn:hover {
-    background-color: #68409A; /* Couleur du bouton au survol */
-}
-
-#result {
-    margin-top: 20px;
-}
-
-.footer-banner {
+    position: relative;
     width: 100%;
-    height: 100px; /* Réduire l'épaisseur de la bannière */
-    margin: 0;
-    padding: 0;
-    margin-bottom: 0; /* Enlever la marge négative */
+    max-width: 1000px;
+    height: 300px;
+    top: -200%;
+    left: 25%;
 }
 
-.footer-banner img {
+.container .line-index {
+  width: 100%; /* Largeur responsive */
+  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  height: 2px;
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #460F9B; /* Couleur pour la ligne */
+  margin: 60px auto;
+  margin-top:13%;
+  margin-bottom: 8%;
+}
+
+.text {
+  text-align: center;
+  margin: auto;
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+  bottom: -20%;
+  left: -2%
+}
+
+.fleche {
+    position: relative;
     width: 100%;
-    height: auto;
-    display: block;
+    max-width: 150px;
+    top: -135%;
+    left: 197%;
+    z-index: 2;
 }
 
-footer {
-    background-color: #460F9B; /* Couleur du fond du pied de page */
-    width: 100%; /* Prend toute la largeur de l'écran */
+.loading-gif {
+  position: relative;
+  width: 100%;
+  max-width: 180px;
+  top: 60%;
+  margin-top: 10%;
+}
+
+.loading-message {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Largeur maximale pour la cohérence du design */
+  top: 20%;
+  left: 10%;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-weight: 700;
+  color: #8158bf;
+  font-size: 20px;
+}
+
+.info-message {
+  width: 100%;
+    max-width: 600px;
     text-align: center;
-    padding: 20px 0;
-    color: white; /* Texte en blanc */
-    margin: 0;
+    color: black;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    
 }
 
-.footer-links {
-    font-size: 0.9em;
-    color: white; /* Texte des liens en blanc */
+.message-btn {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    color: #8158bf;
+    font-weight: bold;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
-.footer-links a {
-    color: white; /* Texte des liens en blanc */
+.info-message-resultat {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    color: #8158bf;
+    font-weight: bold;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    position:relative;
+    font-size: 20px;
+    margin-top: -3%;
+}
+
+.info-message-pourquoi {
+  width: 100%;
+    max-width: 600px;
+    text-align: center;
+    color: #8158bf;
+    font-weight: bold;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: -2%;
+}
+
+.line-resultat {
+  width: 100%; /* Largeur responsive */
+  max-width: 200px; /* Largeur maximale pour la cohérence du design */
+  height: 2px;
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #8158bf; /* Couleur pour la ligne */
+  display: block;
+  margin-top: -2%;
+}
+
+.line-pourquoi {
+  width: 100%; /* Largeur responsive */
+  max-width: 200px; /* Largeur maximale pour la cohérence du design */
+  height: 2px;
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #8158bf; /* Couleur pour la ligne */
+  display: block;
+  margin-top: 4%;
+}
+
+.dl {
+    width: 100%; /* Largeur responsive */
+    max-width: 400px; /* Largeur maximale pour la cohérence du design */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-weight: 800;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -1.06px;
+    line-height: normal;
+    position: relative; /* Positionnement relatif pour éviter les conflits */
+    top: -4%;
+  }
+
+.bouton2 {
+    display: inline-block;
+    background-color: white; /* Couleur de fond du bouton */
+    color: #747474; /* Couleur du texte */
+    padding: 30px;
+    border-radius: 20px; /* Bords légèrement arrondis */
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    height: 15px; /* Réduire l'épaisseur de la bannière */
+    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    border: 2px solid black;
+    position: relative;
+}
+
+.bouton-none {
+  display: none;
+}
+
+.bouton2-none {
+  display: none;
+}
+
+.slogan {
+    width: 100%; /* Largeur responsive */
+    max-width: 400px; /* Largeur maximale pour la cohérence du design */
+    margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-weight: 800;
+    color: #000000;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: -1.06px;
+    line-height: normal;
+    position: relative; /* Positionnement relatif pour éviter les conflits */
+    top: -70%;
+    left: 175%;
+  }
+
+.slogan2 {
+    width: 100%; /* Largeur responsive */
+    max-width: 400px; /* Largeur maximale pour la cohérence du design */
+    margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-weight: 800;
+    color: #000000;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: -1.06px;
+    line-height: normal;
+    position: relative; /* Positionnement relatif pour éviter les conflits */
+    top: -80%;
+    left: 151.5%;
+  }
+
+.slogan3 {
+    width: 100%; /* Largeur responsive */
+    max-width: 400px; /* Largeur maximale pour la cohérence du design */
+    margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-weight: 1000;
+    color: #8158bf;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: -1.06px;
+    line-height: normal;
+    position: relative; /* Positionnement relatif pour éviter les conflits */
+    top: -90%;
+    left: 159%;
+  }
+
+.line-dif {
+  width:100%;
+  max-width: 3px; /* Width of the vertical line */
+  height: 300px; /* Full height of the container */
+  background-color: #8158bf;
+  position:relative;
+  left: 130%;
+  top: 10%;
+}
+
+.conditions {
+    width: 100%; /* Largeur responsive */
+    max-width: 900px; /* Largeur maximale pour la cohérence du design */
+    margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+    font-family: Arial, sans-serif;
+    font-weight: 200;
+    color: #666565;
+    font-size: 12px;
+    text-align: center;
+    line-height: normal;
+    position: relative; /* Positionnement relatif pour éviter les conflits */
+    margin-top: -77%;
+    left: 42%;
+  }
+
+ .footer-links-index {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 11px;
+    color: #484444;
+    
+}
+
+.footer-links-index a {
+    color: #484444;
     text-decoration: none;
-    margin: 0 10px; /* Espacement entre les liens */
 }
 
-.footer-links a:hover {
+.footer-links-index a:hover {
     text-decoration: underline;
 }
 
-.footer-copyright {
-    font-size: 0.8em;
-    color: white; /* Texte en blanc */
-    margin-top: 10px;
-    margin-bottom: 0;
+.footer-copyright-index {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 11px;
+    color: #484444;
+    margin-top: -12%;
 }
-
-.result-status {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.status-indicator {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.status-indicator.orange {
-    background-color: orange;
-}
-
-.status-indicator.red {
-    background-color: red;
-}
-
-.status-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.status-link.orange {
-    color: white;
-    background-color: #F0ACDB;
-    border: 2px solid #F0ACDB;
-}
-
-.status-link.orange:hover {
-    background-color: #D08AB3;
-    box-shadow: 0 0 10px rgba(240, 172, 219, 0.5);
-}
-
-.status-link.red {
-    color: white;
-    background-color: #FF4C4C;
-    border: 2px solid #FF4C4C;
-}
-
-.status-link.red:hover {
-    background-color: #D9534F;
-    box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
-}
-
-.info-message {
-    text-align: center;
-    color: #F0ACDB;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* Styles existants */
-
-.secure-message {
-    text-align: center;
-    font-size: 28px; /* Plus gros */
-    font-weight: bold; /* En gras */
-    color: #460F9B; /* Couleur spécifiée */
-    margin-top: 20px; /* Espacement au-dessus du texte */
-}
-
-.warning-message {
-    text-align: center;
-    font-size: 16px; /* Un peu plus petit */
-    color: #484444; /* Couleur spécifiée */
-    max-width: 40%; /* Réduit la largeur du texte */
-    margin: 20px auto; /* Centré avec espacement au-dessus et en-dessous */
-}
-
-.protection-banner {
-    background-color: #8158BF; /* Couleur du bandeau */
-    color: white; /* Couleur du texte */
-    padding: 60px 0; /* Augmenté pour rendre le bandeau plus épais */
-    text-align: center;
-    width: 100%; /* Prend toute la largeur de l'écran */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour faire ressortir */
-    margin: 60px 0 80px 0; /* Plus d'espace au-dessus et encore plus d'espace en dessous du bandeau */
-}
-
-.protection-banner h2 {
-    margin: 0 0 20px 0; /* Espacement au-dessous du titre */
-    font-size: 24px; /* Taille du titre */
-}
-
-.protection-banner p {
-    margin: 0 0 20px 0; /* Espacement au-dessous du paragraphe */
-    font-size: 16px; /* Taille du texte */
-}
-
-.protection-banner ul {
-    list-style-type: none; /* Supprime les puces */
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.protection-banner li {
-    font-size: 16px; /* Taille du texte des points */
-    margin: 0 15px; /* Espacement entre les points */
-}
-
-.enhance-security-message {
-    text-align: center;
-    font-size: 28px; /* Taille identique à "Sécurisez vos communications professionnelles" */
-    font-weight: bold; /* En gras */
-    color: #460F9B; /* Couleur identique */
-    margin: 20px 0; /* Espacement au-dessus et en dessous */
-}
-
-.solution-message {
-    text-align: center;
-    font-size: 16px; /* Taille identique à "Les pièces jointes malveillantes..." */
-    color: #484444; /* Couleur identique */
-    max-width: 40%; /* Réduit la largeur du texte */
-    margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
-}
-
-.info-message {
-    text-align: center;
-    color: #F0ACDB;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* Styles existants */
-
-.secure-message {
-    text-align: center;
-    font-size: 28px; /* Plus gros */
-    font-weight: bold; /* En gras */
-    color: #460F9B; /* Couleur spécifiée */
-    margin-top: 20px; /* Espacement au-dessus du texte */
-}
-
-.warning-message {
-    text-align: center;
-    font-size: 16px; /* Un peu plus petit */
-    color: #484444; /* Couleur spécifiée */
-    max-width: 40%; /* Réduit la largeur du texte */
-    margin: 20px auto; /* Centré avec espacement au-dessus et en-dessous */
-}
-
-.protection-banner {
-    background-color: #8158BF; /* Couleur du bandeau */
-    color: white; /* Couleur du texte */
-    padding: 60px 0; /* Augmenté pour rendre le bandeau plus épais */
-    text-align: center;
-    width: 100%; /* Prend toute la largeur de l'écran */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour faire ressortir */
-    margin: 60px 0 80px 0; /* Plus d'espace au-dessus et encore plus d'espace en dessous du bandeau */
-}
-
-.protection-banner h2 {
-    margin: 0 0 20px 0; /* Espacement au-dessous du titre */
-    font-size: 24px; /* Taille du titre */
-}
-
-.protection-banner p {
-    margin: 0 0 20px 0; /* Espacement au-dessous du paragraphe */
-    font-size: 16px; /* Taille du texte */
-}
-
-.protection-banner ul {
-    list-style-type: none; /* Supprime les puces */
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.protection-banner li {
-    font-size: 16px; /* Taille du texte des points */
-    margin: 0 15px; /* Espacement entre les points */
-}
-
-.enhance-security-message {
-    text-align: center;
-    font-size: 28px; /* Taille identique à "Sécurisez vos communications professionnelles" */
-    font-weight: bold; /* En gras */
-    color: #460F9B; /* Couleur identique */
-    margin: 20px 0; /* Espacement au-dessus et en dessous */
-}
-
-.solution-message {
-    text-align: center;
-    font-size: 16px; /* Taille identique à "Les pièces jointes malveillantes..." */
-    color: #484444; /* Couleur identique */
-    max-width: 40%; /* Réduit la largeur du texte */
-    margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
-}
-
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -486,6 +847,7 @@ footer {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    z-index: 3;
 }
 
 .chatbot-header {
@@ -495,6 +857,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    display: none;
 }
 
 .close-btn {
@@ -510,11 +873,13 @@ footer {
     padding: 10px;
     overflow-y: auto;
     background-color: #f9f9f9;
+    display: none;
 }
 
 .chatbot-input {
     display: flex;
     border-top: 1px solid #ccc;
+    display: none;
 }
 
 .chatbot-input input {
