@@ -1282,7 +1282,7 @@
     padding: 30px;
     display: flex;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
-    margin-top: 40px;
+    margin-top: 100px;
     margin-left: 300px;
     border: 2px solid #8158bf;
   }
@@ -1355,7 +1355,7 @@
       margin: auto;
       max-width: 700px;
       height: 300px;
-      margin-top: -120px;
+      margin-top: -60px;
       margin-left: 100px;
       margin-bottom: 120px;
       position: center;
