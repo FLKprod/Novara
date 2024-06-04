@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Compte VeriFile</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='connexion.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/connexion.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssstyles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
             <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
         </div>
         <nav>
@@ -28,48 +28,45 @@
     <div class="tagline">
         <em>Découvrez la puissance de 100 anti-virus combiné en 1 clic</em>
     </div>
-    <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
+    <div class="account-container">
+        <div class="connexion">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h1>Connexion</h1>
+            <form class="connect" method="POST">
+                {{ form.hidden_tag() }}
+                <div id="email">
+                    {{ form.email.label }}
+                    {{ form.email(size=64) }}
+                    {% for error in form.email.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        <h1>Connexion</h1>
-        <form class="connect" method="POST">
-            {{ form.hidden_tag() }}
-            <div id="email">
-                {{ form.email.label }}
-                {{ form.email(size=64) }}
-                {% for error in form.email.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </div>
-            <div id="password">
-                {{ form.password.label }}
-                {{ form.password(size=32) }}
-                {% for error in form.password.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
-                {% endfor %}
-            </div>
-            <div>
-                {{ form.remember }}
-                {{ form.remember.label }}
-            </div>
-            <div>
-                {{ form.submit }}
-            </div>
-        </form>
-        <p>Pas encore inscrit ? <a href="{{ url_for('inscription') }}">Créez un compte</a></p>
+                <div id="password">
+                    {{ form.password.label }}
+                    {{ form.password(size=32) }}
+                    {% for error in form.password.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.remember }}
+                    {{ form.remember.label }}
+                </div>
+                <div>
+                    {{ form.submit }}
+                </div>
+            </form>
+            <p>Pas encore inscrit ? <a href="{{ url_for('inscription') }}">Créez un compte</a></p>
+        </div>
   </div>
-    
-    <!-- Ajout de l'image du bandeau juste au-dessus du footer -->
-    <div class="footer-banner">
-        <img src="{{ url_for('static', filename='footer.png') }}" alt="Footer Banner">
-    </div>
     
     <!-- Ajout du pied de page -->
     <footer>
@@ -83,7 +80,7 @@
         </div>
     </footer>
     
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
     <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
 </body>
 </html>

@@ -19,6 +19,18 @@ header {
     align-items: center;
 }
 
+.account-container {
+    background-color: #efeded;
+    padding: 90px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 300px;
+}
+
 .logo-link {
     color: white;
     text-decoration: none;

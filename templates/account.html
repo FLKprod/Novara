@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Compte VeriFile</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='cookies.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cookies.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
             <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
         </div>
         <nav>
@@ -28,7 +28,7 @@
     <div class="tagline">
         <em>Découvrez la puissance de 100 anti-virus combiné en 1 clic</em>
     </div>
-    <div class="container">
+    <div class="account-container">
         {% if current_user.is_authenticated %}
                     <p>Bienvenue, {{ current_user.username }} !</p>
                     <p>Email: {{ current_user.email }}</p>
@@ -61,11 +61,6 @@
                     <button type="submit" class="btn btn-primary">Changer le mot de passe</button>
                 </form>
   </div>
-    
-    <!-- Ajout de l'image du bandeau juste au-dessus du footer -->
-    <div class="footer-banner">
-        <img src="{{ url_for('static', filename='footer.png') }}" alt="Footer Banner">
-    </div>
     
     <!-- Ajout du pied de page -->
     <footer>
