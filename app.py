@@ -82,6 +82,11 @@ def filedl():
     app.logger.debug('Serving filedl.html')
     return render_template('filedl.html')
 
+@app.route('/inco')
+def inco():
+    app.logger.debug('Serving inco.html')
+    return render_template('inco.html')
+
 @app.route('/cookies')
 def cookies():
     app.logger.debug('Serving cookies.html')

@@ -1380,7 +1380,7 @@
       line-height: normal;
       position: relative; /* Positionnement relatif pour éviter les conflits */
   }
-  
+
   .cercle-vert-clair {
     width: 100%;
     max-width: 124px;
