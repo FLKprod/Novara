@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/accueil.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
             <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
         </div>
         <nav>
@@ -56,7 +56,7 @@
             </p>
             <div class="content-wrapper">
               <div class="proteger-wrapper">
-                <img class="proteger" src="{{ url_for('static', filename='proteger.png') }}" alt="Image entre les deux">
+                <img class="proteger" src="{{ url_for('static', filename='img/proteger.png') }}" alt="Image entre les deux">
               </div>
               <div class="image-3">
                 <p class="text-wrapper-5">Comment nous vous protégeons ?</p>

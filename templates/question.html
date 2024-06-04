@@ -6,12 +6,12 @@
     <title>Question - VeriFile</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
             <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
         </div>
         <nav>
@@ -35,7 +35,7 @@
                   <div class="overlap-group">
                     <div class="carré">
                         <div class="logo">
-                            <div class="img"><img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"></div>
+                            <div class="img"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></div>
                         </div>
                         <p class="text-wrapper">VeriFile</p>
                     </div>
@@ -45,13 +45,13 @@
             
             <div class="container2"> 
                 <p class="question-base">Quel est la provenance de ce fichier ?</p>
-                <img class="attention" src="{{ url_for('static', filename='bulle-unscreen.gif') }}">
+                <img class="attention" src="{{ url_for('static', filename='img/bulle-unscreen.gif') }}">
                 <p class="line-question-base" src="${barrePath}" alt="line"></p>
                 <div class="slogan">La sécurité en ligne est cruciale</div><div class="slogan2">Il est important de prendre le temps de VeriFile</div>
-                <div class="email-btn"><a href="/question" class="status-email-btn"><p class="message-email-btn">Un e-mail que j’ai reçu</p><img class="cle-usb" src="{{ url_for('static', filename='email.png') }}"></a></div>
-                <div class="usb-btn"><a href="/question" class="status-cle-btn"><p class="message-email-btn">Une clé USB</p><img class="cle-usb" src="{{ url_for('static', filename='usb.png') }}"></a></div>
-                <div class="filedl-btn"><a href="/question" class="status-file-btn"><p class="message-email-btn">Un fichier téléchargé sur un site web</p><img class="cle-usb" src="{{ url_for('static', filename='telecharger-un-fichier.png') }}"></a></div>
-                <div class="inco-btn"><a href="/question" class="status-inco-btn"><p class="message-email-btn">Un fichier inconnu</p><img class="cle-usb" src="{{ url_for('static', filename='dossier.png') }}"></a></div>         
+                <div class="email-btn"><a href="/question" class="status-email-btn"><p class="message-email-btn">Un e-mail que j’ai reçu</p><img class="cle-usb" src="{{ url_for('static', filename='img/email.png') }}"></a></div>
+                <div class="usb-btn"><a href="/question" class="status-cle-btn"><p class="message-email-btn">Une clé USB</p><img class="cle-usb" src="{{ url_for('static', filename='img/usb.png') }}"></a></div>
+                <div class="filedl-btn"><a href="/question" class="status-file-btn"><p class="message-email-btn">Un fichier téléchargé sur un site web</p><img class="cle-usb" src="{{ url_for('static', filename='img/telecharger-un-fichier.png') }}"></a></div>
+                <div class="inco-btn"><a href="/question" class="status-inco-btn"><p class="message-email-btn">Un fichier inconnu</p><img class="cle-usb" src="{{ url_for('static', filename='img/dossier.png') }}"></a></div>         
             </div>
         </div>
         
