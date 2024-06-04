@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - VeriFile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='accueil.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
 </head>
 <body>
@@ -22,13 +22,12 @@
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
             </ul>
-            <a href="{{ url_for('connexion') }}" class="account-btn">Mon Compte</a>
         </nav>
     </header>
     
-    <div class="portfolio">
-        <div class="element-portfolio-site-wrapper">
-          <div class="element-portfolio-site">
+    <div class="accueil">
+        <div class="element-accueil-site-wrapper">
+          <div class="element-accueil-site">
             <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
             <img class="line" src="img/line-1.svg" />
             <div class="image">
@@ -51,15 +50,10 @@
               fichier et URL pour garantir la sécurité de vos échanges professionnels.
             </p>
             <div class="content-wrapper">
-              <div class="image-2">
-                <!-- Contenu de l'image-2 -->
-                <p></p>
-              </div>
               <div class="proteger-wrapper">
                 <img class="proteger" src="{{ url_for('static', filename='proteger.png') }}" alt="Image entre les deux">
               </div>
               <div class="image-3">
-
                 <p class="text-wrapper-5">Comment nous vous protégeons ?</p>
                 <img class="line-3" src="img/line-8.svg" />
                 <p class="d-couvrez-la-6">
@@ -67,16 +61,15 @@
                 </p>
                 <div class="group-3">
                   <div class="overlap"><div class="d-couvrez-la-2">1</div></div>
-                  <p class="d-couvrez-la-5">Déposer le fichier ou l’URL</p>
+                  <div class="d-couvrez-la-5">Déposer le fichier ou l’URL</div>
                 </div>
                 <div class="group-2">
-                  <div class="div-2"><div class="d-couvrez-la-2">2</div></div>
+                  <div class="div"><div class="d-couvrez-la-2">2</div></div>
                   <div class="d-couvrez-la-4">Analyse du fichier</div>
                 </div>
                 <div class="group">
                   <div class="overlap-group-2">
-                    <div class="div-2"></div>
-                    <div class="d-couvrez-la-2">3</div>
+                    <div class="div-2"><div class="d-couvrez-la-2">3</div></div>
                     <div class="d-couvrez-la-3">Retour ludique</div>
                   </div>
                 </div>
@@ -89,10 +82,11 @@
         <div class="footer-links">
             <a href="#">Conditions d'utilisation</a> | 
             <a href="#">Conditions générales</a> | 
-            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
     </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
