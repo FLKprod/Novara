@@ -1,3 +1,12 @@
-img{
+.cookies img{
+    width: 20%;
+    height: auto;
+}
+
+.cookies {
     width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
