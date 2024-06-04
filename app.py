@@ -82,6 +82,11 @@ def filedl():
     app.logger.debug('Serving filedl.html')
     return render_template('filedl.html')
 
+@app.route('/inco')
+def inco():
+    app.logger.debug('Serving inco.html')
+    return render_template('inco.html')
+
 @app.route('/cookies')
 def cookies():
     app.logger.debug('Serving cookies.html')
@@ -187,7 +192,7 @@ def upload_file():
                         app.logger.info('Analysis queued')
                 
                 attempts += 1
-                time.sleep(10)
+                time.sleep(15)
             
             app.logger.error('Analysis timed out')
             return jsonify({'error': 'Analysis timed out'}), 408
@@ -232,7 +237,7 @@ def upload_url():
             if status == 'completed':
                 return jsonify(result_json)
             elif status == 'queued':
-                time.sleep(15)
+                time.sleep(10)
         attempts += 1
 
     return jsonify({'error': 'Analysis timed out'}), 408

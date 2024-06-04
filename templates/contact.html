@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - VeriFile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
@@ -37,9 +38,10 @@
                 <div class="left-wrapper">
                     <div class="left-side">
                         <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
-                        <h2>VeriFile</h2>
-                        <p>Chez VeriFile, nous nous engageons à répondre à toutes vos questions et préoccupations dans un délai de 24 heures.</p>
-                        <p><strong>Votre satisfaction est notre priorité.</strong></p>
+                        <h2 style="color: #8158bf;">VeriFile</h2>
+                        <p style="font-size: 16px;">Chez VeriFile, nous nous engageons à répondre à toutes vos questions et préoccupations dans un délai de 24 heures.</p>
+                        <p><strong style="font-size: 18px;">Votre satisfaction est notre priorité.</strong></p>
+                        <img src="{{ url_for('static', filename='img/communications.gif') }}" alt="Communications GIF" class="gif-image">
                     </div>
                 </div>
                 <div class="right-wrapper">
@@ -50,9 +52,13 @@
                                 <input type="text" name="prenom" placeholder="Prénom">
                                 <input type="text" name="nom" placeholder="Nom">
                             </div>
-                            <input type="email" name="email" placeholder="Email">
+                            <div class="email-fields">
+                                <input type="email" name="email" placeholder="Email">
+                            </div>
                             <h2>Comment vous aider ?</h2>
-                            <textarea name="message" placeholder="Votre message"></textarea>
+                            <div class="message-fields">
+                                <textarea name="message" placeholder="Votre message..."></textarea>
+                            </div>
                             <button type="submit">Envoyer</button>
                         </form>
                     </div>
@@ -73,4 +79,3 @@
     </footer>
 </body>
 </html>
-
