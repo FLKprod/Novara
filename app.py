@@ -120,7 +120,6 @@ def connexion():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             # Si l'utilisateur existe et que le mot de passe est correct
             login_user(user, remember=form.remember.data)
-            flash('Vous êtes maintenant connecté !', 'success')
             return redirect(url_for('index'))  # Redirigez vers la page d'accueil après la connexion
         else:
             flash('Identifiant ou mot de passe incorrect. Veuillez réessayer.', 'danger')
