@@ -139,8 +139,13 @@ header h1 {
 
 #objectifs  ul.tab {
     list-style-type: none;
+    align-items: center;
     padding: 2em;
     margin: 0;
+}
+
+#objectifs  ul.tab > li{
+    align-items: center;
 }
 
 #objectifs  li {
