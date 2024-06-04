@@ -110,7 +110,17 @@
       text-decoration: underline;
   }
   
-  
+  .account-btn {
+    background-color: #8158bf; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
   .account-btn:hover {
       background-color: #68409A; /* Couleur du bouton au survol */
   }
@@ -1264,6 +1274,8 @@
     font-size: 54px;
     font-weight: 700;
     color: #8158bf;
+    position: relative;
+    margin-top: -10%;
   }
   
   .question .line2 {
@@ -1275,8 +1287,8 @@
   
   .question .carré {
     width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 50px; /* Hauteur auto pour la responsivité */
+    max-width: 300px; /* Largeur maximale pour la cohérence du design */
+    height: 90px; /* Hauteur auto pour la responsivité */
     margin: 50px auto; /* Centre l'élément horizontalement avec un espacement vertical */
     background-color: white;
     overflow: hidden;
@@ -1287,7 +1299,7 @@
     display: flex;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
     margin-top: 40px;
-    margin-left: 300px;
+    margin-left: 280px;
     border: 2px solid #8158bf;
   }
   
@@ -1335,7 +1347,7 @@
     font-size: 35px;
     font-weight: 800;
     color: #8158bf;
-    margin-top: 33px; /* Ajouter de l'espace en haut */
+    margin-top: 20px; /* Ajouter de l'espace en haut */
     margin-left: 14px; /* Ajouter de l'espace en haut */
   }
   
@@ -1357,7 +1369,7 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
       text-align: center;
       margin: auto;
-      max-width: 700px;
+      max-width: 750px;
       height: 520px;
       margin-top: -120px;
       margin-left: 100px;
@@ -1474,7 +1486,7 @@
       font-size: 20px;
       position: relative;
       top: 7%;
-      left: 7.5%;
+      left: 8%;
   }
   
   .line-question-base {
@@ -1496,7 +1508,7 @@
     border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
     width: 100%;
-    max-width: 530px;
+    max-width: 580px;
     height: 10px; /* Réduire l'épaisseur de la bannière */
     font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
     font-size: 24px;
@@ -1507,9 +1519,7 @@
     margin-bottom: 3%;
   }
   
-  .email-btn:hover {
-    background-color: #68409A; /* Couleur du bouton au survol */
-  }
+
   
   .status-email-btn {
     display: flex; /* Ceci alignera les éléments horizontalement */
@@ -1519,7 +1529,8 @@
     color: white;
     padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
     position: relative;
-    top:-315%;
+    top:-335%;
+    margin-top: -7%;
   }
   
   .message-email-btn {
@@ -1527,6 +1538,7 @@
     font-weight: normal;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     margin: 0 10px 0 0; /* Ajoute un espace à droite du texte */
+    position: relative;
   }
   
   .email {
@@ -1543,7 +1555,7 @@
     border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
     width: 100%;
-    max-width: 530px;
+    max-width: 580px;
     height: 10px; /* Réduire l'épaisseur de la bannière */
     font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
     font-size: 24px;
@@ -1564,6 +1576,7 @@
     padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
     position: relative;
     top:-300%;
+    margin-top: -7%;
   }
   
   .cle-usb {
@@ -1580,7 +1593,7 @@
     border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
     width: 100%;
-    max-width: 530px;
+    max-width: 580px;
     height: 10px; /* Réduire l'épaisseur de la bannière */
     font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
     font-size: 24px;
@@ -1600,6 +1613,7 @@
     padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
     position: relative;
     top:-300%;
+    margin-top: -7%;
   }
   
   .inco-btn {
@@ -1610,7 +1624,7 @@
     border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
     width: 100%;
-    max-width: 530px;
+    max-width: 580px;
     height: 10px; /* Réduire l'épaisseur de la bannière */
     font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
     font-size: 24px;
@@ -1630,6 +1644,7 @@
     padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
     position: relative;
     top:-280%;
+    margin-top: -7%;
   }
   
   .message-inco-btn {
