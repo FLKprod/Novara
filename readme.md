@@ -32,7 +32,7 @@ VeriFile analyse les pièces jointes et les URLs potentiellement malveillantes, 
 
 - **API VirusTotal** : Pour l'analyse des fichiers.
 - **Visual Studio Code (VSCode)** : Éditeur de code.
-- **Figma** : Outil de design d'interface utilisateur.
+- **Figma** **Monday** : Outil de design d'interface utilisateur.
 - **Trello** : Outil de gestion de projet.
 - **Langages de programmation** : HTML, CSS, JavaScript, PHP.
 
@@ -72,3 +72,4 @@ Les prototypes incluent la page d'accueil, les interfaces de connexion et d'insc
 ---
 
 Pour plus d'informations, veuillez consulter le document détaillé ou contacter notre équipe.
+
