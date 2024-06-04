@@ -35,7 +35,7 @@
     <div class="tagline">
         <em>Découvrez la puissance de 100 anti-virus combiné en 1 clic</em>
     </div>
-    <div class="account-container">
+
         <div class="connexion">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
@@ -71,7 +71,6 @@
             </form>
             <p>Pas encore inscrit ? <a href="{{ url_for('inscription') }}">Créez un compte</a></p>
         </div>
-  </div>
     
     <!-- Ajout du pied de page -->
     <footer>
