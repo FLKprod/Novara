@@ -50,13 +50,6 @@ header h1 {
     color: #666;
 }
 
-#project{
-    background-color: #f0ecec; /* Couleur de fond de la box */
-    padding: 20px;
-    margin: 40px auto; /* Espacement en haut et centré horizontalement */
-    border-radius: 30px; /* Bords plus arrondis de la box */
-    max-width: 50%; /* Réduit la largeur de la box */
-}
 #project, #team {
     padding: 2em;
     text-align: center;
@@ -66,24 +59,140 @@ header h1 {
     color: #333;
 }
 
-#project p {
-    color: #666;
-    max-width: 800px;
-    margin: 0 auto 2em auto;
-    line-height: 1.6;
-}
 
-#project h2{
-    color: #8158BF;
-}
-
-#project li {
-    line-height: 3;
-    color: #666;
-    margin: 0 auto 2em auto;
-    line-height: 1.6;
-}
 
 #project ul {
     list-style-type: none;
+}
+
+#title-entreprise, #objectifs > .info-left h2 {
+    flex: 1; /* 1/4 de la box */
+    color: #8158BF;
+    font-weight: bold;
+    display: flex;
+    font-size: 2em;
+    padding: 1em;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    left: 0;
+    background-color: #efeded;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    align-items: center;
+    padding: 30px;
+    display: flex;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+#title-entreprise:first-child{
+    margin-top:0;
+}
+#title-entreprise{
+    margin: 4em 0;
+}
+.about-us > p {
+    max-width: none;
+}
+.about-us > p, #project > p {
+    text-align: right;
+    width: 80%;
+    right: 0;
+    margin-left: 10em;
+    line-height: 2;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #5a5858;
+    font-size: 1em;
+    font-weight: 900;
+    letter-spacing: 0;
+    height: auto;
+}
+
+#team > h2 {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color:#F0ACDB;
+    font-weight: 900;
+}
+#team {
+    margin-bottom: 5em;
+}
+#objectifs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#objectifs > .tab{
+    width: 90%;
+    height: auto;
+    background-color: white;
+    overflow: hidden;
+
+    border-radius: 20px;
+    
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#objectifs  ul.tab {
+    list-style-type: none;
+    padding: 2em;
+    margin: 0;
+}
+
+#objectifs  li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #5a5858;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 2em;
+}
+
+#objectifs  strong {
+    text-align: left;
+    font-weight: bold;
+    margin-right: 3em;
+    left: 0;
+}
+
+#objectifs  .fa {
+    font-size: 1em;
+    margin-right: 1em;
+    color:#F0ACDB
+}
+
+#objectifs p {
+    text-align: right;
+    margin:4em;
+    
+    max-width: 100%;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    
+    letter-spacing: 0;
+    height: auto;
+}
+
+.text-about-us{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#objectifs img, .text-about-us img{
+    width: 10em;
+    height: 10em;
+    margin-left: 10em;
+}
+
+.logo-entreprise{
+    width: 25%;
+    height: auto;
+    margin-top: 4em;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    margin-bottom: 4em;
 }
