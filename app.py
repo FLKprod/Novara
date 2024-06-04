@@ -1,10 +1,19 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, flash
 from io import BytesIO
 import requests
 import time
 import logging
 import base64
+from flask import Flask, render_template, request, redirect, url_for
+import os
 
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
+from forms import RegistrationForm, LoginForm, ChangePasswordForm
+from models import User, db, bcrypt
 
 app = Flask(__name__)
 
@@ -12,11 +21,24 @@ API_KEY = '35ff4fd90a69e29c7a77d726681f10e1d802d3f3bfb609cf1b263dc4590b8723'
 UPLOAD_FILE = 'https://www.virustotal.com/api/v3/files'
 ANALYSIS_FILE = 'https://www.virustotal.com/api/v3/analyses/'
 
+app.config['SECRET_KEY'] = "b'k\xec\t\x024\xff\x15\x993\x02\xf9\\\xca\x08\xcaKs\x8b\xcb\xd2bs\xaeF'"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+
+db.init_app(app)
+bcrypt.init_app(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/')
 def index():
+    app.logger.debug('Serving index.html')
+    return render_template('index.html')
+
+@app.route('/index')
+def to_index():
     app.logger.debug('Serving index.html')
     return render_template('index.html')
 
@@ -44,6 +66,99 @@ def apropos():
 def cookies():
     app.logger.debug('Serving cookies.html')
     return render_template('cookies.html')
+
+@app.route('/account')
+@login_required
+def account():
+    app.logger.debug('Serving apropos.html')
+    form = ChangePasswordForm()
+    return render_template('account.html',form=form) 
+
+@app.route('/change_password', methods=['GET', 'POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if bcrypt.check_password_hash(current_user.password, form.old_password.data):
+            hashed_password = bcrypt.generate_password_hash(form.new_password.data).decode('utf-8')
+            current_user.password = hashed_password
+            db.session.commit()
+            flash('Your password has been updated!', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Incorrect old password. Please try again.', 'danger')
+            return render_template('account.html', form=form)
+
+
+
+@app.route('/connexion', methods=['GET', 'POST'])
+def connexion():
+    form = LoginForm()  # Créez une instance de votre formulaire
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()  # Recherchez l'utilisateur par son email
+        
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            # Si l'utilisateur existe et que le mot de passe est correct
+            login_user(user, remember=form.remember.data)
+            flash('Vous êtes maintenant connecté !', 'success')
+            return redirect(url_for('index'))  # Redirigez vers la page d'accueil après la connexion
+        else:
+            flash('Identifiant ou mot de passe incorrect. Veuillez réessayer.', 'danger')
+    return render_template('connexion.html', form=form)
+        
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('connexion'))  
+
+@app.route('/inscription', methods=['GET', 'POST'])
+def inscription():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        
+        # Ajoutez le nouvel utilisateur à la base de données
+        db.session.add(user)
+        db.session.commit()
+        
+        flash('Votre compte a été créé ! Vous pouvez maintenant vous connecter.', 'success')
+        
+        return redirect(url_for('connexion'))  # Rediriger vers une autre page après inscription
+    else:
+        
+        return render_template('inscription.html', form=form)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    # Chargez et retournez l'utilisateur à partir de la base de données en utilisant l'ID fourni
+    return User.query.get(int(user_id))  # Assurez-vous d'avoir défini la classe User et sa structure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @app.route('/uploadfile', methods=['POST'])
@@ -135,5 +250,38 @@ def upload_url():
 
     return jsonify({'error': 'Analysis timed out'}), 408
 
+
+MAILGUN_API_KEY = ('a4da91cf-5fc9b958')
+MAILGUN_DOMAIN = ('sandbox764f6ebcef77497584eefa99f07cbeb0.mailgun.org')
+
+@app.route('/mail', methods=['POST'])
+def send_mail():
+    sender_email = request.form['email']
+    subject = request.form['subject']
+    message = request.form['message']
+    
+    return send_mailgun_email(sender_email, subject, message)
+
+def send_mailgun_email(sender_email, subject, message):
+    url = f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages"
+    auth = ('api', MAILGUN_API_KEY)
+    data = {
+        'from': f'{sender_email}',
+        'to': 'maxime_falkowski@icloud.com',
+        'subject': subject,
+        'text': message
+    }
+    try:
+        response = requests.post(url, auth=auth, data=data)
+        response.raise_for_status()
+        return redirect(url_for('index'))
+    except requests.exceptions.RequestException as e:
+        print(str(e))
+        return str(e), 500
+
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
+
+  

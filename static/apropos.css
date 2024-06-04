@@ -1,0 +1,22 @@
+.soon {
+    width: 100%;
+    height: 100%;
+    color: #8158BF; /* Couleur du texte VeriFile */
+    border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.soon p {
+    height: 100%;
+}
+
+.soon img {
+    width: 25%;
+    height: auto;
+}

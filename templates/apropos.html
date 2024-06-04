@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À Propos - VeriFile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    
+    <link rel="stylesheet" href="{{ url_for('static', filename='apropos.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
 </head>
 <body>
@@ -21,12 +21,15 @@
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
             </ul>
-            <button class="account-btn">Mon Compte</button>
+            <a href="{{ url_for('connexion') }}" class="account-btn">Mon Compte</a>
         </nav>
     </header>
     
     <div class="content">
-       <p>Coming soon !</p>
+        <div class="soon">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Footer Banner">
+            <p class="soon">Coming soon !</p>
+        </div>
     </div>
 
     <!-- Ajout de l'image du bandeau juste au-dessus du footer -->

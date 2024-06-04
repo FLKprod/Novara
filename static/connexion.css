@@ -1,0 +1,149 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.account-btn {
+    margin-right: 20px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.alert {
+    color: #8158BF; /* Couleur du texte VeriFile */
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.form {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+    border-radius: 10px;
+}
+
+.form label {
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+.connect #email,
+.connect #password,
+.register #password,
+.register #username,
+.register #email,
+.register #confirm_password {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px); /* Largeur ajustée pour compenser la largeur du padding */
+}
+
+.connect input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.connect input[type="submit"],
+.register input[type="submit"]{
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.connect input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-banner img {
+    width: 100%;
+    max-width: 600px;
+}
+
+.footer-banner {
+    margin: 20px 0;
+}
+
+.footer-copyright {
+    margin: 10px 0;
+}

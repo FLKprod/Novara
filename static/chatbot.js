@@ -13,6 +13,8 @@ async function sendMessage() {
 
     displayMessage('Utilisateur', userInput);
 
+    const apiKey = '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'; // Remplacez par votre clé API OpenAI
+
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`

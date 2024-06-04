@@ -76,3 +76,14 @@ header h1 {
 #project h2{
     color: #8158BF;
 }
+
+#project li {
+    line-height: 3;
+    color: #666;
+    margin: 0 auto 2em auto;
+    line-height: 1.6;
+}
+
+#project ul {
+    list-style-type: none;
+}

@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 80%;
+    margin: 0 auto;
+}
+
+form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    color: #5a5858;
+    font-size: 28px;
+    text-align: center;
+    line-height: 1em;
+    font-weight: 600;
+    letter-spacing: 1;
+    padding: 0.5em;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="email"], .form-group input[type="text"] {
+    display: inline-block;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.form-group input[type="text"]:last-of-type {
+    margin-right: 0;
+}
+
+
+.sendmail {
+    width: 50%;
+    background-color: #8158BF; /* Couleur du texte VeriFile */
+    color: whitesmoke;
+    border-radius: 1em;
+    padding: 1em;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.sendmail:hover{
+    text-decoration: none; /* Supprime le soulignement */
+    background-color: #8158BF; /* Couleur du texte VeriFile */
+    color:white
+}
+
+.footer-banner {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link img {
+    height: 2em;
+    margin-right: 10px;
+}
+
+#contactform {
+    width: 100%;
+    max-width: 1403px;
+    height: auto;
+    margin: 70px auto;
+    background-color: #efeded;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    align-items: center;
+    padding: 30px;
+    display: flex;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulaire {
+    background-color: #f0ecec;
+    padding: 20px;
+    margin: 40px auto;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulaire > p {
+    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+    font-size: 2em;
+    text-align: center;
+    font-weight: 700;
+    color: #b55cff;
+}
