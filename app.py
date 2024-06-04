@@ -75,20 +75,9 @@ def cookies():
 @app.route('/account')
 @login_required
 def account():
-    form = UpdateAccountForm()
-    if form.validate_on_submit():
-        if form.email.data != current_user.email:
-            current_user.email = bcrypt.generate_password_hash(form.email.data).decode('utf-8')
-        current_user.username = form.username.data
-        current_user.entreprise = form.entreprise.data
-        db.session.commit()
-        flash('Your account has been updated!', 'success')
-        return redirect(url_for('account'))
-    elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.email.data = current_user.email
-        form.entreprise.data = current_user.entreprise
-    return render_template('account.html', title='Account', form=form) 
+    app.logger.debug('Serving apropos.html')
+    form = ChangePasswordForm()
+    return render_template('account.html',form=form) 
 
 @app.route('/change_password', methods=['GET', 'POST'])
 @login_required
