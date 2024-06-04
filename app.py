@@ -67,6 +67,21 @@ def question():
     app.logger.debug('Serving question.html')
     return render_template('question.html')
 
+@app.route('/email')
+def email():
+    app.logger.debug('Serving email.html')
+    return render_template('email.html')
+
+@app.route('/usb')
+def usb():
+    app.logger.debug('Serving usb.html')
+    return render_template('usb.html')
+
+@app.route('/filedl')
+def filedl():
+    app.logger.debug('Serving filedl.html')
+    return render_template('filedl.html')
+
 @app.route('/cookies')
 def cookies():
     app.logger.debug('Serving cookies.html')

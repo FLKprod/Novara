@@ -113,6 +113,39 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
         .catch(err => console.error(err));
     });
 
+var score = 70;
+var click = 1;
+
+function confirmClick(signe) {
+    var questionElement = document.getElementById('question-base');
+    if (questionElement) {
+        if (click === 1) {
+            questionElement.innerHTML = "Question 2 : Connaissez-vous le contenu du courriel ?";
+            if (signe === '+') {
+                score += 5;
+            } else if (signe === '-') {
+                score -= 5;
+            }
+        } else if (click === 2) {
+            questionElement.innerHTML = "Question 3 : Avez-vous déjà reçu un courriel de cet expéditeur ?";
+            if (signe === '+') {
+                score += 5;
+            } else if (signe === '-') {
+                score -= 5;
+            }
+        }
+        // Ajouter d'autres conditions pour des questions supplémentaires
+        click++;
+        console.log('Score: ' + score);
+        console.log('Click count: ' + click);
+    } else {
+        console.error('Element with id "question-base" not found.');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Pas besoin d'attacher des gestionnaires d'événements supplémentaires
+});
 
     function ensureWWW(url) {
         // Ensure the URL starts with https:// or http://

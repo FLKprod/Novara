@@ -1,18 +1,4 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url('/path/to/your/fonts/poppins-regular.woff2') format('woff2'),
-         url('/path/to/your/fonts/poppins-regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Poppins';
-    src: url('/path/to/your/fonts/poppins-semibold.woff2') format('woff2'),
-         url('/path/to/your/fonts/poppins-semibold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-  }
+
   
   #urlInput::placeholder {
     /* Styles pour le placeholder */
@@ -110,6 +96,15 @@
       text-decoration: underline;
   }
   
+  .account-btn {
+      background-color: #8158bf; /* Couleur de fond du bouton */
+      color: white; /* Couleur du texte */
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  }
   
   .account-btn:hover {
       background-color: #68409A; /* Couleur du bouton au survol */
@@ -1185,7 +1180,7 @@
       font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
       font-size: 11px;
       color: #484444;
-      
+      margin-top: 20%;
   }
   
   .footer-links-index a {
@@ -1201,7 +1196,7 @@
       font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
       font-size: 11px;
       color: #484444;
-      margin-top: -12%;
+      margin-top: -13%;
   }
   
   /* ............................................. Page Question ............................................. */
@@ -1358,7 +1353,7 @@
       text-align: center;
       margin: auto;
       max-width: 700px;
-      height: 520px;
+      height: 300px;
       margin-top: -120px;
       margin-left: 100px;
       margin-bottom: 120px;
@@ -1385,7 +1380,7 @@
       position: relative; /* Positionnement relatif pour éviter les conflits */
   }
   
-  .cercle-orange {
+  .cercle-vert-clair {
     width: 100%;
     max-width: 124px;
     height: 124px;
@@ -1393,11 +1388,11 @@
     border-radius: 50%;
     display: inline-block;
     margin-right: 10px;
-    background-color: orange;
+    background-color: greenyellow;
     border: 1px solid black;
     position: relative;
     left: 95%;
-    top: 14%;
+    top: -50%;
   }
   
   .attention {
@@ -1425,7 +1420,7 @@
       line-height: normal;
       position: relative; /* Positionnement relatif pour éviter les conflits */
       left: 95%;
-      top: -10%;
+      top: -39%;
   }
   
   .question .slogan2 {
@@ -1441,7 +1436,7 @@
       line-height: normal;
       position: relative; /* Positionnement relatif pour éviter les conflits */
       left: 95%;
-      top: -18%;
+      top: -58%;
   }
   
   .group-4 {
@@ -1473,7 +1468,7 @@
       font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
       font-size: 20px;
       position: relative;
-      top: 7%;
+      top: 19%;
       left: 7.5%;
   }
   
@@ -1485,10 +1480,10 @@
     position: relative; /* Positionnement relatif pour l'alignement correct */
     background-color: #8158bf; /* Couleur pour la ligne */
     display: block;
-    top: -25%;
+    top: -27%;
   }
   
-  .email-btn {
+  .oui-btn {
     display: inline-block;
     background-color: white; /* Couleur de fond du bouton */
     color: white;  /* Couleur du texte */
@@ -1496,14 +1491,14 @@
     border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
     width: 100%;
-    max-width: 530px;
-    height: 10px; /* Réduire l'épaisseur de la bannière */
+    max-width: 120px;
+    height: 7px; /* Réduire l'épaisseur de la bannière */
     font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
     font-size: 24px;
     font-weight: 700;
     border: 2px solid #8158bf;
     position: relative;
-    top: -73%;
+    top: -113%;
     margin-bottom: 3%;
   }
   
@@ -1519,9 +1514,23 @@
     color: white;
     padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
     position: relative;
-    top:-315%;
+    top:-310%;
+  }
+
+  .status-email-btn, .status-cle-btn {
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      display: flex;
+      align-items: center;
   }
   
+.status-email-btn img, .status-cle-btn img {
+    margin-left: 8px;
+  }
   .message-email-btn {
     color: #8158bf;
     font-weight: normal;
@@ -1530,12 +1539,12 @@
   }
   
   .email {
-    width: 60px; /* Taille spécifique pour l'image */
-    height: 60px; /* Taille spécifique pour l'image */
+    width: 40px; /* Taille spécifique pour l'image */
+    height: 40px; /* Taille spécifique pour l'image */
     display: inline-block; /* Ceci permet à l'image de rester en ligne avec le texte */
   }
   
-  .usb-btn {
+  .non-btn {
     display: inline-block;
     background-color: white; /* Couleur de fond du bouton */
     color: white;  /* Couleur du texte */
@@ -1543,16 +1552,17 @@
     border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
     width: 100%;
-    max-width: 530px;
-    height: 10px; /* Réduire l'épaisseur de la bannière */
+    max-width: 120px;
+    height: 7px; /* Réduire l'épaisseur de la bannière */
     font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
     font-size: 24px;
     font-weight: 700;
     border: 2px solid #8158bf;
     position: relative;
     align-items: center;
-    top: -73%;
+    top: -113%;
     margin-bottom: 3%;
+    margin-left: 5%;
   }
   
   .status-cle-btn {
@@ -1563,85 +1573,16 @@
     color: white;
     padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
     position: relative;
-    top:-300%;
+    top:-310%;
   }
   
   .cle-usb {
-    width: 50px; /* Taille spécifique pour l'image */
-    height: 50px; /* Taille spécifique pour l'image */
+    width: 40px; /* Taille spécifique pour l'image */
+    height: 40px; /* Taille spécifique pour l'image */
     display: inline-block; /* Ceci permet à l'image de rester en ligne avec le texte */
+    top:-10%;
   }
   
-  .filedl-btn {
-    display: inline-block;
-    background-color: white; /* Couleur de fond du bouton */
-    color: white;  /* Couleur du texte */
-    padding: 30px;
-    border-radius: 20px; /* Bords légèrement arrondis */
-    cursor: pointer;
-    width: 100%;
-    max-width: 530px;
-    height: 10px; /* Réduire l'épaisseur de la bannière */
-    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    border: 2px solid #8158bf;
-    position: relative;
-    top: -73%;
-    margin-bottom: 3%;
-  }
-  
-  .status-file-btn {
-    display: flex; /* Ceci alignera les éléments horizontalement */
-    align-items: center; /* Ceci centre les éléments verticalement */
-    justify-content: center; /* Ceci centre les éléments horizontalement */
-    border-radius: 20px;
-    color: white;
-    padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
-    position: relative;
-    top:-300%;
-  }
-  
-  .inco-btn {
-    display: inline-block;
-    background-color: white; /* Couleur de fond du bouton */
-    color: white;  /* Couleur du texte */
-    padding: 30px;
-    border-radius: 20px; /* Bords légèrement arrondis */
-    cursor: pointer;
-    width: 100%;
-    max-width: 530px;
-    height: 10px; /* Réduire l'épaisseur de la bannière */
-    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    border: 2px solid #8158bf;
-    position: relative;
-    text-align: center;
-    top: -73%;
-  }
-  
-  .status-inco-btn {
-    display: flex; /* Ceci alignera les éléments horizontalement */
-    align-items: center; /* Ceci centre les éléments verticalement */
-    justify-content: center; /* Ceci centre les éléments horizontalement */
-    border-radius: 20px;
-    color: white;
-    padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
-    position: relative;
-    top:-280%;
-  }
-  
-  .message-inco-btn {
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    color: #8158bf;
-    font-weight: bold;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    position: relative;
-    top: -140%;
-  }
   
   .validate-btn {
     display: inline-block;
