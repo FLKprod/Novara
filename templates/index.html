@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VeriFile</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
@@ -33,7 +34,7 @@
         <div class="element-index-site-wrapper">
             <div class="element-index-site">
             <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
-            <img class="line" src="img/line-1.svg" />
+            <img class="line" src="" />
             <div class="box">
                 <div class="group">
                   <div class="overlap-group">
@@ -49,7 +50,7 @@
             <div class="group2">
                 <div class="overlap-group2">
                     <div class="text">
-                        <img class="line-dif" src="img/line-6.svg" />
+                        <img class="line-dif" src="" />
                         <div class="slogan">Trust your files</div>
                         <div class="slogan2">With</div>
                         <div class="slogan3">VeriFile</div>
@@ -61,7 +62,7 @@
                                 <form id="uploadForm" enctype="multipart/form-data">
                                     <label for="fileInput" class="upload-btn"><div class="dl">Télécharger un document</div></label>
                                     <input type="file" id="fileInput" name="file" required>
-                                    <img class="line-index" src="img/line-1.svg" />
+                                    <img class="line-index" src="" />
                                 </form>
                             </div>
                                 <form id="uploadForm" enctype="multipart/form-data">
@@ -69,13 +70,29 @@
                                 </form>
                             </div>
                             <div id="result"></div>
-                            <div id="resulturl"></div>
                         </div>
                         <div class="remove-on-upload"><div class="conditions">En téléchargeant un document ou une URL, vous acceptez nos <a href="#">Conditions d'utilisation</a>. Pour en savoir plus sur la manière dont VeriFile gère vos données personnelles, consultez notre <a href="#">Politique de confidentialité</a>.</div>
+                    </div>
+                    <div class="chatbot-icon" onclick="toggleChatbot()">
+                        💬
+                    </div>
+                    <div class="chatbot-container" id="chatbotContainer">
+                        <div class="chatbot-header">
+                            <h2>VeriFile</h2>
+                            <button class="close-btn" onclick="toggleChatbot()">×</button>
+                        </div>
+                        <div class="chatbot-messages" id="chatbotMessages">
+                            <!-- Messages will appear here -->
+                        </div>
+                        <div class="chatbot-input">
+                            <input type="text" id="userInput" placeholder="Tapez votre message...">
+                            <button onclick="sendMessage()">Envoyer</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
     
     <!-- Ajout du pied de page -->
@@ -83,31 +100,16 @@
         <div class="footer-links-index">
             <a href="#">Conditions d'utilisation</a> | 
             <a href="#">Conditions générales</a> | 
-            <a href="#">Politique des cookies</a>
+            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright-index">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
     </footer>
 
-    <div class="chatbot-icon" onclick="toggleChatbot()">
-        💬
-    </div>
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <h2>VeriFile</h2>
-            <button class="close-btn" onclick="toggleChatbot()">×</button>
-        </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <!-- Messages will appear here -->
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="userInput" placeholder="Tapez votre message...">
-            <button onclick="sendMessage()">Envoyer</button>
-        </div>
-    </div>
+    
     
     <script>const loadingGifPath = "{{ url_for('static', filename='img/hourglass.gif') }}";</script>
-    <script>const barrePath = "img/line-1.svg";</script>
+    <script>const barrePath = "";</script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
 </body>

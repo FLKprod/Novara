@@ -110,15 +110,6 @@
       text-decoration: underline;
   }
   
-  .account-btn {
-      background-color: #8158bf; /* Couleur de fond du bouton */
-      color: white; /* Couleur du texte */
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  }
   
   .account-btn:hover {
       background-color: #68409A; /* Couleur du bouton au survol */

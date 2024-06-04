@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Compte VeriFile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/connexion.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
@@ -21,7 +24,11 @@
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
             </ul>
-            <a href="{{ url_for('connexion') }}" class="account-btn">Mon Compte</a>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
+            {% else %}
+            <a href="{{ url_for('connexion') }}" class="account-btn">Se Connecter</a>  <!-- Texte à afficher si l'utilisateur n'est pas connecté -->
+            {% endif %}
         </nav>
     </header>
     
@@ -43,15 +50,13 @@
             <form class="connect" method="POST">
                 {{ form.hidden_tag() }}
                 <div id="email">
-                    {{ form.email.label }}
-                    {{ form.email(size=64) }}
+                    {{ form.email(size=64,placeholder="Email") }}
                     {% for error in form.email.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </div>
                 <div id="password">
-                    {{ form.password.label }}
-                    {{ form.password(size=32) }}
+                    {{ form.password(size=32,placeholder="Mot de passe") }}
                     {% for error in form.password.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
@@ -73,14 +78,31 @@
         <div class="footer-links">
             <a href="#">Conditions d'utilisation</a> | 
             <a href="#">Conditions générales</a> | 
-            <a href="#">Politique des cookies</a>
+            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
         </div>
     </footer>
     
-
-    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+    <div class="chatbot-icon" onclick="toggleChatbot()">
+        💬
+    </div>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h2>VeriFile</h2>
+            <button class="close-btn" onclick="toggleChatbot()">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Tapez votre message...">
+            <button onclick="sendMessage()">Envoyer</button>
+        </div>
+    </div>
+  
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+      <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
 </body>
 </html>

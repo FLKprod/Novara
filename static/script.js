@@ -58,19 +58,30 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const resultDiv = document.getElementById('resulturl');
-    document.getElementById('urlInput').addEventListener('change', function(event) {
+document.getElementById('urlInput').addEventListener('change', function(event) {
+        var resultDiv=document.getElementById('result')
+        console.log(document.getElementById('urlInput').value)
+        url = document.getElementById('urlInput').value;
+        url = ensureWWW(url);
+        // Supprimer une partie de la page HTML
+        const elementsToRemove = document.querySelectorAll('.remove-on-upload');
+        elementsToRemove.forEach(element => element.remove());
+
+        resultDiv.innerHTML = `
+            <img class="loading-gif" src="${loadingGifPath}" alt="Chargement...">
+            <div class="loading-message">Analyse en cours...</div>
+        `;
         fetch('/uploadurl', {
             method: 'POST',
             headers: {
               accept: 'application/json',
               'content-type': 'application/x-www-form-urlencoded'
             },
-            body: new URLSearchParams({url: document.getElementById('urlInput').value})
+            body: new URLSearchParams({url: url})
         })
         .then(response => response.json())
         .then(data => {
+            
             if (data.error) {
                 resultDiv.textContent = `Erreur : ${data.error}`;
             } else {
@@ -101,6 +112,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }})
         .catch(err => console.error(err));
     });
-});
 
 
+    function ensureWWW(url) {
+        // Ensure the URL starts with https:// or http://
+        if (!url.startsWith('https://') && !url.startsWith('http://')) {
+            url = 'https://' + url;
+        }
+        
+        // Check if the URL starts with https://www. or http://www.
+        if (!url.startsWith('https://www.') && !url.startsWith('http://www.')) {
+            // Parse the URL
+            const urlObj = new URL(url);
+            
+            // Add 'www.' to the hostname if not present
+            if (!urlObj.hostname.startsWith('www.')) {
+                urlObj.hostname = 'www.' + urlObj.hostname;
+            }
+
+            // Return the modified URL as a string
+            return urlObj.toString();
+        }
+
+        // Return the original URL if already correct
+        return url;
+    }

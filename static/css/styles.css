@@ -1,18 +1,4 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url('/path/to/your/fonts/poppins-regular.woff2') format('woff2'),
-         url('/path/to/your/fonts/poppins-regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Poppins';
-    src: url('/path/to/your/fonts/poppins-semibold.woff2') format('woff2'),
-         url('/path/to/your/fonts/poppins-semibold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-  }
+
   
   #urlInput::placeholder {
     /* Styles pour le placeholder */
@@ -111,14 +97,15 @@
   }
   
   .account-btn {
-      background-color: #8158BF;/* Couleur de fond du bouton */
-      color: white; /* Couleur du texte */
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  }
+    background-color: #8158bf; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
   
   .account-btn:hover {
       background-color: #68409A; /* Couleur du bouton au survol */
@@ -818,7 +805,6 @@
     }
 }
 
-
 .chatbot-icon {
     position: fixed;
     bottom: 20px;
@@ -834,11 +820,12 @@
 }
 
 .chatbot-container {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     display: none;
     position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
+    bottom: 1em;
+    right: 1em;
+    width: 24em;
     max-height: 400px;
     background-color: white;
     border: 1px solid #ccc;
@@ -847,17 +834,21 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    z-index: 3;
 }
 
 .chatbot-header {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     background-color: #460F9B;
     color: white;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    display: none;
+}
+
+.chatbot-header > h2{
+    font-weight: 600;
+    font-size: 1.5em;
 }
 
 .close-btn {
@@ -873,13 +864,11 @@
     padding: 10px;
     overflow-y: auto;
     background-color: #f9f9f9;
-    display: none;
 }
 
 .chatbot-input {
     display: flex;
     border-top: 1px solid #ccc;
-    display: none;
 }
 
 .chatbot-input input {
@@ -917,5 +906,3 @@
     text-align: left;
     color: #484444;
 }
-
-

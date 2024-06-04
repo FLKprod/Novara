@@ -1,0 +1,4 @@
+@keyframes fadeIn {
+    0% { background-color: #8158BF; color: white;}
+    100% { background-color: white;; color:#8158BF; }
+  }
