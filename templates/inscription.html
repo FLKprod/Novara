@@ -48,6 +48,13 @@
                         {% endfor %}
                     </div>
                     <div>
+                        {{ form.entreprise.label }}
+                        {{ form.entreprise(size=32) }}
+                        {% for error in form.entreprise.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                    </div>
+                    <div>
                         {{ form.password.label }}
                         {{ form.password(size=32) }}
                         {% for error in form.password.errors %}

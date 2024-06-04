@@ -75,9 +75,20 @@ def cookies():
 @app.route('/account')
 @login_required
 def account():
-    app.logger.debug('Serving apropos.html')
-    form = ChangePasswordForm()
-    return render_template('account.html',form=form) 
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        if form.email.data != current_user.email:
+            current_user.email = bcrypt.generate_password_hash(form.email.data).decode('utf-8')
+        current_user.username = form.username.data
+        current_user.entreprise = form.entreprise.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        form.entreprise.data = current_user.entreprise
+    return render_template('account.html', title='Account', form=form) 
 
 @app.route('/change_password', methods=['GET', 'POST'])
 @login_required
@@ -121,18 +132,13 @@ def inscription():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
-        
-        # Ajoutez le nouvel utilisateur à la base de données
+        hashed_email = bcrypt.generate_password_hash(form.email.data).decode('utf-8')
+        user = User(username=form.username.data, email=hashed_email, password=hashed_password, entreprise=form.entreprise.data)
         db.session.add(user)
         db.session.commit()
-        
-        flash('Votre compte a été créé ! Vous pouvez maintenant vous connecter.', 'success')
-        
-        return redirect(url_for('connexion'))  # Rediriger vers une autre page après inscription
-    else:
-        
-        return render_template('inscription.html', form=form)
+        flash('Your account has been created!', 'success')
+        return redirect(url_for('login'))
+    return render_template('inscription.html', title='Register', form=form)
 
 @login_manager.user_loader
 def load_user(user_id):
