@@ -113,39 +113,62 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
         .catch(err => console.error(err));
     });
 
-var score = 70;
-var click = 1;
 
-function confirmClick(signe) {
-    var questionElement = document.getElementById('question-base');
-    if (questionElement) {
-        if (click === 1) {
-            questionElement.innerHTML = "Question 2 : Connaissez-vous le contenu du courriel ?";
-            if (signe === '+') {
-                score += 5;
-            } else if (signe === '-') {
-                score -= 5;
-            }
-        } else if (click === 2) {
-            questionElement.innerHTML = "Question 3 : Avez-vous déjà reçu un courriel de cet expéditeur ?";
-            if (signe === '+') {
-                score += 5;
-            } else if (signe === '-') {
-                score -= 5;
+    var score = 70; // Score de départ
+
+        // Fonction pour mettre à jour le score en fonction de la réponse
+        function updateScore(response, weight) {
+            if (response === 'oui') {
+                score += weight; // Augmente le score si la réponse est oui
+            } else {
+                score -= weight; // Diminue le score si la réponse est non
             }
         }
-        // Ajouter d'autres conditions pour des questions supplémentaires
-        click++;
-        console.log('Score: ' + score);
-        console.log('Click count: ' + click);
-    } else {
-        console.error('Element with id "question-base" not found.');
-    }
-}
+        // Lancer la première question
+        
+        function nextQuestion() {
+            askQuestion("Avez-vous des antécédents familiaux de maladies cardiaques ?", 5, null, askSecondQuestion);
+        }
+        nextQuestion();
+        function askQuestion(question, weight, alternativeWeight) {
+            document.getElementById('question-base').textContent = question; // Afficher la question dans le div
+            document.getElementById('oui').addEventListener('click', function() {
+                updateScore('oui', weight);
+                nextQuestion();
+            });
+            document.getElementById('non').addEventListener('click', function() {
+                if (alternativeWeight) {
+                    updateScore('non', alternativeWeight);
+                } else {
+                    updateScore('non', weight);
+                }
+                nextQuestion();
+            });
+        }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Pas besoin d'attacher des gestionnaires d'événements supplémentaires
-});
+        // Définir les questions suivantes
+        function askSecondQuestion() {
+            askQuestion("Consommez-vous régulièrement des boissons sucrées ?", 7, null, askThirdQuestion);
+        }
+
+        function askThirdQuestion() {
+            askQuestion("Fumez-vous régulièrement ?", 9, 20, askFourthQuestion);
+        }
+
+        function askFourthQuestion() {
+            askQuestion("Faites-vous régulièrement de l'exercice physique ?", 4, null, askFifthQuestion);
+        }
+
+        function askFifthQuestion() {
+            askQuestion("Mangez-vous équilibré et varié ?", 4, 8, displayFinalScore);
+        }
+
+        
+
+        // Fonction pour afficher le score final
+        function displayFinalScore() {
+            console.log("Score final : " + score);
+        }
 
     function ensureWWW(url) {
         // Ensure the URL starts with https:// or http://

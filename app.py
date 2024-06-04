@@ -55,7 +55,7 @@ def entreprise():
 @app.route('/contact')
 def contact():
     app.logger.debug('Serving contact.html')
-    return render_template('contact.html')
+    return render_template('pd.html')
 
 @app.route('/apropos')
 def apropos():

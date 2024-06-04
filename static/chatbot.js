@@ -13,7 +13,8 @@ async function sendMessage() {
 
     displayMessage('Utilisateur', userInput);
 
-    const apiKey = process.env.gpt; // Remplacez par votre clé API OpenAI
+    const apiKey = process.env.gpt;
+     // Remplacez par votre clé API OpenAI
 
     const headers = {
         'Content-Type': 'application/json',

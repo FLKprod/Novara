@@ -49,15 +49,15 @@
                     <div class="slogan">Etat de confiance :</div>
                     <p class="line-question-base" src="{{ url_for('static', filename='img/line.svg') }}" alt="line"></p>
                     <img class="cercle-vert-clair" src="{{ url_for('static', filename='img/green-circle.png') }}">
-                    <div class="slogan2">----</div>
-                    <div class="oui-btn">
-                        <button class="status-email-btn" onclick="confirmClick('+')">
+                    <div class="slogan2" id="score">----</div>
+                    <div class="oui-btn" id="oui">
+                        <button class="status-email-btn" onclick="answerQuestion(true)">
                             <p class="message-email-btn">Oui</p>
                             <img class="cle-usb" src="{{ url_for('static', filename='img/pouces-vers-le-haut.png') }}">
                         </button>
                     </div>
-                    <div class="non-btn">
-                        <button class="status-cle-btn" onclick="confirmClick('-')">
+                    <div class="non-btn" id="non">
+                        <button class="status-cle-btn" onclick="answerQuestion(false)">
                             <p class="message-email-btn">Non</p>
                             <img class="cle-usb" src="{{ url_for('static', filename='img/vote-negatif.png') }}">
                         </button>
@@ -79,5 +79,6 @@
     
     <!-- Inclure le script à la fin du body pour s'assurer qu'il est chargé après les éléments HTML -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='questions.js') }}"></script>
 </body>
 </html>
