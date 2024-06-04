@@ -6,6 +6,7 @@
     <title>Entreprise - VeriFile</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/entreprise.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
@@ -33,42 +34,58 @@
     
     <div class="content"> 
         <section id="project">
-            <div class="info-left">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="box-logo">
-                <h2>Notre Projet : Verifile</h2>
-            </div>
-            <p>Le projet Verifile a été développé dans le cadre de l'atelier de validation en cybersécurité proposé par notre université, l'UQAC. Réalisé en seulement deux mois, ce projet utilise des technologies de pointe pour assurer une détection rapide et efficace des contenus malveillants. Verifile permet aux utilisateurs de vérifier la sécurité des URLs et des fichiers avant de les ouvrir, grâce à des techniques avancées d'analyse et de détection.</p>
-            <p>Notre outil est conçu pour être simple d'utilisation tout en offrant des fonctionnalités puissantes :</p>
-            <ul>
-                <li><strong>Analyse des URLs :</strong> Les utilisateurs peuvent soumettre des URLs pour en vérifier la sécurité. Verifile analyse ces URLs pour détecter les sites malveillants, les tentatives de phishing et d'autres menaces potentielles.</li>
-                <li><strong>Vérification des fichiers :</strong> Les utilisateurs peuvent télécharger des fichiers pour les analyser. Verifile utilise plusieurs moteurs de détection pour identifier les logiciels malveillants et les menaces potentielles.</li>
-                <li><strong>Rapports détaillés :</strong> Pour chaque analyse, Verifile génère un rapport détaillé indiquant les résultats de la vérification, y compris les menaces détectées et des recommandations pour l'utilisateur.</li>
-                <li><strong>Interface intuitive :</strong> L'interface utilisateur de Verifile est conçue pour être intuitive et facile à naviguer, permettant même aux utilisateurs non techniques d'utiliser l'outil efficacement.</li>
-            </ul>
-        </section>       
-        <section id="team">
-            <h2>Notre Équipe</h2>
-            <div class="team-member">
-                <img src="{{ url_for('static', filename='img/max.jpg') }}" alt="Photo de Étudiant 1">
-                <h3>Maxime Falkowski</h3>
-                <p>Étudiant en maîtrise en informatique, spécialisé en cyber sécurité. Passionné par la sécurité des systèmes d'information.</p>
-            </div>
-            <div class="team-member">
-                <img src="{{ url_for('static', filename='img/yann.jpg') }}" alt="Photo de Étudiant 2">
-                <h3>L'autre tocard</h3>
-                <p>Étudiant en maîtrise en informatique, avec une passion pour l'analyse des menaces et la protection des données.</p>
-            </div>
-            <div class="team-member">
-                <img src="{{ url_for('static', filename='img/yann.jpg') }}" alt="Photo de Étudiant 3">
-                <h3>Étudiant 3</h3>
-                <p>Étudiant en maîtrise en informatique, intéressé par les techniques de cryptographie et la sécurité réseau.</p>
-            </div>
-            <div class="team-member">
-                <img src="{{ url_for('static', filename='img/yann.jpg') }}" alt="Photo de Étudiant 4">
-                <h3>Étudiant 4</h3>
-                <p>Étudiant en maîtrise en informatique, se concentrant sur la détection des logiciels malveillants et la réponse aux incidents.</p>
-            </div>
-        </section>
+            <h2 id="title-entreprise">Qui Sommes-Nous ?</h2>
+            <section class="text-about-us">
+                <img src="{{ url_for('static', filename='img/team.gif') }}" alt="">
+                <div class="about-us">
+                    <p>Nous sommes une équipe d'étudiants en informatique passionnés par la cybersécurité et dédiés à développer des solutions innovantes pour assurer la sécurité en ligne. Notre entreprise, Verifile, est née dans le cadre d'un projet de validation en cybersécurité proposé par l'Université du Québec à Chicoutimi (UQAC).</p>
+                    <p>Notre mission est de fournir des outils avancés de détection et de protection contre les menaces en ligne, permettant aux utilisateurs de naviguer en toute sécurité sur Internet et de protéger leurs données personnelles.</p>
+                </div>
+            </section>
+            <section id="team">
+                <h2>Notre Équipe</h2>
+                
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/max.jpg') }}" alt="Photo de Maxime Falkowski">
+                    <h3>Maxime Falkowski</h3>
+                    <p>Étudiant en maîtrise en informatique, spécialisé en cybersécurité. Passionné par la sécurité des systèmes d'information.</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/yann.jpg') }}" alt="Photo de Yann">
+                    <h3>Yann Dupont</h3>
+                    <p>Étudiant en maîtrise en informatique, avec une passion pour l'analyse des menaces et la protection des données.</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/loic.jpg') }}" alt="Photo de Loic">
+                    <h3>Yann Dupont</h3>
+                    <p>Étudiant en maîtrise en informatique, avec une passion pour l'analyse des menaces et la protection des données.</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='img/sandy.jpg') }}" alt="Photo de Sandy">
+                    <h3>Yann Dupont</h3>
+                    <p>Étudiant en maîtrise en informatique, avec une passion pour l'analyse des menaces et la protection des données.</p>
+                </div>
+                <!-- Ajoutez les autres membres de l'équipe ici -->
+            </section>
+            <h2 id="title-entreprise">Notre Projet : Verifile</h2>
+            <section class="text-about-us">
+                <img src="{{ url_for('static', filename='img/programmeur.gif') }}" alt="">
+                <div class="about-us">
+                    <p>Le projet Verifile est né de notre passion commune pour la cybersécurité et de notre désir de créer un outil capable de détecter et de prévenir efficacement les menaces en ligne. Développé dans le cadre de notre atelier de validation en cybersécurité à l'UQAC, Verifile est le fruit de deux mois de travail acharné.</p>
+                    <p>Verifile utilise des technologies de pointe pour offrir une détection rapide et efficace des contenus malveillants. Notre outil permet aux utilisateurs de vérifier la sécurité des URLs et des fichiers avant de les ouvrir, grâce à des techniques avancées d'analyse et de détection.</p>
+                    <p>Conçu pour être simple d'utilisation tout en offrant des fonctionnalités puissantes</p>
+                </div>
+            </section>
+            <h2 id="title-entreprise">Nos Objectifs</h2>
+            <section id="objectifs">
+                <ul class="tab">
+                    <li><strong>Analyse des URLs </strong><i class="fa fa-arrow-right"></i> Permettre aux utilisateurs de soumettre des URLs afin de les vérifier pour assurer leur  sécurité. </li>
+                    <li><strong>Vérification des fichiers </strong><i class="fa fa-arrow-right"></i> Télécharger des fichiers pour les analyser afin de détecter et identifier les logiciels malveillants et les menaces potentielles.</li>
+                    <li><strong>Lutter contre le Phishing </strong><i class="fa fa-arrow-right"></i>Verifile analyse les URLs pour détecter les sites malveillants, les tentatives de phishing et d'autres menaces potentielles.</li>
+                    <li><strong>Interface intuitive </strong><i class="fa fa-arrow-right"></i> L'interface utilisateur de Verifile est conçue pour être intuitive et facile à naviguer afin que les utilisateur l'utilisent efficacement.</li>
+                </ul>
+            </section>
+            <img class="logo-entreprise" src="{{ url_for('static', filename='img/logo-entreprise.png') }}" alt="Logo">
     </div>
     
     <footer>
