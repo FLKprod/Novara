@@ -103,6 +103,7 @@ h1 {
 .connect #password,
 .register #password,
 .register #username,
+.register #entreprise,
 .register #email,
 .register #confirm_password {
     padding: 10px;
