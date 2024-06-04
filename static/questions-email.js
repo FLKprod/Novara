@@ -47,6 +47,7 @@ function answerQuestion(answer) {
 function endQuestionnaire(confidence) {
     if (confidence > 80) {
         document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à " + confidence + " %. Le fichier ne semble pas être malveillant, cependant il n'en reste pas moindre de faire attention !";
+        document.querySelector('.cercle-vert-clair').style.backgroundColor = 'greenyellow';
     } else if (confidence > 60 && confidence <= 80) {
         document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à " + confidence + " %. Le risque est modéré mais nous conseillons une vérification supplémentaire.";
         document.querySelector('.cercle-vert-clair').style.backgroundColor = 'orange';
@@ -60,6 +61,7 @@ function endQuestionnaire(confidence) {
         document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons une confiance de seulement " + confidence + " % pour ce document. Il est très probablement malveillant. Nous conseillons de ne pas l'utiliser.";
         document.querySelector('.cercle-vert-clair').style.backgroundColor = 'red';
     }    
+    
     document.getElementById('oui').style.display = 'none';
     document.getElementById('non').style.display = 'none';
     document.getElementById('line-question-base').style.display = 'none';
