@@ -1,6 +1,7 @@
 main {
     padding: 20px;
     text-align: center;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
 .contact-section .d-couvrez-la {
@@ -49,11 +50,12 @@ main {
     display: flex;
     justify-content: flex-start;
     margin-right: 10px;
+    padding-top: 0px;
 }
 
 .left-side {
     text-align: center;
-    padding: 20px;
+    padding-right: 200px;
 }
 
 .left-side img {
@@ -66,18 +68,32 @@ main {
     font-size: 24px;
     color: #8158bf;
     margin-top: 10px;
+    margin-bottom: 30px; /* Increased space below VeriFile */
 }
 
 .left-side p {
-    font-size: 14px;
+    font-size: 16px; /* Increased font size */
     color: #666;
-    margin-top: 10px;
+    margin-top: 30px; /* Increased space above the paragraph */
+    margin-bottom: 30px; /* Added space below the paragraph */
+}
+
+.left-side p strong {
+    font-size: 18px; /* Increased font size for strong text */
+    display: block;
+    margin-top: 30px; /* Increased space above strong text */
+    margin-bottom: 30px; /* Added space below strong text */
+}
+
+.left-side .gif-image {
+    margin-top: 15px;
+    max-width: 40%;
+    height: auto;
 }
 
 .right-wrapper {
-    flex: 0 0 50%;
+    flex: 0 0 40%;
     display: flex;
-    justify-content: flex-end;
     margin-left: 10px;
     margin-right: 50px;
 }
@@ -85,7 +101,8 @@ main {
 .right-side {
     width: 100%; /* Assure que le formulaire utilise toute la largeur disponible */
     text-align: left;
-    padding: 20px; 
+    padding-left: 20px; 
+    padding-right: 20px; 
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -94,7 +111,8 @@ main {
 .right-side h2 {
     font-size: 20px;
     color: #8158bf;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 0px;
     text-align: left;
 }
 
@@ -107,7 +125,20 @@ main {
 .name-fields {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 0px;
+    width: 100%; /* Assure que les champs de nom et prénom prennent toute la largeur */
+}
+
+.email-fields {
+    display: flex;
+    gap: 10px;
+    width: 100%; /* Assure que les champs de nom et prénom prennent toute la largeur */
+    margin-bottom: 20px;
+}
+
+.message-fields {
+    display: flex;
+    gap: 10px;
     width: 100%; /* Assure que les champs de nom et prénom prennent toute la largeur */
 }
 
