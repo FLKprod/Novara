@@ -4,7 +4,7 @@ var questions = [
     { text: "Question 3 : L’URL mentionnée dans l’email a-t-elle une structure habituelle ?", points: null },
 ];
 
-var confidence = 70;
+var confidence = 80;
 var currentQuestionIndex = 0;
 
 function startQuestionnaire() {
@@ -46,22 +46,22 @@ function answerQuestion(answer) {
 
 function endQuestionnaire(confidence) {
     if (confidence > 80) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à " + confidence + " %. Le fichier ne semble pas être malveillant, cependant il n'en reste pas moindre de faire attention !";
+        document.getElementById('question-base').innerHTML = document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Le fichier ne semble pas être malveillant, cependant il n'en reste pas moindre de faire attention !";
         document.querySelector('.cercle-vert-clair').style.backgroundColor = 'greenyellow';
     } else if (confidence > 60 && confidence <= 80) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à " + confidence + " %. Le risque est modéré mais nous conseillons une vérification supplémentaire.";
+        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Le risque est modéré mais nous conseillons une vérification supplémentaire.";
         document.querySelector('.cercle-vert-clair').style.backgroundColor = 'orange';
     } else if (confidence > 40 && confidence <= 60) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à " + confidence + " %. Il présente des risques potentiels. Nous recommandons prudence et vérifications complémentaires.";
+        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Il présente des risques potentiels. Nous recommandons prudence et vérifications complémentaires.";
         document.querySelector('.cercle-vert-clair').style.backgroundColor = 'orange';
     } else if (confidence > 20 && confidence <= 40) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à " + confidence + " %. Il est probablement risqué. Veuillez procéder avec une extrême prudence.";
+        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Il est probablement risqué. Veuillez procéder avec une extrême prudence.";
         document.querySelector('.cercle-vert-clair').style.backgroundColor = 'orange';
     } else if (confidence <= 20) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons une confiance de seulement " + confidence + " % pour ce document. Il est très probablement malveillant. Nous conseillons de ne pas l'utiliser.";
+        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons une confiance de seulement <strong>" + confidence + " %</strong> pour ce document. Il est très probablement malveillant. Nous conseillons de ne pas l'utiliser.";
         document.querySelector('.cercle-vert-clair').style.backgroundColor = 'red';
-    }    
-    
+    }      
+
     document.getElementById('oui').style.display = 'none';
     document.getElementById('non').style.display = 'none';
     document.getElementById('line-question-base').style.display = 'none';
