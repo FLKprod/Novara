@@ -13,7 +13,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from forms import RegistrationForm, LoginForm, ChangePasswordForm
-from models import User, db, bcrypt
+from models import User, URL, db, bcrypt
 
 app = Flask(__name__)
 
@@ -23,6 +23,9 @@ ANALYSIS_FILE = 'https://www.virustotal.com/api/v3/analyses/'
 
 app.config['SECRET_KEY'] = "b'k\xec\t\x024\xff\x15\x993\x02\xf9\\\xca\x08\xcaKs\x8b\xcb\xd2bs\xaeF'"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_BINDS'] = {
+    'secondary': 'sqlite:///secondary.db'
+}
 
 db.init_app(app)
 bcrypt.init_app(app)
@@ -203,7 +206,39 @@ def upload_file():
     app.logger.error('Unknown error')
     return jsonify({'error': 'Unknown error'}), 400
 
+@app.route('/check_url_bdd', methods=['POST'])
+def check_url_bdd():
+    url = request.form.get('url')
+    if not url:
+        return jsonify({'error': 'No URL provided'}), 400
 
+    # Vérifiez si l'URL est déjà présente dans la base de données secondaire avec une comparaison stricte
+    url_record = URL.query.filter_by(url=url).first()
+    if url_record:
+        return jsonify({'exists': True, 'message': 'URL already present in the database'})
+
+    # Si l'URL n'est pas présente, retournez une réponse indiquant qu'elle n'existe pas
+    return jsonify({'exists': False, 'message': 'URL not found in the database'})
+
+@app.route('/add_blacklist_url', methods=['POST'])
+def add_blacklist_url():
+    url = request.form.get('url')
+    if not url:
+        return jsonify({'error': 'No URL provided'}), 400
+
+    # Vérifiez si l'URL est déjà dans la base de données
+    url_record = URL.query.filter_by(url=url).first()
+    if url_record:
+        return jsonify({'message': 'URL already in the blacklist'}), 200
+
+    # Ajouter l'URL à la base de données
+    new_url = URL(url=url)
+    db.session.add(new_url)
+    db.session.commit()
+    return jsonify({'message': 'URL added to blacklist'}), 201
+
+
+# Route pour soumettre l'URL pour analyse
 @app.route('/uploadurl', methods=['POST'])
 def upload_url():
     url = request.form.get('url')

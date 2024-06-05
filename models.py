@@ -16,3 +16,8 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.entreprise}')"
+
+class URL(db.Model):
+    __bind_key__ = 'secondary'
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(2083), unique=True, nullable=False)
