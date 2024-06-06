@@ -156,6 +156,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
         
 
     function ensureWWW(url) {
+        url = url.trim();
         // Ensure the URL starts with https:// or http://
         if (!url.startsWith('https://') && !url.startsWith('http://')) {
             url = 'https://' + url;
@@ -174,7 +175,6 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
             // Return the modified URL as a string
             return urlObj.toString();
         }
-
         // Return the original URL if already correct
         return url;
     }

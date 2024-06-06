@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Verifile",
+    "version": "1.0",
+    "description": "Scan URLs for fraudulence.",
+    "permissions": [
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://*/*",
+        "http://*/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "logo.png",
+            "48": "logo.png",
+            "128": "logo.png"
+        }
+    },
+    "icons": {
+        "16": "logo.png",
+        "48": "logo.png",
+        "128": "logo.png"
+    }
+}
