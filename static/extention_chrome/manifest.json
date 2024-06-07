@@ -3,6 +3,7 @@
     "name": "Verifile",
     "version": "1.0",
     "description": "Scan URLs for fraudulence.",
+    "update_url": "https://127.0.0.1/static/extension_chrome/extention_chrome.crx",
     "permissions": [
         "activeTab"
     ],

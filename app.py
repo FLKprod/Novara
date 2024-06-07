@@ -276,36 +276,7 @@ def upload_url():
         attempts += 1
 
     return jsonify({'error': 'Analysis timed out'}), 408
-
-
-MAILGUN_API_KEY = ('a4da91cf-5fc9b958')
-MAILGUN_DOMAIN = ('sandbox764f6ebcef77497584eefa99f07cbeb0.mailgun.org')
-
-@app.route('/mail', methods=['POST'])
-def send_mail():
-    sender_email = request.form['email']
-    subject = request.form['subject']
-    message = request.form['message']
     
-    return send_mailgun_email(sender_email, subject, message)
-
-def send_mailgun_email(sender_email, subject, message):
-    url = f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages"
-    auth = ('api', MAILGUN_API_KEY)
-    data = {
-        'from': f'{sender_email}',
-        'to': 'maxime_falkowski@icloud.com',
-        'subject': subject,
-        'text': message
-    }
-    try:
-        response = requests.post(url, auth=auth, data=data)
-        response.raise_for_status()
-        return redirect(url_for('index'))
-    except requests.exceptions.RequestException as e:
-        print(str(e))
-        return str(e), 500
-
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

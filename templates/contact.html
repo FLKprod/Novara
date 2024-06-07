@@ -51,19 +51,20 @@
                 <div class="right-wrapper">
                     <div class="right-side">
                         <h2>Qui êtes-vous ?</h2>
-                        <form>
+                        <form id="ContactForm">
                             <div class="name-fields">
-                                <input type="text" name="prenom" placeholder="Prénom">
-                                <input type="text" name="nom" placeholder="Nom">
+                                <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+                                <input type="text" id="nom" name="nom" placeholder="Nom">
                             </div>
                             <div class="email-fields">
-                                <input type="email" name="email" placeholder="Email">
+                                <input type="email" id="email" name="email" placeholder="Email">
                             </div>
                             <h2>Comment vous aider ?</h2>
                             <div class="message-fields">
-                                <textarea name="message" placeholder="Votre message..."></textarea>
+                                <textarea name="message" id="message" placeholder="Votre message..."></textarea>
                             </div>
                             <button type="submit">Envoyer</button>
+                            <h2 id="reponse-server"></h2>
                         </form>
                     </div>
                 </div>
@@ -81,5 +82,6 @@
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
         </div>
     </footer>
+    <script src="{{ url_for('static', filename='contact.js') }}"></script>
 </body>
 </html>
