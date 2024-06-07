@@ -135,7 +135,21 @@ main {
     width: 100%; /* Assure que les champs de nom et prénom prennent toute la largeur */
     margin-bottom: 20px;
 }
+.subject-fields {
+    display: flex;
+    gap: 10px;
+    width: 100%; /* Assure que les champs de nom et prénom prennent toute la largeur */
+    margin-bottom: 20px;
+}
 
+.subject-fields > select{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 .message-fields {
     display: flex;
     gap: 10px;

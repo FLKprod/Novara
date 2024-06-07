@@ -59,6 +59,16 @@
                             <div class="email-fields">
                                 <input type="email" id="email" name="email" placeholder="Email">
                             </div>
+                            <h2>Quel est le sujet de votre message ?</h2>
+                            <div class="subject-fields">
+                                <select id="sujet" name="sujet" required>
+                                    <option value="" disabled selected>Sélectionner un sujet</option>
+                                    <option value="url">URL frauduleux</option>
+                                    <option value="support">Erreur dans l'application</option>
+                                    <option value="feedback">Recommandation</option>
+                                    <option value="autre">Autre</option>
+                                </select><br>                            
+                            </div>
                             <h2>Comment vous aider ?</h2>
                             <div class="message-fields">
                                 <textarea name="message" id="message" placeholder="Votre message..."></textarea>

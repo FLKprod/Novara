@@ -2,14 +2,22 @@ document.getElementById("ContactForm").addEventListener("submit", function(event
     event.preventDefault(); // Empêche le comportement par défaut du formulaire
 
     // Récupération des valeurs des champs
-    var prenom = document.getElementById("prenom").value
-    var nom = document.getElementById("nom").value ;
+    var prenom = document.getElementById("prenom").value;
+    var nom = document.getElementById("nom").value;
     var email = document.getElementById("email").value;
     var message = document.getElementById("message").value;
+    var sujet = document.getElementById("sujet").value;
 
-    var WEBHOOK_URL = 'https://discord.com/api/webhooks/1228078613853900850/St-8cUkQY7pH0dodJTUFNT0827XIclL_nE_XVVadlNu7YWR9aOX326nG4FZzvAb9IRS6'; // Remplacez par votre URL de webhook
+    // Définir les URLs des webhooks pour chaque sujet
+    var WEBHOOK_URLS = {
+        url: 'https://discord.com/api/webhooks/1248695340023156756/jmjNbBIZJcHv_ePJmJTqRh8LXioVkei6BKytuL-7s4Lq_UcswN0mrXAzEcLOL7g1lgwl',
+        support: 'https://discord.com/api/webhooks/1248695035541585920/9Pf7eu6oAmOwirGWzlVBiVf8kiAJ_8_ZlxlrHkXm9obSl_CwUL4P7Ti1ZSxrnNMVmj0C',
+        feedback: 'https://discord.com/api/webhooks/1248694869719777442/kPT-DTf8cU7rMOrORyOjTXVga2GZp4vWDTtPJn4ussbJDMsA3nP82dPP6UZnfwnKBt5a',
+        autre: 'https://discord.com/api/webhooks/1248695258015858842/L5BGRk5-ujh0imousqrldnen3gNTnKTi3GU44MFielT_zRktWApCV8fx1W9jzbFfDF6U'
+    };
 
-    
+    // Choisir l'URL du webhook en fonction du sujet
+    var WEBHOOK_URL = WEBHOOK_URLS[sujet];
 
     // La payload
     const payload = {
@@ -29,16 +37,18 @@ document.getElementById("ContactForm").addEventListener("submit", function(event
         body: JSON.stringify(payload)
     })
     .then(response => {
-        console.log(response.status);
-        console.log(response.statusText);
-        console.log(response.headers);
+        if (response.ok) {
+            console.log('Message envoyé avec succès');
+            const elementsToRemove = document.querySelectorAll('#ContactForm');
+            elementsToRemove.forEach(element => element.remove());
+            var contactform = document.getElementById("reponse-server");
+            contactform.innerHTML = '<h2>Merci pour votre message !</h2>'; // Affiche un message de remerciement
+        } else {
+            console.error('Erreur lors de l\'envoi du message');
+        }
     })
     .catch(error => {
-        console.error('ERROR');
+        console.error('Erreur lors de l\'envoi du message');
         console.error(error);
     });
-    const elementsToRemove = document.querySelectorAll('#ContactForm');
-    elementsToRemove.forEach(element => element.remove());
-    var contactform=document.getElementById("reponse-server");
-    contactform.innerHTML = '<h2>Merci pour votre message !</h2>' ////////// FAIRE APPARAITRE DES ELEMENTS POUR REMERCIER LE CLIENT
 });
