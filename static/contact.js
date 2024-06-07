@@ -13,7 +13,7 @@ document.getElementById("ContactForm").addEventListener("submit", function(event
 
     // La payload
     const payload = {
-        content: "Message de : " + nom + " " + prenom + " / " + email + "\n\n" + message
+        content: "Message de : " + nom + " " + prenom + "\n email : " + email + "\n\n" + message + "\n\n\n"
     };
 
     // Les paramètres d'en-tête de la requête
