@@ -36,9 +36,10 @@
       justify-content: space-between;
       align-items: center;
       background-color: white;
-      padding: 10px 20px;
+      padding: 5px 20px;
       border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
       color: #8158bf;
+      z-index: 2;
   }
   
   .logo {
@@ -49,6 +50,7 @@
   .logo img {
       height: 40px;
       margin-right: 10px;
+      margin-top: 5px;
   }
   
   .logo span {
@@ -94,6 +96,7 @@
   
   nav ul li a:hover {
       text-decoration: underline;
+      color: #8158bf;
   }
   
   .account-btn {
@@ -109,7 +112,9 @@
 }
   
   .account-btn:hover {
-      background-color: #68409A; /* Couleur du bouton au survol */
+    text-decoration: none;
+    background-color: #68409A;
+    color: white;
   }
   
   .info-box {
@@ -406,7 +411,6 @@
   position: relative;
   width: 100%;
   height: auto;
-  margin-bottom: 10%;
 }
 
 .index .d-couvrez-la {
@@ -494,15 +498,16 @@
 }
 
 .index .logo .img {
-  width: 400px;
-  max-width: 500px;
+  width: 100%;
+  max-width: 200px;
   height: 40px;
   margin-right: 10px;
   margin-left: 14px; /* Remove left margin */
-  margin-top: 10px; /* Ajouter de l'espace en haut */
+  margin-top: -5px; /* Ajouter de l'espace en haut */
   margin-bottom: 15px; /* Ajouter de l'espace en haut */
   transform: scale(1.8); /* Agrandir l'image à 150% de sa taille originale */
   transform-origin: center center; /* Agrandir à partir du centre de l'image */
+  z-index: 3;
 }
 
 .index .text-wrapper {

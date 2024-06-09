@@ -17,6 +17,17 @@ main {
     font-weight: 600;
     letter-spacing: 0;
     position: relative;
+    margin-top: 1px;
+}
+
+.contact-section .line {
+  width: 100%; /* Largeur responsive */
+  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  height: 1px;
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #8158bf; /* Couleur pour la ligne */
+  display: block;
 }
 
 .contact-section h1 {

@@ -35,16 +35,25 @@
             <div class="element-question-site">
             <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
             <img class="line" src="img/line-1.svg" />
-            <p class="titre1">Dites nous en plus</p>
-            <p class="titre2">Quel est la provenance de ce fichier ?</p>
+            <div class="box">
+                <div class="group">
+                  <div class="overlap-group">
+                    <div class="carré">
+                        <div class="logo">
+                            <div class="img"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></div>
+                        </div>
+                        <p class="text-wrapper">VeriFile</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
             <div class="container2"> 
-                <p class="question-base"></p>
+                <p class="question-base">Quel est la provenance de ce fichier ?</p>
                 <img class="attention" src="{{ url_for('static', filename='img/bulle-unscreen.gif') }}">
                 <p class="line-question-base" src="${barrePath}" alt="line"></p>
                 <div class="slogan">La sécurité en ligne est cruciale</div><div class="slogan2">Il est important de prendre le temps de VeriFile</div>
                 <div class="email-btn"><a href="/email" class="status-email-btn"><p class="message-email-btn">Un e-mail que j’ai reçu</p><img class="cle-usb" src="{{ url_for('static', filename='img/email.png') }}"></a></div>
-            </div>
-            <div class="container2">   
                 <div class="usb-btn"><a href="/usb" class="status-cle-btn"><p class="message-email-btn">Une clé USB</p><img class="cle-usb" src="{{ url_for('static', filename='img/usb.png') }}"></a></div>
                 <div class="filedl-btn"><a href="/filedl" class="status-file-btn"><p class="message-email-btn">Un fichier téléchargé sur un site web</p><img class="cle-usb" src="{{ url_for('static', filename='img/telecharger-un-fichier.png') }}"></a></div>
                 <div class="inco-btn"><a href="/inco" class="status-inco-btn"><p class="message-email-btn">Un fichier inconnu</p><img class="cle-usb" src="{{ url_for('static', filename='img/dossier.png') }}"></a></div>         

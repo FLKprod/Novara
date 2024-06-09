@@ -1,4 +1,20 @@
- #urlInput::placeholder {
+@font-face {
+    font-family: 'Poppins';
+    src: url('/path/to/your/fonts/poppins-regular.woff2') format('woff2'),
+         url('/path/to/your/fonts/poppins-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/path/to/your/fonts/poppins-semibold.woff2') format('woff2'),
+         url('/path/to/your/fonts/poppins-semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  #urlInput::placeholder {
     /* Styles pour le placeholder */
     color: #747474; /* Couleur du texte */
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
@@ -430,36 +446,6 @@
     display: block;
   }
   
-  .titre1 {
-    width: 100%; /* Change to 100% for responsive width */
-    max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: black;
-    font-size: 26px;
-    text-align: center;
-    line-height: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Change to relative for proper positioning in flow */
-    top: 3em;
-  }
-
-  .titre2{
-    width: 100%; /* Change to 100% for responsive width */
-    max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: black;
-    font-size: 26px;
-    text-align: center;
-    line-height: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Change to relative for proper positioning in flow */
-    top: 3em;
-  }
-
   .question .verifile-section {
     flex: 0 0 auto;
     margin-right: 20px;
@@ -568,6 +554,7 @@
       margin: auto;
       max-width: 750px;
       height: 520px;
+      margin-top: -120px;
       margin-left: 100px;
       margin-bottom: 120px;
       position: center;
