@@ -32,9 +32,21 @@
     </header>
     
     <div class="content">
-        <div class="soon">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Footer Banner">
-            <p class="soon">Coming soon !</p>
+        <h2 class="extention_chrome">Actualité de Verifile</h2>
+        <div class="extention_chrome">
+            
+            <h2><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Footer Banner">VeriFile est disponible sur Chrome !</h2>
+            <p>Nous sommes ravis d'annoncer que notre extension VeriFile est maintenant disponible sur Google Chrome. Cette extension vous permet de scanner facilement les URLs pour détecter les fraudes et assurer une navigation sécurisée.</p>
+            
+            <h3>Comment installer l'extension ?</h3>
+            <ul>
+                <li><strong>Télécharger l'extension :</strong> Cliquez sur le bouton ci-dessous pour télécharger le fichier de l'extension Chrome et decompressez le.</li>
+                <li><strong>Ouvrir les Extensions :</strong> Ouvrez Le menu des extentions Google Chrome en cliquant sur le <img src="{{ url_for('static', filename='extention_chrome/puzzle.png') }}" alt="Footer Banner">en haut a droite .</li>
+                <li><strong>Charger l'extension :</strong> Faites glisser et déposez le fichier téléchargé (extension_chrome.crx) dans la page des extensions.</li>
+            </ul>
+            <a href="{{ url_for('static', filename='extention_chrome.zip') }}" download="{{ url_for('static', filename='extention_chrome.zip') }}">Télécharger l'Extension Chrome</a>
+            
+            <p>Merci d'utiliser VeriFile pour sécuriser votre navigation !</p>
         </div>
     </div>
     
@@ -66,7 +78,6 @@
         </div>
     </div>
   
-      <script src="{{ url_for('static', filename='script.js') }}"></script>
       <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
 </body>
 </html>

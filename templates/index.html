@@ -23,7 +23,7 @@
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
             </ul>
             <!-- Bouton pour proposer l'installation de l'extension -->
-            <a href="{{ url_for('static', filename='extention_chrome/extention_chrome.crx') }}" download>Installer l'extension</a>
+            
             {% if current_user.is_authenticated %}
             <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
             {% else %}

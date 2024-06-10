@@ -1,23 +1,66 @@
-.soon {
+.extention_chrome {
     width: 100%;
-    height: 100%;
-    color: #8158BF; /* Couleur du texte VeriFile */
+    color: #8158BF;
     border-radius: 1em;
     padding: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
     font-weight: bold;
     font-size: 2em;
+    text-align: center;
+    align-items: center;
 }
 
-.soon p {
-    height: 100%;
+.extention_chrome h2,.extention_chrome h3{
+    flex: 1; /* 1/4 de la box */
+    color: #8158BF;
+    font-weight: bold;
+    display: flex;
+    font-size: 2em;
+    padding: 1em;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    left: 0;
+    background-color: #efeded;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    align-items: center;
+    padding: 30px;
+    display: flex;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3em;
 }
 
-.soon img {
-    width: 25%;
+.extention_chrome p {
+    color: #666;
+    font-size: 1em;
+}
+
+.extention_chrome img {
+    width: 2em;
     height: auto;
 }
 
+.extention_chrome > h3{
+    font-size: 1.5em;
+    font-style: bold;
+}
+
+.extention_chrome ul {
+    height: auto;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.extention_chrome li {
+    color: #5a5858;
+    font-size: 0.5em;
+    font-weight: 600;
+    margin-bottom: 2em;
+}

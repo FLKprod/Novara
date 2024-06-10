@@ -14,6 +14,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from forms import RegistrationForm, LoginForm, ChangePasswordForm
 from models import User, URL, db, bcrypt
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 
@@ -211,7 +212,14 @@ def check_url_bdd():
     url = request.form.get('url')
     if not url:
         return jsonify({'error': 'No URL provided'}), 400
-
+    parsed_url = urlparse(url)
+    parts = parsed_url.hostname.split('.')
+    
+        # Check if there is an extension to remove
+    if len(parts) > 2:
+        # Remove the last part (extension)
+        parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
+    print(parsed_url)
     # Vérifiez si l'URL est déjà présente dans la base de données secondaire avec une comparaison stricte
     url_record = URL.query.filter_by(url=url).first()
     if url_record:
