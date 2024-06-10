@@ -37,7 +37,7 @@
         {% if current_user.is_authenticated %}
     <div class="account-info">
         <p>Bienvenue, {{ current_user.username }} !</p>
-        <p>Email: {{ current_user.email }}</p>
+        <p>Email: {{ cipher_suite.decrypt(current_user.email).decode('utf-8') }}</p>
         <p>Entreprise: {{ current_user.entreprise }}</p>
         <!-- Ajoutez d'autres informations du compte ici -->
         <a href="{{ url_for('logout') }}" class="btn btn-secondary">Se Déconnecter</a>
@@ -75,9 +75,8 @@
     
     <!-- Ajout du pied de page -->
     <footer>
-        <div class="footer-links">
-            <a href="#">Conditions d'utilisation</a> | 
-            <a href="#">Conditions générales</a> | 
+        <div class="footer-links-index"> 
+            <a href="{{ url_for('apropos') }}">A propos de VeriFile</a> | 
             <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright">

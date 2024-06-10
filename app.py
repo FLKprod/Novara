@@ -7,6 +7,7 @@ import base64
 from flask import Flask, render_template, request, redirect, url_for
 import os
 
+from cryptography.fernet import Fernet
 from datetime import datetime, timedelta
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -33,6 +34,10 @@ db.init_app(app)
 bcrypt.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+key = Fernet.generate_key()
+cipher_suite = Fernet(key)
+
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -101,6 +106,7 @@ def cookies():
 @login_required
 def account():
     app.logger.debug('Serving apropos.html')
+    
     form = ChangePasswordForm()
     return render_template('account.html',form=form) 
 
@@ -158,12 +164,17 @@ def logout():
 def inscription():
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_email = bcrypt.generate_password_hash(form.email.data).decode('utf-8')
+        # Chiffrer le mail
+        encrypted_email = cipher_suite.encrypt(form.email.data.encode('utf-8'))
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=hashed_email, password=hashed_password, entreprise=form.entreprise.data, failed_attempts=0)
+        enterprise = form.entreprise.data
+
+        # Créer un nouvel utilisateur avec le mail chiffré et les hachages
+        user = User(username=form.username.data, email=encrypted_email, password=hashed_password, entreprise=enterprise, failed_attempts=0)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created!', 'success')
+
+        flash('Votre compte a été créé avec succès !', 'success')
         return redirect(url_for('connexion'))
     return render_template('inscription.html', title='Register', form=form)
 
