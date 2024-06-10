@@ -31,44 +31,58 @@
     </header>
     
     <div class="question">
-        <div class="element-question-site-wrapper">
-            <div class="element-question-site">
-                <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
-                <img class="line" src="{{ url_for('static', filename='img/line-1.svg') }}" />
-                <div class="box">
-                    <div class="group">
-                        <div class="overlap-group">
-                            <div class="carré">
-                                <div class="logo">
-                                    <div class="img"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></div>
-                                </div>
-                                <p class="text-wrapper">VeriFile</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="container2"> 
-                    <p id="question-base" class="question-base">Connaissez-vous l’expéditeur du courriel ?</p>
-                    <div id="slogan" class="slogan">Indice de confiance :</div>
-                    <p id="line-question-base" class="line-question-base" src="{{ url_for('static', filename='img/line.svg') }}" alt="line"></p>
-                    <img id="cercle-vert" class="cercle-vert-clair" src="{{ url_for('static', filename='img/green-circle.png') }}">
-                    <div class="slogan2" id="score">----</div>
-                    <div class="oui-btn" id="oui">
-                        <button class="status-email-btn" onclick="answerQuestion(true)">
-                            <p class="message-email-btn">Oui</p>
-                            <img class="cle-usb" src="{{ url_for('static', filename='img/pouces-vers-le-haut.png') }}">
-                        </button>
-                    </div>
-                    <div class="non-btn" id="non">
-                        <button class="status-cle-btn" onclick="answerQuestion(false)">
-                            <p class="message-email-btn">Non</p>
-                            <img class="cle-usb" src="{{ url_for('static', filename='img/vote-negatif.png') }}">
-                        </button>
-                    </div>    
-                </div>
+        <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
+        <img class="line" src="" />
+        <p class="titre1">Vous avez reçu ce fichier par <span class="texte-rose">courriel</span></p> 
+        <div class="group-question">
+            <p class="texte">Cette clé USB, a t’elle été trouvée sans la présence de son propriétaire ?</p> 
+            <div class="oui-btn" id="oui">
+                <button class="status-btn-oui" onclick="answerQuestion('question1', true)">
+                    <p class="message-oui">Oui</p>
+                </button>
+            </div>  
+            <div class="non-btn" id="non">
+                <button class="status-btn-non" onclick="answerQuestion('question1', false)">
+                    <p class="message-non">Non</p>
+                </button>
+            </div> 
+            <p class="texte">La clé USB, provient-elle d’une source de confiance ?</p> 
+            <div class="oui-btn" id="oui">
+                <button class="status-btn-oui" onclick="answerQuestion('question2', true)">
+                    <p class="message-oui">Oui</p>
+                </button>
+            </div>  
+            <div class="non-btn" id="non">
+                <button class="status-btn-non" onclick="answerQuestion('question2', false)">
+                    <p class="message-non">Non</p>
+                </button>
+            </div> 
+            <p class="texte">Avez-vous remarqué une anomalie sur votre ordinateur depuis le branchement de la clé USB ?</p> 
+            <div class="oui-btn" id="oui">
+                <button class="status-btn-oui" onclick="answerQuestion('question3', true)">
+                    <p class="message-oui">Oui</p>
+                </button>
+            </div>  
+            <div class="non-btn" id="non">
+                <button class="status-btn-non" onclick="answerQuestion('question3', false)">
+                    <p class="message-non">Non</p>
+                </button>
+            </div> 
+        </div>
+        <div class="Resultat">
+            <div class="affichage-resultat">
+                <p class="titre2">Consultez l'indice de confiance</p> 
+                <img class="line2" src="" />
+                <img class="image" src="{{ url_for('static', filename='img/fleche.png') }}" />
+                <div class="score" id="score">----</div> 
+                <img class="img" id='img1' src="{{ url_for('static', filename='img/barre80.png') }}" />
+            </div>
+            <div class="affichage-texte">
+                <p class="paragraphe1" id='paragraphe1'>Votre fichier a obtenu un indice de confiance de <strong>80%</strong>, ce qui est <span class="texte-vert-clair">positif</span>.</p> 
+                <p class="paragraphe2" id='paragraphe2'>Cela signifie que votre fichier est relativement sûr, mais il peut présenter des risques potentiels. Nous vous recommandons de vérifier attentivement le fichier avant de l'ouvrir et de suivre les bonnes pratiques de sécurité pour minimiser les risques.</p> 
             </div>
         </div>
+        
     </div>
     
     <footer>
@@ -82,6 +96,19 @@
     </footer>
     
     <!-- Inclure le script à la fin du body pour s'assurer qu'il est chargé après les éléments HTML -->
+    <script>
+        var ImageUrl1 = "{{ url_for('static', filename='img/barre99.png') }}";
+        var ImageUrl2 = "{{ url_for('static', filename='img/barre95.png') }}";
+        var ImageUrl3 = "{{ url_for('static', filename='img/barre90.png') }}";
+        var ImageUrl4 = "{{ url_for('static', filename='img/barre85.png') }}";
+        var ImageUrl5 = "{{ url_for('static', filename='img/barre80.png') }}";
+        var ImageUrl6 = "{{ url_for('static', filename='img/barre70.png') }}";
+        var ImageUrl7 = "{{ url_for('static', filename='img/barre60.png') }}";
+        var ImageUrl8 = "{{ url_for('static', filename='img/barre50.png') }}";
+        var ImageUrl9 = "{{ url_for('static', filename='img/barre40.png') }}";
+        var ImageUrl10 = "{{ url_for('static', filename='img/barre20.png') }}";
+
+    </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='questions-usb.js') }}"></script>
 </body>

@@ -1,20 +1,4 @@
-@font-face {
-    font-family: 'Poppins';
-    src: url('/path/to/your/fonts/poppins-regular.woff2') format('woff2'),
-         url('/path/to/your/fonts/poppins-regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'Poppins';
-    src: url('/path/to/your/fonts/poppins-semibold.woff2') format('woff2'),
-         url('/path/to/your/fonts/poppins-semibold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-  }
-  
-  #urlInput::placeholder {
+ #urlInput::placeholder {
     /* Styles pour le placeholder */
     color: #747474; /* Couleur du texte */
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
@@ -397,823 +381,6 @@
       margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
   }
   
-  /* Page Accueil " */
-  .accueil {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .accueil .element-accueil-site-wrapper {
-    background-color: #ffffff;
-    overflow: hidden;
-    border: 1px solid transparent;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .accueil .element-accueil-site {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-  
-  .accueil .d-couvrez-la {
-    width: 100%; /* Change to 100% for responsive width */
-    max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-style: italic;
-    color: #8158bf;
-    font-size: 18px;
-    text-align: center;
-    line-height: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Change to relative for proper positioning in flow */
-  }
-  
-  .accueil .line {
-    width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
-    height: 1px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-  }
-  
-  .accueil .image {
-    width: 70%; /* Largeur responsive */
-    max-width: 1403px; /* Largeur maximale pour la cohérence du design */
-    height: auto; /* Hauteur auto pour la responsivité */
-    margin: 70px auto; /* Centre l'élément horizontalement avec un espacement vertical */
-    background-color: #efeded;
-    overflow: hidden;
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    border-radius: 20px;
-    align-items: center;
-    padding: 30px;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
-  }
-  
-  .accueil .verifile-section {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    margin-left: 40px;
-  }
-  
-  .accueil .verifile {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 54px;
-    font-weight: 700;
-    color: #8158bf;
-    margin: 0;
-  }
-  
-  .accueil .line2 {
-    width: 2px; /* Width of the vertical line */
-    height: 150px; /* Full height of the container */
-    background-color: #8158bf;
-    margin: 0 50px;
-  }
-  
-  .accueil .description-section {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .accueil .description {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    color: #000;
-    margin: 0;
-  }
-  
-  .accueil .quote-left, .quote-right {
-    font-family: "Montaga-Regular", Helvetica, Arial, sans-serif;
-    font-size: 70px;
-    font-weight: 400;
-    color: #8158bf;
-    position: absolute;
-  }
-  
-  .accueil .quote-left {
-    top: -45px; /* Adjust position as needed */
-    left: 0px; /* Adjust position as needed */
-  }
-  
-  .accueil .quote-right {
-    bottom: -100px; /* Adjust position as needed */
-    right: 15px; /* Adjust position as needed */
-  }
-  
-  .accueil .description .highlight {
-    font-weight: 600;
-    color: #8158bf;
-  }
-  
-  .accueil .span {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 500;
-    color: #000000;
-  }
-  
-  .accueil .div {
-    position: relative; /* Change from absolute to relative for better alignment */
-    width: 100%; /* Responsive width */
-    max-width: 1058px; /* Maximum width for design consistency */
-    height: auto; /* Auto height for responsiveness */
-    margin: 20px auto; /* Center the element horizontally with vertical spacing */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 400;
-    color: #8158bf;
-    font-size: 96px;
-    letter-spacing: 0;
-    line-height: 144px;
-    text-align: center; /* Center text within the element */
-  }
-  
-  .accueil .line3 {
-    width: 100%; /* Largeur responsive */
-    max-width: 100px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #000; /* Couleur pour la ligne */
-    display: block;
-  }
-  
-  .accueil .analyse-d-URL {
-    width: 100%; /* Largeur responsive */
-    max-width: 1326px; /* Largeur maximale pour la cohérence du design */
-    margin: 50px auto 20px; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 700;
-    color: #000000;
-    font-size: 30px;
-    text-align: center;
-    letter-spacing: -1.06px;
-    line-height: normal;
-    position: relative; /* Positionnement relatif pour éviter les conflits */
-  }
-  
-  .accueil .p {
-    width: 100%; /* Largeur responsive */
-    max-width: 1023px; /* Largeur maximale pour la cohérence du design */
-    margin: 20px auto 100px; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #5a5858;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Positionnement relatif pour éviter les conflits */
-    height: auto; /* Ajuste la hauteur automatiquement pour la responsivité */
-  }
-  
-  .accueil .content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20;
-    height: 100%;
-    max-height: 1000px;
-    box-sizing: border-box;
-    position: relative;
-    margin-top: 10%;
-    margin-bottom: 10%;
-  }
-  
-  .accueil .image-2 {
-    width:15%;
-    background-color: #8158bf;
-    border-radius: 0px 20px 20px 0; /* Arrondi les deux coins supérieurs */
-    box-shadow: 4px 4px 40px #515050bf;
-    height: 300px;
-    box-sizing: border-box;
-    color: #fff; /* Assuming text color should be white */
-    position: relative;
-  }
-  
-  .accueil .proteger-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-  }
-  
-  .accueil .proteger {
-    width: 100%;
-    max-width: 275px;
-    height: auto;
-    object-fit: cover;
-  }
-  
-  .accueil .image-3 {
-    width: 70%;
-    background-color: #8158bf;
-    border-radius: 20px 0 0px 20px; /* Arrondi les deux coins inférieurs */
-    box-shadow: 4px 4px 40px #515050bf;
-    padding: 20px;
-    height: 325px;
-    box-sizing: border-box;
-    color: #fff; /* Assuming text color should be white */
-    position: relative;
-  }
-  
-  .element-accueil-site .text-wrapper-5 {
-    width: 100%;
-    max-width: 810px;
-    height: 40px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 800;
-    color: #ffffff;
-    font-size: 26px;
-    line-height: 54px;
-    position: relative; /* Change to relative for better alignment */
-    margin: 1%;
-    left: 2.5%
-  }
-  
-  .element-accueil-site .line-3 {
-    width: 100%;
-    max-width: 328px;
-    height: 2px;
-    background-color: #ffffff;
-    position: relative;
-    left: 16%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-6 {
-    width: 100%;
-    max-width: 950px;
-    height: 84px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 26px;
-    line-height: 42px;
-    position: relative; /* Change to relative for better alignment */
-    font-weight: 500;
-    left: 3.8%;
-    margin-bottom: 7%;
-  }
-  
-  .element-accueil-site .group-3 {
-    width: 100%;
-    max-width: 336px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -18%;
-    left: 3.7%;
-  }
-  
-  .element-accueil-site .overlap {
-    width: 100%;
-    max-width: 69px;
-    height: 69px;
-    background-color: #efa8f5;
-    border-radius: 34.5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -80%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-5 {
-    width: 100%;
-    max-width: 262px;
-    height: 84px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-    font-weight: 600;
-    top: 30%;
-  }
-  
-  .element-accueil-site .group-2 {
-    width: 100%;
-    max-width: 335px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -53%;
-    left: 33%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-4 {
-    width: 100%;
-    max-width: 262px;
-    height: 42px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-    font-weight: 600;
-    left: 10%;
-  }
-  
-  .element-accueil-site .div {
-    width: 100%;
-    max-width: 69px;
-    height: 69px;
-    background-color: #efa8f5;
-    border-radius: 34.5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 15%;
-    top: -90%;
-  }
-  
-  .element-accueil-site .group {
-    width: 100%;
-    max-width: 318px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -85%;
-    left: 68%;
-  }
-  
-  .element-accueil-site .overlap-group-2 {
-    width: 100%;
-    max-width: 314px;
-    height: 69px;
-    position: relative;
-  }
-  
-  .element-accueil-site .div-2 {
-    width: 100%;
-    max-width: 69px;
-    height: 69px;
-    background-color: #efa8f5;
-    border-radius: 34.5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 5%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-2 {
-    width: 100%;
-    max-width: 63px;
-    height: 42px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 600;
-    color: #5a5858;
-    font-size: 28px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-  }
-  
-  .element-accueil-site .d-couvrez-la-3 {
-    width: 100%;
-    max-width: 262px;
-    height: 42px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-    font-weight: 600;
-    left : 16%;
-    top: -80%;
-  }
-  
-  /* ............................................. Page Index ............................................. */
-  .index {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .index .element-index-site-wrapper {
-    background-color: #ffffff;
-    overflow: hidden;
-    border: 1px solid transparent;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .index .element-index-site {
-    position: relative;
-    width: 100%;
-    height: auto;
-    margin-bottom: 10%;
-  }
-  
-  .index .d-couvrez-la {
-    width: 100%; /* Change to 100% for responsive width */
-    max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-style: italic;
-    color: #8158bf;
-    font-size: 18px;
-    text-align: center;
-    line-height: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Change to relative for proper positioning in flow */
-  }
-  
-  .index .line {
-    width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
-    height: 1px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-  }
-  
-  .index .verifile-section {
-    flex: 0 0 auto;
-  }
-  
-  .index .verifile {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 54px;
-    font-weight: 700;
-    color: #8158bf;
-  }
-  
-  .index .line2 {
-    width: 2px; /* Width of the vertical line */
-    height: 150px; /* Full height of the container */
-    background-color: #8158bf;
-  }
-  
-  .index .carré {
-    width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 50px; /* Hauteur auto pour la responsivité */
-    margin: auto; /* Centre l'élément horizontalement avec un espacement vertical */
-    background-color: white;
-    overflow: hidden;
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    border-radius: 20px;
-    align-items: center;
-    padding: 30px;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
-    top: 58%;
-    left: -13%;
-    border: 2px solid #8158bf;
-  }
-  
-  .element-index-site .group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 20vh; /* Exemple pour remplir toute la hauteur de l'écran */
-    z-index: 2; /* Mettre .group2 en dessous de .group */
-  }
-  
-  .element-index-site .overlap-group {
-    width: 100%;
-    max-width: 500px;
-    height: 200px;
-    position: relative;
-    top: -17%; /* Ajustement pour le décalage initial */
-    left: -30%; /* Ajustement pour le décalage initial */
-  }
-  
-  .index .logo {
-    display: flex;
-    align-items: center;
-    width: 30%;
-  }
-  
-  .index .logo .img {
-    width: 400px;
-    max-width: 500px;
-    height: 40px;
-    margin-right: 10px;
-    margin-left: 14px; /* Remove left margin */
-    margin-top: 10px; /* Ajouter de l'espace en haut */
-    margin-bottom: 15px; /* Ajouter de l'espace en haut */
-    transform: scale(1.8); /* Agrandir l'image à 150% de sa taille originale */
-    transform-origin: center center; /* Agrandir à partir du centre de l'image */
-  }
-  
-  .index .text-wrapper {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 35px;
-    font-weight: 800;
-    color: #8158bf;
-    margin-top: 33px; /* Ajouter de l'espace en haut */
-    margin-left: 14px; /* Ajouter de l'espace en haut */
-  }
-  
-  .element-index-site .group2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 80vh; /* Exemple pour remplir toute la hauteur de l'écran */
-    z-index: 1; /* Mettre .group2 en dessous de .group */
-  }
-  
-  .element-index-site .overlap-group2 {
-    width: 100%;
-    max-width: 500px;
-    height: 200px;
-    position: relative;
-    top: -40%; /* Ajustement pour le décalage initial */
-    left: -30%; /* Ajustement pour le décalage initial */
-  }
-  
-  .container {
-      background-color: #efeded;
-      padding: 90px;
-      border-radius: 20px; /* Bords plus arrondis */
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
-      text-align: center;
-      position: relative;
-      width: 100%;
-      max-width: 1000px;
-      height: 300px;
-      top: -200%;
-      left: 25%;
-  }
-  
-  .container .line-index {
-    width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #460F9B; /* Couleur pour la ligne */
-    margin: 60px auto;
-    margin-top:13%;
-    margin-bottom: 8%;
-  }
-  
-  .text {
-    text-align: center;
-    margin: auto;
-    position: relative;
-    width: 100%;
-    max-width: 700px;
-    height: 400px;
-    bottom: -20%;
-    left: -2%
-  }
-  
-  .fleche {
-      position: relative;
-      width: 100%;
-      max-width: 150px;
-      top: -100%;
-      left: 15%;
-  }
-  
-  .loading-gif {
-    position: relative;
-    width: 100%;
-    max-width: 180px;
-    top: 60%;
-    margin-top: 10%;
-  }
-  
-  .loading-message {
-    position: relative;
-    width: 100%;
-    max-width: 400px; /* Largeur maximale pour la cohérence du design */
-    top: 20%;
-    left: 10%;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 700;
-    color: #8158bf;
-    font-size: 20px;
-  }
-  
-  .info-message {
-    width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: black;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      
-  }
-  
-  .message-btn {
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: #8158bf;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  }
-  
-  .info-message-resultat {
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: #8158bf;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      position:relative;
-      font-size: 20px;
-      margin-top: -3%;
-  }
-  
-  .info-message-pourquoi {
-    width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: #8158bf;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 20px;
-      margin-bottom: -2%;
-  }
-  
-  .line-resultat {
-    width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-    margin-top: -2%;
-  }
-  
-  .line-pourquoi {
-    width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-    margin-top: 4%;
-  }
-  
-  .dl {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: white;
-      font-size: 20px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -7%;
-    }
-  
-  .bouton2 {
-      display: inline-block;
-      background-color: white; /* Couleur de fond du bouton */
-      color: #747474; /* Couleur du texte */
-      padding: 30px;
-      border-radius: 20px; /* Bords légèrement arrondis */
-      cursor: pointer;
-      width: 100%;
-      max-width: 400px;
-      height: 15px; /* Réduire l'épaisseur de la bannière */
-      font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      border: 2px solid black;
-      position: relative;
-  }
-  
-  .bouton-none {
-    display: none;
-  }
-  
-  .bouton2-none {
-    display: none;
-  }
-  
-  .slogan {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: #000000;
-      font-size: 50px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -70%;
-      left: 175%;
-    }
-  
-  .slogan2 {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: #000000;
-      font-size: 50px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -80%;
-      left: 151.5%;
-    }
-  
-  .slogan3 {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 1000;
-      color: #8158bf;
-      font-size: 50px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -90%;
-      left: 159%;
-    }
-  
-  .line-dif {
-    width:100%;
-    max-width: 3px; /* Width of the vertical line */
-    height: 300px; /* Full height of the container */
-    background-color: #8158bf;
-    position:relative;
-    left: 130%;
-    top: 10%;
-  }
-  
-  .conditions {
-      width: 100%; /* Largeur responsive */
-      max-width: 900px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: Arial, sans-serif;
-      font-weight: 200;
-      color: #666565;
-      font-size: 12px;
-      text-align: center;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -219%;
-      left: 43%;
-    }
-  
-   .footer-links-index {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 11px;
-      color: #484444;
-      
-  }
-  
-  .footer-links-index a {
-      color: #484444;
-      text-decoration: none;
-  }
-  
-  .footer-links-index a:hover {
-      text-decoration: underline;
-  }
-  
-  .footer-copyright-index {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 11px;
-      color: #484444;
-      margin-top: -12%;
-  }
-  
   /* ............................................. Page Question ............................................. */
   .question {
     background-color: #ffffff;
@@ -1263,6 +430,132 @@
     display: block;
   }
   
+  .titre1 {
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 10em; /* Maximum width to maintain design consistency */
+    margin: -1em auto; /* Center the element horizontally */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #000000;
+    font-size: 2.2em;
+    text-align: center;
+    line-height: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    position: relative; /* Change to relative for proper positioning in flow */
+    top: 3em;
+  }
+
+  .texte-rose{
+    color: #F0ACDB;
+  }
+
+  .titre2{
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 19em; /* Maximum width to maintain design consistency */
+    margin: 5em auto; /* Center the element horizontally */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #5A5858;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    position: relative; /* Change to relative for proper positioning in flow */
+    top: 3em;
+  }
+
+  #team {
+    padding: 2em;
+    text-align: center;
+}
+
+  .team-member {
+    display: inline-block;
+    width: 15%;
+    height: 50%;
+    margin: 1.3em;
+    margin-top: -1em;
+    background-color: #F8F4F4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 4em;
+}
+
+.team-member img {
+    width: 100%;
+    height: 100%;
+}
+
+.team-member h3 {
+    margin: 0.5em 0.5em;
+    color: #000000;
+    font-size: 1.2em;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+.team-member p {
+    padding: 0 1em 1em;
+    color: #666;
+}
+
+.texte{
+  margin-left: 13em;
+  margin-top: 1.2em;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #000000;
+  line-height: 13px;
+  position: relative; /* Change to relative for proper positioning in flow */
+  top: 4em;
+}
+
+.titre3{
+  width: 35%; /* Change to 100% for responsive width */
+  max-width: 25em; /* Maximum width to maintain design consistency */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #000000;
+  font-size: 1.8em;
+  text-align: left;
+  line-height: 1.5em;
+  letter-spacing: 0.56px;
+  font-weight: 550;
+  margin-bottom: 2.6em;
+}
+
+.paragraphe1{
+  width: 35%; /* Change to 100% for responsive width */
+  max-width: 25em; /* Maximum width to maintain design consistency */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #000000;
+  font-size: 1.2em;
+  text-align:justify;
+  line-height: 1.5em;
+  letter-spacing: 0.56px;
+  font-weight: 500;
+  margin-bottom: 2em;
+}
+
+.paragraphe2{
+  width: 35%; /* Change to 100% for responsive width */
+  max-width: 25em; /* Maximum width to maintain design consistency */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #000000;
+  font-size: 1.2em;
+  text-align:justify;
+  line-height: 1.5em;
+  letter-spacing: 0.56px;
+  font-weight: 500;
+}
+
+.img{
+  margin-top: -22.4em;
+  margin-left: 45em;
+  width: 35%;
+  height: 100%;
+  margin-bottom: 10em;
+}
+
   .question .verifile-section {
     flex: 0 0 auto;
     margin-right: 20px;
@@ -1371,7 +664,6 @@
       margin: auto;
       max-width: 750px;
       height: 520px;
-      margin-top: -120px;
       margin-left: 100px;
       margin-bottom: 120px;
       position: center;
@@ -1675,3 +967,26 @@
     position: relative;
     margin-bottom: 10%;
   }
+
+  .footer-links-index {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 11px;
+    color: #484444;
+    
+}
+
+.footer-links-index a {
+    color: #484444;
+    text-decoration: none;
+}
+
+.footer-links-index a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright-index {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 11px;
+    color: #484444;
+    margin-top: -12%;
+}

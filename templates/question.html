@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
@@ -33,41 +34,56 @@
     <div class="question">
         <div class="element-question-site-wrapper">
             <div class="element-question-site">
-            <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
-            <img class="line" src="img/line-1.svg" />
-            <div class="box">
-                <div class="group">
-                  <div class="overlap-group">
-                    <div class="carré">
-                        <div class="logo">
-                            <div class="img"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></div>
-                        </div>
-                        <p class="text-wrapper">VeriFile</p>
-                    </div>
-                  </div>
+                <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
+                <img class="line" src="img/line-1.svg" />
+                <p class="titre1">Dites-nous en <span class="texte-rose">plus</span></p>
+                <p class="titre2">Quel est la provenance de ce fichier ?</p>
+                <section id="team">
+                <div class="team-member">
+                    <a href="/email">
+                    <img src="{{ url_for('static', filename='img/mail.png') }}" alt="Photo de mail">
+                    <h3>Je l'ai reçu par <strong>courriel</strong></h3>
+                    </a>
                 </div>
-            </div>
-            
-            <div class="container2"> 
-                <p class="question-base">Quel est la provenance de ce fichier ?</p>
-                <img class="attention" src="{{ url_for('static', filename='img/bulle-unscreen.gif') }}">
-                <p class="line-question-base" src="${barrePath}" alt="line"></p>
-                <div class="slogan">La sécurité en ligne est cruciale</div><div class="slogan2">Il est important de prendre le temps de VeriFile</div>
-                <div class="email-btn"><a href="/email" class="status-email-btn"><p class="message-email-btn">Un e-mail que j’ai reçu</p><img class="cle-usb" src="{{ url_for('static', filename='img/email.png') }}"></a></div>
-                <div class="usb-btn"><a href="/usb" class="status-cle-btn"><p class="message-email-btn">Une clé USB</p><img class="cle-usb" src="{{ url_for('static', filename='img/usb.png') }}"></a></div>
-                <div class="filedl-btn"><a href="/filedl" class="status-file-btn"><p class="message-email-btn">Un fichier téléchargé sur un site web</p><img class="cle-usb" src="{{ url_for('static', filename='img/telecharger-un-fichier.png') }}"></a></div>
-                <div class="inco-btn"><a href="/inco" class="status-inco-btn"><p class="message-email-btn">Un fichier inconnu</p><img class="cle-usb" src="{{ url_for('static', filename='img/dossier.png') }}"></a></div>         
+                <div class="team-member">
+                    <a href="/usb">
+                    <img src="{{ url_for('static', filename='img/usb.png') }}" alt="Photo de mail">
+                    <h3>Je l'ai reçu par <strong>clé usb</strong></h3>
+                    </a>
+                </div>
+                <div class="team-member">
+                    <a href="/filedl">
+                    <img src="{{ url_for('static', filename='img/internet.png') }}" alt="Photo de mail">
+                    <h3>Je l'ai téléchargé sur <strong>internet</strong></h3>
+                    </a>
+                </div>
+                <div class="team-member">
+                    <a href="/inco">
+                    <img src="{{ url_for('static', filename='img/ordinateur.png') }}" alt="Photo de mail">
+                    <h3>Je l'ai trouvé sur mon <strong>ordinateur</strong></h3>
+                    </a>
+                </div>
+                </section>
+
+                <section id="pourquoi">
+                    <div class="texte">
+                        <p class="titre3">Pourquoi répondre à cette question ?</p>
+                        <p class="paragraphe1">Cette question nous permettra d'évaluer plus précisément le niveau de confiance à accorder à votre fichier.</p> 
+                        <p class="paragraphe2">Ensemble, collaborons pour garantir une protection optimale contre les menaces potentielles.</p> 
+                    </div>
+                    <img class="img" src="{{ url_for('static', filename='img/aide.png') }}" />
+                </section>
             </div>
         </div>
     </div>
     
     <footer>
-        <div class="footer-links-index">
+        <div class="footer-links">
             <a href="#">Conditions d'utilisation</a> | 
             <a href="#">Conditions générales</a>
             <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
-        <div class="footer-copyright-index">
+        <div class="footer-copyright">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
     </footer>
     

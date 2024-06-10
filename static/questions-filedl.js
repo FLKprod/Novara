@@ -1,71 +1,96 @@
-var questions = [
-    { text: "Question 1 : Le site web avait-il une apparence professionnelle et fiable ?", points: 5 },
-    { text: "Question 2 : Avez-vous téléchargé le fichier intentionnellement ?", points: 5 },
-    { text: "Question 3 : L'URL du site web correspond-elle exactement à l'adresse que vous connaissez (sans variation ni copie suspecte) ?", points: null },
-];
-
 var confidence = 80;
-var currentQuestionIndex = 0;
+var answers = {
+    question1: null,
+    question2: null,
+    question3: null
+};
 
 function startQuestionnaire() {
     document.getElementById('score').innerHTML = confidence + "%";
-    showQuestion();
 }
 startQuestionnaire()
-function showQuestion() {
-    document.getElementById('question-base').innerText = questions[currentQuestionIndex].text;
+
+function answerQuestion(questionId, answer) {
+    var previousAnswer = answers[questionId];
+
+    // Si la réponse précédente est différente de la nouvelle réponse, ajustez le score
+    if (previousAnswer !== answer) {
+        if (previousAnswer !== null) {
+            // Annulez l'effet de la réponse précédente sur le score
+            if (previousAnswer) {
+                confidence -= getScoreImpact(questionId, true);
+            } else {
+                confidence += getScoreImpact(questionId, false);
+            }
+        }
+
+        // Appliquez l'effet de la nouvelle réponse sur le score
+        if (answer) {
+            confidence += getScoreImpact(questionId, true);
+        } else {
+            confidence -= getScoreImpact(questionId, false);
+        }
+
+        // Stockez la nouvelle réponse
+        answers[questionId] = answer;
+
+        // Mettez à jour l'affichage du score
+        console.log("SCORE = " + confidence);
+        document.getElementById('score').innerHTML = confidence + "%";
+    }
+    if (answers.question1 !== null && answers.question2 !== null && answers.question3 !== null) {
+        endQuestionnaire(confidence);
+    }
 }
 
-function answerQuestion(answer) {
-    var currentQuestion = questions[currentQuestionIndex];
-    if (answer) {
-        if (currentQuestionIndex === 2) {
-            confidence += 9;
-        }
-        else{
-            confidence += (currentQuestion.points !== null) ? currentQuestion.points : 10;
-        }
-    } else {
-        if (currentQuestionIndex === 2) {
-            confidence -= 10;
-        }
-        else{
-            confidence -= (currentQuestion.points !== null) ? currentQuestion.points : 10;
-        }
-    }
-
-    console.log("SCORE = " + confidence);
-    document.getElementById('score').innerHTML = confidence + "%";
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        showQuestion();
-    } else {
-        endQuestionnaire(confidence);
+function getScoreImpact(questionId, answer) {
+    switch (questionId) {
+        case 'question1':
+            return 5;
+        case 'question2':
+            return 5;
+        case 'question3':
+            return answer ? 9 : 10;
+        default:
+            return 0;
     }
 }
 
 function endQuestionnaire(confidence) {
     if (confidence > 80) {
-        document.getElementById('question-base').innerHTML = document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Le fichier ne semble pas être malveillant, cependant il n'en reste pas moindre de faire attention !";
-        document.querySelector('.cercle-vert-clair').style.backgroundColor = 'greenyellow';
+        document.getElementById('paragraphe1').innerHTML = "Votre fichier a obtenu un indice de confiance de <strong>" + confidence + " %</strong>, ce qui est <span class='texte-vert'>très positif</span>.";
+        document.getElementById('paragraphe2').innerHTML = "Cela signifie que votre fichier est jugé sûr et ne présente pas de risques majeurs de sécurité. Cependant, restez vigilant et continuez à suivre les bonnes pratiques de sécurité pour garantir une protection optimale."
+        if (confidence == 99) {
+            document.getElementById('img1').src = ImageUrl1;
+        } else if (confidence >= 95 && confidence < 99) {
+            document.getElementById('img1').src = ImageUrl2;
+        } else if (confidence >= 90 && confidence < 95) {
+            document.getElementById('img1').src = ImageUrl3;
+        } else if (confidence >= 85 && confidence < 90) {
+            document.getElementById('img1').src = ImageUrl4;
+        } else {
+            document.getElementById('img1').src = ImageUrl5;
+        }  
     } else if (confidence > 60 && confidence <= 80) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Le risque est modéré mais nous conseillons une vérification supplémentaire.";
-        document.querySelector('.cercle-vert-clair').style.backgroundColor = 'orange';
+        document.getElementById('paragraphe1').innerHTML = "Votre fichier a obtenu un indice de confiance de <strong>" + confidence + " %</strong>, ce qui est <span class='texte-vert-clair'>positif</span>.";
+        document.getElementById('paragraphe2').innerHTML = "Cela signifie que votre fichier est relativement sûr, mais il peut présenter des risques potentiels. Nous vous recommandons de vérifier attentivement le fichier avant de l'ouvrir et de suivre les bonnes pratiques de sécurité pour minimiser les risques."
+        if (confidence >= 70) {
+            document.getElementById('img1').src = ImageUrl6;
+        } else {
+            document.getElementById('img1').src = ImageUrl7;
+        }  
     } else if (confidence > 40 && confidence <= 60) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Il présente des risques potentiels. Nous recommandons prudence et vérifications complémentaires.";
-        document.querySelector('.cercle-vert-clair').style.backgroundColor = 'orange';
+        document.getElementById('paragraphe1').innerHTML = "Votre fichier a obtenu un indice de confiance de <strong>" + confidence + " %</strong>, ce qui est <span class='texte-orange'>correct</span>.";
+        document.getElementById('paragraphe2').innerHTML = "Cela indique qu'il y a un certain risque potentiel associé à ce fichier. Nous vous recommandons de faire preuve de prudence et de vérifier plus en détail avant de l'ouvrir ou de l'utiliser."
+        document.getElementById('img1').src = ImageUrl8;
     } else if (confidence > 20 && confidence <= 40) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons la confiance de ce document à <strong>" + confidence + " %</strong>. Il est probablement risqué. Veuillez procéder avec une extrême prudence.";
-        document.querySelector('.cercle-vert-clair').style.backgroundColor = 'orange';
+        document.getElementById('paragraphe1').innerHTML = "Votre fichier a obtenu un indice de confiance de <strong>" + confidence + " %</strong>, ce qui est <span class='texte-orange-foncée'>négatif</span>.";
+        document.getElementById('paragraphe2').innerHTML = "Cela signifie que le fichier présente des risques de sécurité significatifs. Nous vous conseillons vivement de ne pas ouvrir ce fichier et de prendre les mesures nécessaires pour le vérifier ou le supprimer. Assurez-vous de suivre les protocoles de sécurité appropriés pour protéger vos données."
+        document.getElementById('img1').src = ImageUrl9;
     } else if (confidence <= 20) {
-        document.getElementById('question-base').innerHTML = "Merci d'avoir pris le temps de répondre à ces questions. Suite à cette analyse poussée par notre outil VeriFile, nous estimons une confiance de seulement <strong>" + confidence + " %</strong> pour ce document. Il est très probablement malveillant. Nous conseillons de ne pas l'utiliser.";
-        document.querySelector('.cercle-vert-clair').style.backgroundColor = 'red';
-    }     
-    document.getElementById('oui').style.display = 'none';
-    document.getElementById('non').style.display = 'none';
-    document.getElementById('line-question-base').style.display = 'none';
-    document.querySelector('.slogan').style.top = '-60%';
-    document.getElementById('slogan').innerHTML = "Couleur de confiance :";
-    document.getElementById('score').style.display = 'none';
-    document.querySelector('.cercle-vert-clair').style.top = '-70%';
+        document.getElementById('paragraphe1').innerHTML = "Votre fichier a obtenu un indice de confiance de <strong>" + confidence + " %</strong>, ce qui est <span class='texte-rouge'>très négatif</span>.";
+        document.getElementById('paragraphe2').innerHTML = "Cela signifie que le fichier est considéré comme dangereux et qu'il présente des risques élevés de sécurité. Nous vous recommandons de ne pas ouvrir ce fichier"
+        document.getElementById('img1').src = ImageUrl10;
+    }      
+
 }

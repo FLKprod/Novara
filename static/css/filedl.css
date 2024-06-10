@@ -1,1592 +1,189 @@
-
-  
-  #urlInput::placeholder {
-    /* Styles pour le placeholder */
-    color: #747474; /* Couleur du texte */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    position:relative;
-    top: 3%;
-  }
-  
-  #urlInput:focus::placeholder {
-    /* Style du placeholder lors de la mise au point (focus) */
-    color: transparent;
-  }
-  
-  body {
-      font-family: Arial, sans-serif;
-      background-color: white; /* Change le fond du site en blanc */
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow: auto;
-      scrollbar-width: none; /* Masquer la barre de défilement */
-  }
-  
-  html {
-      overflow-x: hidden; /* Masque le débordement horizontal au niveau du document */
-      overflow-y: hidden;
-  }
-  
-  
-  header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      padding: 10px 20px;
-      border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
-      color: #8158bf;
-  }
-  
-  .logo {
-      display: flex;
-      align-items: center;
-  }
-  
-  .logo img {
-      height: 40px;
-      margin-right: 10px;
-  }
-  
-  .logo span {
-      font-weight: bold;
-      font-size: 24px;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      color: #8158bf;
-  }
-  
-  .logo-link {
-      text-decoration: none; /* Supprime le soulignement */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      color: #8158bf;
-  }
-  
-  .logo-link:hover {
-      color: #460F9B; /* Change la couleur au survol */
-  }
-  
-  nav {
-      display: flex;
-      align-items: center;
-  }
-  
-  nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
-  }
-  
-  nav ul li {
-      margin: 0 15px;
-  }
-  
-  nav ul li a {
-      color: #8158bf; /* Couleur du texte des catégories */
-      text-decoration: none;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  }
-  
-  nav ul li a:hover {
-      text-decoration: underline;
-  }
-  
-  .account-btn {
-    background-color: #8158bf; /* Couleur de fond du bouton */
-    color: white; /* Couleur du texte */
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+#urlInput::placeholder {
+  /* Styles pour le placeholder */
+  color: #747474; /* Couleur du texte */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  position:relative;
+  top: 3%;
 }
-  
-  .account-btn:hover {
-      background-color: #68409A; /* Couleur du bouton au survol */
-  }
-  
-  .info-box {
-      background-color: #f0ecec; /* Couleur de fond de la box */
-      display: flex;
-      padding: 20px;
-      margin: 40px auto; /* Espacement en haut et centré horizontalement */
-      border-radius: 30px; /* Bords plus arrondis de la box */
-      max-width: 50%; /* Réduit la largeur de la box */
-  }
-  
-  .info-left {
-      flex: 1; /* 1/4 de la box */
-      color: #8158BF;
-      font-size: 32px; /* Augmente la taille du texte */
-      font-weight: bold;
-      display: flex;
-      align-items: center; /* Centrer verticalement */
-      justify-content: center; /* Centrer horizontalement */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  }
-  
-  .box-logo {
-      height: 40px; /* Ajustez la taille du logo si nécessaire */
-      margin-right: 10px;
-  }
-  
-  .info-right {
-      flex: 3; /* 3/4 de la box */
-      color: #484444;
-      font-size: 16px;
-      display: flex;
-      flex-direction: column; /* Aligne le texte verticalement */
-      align-items: flex-start; /* Aligne le texte à gauche */
-      justify-content: center; /* Centre le texte verticalement */
-      padding-left: 20px; /* Espacement entre les deux zones */
-  }
-  
-  .simple {
-      color: #460F9B;
-      font-weight: bold;
-  }
-  
-  .efficace {
-      color: #8158BF;
-      font-weight: bold;
-  }
-  
-  .indispensable {
-      color: #F0ACDB;
-      font-weight: bold;
-  }
-  
-  .tagline {
-      text-align: center;
-      margin: 20px 0;
-      color: #F0ACDB; /* Couleur de la phrase */
-      font-style: italic; /* Italique */
-  }
-  
-  h1 {
-      margin-bottom: 20px;
-      color: #484444; /* Couleur de la phrase */
-  }
-  
-  form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 20px;
-  }
-  
-  input[type="file"] {
-      display: none; /* Masquer le champ de fichier par défaut */
-  }
-  
-  .upload-btn {
-      display: inline-block;
-      background-color: #8158bf; /* Couleur de fond du bouton */
-      color: white; /* Couleur du texte */
-      padding: 30px;
-      border-radius: 20px; /* Bords légèrement arrondis */
-      cursor: pointer;
-      width: 100%;
-      max-width: 400px;
-      height: 35px; /* Réduire l'épaisseur de la bannière */
-      font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      border: 2px solid black;
-      position: relative;
-  }
-  
-  .upload-btn:hover {
-      background-color: #68409A; /* Couleur du bouton au survol */
-  }
-  
-  #result {
-      color: #8158bf;
-      position: relative;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      top: -10%;
-  }
-  
-  .footer-banner {
-      width: 100%;
-      height: 100px; /* Réduire l'épaisseur de la bannière */
-      margin: 0;
-      padding: 0;
-      margin-bottom: 0; /* Enlever la marge négative */
-  }
-  
-  .footer-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-  }
-  
-  footer {
-      text-align: center;
-      margin-top: auto;
-      padding: 10px 0;
-  }
-  
-  .footer-links {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 12px;
-      color: #484444;
-  }
-  
-  .footer-links a {
-      color: #484444;
-      text-decoration: none;
-  }
-  
-  .footer-links a:hover {
-      text-decoration: underline;
-  }
-  
-  .footer-copyright {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 12px;
-      color: #484444;
-  }
-  
-  .result-status {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      padding: -2%;
-  }
-  
-  .status-indicator {
-      width: 20px;
-      height: 19px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 10px;
-  }
-  
-  .status-indicator.orange {
-      background-color: orange;
-      border: 1px solid black;
-  }
-  
-  .status-indicator.red {
-      background-color: red;
-      border: 1px solid black;
-  }
-  
-  .status-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-      font-weight: bold;
-      padding: 2px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin-bottom: 5%;
-  }
-  
-  .status-link.orange {
-      color: #460F9B;
-      background-color: white;
-      border: 2px solid black;
-      border-radius: 20px;
-  }
-  
-  .status-link.orange:hover {
-      background-color: #D08AB3;
-      box-shadow: 0 0 10px rgba(240, 172, 219, 0.5);
-  }
-  
-  .status-link.red {
-      color: white;
-      background-color: #FF4C4C;
-      border: 2px solid #FF4C4C;
-  }
-  
-  .status-link.red:hover {
-      background-color: #D9534F;
-      box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
-  }
-  
-  /* Styles existants */
-  
-  .secure-message {
-      text-align: center;
-      font-size: 28px; /* Plus gros */
-      font-weight: bold; /* En gras */
-      color: #460F9B; /* Couleur spécifiée */
-      margin-top: 20px; /* Espacement au-dessus du texte */
-  }
-  
-  .warning-message {
-      text-align: center;
-      font-size: 16px; /* Un peu plus petit */
-      color: #484444; /* Couleur spécifiée */
-      max-width: 40%; /* Réduit la largeur du texte */
-      margin: 20px auto; /* Centré avec espacement au-dessus et en-dessous */
-  }
-  
-  .protection-banner {
-      background-color: #8158BF; /* Couleur du bandeau */
-      color: white; /* Couleur du texte */
-      padding: 60px 0; /* Augmenté pour rendre le bandeau plus épais */
-      text-align: center;
-      width: 100%; /* Prend toute la largeur de l'écran */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour faire ressortir */
-      margin: 60px 0 80px 0; /* Plus d'espace au-dessus et encore plus d'espace en dessous du bandeau */
-  }
-  
-  .protection-banner h2 {
-      margin: 0 0 20px 0; /* Espacement au-dessous du titre */
-      font-size: 24px; /* Taille du titre */
-  }
-  
-  .protection-banner p {
-      margin: 0 0 20px 0; /* Espacement au-dessous du paragraphe */
-      font-size: 16px; /* Taille du texte */
-  }
-  
-  .protection-banner ul {
-      list-style-type: none; /* Supprime les puces */
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-  }
-  
-  .protection-banner li {
-      font-size: 16px; /* Taille du texte des points */
-      margin: 0 15px; /* Espacement entre les points */
-  }
-  
-  .enhance-security-message {
-      text-align: center;
-      font-size: 28px; /* Taille identique à "Sécurisez vos communications professionnelles" */
-      font-weight: bold; /* En gras */
-      color: #460F9B; /* Couleur identique */
-      margin: 20px 0; /* Espacement au-dessus et en dessous */
-  }
-  
-  .solution-message {
-      text-align: center;
-      font-size: 16px; /* Taille identique à "Les pièces jointes malveillantes..." */
-      color: #484444; /* Couleur identique */
-      max-width: 40%; /* Réduit la largeur du texte */
-      margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
-  }
-  
-  /* Page Accueil " */
-  .accueil {
-    background-color: #ffffff;
+
+#urlInput:focus::placeholder {
+  /* Style du placeholder lors de la mise au point (focus) */
+  color: transparent;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Change le fond du site en blanc */
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .accueil .element-accueil-site-wrapper {
-    background-color: #ffffff;
-    overflow: hidden;
-    border: 1px solid transparent;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .accueil .element-accueil-site {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-  
-  .accueil .d-couvrez-la {
-    width: 100%; /* Change to 100% for responsive width */
-    max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-style: italic;
-    color: #8158bf;
-    font-size: 18px;
-    text-align: center;
-    line-height: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Change to relative for proper positioning in flow */
-  }
-  
-  .accueil .line {
-    width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
-    height: 1px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-  }
-  
-  .accueil .image {
-    width: 70%; /* Largeur responsive */
-    max-width: 1403px; /* Largeur maximale pour la cohérence du design */
-    height: auto; /* Hauteur auto pour la responsivité */
-    margin: 70px auto; /* Centre l'élément horizontalement avec un espacement vertical */
-    background-color: #efeded;
-    overflow: hidden;
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    border-radius: 20px;
-    align-items: center;
-    padding: 30px;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
-  }
-  
-  .accueil .verifile-section {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    margin-left: 40px;
-  }
-  
-  .accueil .verifile {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 54px;
-    font-weight: 700;
-    color: #8158bf;
-    margin: 0;
-  }
-  
-  .accueil .line2 {
-    width: 2px; /* Width of the vertical line */
-    height: 150px; /* Full height of the container */
-    background-color: #8158bf;
-    margin: 0 50px;
-  }
-  
-  .accueil .description-section {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .accueil .description {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    color: #000;
-    margin: 0;
-  }
-  
-  .accueil .quote-left, .quote-right {
-    font-family: "Montaga-Regular", Helvetica, Arial, sans-serif;
-    font-size: 70px;
-    font-weight: 400;
-    color: #8158bf;
-    position: absolute;
-  }
-  
-  .accueil .quote-left {
-    top: -45px; /* Adjust position as needed */
-    left: 0px; /* Adjust position as needed */
-  }
-  
-  .accueil .quote-right {
-    bottom: -100px; /* Adjust position as needed */
-    right: 15px; /* Adjust position as needed */
-  }
-  
-  .accueil .description .highlight {
-    font-weight: 600;
-    color: #8158bf;
-  }
-  
-  .accueil .span {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 500;
-    color: #000000;
-  }
-  
-  .accueil .div {
-    position: relative; /* Change from absolute to relative for better alignment */
-    width: 100%; /* Responsive width */
-    max-width: 1058px; /* Maximum width for design consistency */
-    height: auto; /* Auto height for responsiveness */
-    margin: 20px auto; /* Center the element horizontally with vertical spacing */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 400;
-    color: #8158bf;
-    font-size: 96px;
-    letter-spacing: 0;
-    line-height: 144px;
-    text-align: center; /* Center text within the element */
-  }
-  
-  .accueil .line3 {
-    width: 100%; /* Largeur responsive */
-    max-width: 100px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #000; /* Couleur pour la ligne */
-    display: block;
-  }
-  
-  .accueil .analyse-d-URL {
-    width: 100%; /* Largeur responsive */
-    max-width: 1326px; /* Largeur maximale pour la cohérence du design */
-    margin: 50px auto 20px; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 700;
-    color: #000000;
-    font-size: 30px;
-    text-align: center;
-    letter-spacing: -1.06px;
-    line-height: normal;
-    position: relative; /* Positionnement relatif pour éviter les conflits */
-  }
-  
-  .accueil .p {
-    width: 100%; /* Largeur responsive */
-    max-width: 1023px; /* Largeur maximale pour la cohérence du design */
-    margin: 20px auto 100px; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #5a5858;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Positionnement relatif pour éviter les conflits */
-    height: auto; /* Ajuste la hauteur automatiquement pour la responsivité */
-  }
-  
-  .accueil .content-wrapper {
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none; /* Masquer la barre de défilement */
+}
+
+html {
+    overflow-x: hidden; /* Masque le débordement horizontal au niveau du document */
+    overflow-y: hidden;
+}
+
+
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding: 20;
-    height: 100%;
-    max-height: 1000px;
-    box-sizing: border-box;
-    position: relative;
-    margin-top: 10%;
-    margin-bottom: 10%;
-  }
-  
-  .accueil .image-2 {
-    width:15%;
-    background-color: #8158bf;
-    border-radius: 0px 20px 20px 0; /* Arrondi les deux coins supérieurs */
-    box-shadow: 4px 4px 40px #515050bf;
-    height: 300px;
-    box-sizing: border-box;
-    color: #fff; /* Assuming text color should be white */
-    position: relative;
-  }
-  
-  .accueil .proteger-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-  }
-  
-  .accueil .proteger {
-    width: 100%;
-    max-width: 275px;
-    height: auto;
-    object-fit: cover;
-  }
-  
-  .accueil .image-3 {
-    width: 70%;
-    background-color: #8158bf;
-    border-radius: 20px 0 0px 20px; /* Arrondi les deux coins inférieurs */
-    box-shadow: 4px 4px 40px #515050bf;
-    padding: 20px;
-    height: 325px;
-    box-sizing: border-box;
-    color: #fff; /* Assuming text color should be white */
-    position: relative;
-  }
-  
-  .element-accueil-site .text-wrapper-5 {
-    width: 100%;
-    max-width: 810px;
-    height: 40px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 800;
-    color: #ffffff;
-    font-size: 26px;
-    line-height: 54px;
-    position: relative; /* Change to relative for better alignment */
-    margin: 1%;
-    left: 2.5%
-  }
-  
-  .element-accueil-site .line-3 {
-    width: 100%;
-    max-width: 328px;
-    height: 2px;
-    background-color: #ffffff;
-    position: relative;
-    left: 16%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-6 {
-    width: 100%;
-    max-width: 950px;
-    height: 84px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 26px;
-    line-height: 42px;
-    position: relative; /* Change to relative for better alignment */
-    font-weight: 500;
-    left: 3.8%;
-    margin-bottom: 7%;
-  }
-  
-  .element-accueil-site .group-3 {
-    width: 100%;
-    max-width: 336px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -18%;
-    left: 3.7%;
-  }
-  
-  .element-accueil-site .overlap {
-    width: 100%;
-    max-width: 69px;
-    height: 69px;
-    background-color: #efa8f5;
-    border-radius: 34.5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -80%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-5 {
-    width: 100%;
-    max-width: 262px;
-    height: 84px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-    font-weight: 600;
-    top: 30%;
-  }
-  
-  .element-accueil-site .group-2 {
-    width: 100%;
-    max-width: 335px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -53%;
-    left: 33%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-4 {
-    width: 100%;
-    max-width: 262px;
-    height: 42px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-    font-weight: 600;
-    left: 10%;
-  }
-  
-  .element-accueil-site .div {
-    width: 100%;
-    max-width: 69px;
-    height: 69px;
-    background-color: #efa8f5;
-    border-radius: 34.5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 15%;
-    top: -90%;
-  }
-  
-  .element-accueil-site .group {
-    width: 100%;
-    max-width: 318px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -85%;
-    left: 68%;
-  }
-  
-  .element-accueil-site .overlap-group-2 {
-    width: 100%;
-    max-width: 314px;
-    height: 69px;
-    position: relative;
-  }
-  
-  .element-accueil-site .div-2 {
-    width: 100%;
-    max-width: 69px;
-    height: 69px;
-    background-color: #efa8f5;
-    border-radius: 34.5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 5%;
-  }
-  
-  .element-accueil-site .d-couvrez-la-2 {
-    width: 100%;
-    max-width: 63px;
-    height: 42px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 600;
-    color: #5a5858;
-    font-size: 28px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-  }
-  
-  .element-accueil-site .d-couvrez-la-3 {
-    width: 100%;
-    max-width: 262px;
-    height: 42px;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #ffffff;
-    font-size: 24px;
-    text-align: center;
-    line-height: 42px;
-    position: relative;
-    font-weight: 600;
-    left : 16%;
-    top: -80%;
-  }
-  
-  /* ............................................. Page Index ............................................. */
-  .index {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .index .element-index-site-wrapper {
-    background-color: #ffffff;
-    overflow: hidden;
-    border: 1px solid transparent;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .index .element-index-site {
-    position: relative;
-    width: 100%;
-    height: auto;
-    margin-bottom: 10%;
-  }
-  
-  .index .d-couvrez-la {
-    width: 100%; /* Change to 100% for responsive width */
-    max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-style: italic;
-    color: #8158bf;
-    font-size: 18px;
-    text-align: center;
-    line-height: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Change to relative for proper positioning in flow */
-  }
-  
-  .index .line {
-    width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
-    height: 1px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-  }
-  
-  .index .verifile-section {
-    flex: 0 0 auto;
-  }
-  
-  .index .verifile {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 54px;
-    font-weight: 700;
-    color: #8158bf;
-  }
-  
-  .index .line2 {
-    width: 2px; /* Width of the vertical line */
-    height: 150px; /* Full height of the container */
-    background-color: #8158bf;
-  }
-  
-  .index .carré {
-    width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 50px; /* Hauteur auto pour la responsivité */
-    margin: auto; /* Centre l'élément horizontalement avec un espacement vertical */
     background-color: white;
-    overflow: hidden;
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    border-radius: 20px;
-    align-items: center;
-    padding: 30px;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
-    top: 58%;
-    left: -13%;
-    border: 2px solid #8158bf;
-  }
-  
-  .element-index-site .group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 20vh; /* Exemple pour remplir toute la hauteur de l'écran */
-    z-index: 2; /* Mettre .group2 en dessous de .group */
-  }
-  
-  .element-index-site .overlap-group {
-    width: 100%;
-    max-width: 500px;
-    height: 200px;
-    position: relative;
-    top: -17%; /* Ajustement pour le décalage initial */
-    left: -30%; /* Ajustement pour le décalage initial */
-  }
-  
-  .index .logo {
+    padding: 10px 20px;
+    border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
+    color: #8158bf;
+}
+
+.logo {
     display: flex;
     align-items: center;
-    width: 30%;
-  }
-  
-  .index .logo .img {
-    width: 400px;
-    max-width: 500px;
+}
+
+.logo img {
     height: 40px;
     margin-right: 10px;
-    margin-left: 14px; /* Remove left margin */
-    margin-top: 10px; /* Ajouter de l'espace en haut */
-    margin-bottom: 15px; /* Ajouter de l'espace en haut */
-    transform: scale(1.8); /* Agrandir l'image à 150% de sa taille originale */
-    transform-origin: center center; /* Agrandir à partir du centre de l'image */
-  }
-  
-  .index .text-wrapper {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 35px;
-    font-weight: 800;
-    color: #8158bf;
-    margin-top: 33px; /* Ajouter de l'espace en haut */
-    margin-left: 14px; /* Ajouter de l'espace en haut */
-  }
-  
-  .element-index-site .group2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 80vh; /* Exemple pour remplir toute la hauteur de l'écran */
-    z-index: 1; /* Mettre .group2 en dessous de .group */
-  }
-  
-  .element-index-site .overlap-group2 {
-    width: 100%;
-    max-width: 500px;
-    height: 200px;
-    position: relative;
-    top: -40%; /* Ajustement pour le décalage initial */
-    left: -30%; /* Ajustement pour le décalage initial */
-  }
-  
-  .container {
-      background-color: #efeded;
-      padding: 90px;
-      border-radius: 20px; /* Bords plus arrondis */
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
-      text-align: center;
-      position: relative;
-      width: 100%;
-      max-width: 1000px;
-      height: 300px;
-      top: -200%;
-      left: 25%;
-  }
-  
-  .container .line-index {
-    width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #460F9B; /* Couleur pour la ligne */
-    margin: 60px auto;
-    margin-top:13%;
-    margin-bottom: 8%;
-  }
-  
-  .text {
-    text-align: center;
-    margin: auto;
-    position: relative;
-    width: 100%;
-    max-width: 700px;
-    height: 400px;
-    bottom: -20%;
-    left: -2%
-  }
-  
-  .fleche {
-      position: relative;
-      width: 100%;
-      max-width: 150px;
-      top: -100%;
-      left: 15%;
-  }
-  
-  .loading-gif {
-    position: relative;
-    width: 100%;
-    max-width: 180px;
-    top: 60%;
-    margin-top: 10%;
-  }
-  
-  .loading-message {
-    position: relative;
-    width: 100%;
-    max-width: 400px; /* Largeur maximale pour la cohérence du design */
-    top: 20%;
-    left: 10%;
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-weight: 700;
-    color: #8158bf;
-    font-size: 20px;
-  }
-  
-  .info-message {
-    width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: black;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      
-  }
-  
-  .message-btn {
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: #8158bf;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  }
-  
-  .info-message-resultat {
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: #8158bf;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      position:relative;
-      font-size: 20px;
-      margin-top: -3%;
-  }
-  
-  .info-message-pourquoi {
-    width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: #8158bf;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 20px;
-      margin-bottom: -2%;
-  }
-  
-  .line-resultat {
-    width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-    margin-top: -2%;
-  }
-  
-  .line-pourquoi {
-    width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-    margin-top: 4%;
-  }
-  
-  .dl {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: white;
-      font-size: 20px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -7%;
-    }
-  
-  .bouton2 {
-      display: inline-block;
-      background-color: white; /* Couleur de fond du bouton */
-      color: #747474; /* Couleur du texte */
-      padding: 30px;
-      border-radius: 20px; /* Bords légèrement arrondis */
-      cursor: pointer;
-      width: 100%;
-      max-width: 400px;
-      height: 15px; /* Réduire l'épaisseur de la bannière */
-      font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      border: 2px solid black;
-      position: relative;
-  }
-  
-  .bouton-none {
-    display: none;
-  }
-  
-  .bouton2-none {
-    display: none;
-  }
-  
-  .slogan {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: #000000;
-      font-size: 50px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -70%;
-      left: 175%;
-    }
-  
-  .slogan2 {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: #000000;
-      font-size: 50px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -80%;
-      left: 151.5%;
-    }
-  
-  .slogan3 {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 1000;
-      color: #8158bf;
-      font-size: 50px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -90%;
-      left: 159%;
-    }
-  
-  .line-dif {
-    width:100%;
-    max-width: 3px; /* Width of the vertical line */
-    height: 300px; /* Full height of the container */
-    background-color: #8158bf;
-    position:relative;
-    left: 130%;
-    top: 10%;
-  }
-  
-  .conditions {
-      width: 100%; /* Largeur responsive */
-      max-width: 900px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: Arial, sans-serif;
-      font-weight: 200;
-      color: #666565;
-      font-size: 12px;
-      text-align: center;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      top: -219%;
-      left: 43%;
-    }
-  
-   .footer-links-index {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 11px;
-      color: #484444;
-      margin-top: 20%;
-  }
-  
-  .footer-links-index a {
-      color: #484444;
-      text-decoration: none;
-  }
-  
-  .footer-links-index a:hover {
-      text-decoration: underline;
-  }
-  
-  .footer-copyright-index {
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 11px;
-      color: #484444;
-      margin-top: -13%;
-  }
-  
-  /* ............................................. Page Question ............................................. */
-  .question {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .question .element-question-site-wrapper {
-    background-color: #ffffff;
-    overflow: hidden;
-    border: 1px solid transparent;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .question .element-question-site {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-  
-  .question .d-couvrez-la {
-    width: 100%; /* Change to 100% for responsive width */
-    max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-style: italic;
-    color: #8158bf;
-    font-size: 18px;
-    text-align: center;
-    line-height: 13px;
-    font-weight: 600;
-    letter-spacing: 0;
-    position: relative; /* Change to relative for proper positioning in flow */
-  }
-  
-  .question .line {
-    width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
-    height: 1px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-  }
-  
-  .question .verifile-section {
-    flex: 0 0 auto;
-    margin-right: 20px;
-    margin-left: 40px;
-  }
-  
-  .question .verifile {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 54px;
-    font-weight: 700;
-    color: #8158bf;
-  }
-  
-  .question .line2 {
-    width: 2px; /* Width of the vertical line */
-    height: 150px; /* Full height of the container */
-    background-color: #8158bf;
-    margin: 0 50px;
-  }
-  
-  .question .carré {
-    width: 100%; /* Largeur responsive */
-    max-width: 200px; /* Largeur maximale pour la cohérence du design */
-    height: 50px; /* Hauteur auto pour la responsivité */
-    margin: 50px auto; /* Centre l'élément horizontalement avec un espacement vertical */
-    background-color: white;
-    overflow: hidden;
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    border-radius: 20px;
-    align-items: center;
-    padding: 30px;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre sur les quatre côtés */
-    margin-top: 100px;
-    margin-left: 300px;
-    border: 2px solid #8158bf;
-  }
-  
-  .element-question-site .group {
-    width: 100%;
-    max-width: 318px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: -20px;
-    left: 530px;
-    margin-right: 10px;
-    margin-left: -490px; /* Remove left margin */
-    margin-top: 20px; /* Ajouter de l'espace en haut */
-  }
-  
-  .element-question-site .overlap-group {
-    width: 100%;
-    max-width: 500px;
-    height: 200px;
-    position: relative;
-  }
-  
-  .question .logo {
-    display: flex;
-    align-items: center;
-    width: 30%;
-  }
-  
-  .question .logo .img {
-    width: 400px;
-    max-width: 500px;
-    height: 40px;
-    margin-right: 10px;
-    margin-left: 14px; /* Remove left margin */
-    margin-top: 10px; /* Ajouter de l'espace en haut */
-    margin-bottom: 15px; /* Ajouter de l'espace en haut */
-    transform: scale(1.8); /* Agrandir l'image à 150% de sa taille originale */
-    transform-origin: center center; /* Agrandir à partir du centre de l'image */
-  }
-  
-  .question .text-wrapper {
-    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    font-size: 35px;
-    font-weight: 800;
-    color: #8158bf;
-    margin-top: 33px; /* Ajouter de l'espace en haut */
-    margin-left: 14px; /* Ajouter de l'espace en haut */
-  }
-  
-  .line-question {
-      width: 100%; /* Largeur responsive */
-      max-width: 300px; /* Largeur maximale pour la cohérence du design */
-      height: 2px;
-      margin: 0 auto; /* Centre l'élément horizontalement */
-      position: relative; /* Positionnement relatif pour l'alignement correct */
-      background-color: white; /* Couleur pour la ligne */
-      display: none;
-      margin-top: -90px;
-  }
-  
-  .container2 {
-      background-color: #efeded;
-      padding: 20px;
-      border-radius: 20px; /* Bords plus arrondis */
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre plus large et un peu moins foncée */
-      text-align: center;
-      margin: auto;
-      max-width: 700px;
-      height: 300px;
-      margin-top: -60px;
-      margin-left: 100px;
-      margin-bottom: 120px;
-      position: center;
-      border: 2px solid #8158bf;
-  }
-  
-  .fleche {
-      width: 150px;
-      margin-top: -250px;
-      margin-left: 1090px;
-  }
-  
-  .dl {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: white;
-      font-size: 30px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-  }
-  
-  .cercle-vert-clair {
-    width: 100%;
-    max-width: 124px;
-    height: 124px;
-    position: flex;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-    background-color: orange;
-    border: 1px solid black;
-    position: relative;
-    left: 95%;
-    top: -50%;
-  }
-  
-  .attention {
-    width: 100%;
-    max-width: 144px;
-    height: 144px;
-    position: flex;
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
-    left: 95%;
-    top: 1%;
-  }
-  
-  .question .slogan {
-      width: 100%; /* Largeur responsive */
-      max-width: 550px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: #8158bf;
-      font-size: 30px;
-      text-align: CENTER;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      left: 95%;
-      top: -39%;
-  }
-  
-  .question .slogan2 {
-      width: 100%; /* Largeur responsive */
-      max-width: 550px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 800;
-      color: #8158bf;
-      font-size: 30px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      left: 95%;
-      top: -58%;
-  }
-  
-  .group-4 {
-    margin-left: 200px;
-  }
-  
-  .question .slogan3 {
-      width: 100%; /* Largeur responsive */
-      max-width: 400px; /* Largeur maximale pour la cohérence du design */
-      margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-weight: 1000;
-      color: #8158bf;
-      font-size: 50px;
-      text-align: center;
-      letter-spacing: -1.06px;
-      line-height: normal;
-      position: relative; /* Positionnement relatif pour éviter les conflits */
-      margin-top: 200px;
-      margin-left: 776px;
-  }
-  
-  .question-base {
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      color: black;
-      font-weight: normal;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      font-size: 20px;
-      position: relative;
-      top: 19%;
-      left: 7.5%;
-  }
-  
-  .line-question-base {
-    width: 100%; /* Largeur responsive */
-    max-width: 340px; /* Largeur maximale pour la cohérence du design */
-    height: 2px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
-    position: relative; /* Positionnement relatif pour l'alignement correct */
-    background-color: #8158bf; /* Couleur pour la ligne */
-    display: block;
-    top: -27%;
-    margin-bottom: 5%;
-  }
-  
-  .oui-btn {
-    display: inline-block;
-    background-color: white; /* Couleur de fond du bouton */
-    color: white;  /* Couleur du texte */
-    padding: 30px;
-    border-radius: 20px; /* Bords légèrement arrondis */
-    cursor: pointer;
-    width: 100%;
-    max-width: 120px;
-    height: 7px; /* Réduire l'épaisseur de la bannière */
-    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+}
+
+.logo span {
+    font-weight: bold;
     font-size: 24px;
-    font-weight: 700;
-    border: 2px solid #8158bf;
-    position: relative;
-    top: -113%;
-    margin-bottom: 3%;
-  }
-  
-  .email-btn:hover {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #8158bf;
+}
+
+.logo-link {
+    text-decoration: none; /* Supprime le soulignement */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #8158bf;
+}
+
+.logo-link:hover {
+    color: #460F9B; /* Change la couleur au survol */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #8158bf; /* Couleur du texte des catégories */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.account-btn {
+  background-color: #8158bf; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+.account-btn:hover {
     background-color: #68409A; /* Couleur du bouton au survol */
-  }
-  
-  .status-email-btn {
-    display: flex; /* Ceci alignera les éléments horizontalement */
-    align-items: center; /* Ceci centre les éléments verticalement */
-    justify-content: center; /* Ceci centre les éléments horizontalement */
-    border-radius: 20px;
-    color: white;
-    padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
-    position: relative;
-    top:-310%;
-  }
+}
 
-  .status-email-btn, .status-cle-btn {
-      background: none;
-      border: none;
-      color: inherit;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-      display: flex;
-      align-items: center;
-  }
+.info-box {
+    background-color: #f0ecec; /* Couleur de fond de la box */
+    display: flex;
+    padding: 20px;
+    margin: 40px auto; /* Espacement en haut et centré horizontalement */
+    border-radius: 30px; /* Bords plus arrondis de la box */
+    max-width: 50%; /* Réduit la largeur de la box */
+}
 
-.status-email-btn img, .status-cle-btn img {
-    margin-left: 8px;
-  }
-  .message-email-btn {
-    color: #8158bf;
-    font-weight: normal;
+.info-left {
+    flex: 1; /* 1/4 de la box */
+    color: #8158BF;
+    font-size: 32px; /* Augmente la taille du texte */
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    margin: 0 10px 0 0; /* Ajoute un espace à droite du texte */
-  }
-  
-  .email {
-    width: 40px; /* Taille spécifique pour l'image */
-    height: 40px; /* Taille spécifique pour l'image */
-    display: inline-block; /* Ceci permet à l'image de rester en ligne avec le texte */
-  }
-  
-  .non-btn {
-    display: inline-block;
-    background-color: white; /* Couleur de fond du bouton */
-    color: white;  /* Couleur du texte */
-    padding: 30px;
-    border-radius: 20px; /* Bords légèrement arrondis */
-    cursor: pointer;
-    width: 100%;
-    max-width: 120px;
-    height: 7px; /* Réduire l'épaisseur de la bannière */
-    font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    border: 2px solid #8158bf;
-    position: relative;
+}
+
+.box-logo {
+    height: 40px; /* Ajustez la taille du logo si nécessaire */
+    margin-right: 10px;
+}
+
+.info-right {
+    flex: 3; /* 3/4 de la box */
+    color: #484444;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column; /* Aligne le texte verticalement */
+    align-items: flex-start; /* Aligne le texte à gauche */
+    justify-content: center; /* Centre le texte verticalement */
+    padding-left: 20px; /* Espacement entre les deux zones */
+}
+
+.simple {
+    color: #460F9B;
+    font-weight: bold;
+}
+
+.efficace {
+    color: #8158BF;
+    font-weight: bold;
+}
+
+.indispensable {
+    color: #F0ACDB;
+    font-weight: bold;
+}
+
+.tagline {
+    text-align: center;
+    margin: 20px 0;
+    color: #F0ACDB; /* Couleur de la phrase */
+    font-style: italic; /* Italique */
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #484444; /* Couleur de la phrase */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    top: -113%;
-    margin-bottom: 3%;
-    margin-left: 5%;
-  }
-  
-  .status-cle-btn {
-    display: flex; /* Ceci alignera les éléments horizontalement */
-    align-items: center; /* Ceci centre les éléments verticalement */
-    justify-content: center; /* Ceci centre les éléments horizontalement */
-    border-radius: 20px;
-    color: white;
-    padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
-    position: relative;
-    top:-310%;
-  }
-  
-  .cle-usb {
-    width: 40px; /* Taille spécifique pour l'image */
-    height: 40px; /* Taille spécifique pour l'image */
-    display: inline-block; /* Ceci permet à l'image de rester en ligne avec le texte */
-    top:-10%;
-  }
-  
-  
-  .validate-btn {
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    display: none; /* Masquer le champ de fichier par défaut */
+}
+
+.upload-btn {
     display: inline-block;
     background-color: #8158bf; /* Couleur de fond du bouton */
     color: white; /* Couleur du texte */
@@ -1594,12 +191,501 @@
     border-radius: 20px; /* Bords légèrement arrondis */
     cursor: pointer;
     width: 100%;
-    max-width: 200px;
-    height: 40px; /* Réduire l'épaisseur de la bannière */
+    max-width: 400px;
+    height: 35px; /* Réduire l'épaisseur de la bannière */
     font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 700;
     border: 2px solid black;
     position: relative;
-    margin-bottom: 10%;
+}
+
+.upload-btn:hover {
+    background-color: #68409A; /* Couleur du bouton au survol */
+}
+
+#result {
+    color: #8158bf;
+    position: relative;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    top: -10%;
+}
+
+.footer-banner {
+    width: 100%;
+    height: 100px; /* Réduire l'épaisseur de la bannière */
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0; /* Enlever la marge négative */
+}
+
+.result-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: -2%;
+}
+
+.status-indicator {
+    width: 20px;
+    height: 19px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.status-indicator.orange {
+    background-color: orange;
+    border: 1px solid black;
+}
+
+.status-indicator.red {
+    background-color: red;
+    border: 1px solid black;
+}
+
+.status-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    padding: 2px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 5%;
+}
+
+.status-link.orange {
+    color: #460F9B;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.status-link.orange:hover {
+    background-color: #D08AB3;
+    box-shadow: 0 0 10px rgba(240, 172, 219, 0.5);
+}
+
+.status-link.red {
+    color: white;
+    background-color: #FF4C4C;
+    border: 2px solid #FF4C4C;
+}
+
+.status-link.red:hover {
+    background-color: #D9534F;
+    box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
+}
+
+/* Styles existants */
+
+.secure-message {
+    text-align: center;
+    font-size: 28px; /* Plus gros */
+    font-weight: bold; /* En gras */
+    color: #460F9B; /* Couleur spécifiée */
+    margin-top: 20px; /* Espacement au-dessus du texte */
+}
+
+.warning-message {
+    text-align: center;
+    font-size: 16px; /* Un peu plus petit */
+    color: #484444; /* Couleur spécifiée */
+    max-width: 40%; /* Réduit la largeur du texte */
+    margin: 20px auto; /* Centré avec espacement au-dessus et en-dessous */
+}
+
+.protection-banner {
+    background-color: #8158BF; /* Couleur du bandeau */
+    color: white; /* Couleur du texte */
+    padding: 60px 0; /* Augmenté pour rendre le bandeau plus épais */
+    text-align: center;
+    width: 100%; /* Prend toute la largeur de l'écran */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour faire ressortir */
+    margin: 60px 0 80px 0; /* Plus d'espace au-dessus et encore plus d'espace en dessous du bandeau */
+}
+
+.protection-banner h2 {
+    margin: 0 0 20px 0; /* Espacement au-dessous du titre */
+    font-size: 24px; /* Taille du titre */
+}
+
+.protection-banner p {
+    margin: 0 0 20px 0; /* Espacement au-dessous du paragraphe */
+    font-size: 16px; /* Taille du texte */
+}
+
+.protection-banner ul {
+    list-style-type: none; /* Supprime les puces */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.protection-banner li {
+    font-size: 16px; /* Taille du texte des points */
+    margin: 0 15px; /* Espacement entre les points */
+}
+
+.enhance-security-message {
+    text-align: center;
+    font-size: 28px; /* Taille identique à "Sécurisez vos communications professionnelles" */
+    font-weight: bold; /* En gras */
+    color: #460F9B; /* Couleur identique */
+    margin: 20px 0; /* Espacement au-dessus et en dessous */
+}
+
+.solution-message {
+    text-align: center;
+    font-size: 16px; /* Taille identique à "Les pièces jointes malveillantes..." */
+    color: #484444; /* Couleur identique */
+    max-width: 40%; /* Réduit la largeur du texte */
+    margin: 20px auto; /* Centré avec espacement au-dessus et en dessous */
+}
+
+/* ............................................. Page Question ............................................. */
+.question {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.question .element-question-site-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  border: 1px solid transparent;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.question .element-question-site {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.question .d-couvrez-la {
+  width: 100%; /* Change to 100% for responsive width */
+  max-width: 755px; /* Maximum width to maintain design consistency */
+  margin: 20px auto; /* Center the element horizontally */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-style: italic;
+  color: #8158bf;
+  font-size: 18px;
+  text-align: center;
+  line-height: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  position: relative; /* Change to relative for proper positioning in flow */
+}
+
+.question .line {
+  width: 100%; /* Largeur responsive */
+  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  height: 1px;
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: #8158bf; /* Couleur pour la ligne */
+  display: block;
+}
+
+.titre1 {
+  width: 100%; /* Change to 100% for responsive width */
+  max-width: 20em; /* Maximum width to maintain design consistency */
+  margin-left: -18em;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #000000;
+  font-size: 1.8em;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0;
+  position: relative; /* Change to relative for proper positioning in flow */
+  top: 3em;
+  line-height: 1.5em;
+  letter-spacing: 0.56px;
+  margin-bottom: 3em;
+}
+
+.texte-rose{
+  color: #F0ACDB;
+}
+
+.texte-vert{
+  color: #63C500;
+}
+
+.texte-vert-clair{
+  color: #C2DD00;
+}
+
+.texte-orange{
+  color: #FFB902;
+}
+
+.texte-orange-foncée{
+  color: #FC6902;
+}
+
+.texte-rouge{
+  color: #F40505;
+}
+
+.line2 {
+  width: 100%; /* Largeur responsive */
+  max-width: 200px; /* Largeur maximale pour la cohérence du design */
+  height: 3px; /* Hauteur très petite pour que la ligne soit horizontale */
+  margin: 0 auto; /* Centre l'élément horizontalement */
+  background-color: black; /* Couleur pour la ligne */
+  position: relative;
+  top: -15.5em;
+  left: 56em;
+}
+
+.titre2{
+  width: 100%; /* Change to 100% for responsive width */
+  max-width: 19em; /* Maximum width to maintain design consistency */
+  margin: 5em auto; /* Center the element horizontally */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #8158bf; 
+  font-size: 1.5em;
+  text-align: center;
+  line-height: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  position: relative; /* Change to relative for proper positioning in flow */
+  top: 1em;
+  left: 16em;
+}
+
+.group-question{
+font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+color: #000000;
+line-height: 13px;
+position: relative; /* Change to relative for proper positioning in flow */
+top: 4em;
+left: -4em;
+}
+
+.texte{
+  width: 100%; /* Change to 100% for responsive width */
+  max-width: 40em; /* Maximum width to maintain design consistency */
+  margin: auto;
+  left: -4.6em;
+  top: 2em;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #000000;
+  font-size: 1.2em;
+  text-align: left;
+  font-weight: 500;
+  letter-spacing: 0;
+  position: relative; /* Change to relative for proper positioning in flow */
+  line-height: 1.5em;
+  letter-spacing: 0.56px;
+}
+
+.oui-btn {
+  display: inline-block;
+  background-color: white; /* Couleur de fond du bouton */
+  color: white;  /* Couleur du texte */
+  padding: 10px;
+  border-radius: 20px; /* Bords légèrement arrondis */
+  cursor: pointer;
+  width: 100%;
+  max-width: 80px;
+  height: 25px; /* Réduire l'épaisseur de la bannière */
+  font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  border: 1px solid black;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  left: 30em;
+  margin-right: 1em;
+}
+
+.non-btn {
+  display: inline-block;
+  background-color: white; /* Couleur de fond du bouton */
+  color: white;  /* Couleur du texte */
+  padding: 10px;
+  border-radius: 20px; /* Bords légèrement arrondis */
+  cursor: pointer;
+  width: 100%;
+  max-width: 80px;
+  height: 25px; /* Réduire l'épaisseur de la bannière */
+  font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  border: 1px solid black;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  left: 30em;
+}
+
+.oui-btn:active {
+  transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+  border-bottom: 1px solid;
+}
+
+.status-btn-oui {
+  display: flex; /* Ceci alignera les éléments horizontalement */
+  align-items: center; /* Ceci centre les éléments verticalement */
+  justify-content: center; /* Ceci centre les éléments horizontalement */
+  color: white;
+  padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
+  position: relative;
+  top: -1.2em;
+  left: 0.3em;
+}
+
+.message-oui {
+  color: black;
+  font-weight: normal;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+.message-non {
+  color: black;
+  font-weight: normal;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+.status-btn-oui, .status-btn-non {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.status-btn-non {
+  display: flex; /* Ceci alignera les éléments horizontalement */
+  align-items: center; /* Ceci centre les éléments verticalement */
+  justify-content: center; /* Ceci centre les éléments horizontalement */
+  color: white;
+  padding: 10px; /* Ajoutez du padding pour mieux visualiser le bouton */
+  position: relative;
+  top: -1.2em;
+  left: 0.3em;
+}
+
+.score {
+  width: 100%; /* Largeur responsive */
+  max-width: 550px; /* Largeur maximale pour la cohérence du design */
+  margin: 50px auto; /* Centre l'élément horizontalement et ajoute un espacement vertical */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-weight: 800;
+  color: #5a5858;
+  font-size: 7em;
+  text-align: center;
+  letter-spacing: -1.06px;
+  line-height: normal;
+  position: relative; /* Positionnement relatif pour éviter les conflits */
+  left: 3.5em;
+  top: -1.8em;
+}
+
+.paragraphe1{
+width: 100%; /* Change to 100% for responsive width */
+max-width: 26em; /* Maximum width to maintain design consistency */
+font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+color: #000000;
+font-size: 1.2em;
+text-align:justify;
+line-height: 1.5em;
+letter-spacing: 0.56px;
+font-weight: 500;
+position: relative;
+left: 0em;
+margin-bottom: 2em;
+}
+
+.paragraphe2{
+  width: 100%; /* Change to 100% for responsive width */
+  max-width: 26em; /* Maximum width to maintain design consistency */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #000000;
+  font-size: 1.2em;
+  text-align:justify;
+  line-height: 1.5em;
+  letter-spacing: 0.56px;
+  font-weight: 500;
+  position: relative;
+  left: 0em;
+  margin-bottom: 2em;
   }
+
+.image{
+  position: relative;
+  top: -8em;
+  left: 42em;
+  width: 15%;
+  height: 100%;
+}
+
+.img{
+  position: relative;
+  top: -29em;
+  left: 43em;
+  width: 45%;
+  height: 100%;
+}
+
+.affichage-resultat{
+  position: relative;
+  height: auto;
+  max-height: 100px;
+  }
+
+.affichage-texte{
+  position: relative;
+  height: auto;
+  max-height: 100px;
+}
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px 0;
+    position: relative;
+    top:10em;
+}
+
+.footer-links-index {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-size: 11px;
+  color: #484444; 
+  position: relative;
+  top: 60em;
+}
+
+.footer-links-index a {
+  color: #484444;
+  text-decoration: none;
+}
+
+.footer-links-index a:hover {
+  text-decoration: underline;
+}
+
+.footer-copyright-index {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-size: 11px;
+  color: #484444;
+  position: relative;
+  top: 60em;
+}
