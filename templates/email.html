@@ -34,41 +34,49 @@
         <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
         <img class="line" src="" />
         <p class="titre1">Vous avez reçu ce fichier par <span class="texte-rose">courriel</span></p> 
-        <div class="group-question">
-            <p class="texte">Connaissez vous l’expéditeur du courriel ?</p> 
-            <div class="oui-btn" id="oui">
-                <button class="status-btn-oui" onclick="answerQuestion('question1', true)">
+        <img class="line3" src="" />
+        <div class="group-question1">
+            <p class="texte">Connaissez-vous l’expéditeur du courriel ?</p> 
+            <div class="oui-btn" id="oui-question1">
+                <button class="status-btn-oui" onclick="answerQuestion('question1', true, 'oui-question1')">
                     <p class="message-oui">Oui</p>
                 </button>
             </div>  
-            <div class="non-btn" id="non">
-                <button class="status-btn-non" onclick="answerQuestion('question1', false)">
+            <div class="non-btn" id="non-question1">
+                <button class="status-btn-non" onclick="answerQuestion('question1', false, 'non-question1')">
                     <p class="message-non">Non</p>
                 </button>
-            </div> 
-            <p class="texte">Le nom de la pièce jointe, a-t’il un rapport avec un projet en cours ?</p> 
-            <div class="oui-btn" id="oui">
-                <button class="status-btn-oui" onclick="answerQuestion('question2', true)">
+            </div>
+        </div> 
+    
+        <div class="group-question2">
+            <p class="texte">Le nom de la pièce jointe, a-t-il un rapport avec un projet en cours ?</p> 
+            <div class="oui-btn" id="oui-question2">
+                <button class="status-btn-oui" onclick="answerQuestion('question2', true, 'oui-question2')">
                     <p class="message-oui">Oui</p>
                 </button>
             </div>  
-            <div class="non-btn" id="non">
-                <button class="status-btn-non" onclick="answerQuestion('question2', false)">
+            <div class="non-btn" id="non-question2">
+                <button class="status-btn-non" onclick="answerQuestion('question2', false, 'non-question2')">
                     <p class="message-non">Non</p>
                 </button>
-            </div> 
+            </div>
+        </div> 
+    
+        <div class="group-question3">
             <p class="texte">La structure de l’adresse courriel, est-elle habituelle ?</p> 
-            <div class="oui-btn" id="oui">
-                <button class="status-btn-oui" onclick="answerQuestion('question3', true)">
+            <div class="oui-btn" id="oui-question3">
+                <button class="status-btn-oui" onclick="answerQuestion('question3', true, 'oui-question3')">
                     <p class="message-oui">Oui</p>
                 </button>
             </div>  
-            <div class="non-btn" id="non">
-                <button class="status-btn-non" onclick="answerQuestion('question3', false)">
+            <div class="non-btn" id="non-question3">
+                <button class="status-btn-non" onclick="answerQuestion('question3', false, 'non-question3')">
                     <p class="message-non">Non</p>
                 </button>
-            </div> 
+            </div>
         </div>
+        
         <div class="Resultat">
             <div class="affichage-resultat">
                 <p class="titre2">Consultez l'indice de confiance</p> 
@@ -86,10 +94,9 @@
     </div>
     
     <footer>
-        <div class="footer-links-index">
-            <a href="#">Conditions d'utilisation</a> | 
-            <a href="#">Conditions générales</a> | 
-            <a href="#">Politique des cookies</a>
+        <div class="footer-links-index"> 
+            <a href="{{ url_for('apropos') }}">A propos de VeriFile</a> | 
+            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright-index">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>

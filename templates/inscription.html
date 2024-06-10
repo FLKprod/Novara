@@ -12,107 +12,63 @@
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
-            <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
-                <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
-                <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact</a></li>
-            </ul>
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
-            {% else %}
-            <a href="{{ url_for('connexion') }}" class="account-btn">Se Connecter</a>  <!-- Texte à afficher si l'utilisateur n'est pas connecté -->
-            {% endif %}
-        </nav>
-    </header>
-    
-    <div class="tagline">
-        <em>Découvrez la puissance de 100 anti-virus combiné en 1 clic</em>
-    </div>
-    <div class="account-container">
-        <div class="content">
-            <h1>Créer un compte</h1>
-            <p>Inscrivez-vous avec adresse mail</p>
-                <form class="register" method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="entete-form">
+    <div class="inscription">
+        <div class="page-connexion">
+                <h1>Créer un compte</h1>
+                    <form class="register" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="entete-form">
+                            <div>
+                                {{ form.username(class="form-control", size=32, placeholder="Nom d'utilisateur") }}
+                                {% for error in form.username.errors %}
+                                    <span class="text-danger">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+                            <div>
+                                {{ form.email(class="form-control", size=64, placeholder="Email") }}
+                                {% for error in form.email.errors %}
+                                    <span class="text-danger">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+                        </div>
                         <div>
-                            {{ form.username(class="form-control", size=32, placeholder="Nom d'utilisateur") }}
-                            {% for error in form.username.errors %}
+                            {{ form.entreprise(class="form-control", size=32, placeholder="Entreprise") }}
+                            {% for error in form.entreprise.errors %}
                                 <span class="text-danger">[{{ error }}]</span>
                             {% endfor %}
                         </div>
                         <div>
-                            {{ form.email(class="form-control", size=64, placeholder="Email") }}
-                            {% for error in form.email.errors %}
+                            {{ form.password(class="form-control", size=32, placeholder="Mot de passe") }}
+                            {% for error in form.password.errors %}
                                 <span class="text-danger">[{{ error }}]</span>
                             {% endfor %}
                         </div>
-                    </div>
-                    <div>
-                        {{ form.entreprise(class="form-control", size=32, placeholder="Entreprise") }}
-                        {% for error in form.entreprise.errors %}
-                            <span class="text-danger">[{{ error }}]</span>
-                        {% endfor %}
-                    </div>
-                    <div>
-                        {{ form.password(class="form-control", size=32, placeholder="Mot de passe") }}
-                        {% for error in form.password.errors %}
-                            <span class="text-danger">[{{ error }}]</span>
-                        {% endfor %}
-                    </div>
-                    <div>
-                        {{ form.confirm_password(class="form-control", size=32, placeholder="Confirmez votre mot de passe") }}
-                        {% for error in form.confirm_password.errors %}
-                            <span class="text-danger">[{{ error }}]</span>
-                        {% endfor %}
-                    </div>
-                    <div>
-                        {{ form.submit(class="btn btn-primary") }}
-                    </div>
-                </form>
-                <p>Déjà inscrit ? <a href="{{ url_for('connexion') }}">Connectez-vous</a></p>
+                        <div>
+                            {{ form.confirm_password(class="form-control", size=32, placeholder="Confirmez votre mot de passe") }}
+                            {% for error in form.confirm_password.errors %}
+                                <span class="text-danger">[{{ error }}]</span>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                    <p>Déjà inscrit ? <a href="{{ url_for('connexion') }}">Connectez-vous</a></p>
+                    <footer>
+                        <div class="footer-links-index"> 
+                            <a href="{{ url_for('apropos') }}">A propos de VeriFile</a> | 
+                            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
+                        </div>
+                        <div class="footer-copyright">
+                            <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
+                        </div>
+                        </footer>
 
-        </div>
-  </div>
-    
-    <!-- Ajout du pied de page -->
-    <footer>
-        <div class="footer-links">
-            <a href="#">Conditions d'utilisation</a> | 
-            <a href="#">Conditions générales</a> | 
-            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
-        </div>
-        <div class="footer-copyright">
-            <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
-        </div>
-    </footer>
-    
-    <div class="chatbot-icon" onclick="toggleChatbot()">
-        💬
     </div>
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <h2>VeriFile</h2>
-            <button class="close-btn" onclick="toggleChatbot()">×</button>
-        </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <!-- Messages will appear here -->
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="userInput" placeholder="Tapez votre message...">
-            <button onclick="sendMessage()">Envoyer</button>
-        </div>
+    <div class="images">
+
     </div>
-  
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='account.js') }}"></script>
-    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+</div>
+
 </body>
 </html>
