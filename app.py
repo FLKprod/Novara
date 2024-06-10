@@ -7,6 +7,7 @@ import base64
 from flask import Flask, render_template, request, redirect, url_for
 import os
 
+from datetime import datetime, timedelta
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from flask_sqlalchemy import SQLAlchemy
@@ -119,21 +120,35 @@ def change_password():
             return render_template('account.html', form=form)
 
 
-
 @app.route('/connexion', methods=['GET', 'POST'])
 def connexion():
-    form = LoginForm()  # Créez une instance de votre formulaire
+    form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()  # Recherchez l'utilisateur par son email
-        
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            # Si l'utilisateur existe et que le mot de passe est correct
-            login_user(user, remember=form.remember.data)
-            return redirect(url_for('index'))  # Redirigez vers la page d'accueil après la connexion
+
+        user = User.query.filter_by(username=form.username.data).first()
+
+        if user:
+
+            if user.is_locked():
+                flash('Votre compte est verrouillé. Veuillez réessayer plus tard.', 'danger')
+                return render_template('connexion.html', form=form)
+
+            if bcrypt.check_password_hash(user.password, form.password.data):
+                user.reset_failed_attempts()
+                login_user(user, remember=form.remember.data)
+                return redirect(url_for('index'))
+            else:
+                user.failed_attempts = user.failed_attempts + 1
+                if user.failed_attempts >= 5:
+                    user.lock_until = datetime.utcnow() + timedelta(seconds=30)
+                    flash('Votre compte a été verrouillé pour 30 secondes en raison de trop nombreuses tentatives échouées.', 'danger')
+                else:
+                    flash('Identifiant ou mot de passe incorrect. Veuillez réessayer.', 'danger')
+                db.session.commit()
         else:
             flash('Identifiant ou mot de passe incorrect. Veuillez réessayer.', 'danger')
     return render_template('connexion.html', form=form)
-        
+
 @app.route('/logout')
 def logout():
     logout_user()
@@ -143,13 +158,13 @@ def logout():
 def inscription():
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         hashed_email = bcrypt.generate_password_hash(form.email.data).decode('utf-8')
-        user = User(username=form.username.data, email=hashed_email, password=hashed_password, entreprise=form.entreprise.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=hashed_email, password=hashed_password, entreprise=form.entreprise.data, failed_attempts=0)
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created!', 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('connexion'))
     return render_template('inscription.html', title='Register', form=form)
 
 @login_manager.user_loader

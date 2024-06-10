@@ -19,12 +19,6 @@ header {
     align-items: center;
 }
 
-.account-container {
-    border-radius: 20px;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-}
 
 .logo-link {
     color: white;
@@ -49,18 +43,6 @@ nav ul li a {
 }
 
 
-.account-container > .content {
-
-    height: 100%;
-    max-width: 100%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding-top: 1em;
-    background: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
 
 .content > p {
     font-size: 1em;
@@ -79,7 +61,6 @@ h1 {
 }
 
 .form {
-    width: 80%;
     max-width: 600px;
     margin: 20px auto;
     background: white;
@@ -97,17 +78,13 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 50%;
-}
 
-.register > div{
-    width: 75%;
 }
 
 .register #password,
 .register #username,
-.register #entreprise,
 .register #email,
+.register #entreprise,
 .register #confirm_password {
     padding: 10px;
     margin-bottom: 15px;
@@ -115,7 +92,19 @@ h1 {
     border-radius: 5px;
 }
 
-.connect #email,
+.register #email{
+    margin-left: 1em;
+}
+
+.register #password,
+.register #entreprise,
+.register #confirm_password{
+    width: auto;
+}
+
+
+
+.connect #username,
 .connect #password{
     display: flex;
     flex-direction: column;
@@ -123,7 +112,7 @@ h1 {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
-    width: 50%; /* Largeur ajustée pour compenser la largeur du padding */
+    width: 90%; /* Largeur ajustée pour compenser la largeur du padding */
 }
 
 .connect input[type="checkbox"] {
@@ -188,6 +177,7 @@ h1 {
 
 .entete-form{
     display: flex;
+    max-width: 90%;
     flex-direction: row;
 }
 .entete-form > input{
@@ -200,129 +190,38 @@ h1 {
 
 }
 
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
+.connexion, .inscription {
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f9;
 }
 
-.content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.page-connexion{
+    align-items: center;
     text-align: center;
-    max-width: 400px;
-    width: 100%;
-}
-
-.logo-container {
+    justify-content: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+    width: 40%;
 }
 
-.logo {
-    width: 100px;
-    height: auto;
-}
-
-.brand-name {
-    font-size: 24px;
-    color: #af52de;
-    margin: 10px 0 0 0;
-}
-
-.tagline {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
+.images{
+    background-image: url("/static/img/connexion-gif.gif");
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 60%;
+    height: 100%;
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 14px;
-    color: #666;
-}
-
-.form-control {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.entete-form {
-    display: flex;
-    gap: 10px;
-}
-
-.entete-form div {
-    flex: 1;
-}
-
-.btn {
-    display: inline-block;
-    background-color: #af52de;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.btn-primary {
-    background-color: #af52de;
-}
-
-.text-danger {
-    color: red;
-    font-size: 12px;
-}
-
-a {
-    color: #af52de;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: #8158bf;
     margin: 0;
-    background-color: #f4f4f9;
-}
-
-.connexion {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
 }
 
 p {
@@ -343,11 +242,14 @@ p {
 }
 
 .form-control {
-    width: calc(100% - 20px);
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.register #username{
+    margin-right: 1em;
 }
 
 .form-check {
@@ -444,21 +346,6 @@ p {
 .form-group {
     margin-bottom: 15px;
     text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #333;
-}
-
-.form-control {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
 .btn {

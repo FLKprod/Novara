@@ -12,96 +12,58 @@
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
-            <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
-                <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
-                <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact</a></li>
-            </ul>
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
-            {% else %}
-            <a href="{{ url_for('connexion') }}" class="account-btn">Se Connecter</a>  <!-- Texte à afficher si l'utilisateur n'est pas connecté -->
+    <div class="connexion">
+        <div class="page-connexion">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
             {% endif %}
-        </nav>
-    </header>
-    
-    <div class="tagline">
-        <em>Découvrez la puissance de 100 anti-virus combiné en 1 clic</em>
+        {% endwith %}
+        <h1>Connexion</h1>
+        <form class="connect" method="POST">
+            {{ form.hidden_tag() }}
+            <div id="username">
+                {{ form.username(size=64,placeholder="Nom d'utilisateur") }}
+                {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div id="password">
+                {{ form.password(size=32,placeholder="Mot de passe") }}
+                {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.remember }}
+                {{ form.remember.label }}
+            </div>
+            <div>
+                {{ form.submit }}
+            </div>
+        </form>
+        <p>Pas encore inscrit ? <a href="{{ url_for('inscription') }}">Créez un compte</a></p>
+
+        <footer>
+            <div class="footer-links">
+                <a href="#">Conditions d'utilisation</a> | 
+                <a href="#">Conditions générales</a> | 
+                <a href="{{ url_for('cookies') }}">Politique des cookies</a>
+            </div>
+            <div class="footer-copyright">
+                <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
+            </div>
+        </footer>
     </div>
 
-        <div class="connexion">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">
-                        {{ message }}
-                    </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            <h1>Connexion</h1>
-            <form class="connect" method="POST">
-                {{ form.hidden_tag() }}
-                <div id="email">
-                    {{ form.email(size=64,placeholder="Email") }}
-                    {% for error in form.email.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
-                </div>
-                <div id="password">
-                    {{ form.password(size=32,placeholder="Mot de passe") }}
-                    {% for error in form.password.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
-                </div>
-                <div>
-                    {{ form.remember }}
-                    {{ form.remember.label }}
-                </div>
-                <div>
-                    {{ form.submit }}
-                </div>
-            </form>
-            <p>Pas encore inscrit ? <a href="{{ url_for('inscription') }}">Créez un compte</a></p>
-        </div>
-    
-    <!-- Ajout du pied de page -->
-    <footer>
-        <div class="footer-links">
-            <a href="#">Conditions d'utilisation</a> | 
-            <a href="#">Conditions générales</a> | 
-            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
-        </div>
-        <div class="footer-copyright">
-            <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
-        </div>
-    </footer>
-    
-    <div class="chatbot-icon" onclick="toggleChatbot()">
-        💬
+    <div class="images">
+
     </div>
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <h2>VeriFile</h2>
-            <button class="close-btn" onclick="toggleChatbot()">×</button>
-        </div>
-        <div class="chatbot-messages" id="chatbotMessages">
-            <!-- Messages will appear here -->
-        </div>
-        <div class="chatbot-input">
-            <input type="text" id="userInput" placeholder="Tapez votre message...">
-            <button onclick="sendMessage()">Envoyer</button>
-        </div>
-    </div>
-  
-      <script src="{{ url_for('static', filename='script.js') }}"></script>
-      <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+</div>  
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
