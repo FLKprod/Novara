@@ -33,41 +33,46 @@
     <div class="question">
         <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
         <img class="line" src="" />
-        <p class="titre1">Vous avez reçu ce fichier par <span class="texte-rose">courriel</span></p> 
-        <div class="group-question">
+        <p class="titre1">Vous avez reçu ce fichier par <span class="texte-rose">clé usb</span></p> 
+        <img class="line3" src="" />
+        <div class="group-question1">
             <p class="texte">Cette clé USB, a t’elle été trouvée sans la présence de son propriétaire ?</p> 
-            <div class="oui-btn" id="oui">
-                <button class="status-btn-oui" onclick="answerQuestion('question1', true)">
-                    <p class="message-oui">Oui</p>
+            <div class="oui-btn" id="oui-question1">
+                <button class="status-btn-oui" onclick="answerQuestion('question1', true, 'oui-question1', 'oui1')">
+                    <p class="message-oui" id="oui1">Oui</p>
                 </button>
             </div>  
-            <div class="non-btn" id="non">
-                <button class="status-btn-non" onclick="answerQuestion('question1', false)">
-                    <p class="message-non">Non</p>
+            <div class="non-btn" id="non-question1">
+                <button class="status-btn-non" onclick="answerQuestion('question1', false, 'non-question1', 'non1')">
+                    <p class="message-non" id="non1">Non</p>
                 </button>
             </div> 
+        </div> 
+        <div class="group-question2">
             <p class="texte">La clé USB, provient-elle d’une source de confiance ?</p> 
-            <div class="oui-btn" id="oui">
-                <button class="status-btn-oui" onclick="answerQuestion('question2', true)">
-                    <p class="message-oui">Oui</p>
+            <div class="oui-btn" id="oui-question2">
+                <button class="status-btn-oui" onclick="answerQuestion('question2', true, 'oui-question2', 'oui2')">
+                    <p class="message-oui" id="oui2">Oui</p>
                 </button>
             </div>  
-            <div class="non-btn" id="non">
-                <button class="status-btn-non" onclick="answerQuestion('question2', false)">
-                    <p class="message-non">Non</p>
+            <div class="non-btn" id="non-question2">
+                <button class="status-btn-non" onclick="answerQuestion('question2', false, 'non-question2', 'non2')">
+                    <p class="message-non" id="non2">Non</p>
                 </button>
-            </div> 
+            </div>
+        </div>
+        <div class="group-question3">
             <p class="texte">Avez-vous remarqué une anomalie sur votre ordinateur depuis le branchement de la clé USB ?</p> 
-            <div class="oui-btn" id="oui">
-                <button class="status-btn-oui" onclick="answerQuestion('question3', true)">
-                    <p class="message-oui">Oui</p>
+            <div class="oui-btn" id="oui-question3">
+                <button class="status-btn-oui" onclick="answerQuestion('question3', true, 'oui-question3', 'oui3')">
+                    <p class="message-oui" id="oui3">Oui</p>
                 </button>
             </div>  
-            <div class="non-btn" id="non">
-                <button class="status-btn-non" onclick="answerQuestion('question3', false)">
-                    <p class="message-non">Non</p>
+            <div class="non-btn" id="non-question3">
+                <button class="status-btn-non" onclick="answerQuestion('question3', false, 'non-question3', 'non3')">
+                    <p class="message-non" id="non3">Non</p>
                 </button>
-            </div> 
+            </div>
         </div>
         <div class="Resultat">
             <div class="affichage-resultat">
