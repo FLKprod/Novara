@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - VeriFile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/avis.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
+                <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
+                <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
+            {% else %}
+            <a href="{{ url_for('connexion') }}" class="account-btn">Se Connecter</a>  <!-- Texte à afficher si l'utilisateur n'est pas connecté -->
+            {% endif %}
+        </nav>
+    </header>
+    
+    <main>
+        <section class="testimonial-section">
+            <h1>Ils nous ont fait <span class="highlight confiance">confiance</span><br>pourquoi pas <span class="highlight vous">vous</span> ?</h1>
+
+            <div class="sector">
+                <h2 class="left-align">Secteur bancaire</h2>
+                <div class="testimonial">
+                    <img src="{{ url_for('static', filename='img/rodrigo.jpg') }}" alt="Rodrigo Lapozo">
+                    <div class="testimonial-text">
+                        <p>VeriFile a transformé notre approche de la sécurité informatique de la banque de Milan. Grâce à leur technologie avancée, nous avons pu identifier et bloquer plusieurs menaces que nos anciens outils avaient manquées. Leur approche multi-antivirus est incroyablement efficace. Je recommande vivement VeriFile pour une protection optimale en ligne.</p>
+                        <p class="author">RODRIGO LAPOZZO<br>RSSI de Bank of Milano</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sector">
+                <h2 class="right-align">Secteur sanitaire</h2>
+                <div class="testimonial laura">
+                    <img src="{{ url_for('static', filename='img/laura.jpg') }}" alt="Laura Clavil">
+                    <div class="testimonial-text laura-text">
+                        <p>En tant que chirurgienne au CHU de Dijon, la sécurité des dossiers médicaux de mes patients est primordiale. Récemment, j'ai reçu un dossier médical par e-mail, mais avant de l'ouvrir, j'ai pris le temps de le vérifier sur VeriFile. Bien m'en a pris, car il s'agissait en réalité d'une pièce jointe infectée. Grâce à VeriFile, j'ai pu éviter une potentielle catastrophe informatique.</p>
+                        <p class="author">LAURA CLAVIL<br>Chirurgienne au CHU de Dijon</p>
+                    </div>
+                </div>
+            </div>
+
+            <h1>et même vous, <span class="highlight particuliers">les particuliers</span></h1>
+
+            <div class="particuliers-section">
+                <div class="testimonial particulier">
+                    <img src="{{ url_for('static', filename='img/juliette.jpg') }}" alt="Juliette">
+                    <div class="testimonial-name">JULIETTE<br><span class="testimonial-role">GAMEUSE</span></div>
+                    <div class="testimonial-text">
+                        <p>J'ai téléchargé un jeu gratuit, mais heureusement, je l'ai vérifié avec VeriFile. C'était un malware. VeriFile m'a sauvé de gros ennuis. Recommandé à tous les gamers !</p>
+                    </div>
+                </div>
+                <div class="testimonial particulier">
+                    <img src="{{ url_for('static', filename='img/rachelle.jpg') }}" alt="Rachelle">
+                    <div class="testimonial-name">RACHELLE<br><span class="testimonial-role">ETUDIANTE</span></div>
+                    <div class="testimonial-text">
+                        <p>J'ai vérifié l'URL du site pour payer mes frais de scolarité avec VeriFile. Heureusement, c'était une fausse page de paiement. VeriFile m'a évité une arnaque. Indispensable pour tous les étudiants !</p>
+                    </div>
+                </div>
+                <div class="testimonial particulier">
+                    <img src="{{ url_for('static', filename='img/pitt.jpg') }}" alt="Pitt">
+                    <div class="testimonial-name">PITT<br><span class="testimonial-role">PERE DE FAMILLE</span></div>
+                    <div class="testimonial-text">
+                        <p>J'ai vérifié l'URL du site pour faire mes déclarations d'impôts avec VeriFile. Il s'est avéré que c'était un faux site. VeriFile m'a évité une arnaque. Très utile pour toutes les familles !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Conditions d'utilisation</a> | 
+            <a href="#">Conditions générales</a> | 
+            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
+        </div>
+        <div class="footer-copyright">
+            <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='contact.js') }}"></script>
+</body>
+</html>

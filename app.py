@@ -96,6 +96,11 @@ def cookies():
     app.logger.debug('Serving cookies.html')
     return render_template('cookies.html')
 
+@app.route('/avis')
+def avis():
+    app.logger.debug('Serving avis.html')
+    return render_template('avis.html')
+
 @app.route('/account')
 @login_required
 def account():
