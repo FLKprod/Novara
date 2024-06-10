@@ -42,13 +42,13 @@
                 <div class="team-member">
                     <a href="/email">
                     <img src="{{ url_for('static', filename='img/mail.png') }}" alt="Photo de mail">
-                    <h3>Je l'ai reçu par <strong>courriel</strong></h3>
+                    <h3>Je l'ai reçu par <br><strong>courriel</strong><br></h3>
                     </a>
                 </div>
                 <div class="team-member">
                     <a href="/usb">
                     <img src="{{ url_for('static', filename='img/usb.png') }}" alt="Photo de mail">
-                    <h3>Je l'ai reçu par <strong>clé usb</strong></h3>
+                    <h3>Je l'ai reçu par <br><strong>clé usb</strong><br></h3>
                     </a>
                 </div>
                 <div class="team-member">
@@ -71,7 +71,9 @@
                         <p class="paragraphe1">Cette question nous permettra d'évaluer plus précisément le niveau de confiance à accorder à votre fichier.</p> 
                         <p class="paragraphe2">Ensemble, collaborons pour garantir une protection optimale contre les menaces potentielles.</p> 
                     </div>
-                    <img class="img" src="{{ url_for('static', filename='img/aide.png') }}" />
+                    <div class="texte">
+                        <img class="img" src="{{ url_for('static', filename='img/aide.png') }}" />
+                    </div>
                 </section>
             </div>
         </div>
