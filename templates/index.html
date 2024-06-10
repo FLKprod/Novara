@@ -18,7 +18,7 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
-                <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
+                <li><a href="">Nos [artenaires</a></li>
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
             </ul>
@@ -100,8 +100,8 @@
     <!-- Ajout du pied de page -->
     <footer>
         <div class="footer-links-index">
-            <a href="#">Conditions d'utilisation</a> | 
-            <a href="#">Conditions générales</a> | 
+            <a href="#">Plan du site</a> | 
+            <a href="{{ url_for('apropos') }}">A propos de VeriFile</a> | 
             <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright-index">
