@@ -18,9 +18,9 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
-                <li><a href="">Nos Partenaires</a></li>
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('avis') }}">Avis</a></li>
             </ul>
             <!-- Bouton pour proposer l'installation de l'extension -->
             
@@ -35,7 +35,7 @@
     <div class="index">
         <div class="element-index-site-wrapper">
             <div class="element-index-site">
-            <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
+            <p class="d-couvrez-la">Trust your files, with VeriFile</p>
             <img class="line" src="" />
             <div class="box">
                 <div class="group">
@@ -100,7 +100,8 @@
     <!-- Ajout du pied de page -->
     <footer>
         <div class="footer-links-index"> 
-            <a href="{{ url_for('apropos') }}">A propos de VeriFile</a> | 
+            <a href="#">Conditions d'utilisation</a> | 
+            <a href="#">Conditions générales</a> |
             <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright-index">

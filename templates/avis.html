@@ -18,9 +18,9 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
-                <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('avis') }}">Avis</a></li>
             </ul>
             {% if current_user.is_authenticated %}
             <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
@@ -31,8 +31,11 @@
     </header>
     
     <main>
+        <p class="d-couvrez-la">Trust your files, with VeriFile</p>
+        <img class="line" src="" />
         <section class="testimonial-section">
-            <h1>Ils nous ont fait <span class="highlight confiance">confiance</span><br>pourquoi pas <span class="highlight vous">vous</span> ?</h1>
+            <h1>Ils nous ont fait <span class="highlight confiance">confiance,</span></h1>
+            <h3>pourquoi pas <span class="highlight vous">vous</span> ?</h3>
 
             <div class="sector">
                 <h2 class="left-align">Secteur bancaire</h2>
@@ -56,7 +59,7 @@
                 </div>
             </div>
 
-            <h1>et même vous, <span class="highlight particuliers">les particuliers</span></h1>
+            <h4>et même vous, <span class="highlight particuliers">les particuliers</span></h4>
 
             <div class="particuliers-section">
                 <div class="testimonial particulier">
@@ -85,15 +88,33 @@
     </main>
 
     <footer>
-        <div class="footer-links">
+        <div class="footer-links-index">
             <a href="#">Conditions d'utilisation</a> | 
-            <a href="#">Conditions générales</a> | 
+            <a href="#">Conditions générales</a> |
             <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
-        <div class="footer-copyright">
+        <div class="footer-copyright-index">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <div class="chatbot-icon" onclick="toggleChatbot()">
+        💬
+    </div>
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h2>VeriFile</h2>
+            <button class="close-btn" onclick="toggleChatbot()">×</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="userInput" placeholder="Tapez votre message...">
+            <button onclick="sendMessage()">Envoyer</button>
+        </div>
+      </div>
+      
     <script src="{{ url_for('static', filename='contact.js') }}"></script>
 </body>
 </html>

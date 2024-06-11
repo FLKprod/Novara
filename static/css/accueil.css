@@ -37,7 +37,6 @@ header {
     padding: 10px 20px;
     border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
     color: #8158bf;
-    margin-top: 1px;
 }
 
 .logo {
@@ -49,7 +48,7 @@ header {
     height: 40px;
     margin-right: 10px;
     margin-top: -1px;
-    margin-bottom: 2px;
+    margin-bottom: 6.5px;
 }
 
 .logo span {
@@ -410,12 +409,13 @@ footer {
   position: relative;
   width: 100%;
   height: auto;
+  top: -0.05em;
 }
 
 .accueil .d-couvrez-la {
   width: 100%; /* Change to 100% for responsive width */
   max-width: 755px; /* Maximum width to maintain design consistency */
-  margin: 20px auto; /* Center the element horizontally */
+  margin: 13px auto; /* Center the element horizontally */
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-style: italic;
   color: #8158bf;
@@ -429,9 +429,9 @@ footer {
 
 .accueil .line {
   width: 100%; /* Largeur responsive */
-  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  max-width: 140px; /* Largeur maximale pour la cohérence du design */
   height: 1px;
-  margin: 0 auto; /* Centre l'élément horizontalement */
+  margin: -7px auto; /* Centre l'élément horizontalement */
   position: relative; /* Positionnement relatif pour l'alignement correct */
   background-color: #8158bf; /* Couleur pour la ligne */
   display: block;
@@ -612,7 +612,7 @@ footer {
 
 .accueil .image-3 {
   width: 70%;
-  background-color: #8158bf;
+  background-color: #efeded;
   border-radius: 20px 0 0px 20px; /* Arrondi les deux coins inférieurs */
   box-shadow: 4px 4px 40px #515050bf;
   padding: 20px;
@@ -628,7 +628,7 @@ footer {
   height: 40px;
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-weight: 800;
-  color: #ffffff;
+  color: #8158bf;
   font-size: 24px;
   line-height: 54px;
   position: relative; /* Change to relative for better alignment */
@@ -640,7 +640,7 @@ footer {
   width: 100%;
   max-width: 328px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: #8158bf;
   position: relative;
   left: 16%;
 }
@@ -650,7 +650,7 @@ footer {
   max-width: 950px;
   height: 84px;
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  color: #ffffff;
+  color: #000;
   font-size: 22px;
   line-height: 42px;
   position: relative; /* Change to relative for better alignment */
@@ -688,7 +688,7 @@ footer {
   max-width: 262px;
   height: 84px;
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  color: #ffffff;
+  color: #000;
   font-size: 22px;
   text-align: center;
   line-height: 42px;
@@ -713,7 +713,7 @@ footer {
   max-width: 262px;
   height: 42px;
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  color: #ffffff;
+  color: #000;
   font-size: 22px;
   text-align: center;
   line-height: 42px;
@@ -785,7 +785,7 @@ footer {
   max-width: 262px;
   height: 42px;
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  color: #ffffff;
+  color: #000;
   font-size: 22px;
   text-align: center;
   line-height: 42px;
@@ -793,4 +793,106 @@ footer {
   font-weight: 500;
   left : 16%;
   top: -80%;
+}
+
+.chatbot-icon-accueil {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #8158BF;
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: bounce 2s infinite;
+}
+
+.chatbot-container {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  display: none;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  width: 24em;
+  max-height: 400px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.chatbot-header {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  background-color: #8158BF;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header > h2{
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+.chatbot-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid #ccc;
+  border-bottom-left-radius: 10px;
+  font-size: 16px;
+}
+
+.chatbot-input button {
+  background-color: #D08AB3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom-right-radius: 10px;
+}
+
+.chatbot-input button:hover {
+  background-color: #372c71;
+}
+
+.message {
+  margin: 10px 0;
+}
+
+.user-message {
+  text-align: right;
+  color: #460F9B;
+}
+
+.bot-message {
+  text-align: left;
+  color: #484444;
 }

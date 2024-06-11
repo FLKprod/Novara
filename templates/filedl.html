@@ -18,9 +18,9 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
-                <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('avis') }}">Avis</a></li>
             </ul>
             {% if current_user.is_authenticated %}
             <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
@@ -31,7 +31,7 @@
     </header>
     
     <div class="question">
-        <p class="d-couvrez-la">Découvrez la puissance de 100 anti-virus combiné en 1 clic</p>
+        <p class="d-couvrez-la">Trust your files, with VeriFile</p>
         <img class="line" src="" />
         <p class="titre1">Vous avez téléchargé ce fichier sur <span class="texte-rose">internet</span></p> 
         <img class="line3" src="" />
@@ -93,7 +93,8 @@
     
     <footer>
         <div class="footer-links-index"> 
-            <a href="{{ url_for('apropos') }}">A propos de VeriFile</a> | 
+            <a href="#">Conditions d'utilisation</a> | 
+            <a href="#">Conditions générales</a> |
             <a href="{{ url_for('cookies') }}">Politique des cookies</a>
         </div>
         <div class="footer-copyright-index">

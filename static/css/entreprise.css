@@ -1,203 +1,754 @@
-body {
-    font-family: Arial, sans-serif;
+#urlInput::placeholder {
+    /* Styles pour le placeholder */
+    color: #747474; /* Couleur du texte */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    position:relative;
+    top: 3%;
+  }
+  
+  #urlInput:focus::placeholder {
+    /* Style du placeholder lors de la mise au point (focus) */
+    color: transparent;
+  }
+  
+  body {
+      font-family: Arial, sans-serif;
+      background-color: white; /* Change le fond du site en blanc */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: auto;
+      scrollbar-width: none; /* Masquer la barre de défilement */
+  }
+  
+  html {
+      overflow-x: hidden; /* Masque le débordement horizontal au niveau du document */
+      overflow-y: hidden;
+  }
+  
+  
+  header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 5px 20px;
+      border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
+      color: #8158bf;
+      z-index: 2;
+  }
+  
+  .logo {
+      display: flex;
+      align-items: center;
+  }
+  
+  .logo img {
+      height: 40px;
+      margin-right: 10px;
+      margin-top: 5px;
+  }
+  
+  .logo span {
+      font-weight: bold;
+      font-size: 24px;
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+      color: #8158bf;
+  }
+  
+  .logo-link {
+      text-decoration: none; /* Supprime le soulignement */
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+      color: #8158bf;
+  }
+  
+  .logo-link:hover {
+      color: #460F9B; /* Change la couleur au survol */
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
     margin: 0;
     padding: 0;
-    background-color: white;
+    display: flex;
+    margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
 }
 
-header {
-    color: white;
-    text-align: center;
-    padding: 1em 0;
+nav ul li {
+    margin: 0 15px;
 }
 
-header h1 {
-    margin: 0;
-}
-
-#team {
-    padding: 2em;
-    text-align: center;
-}
-
-#team h2 {
-    color: #333;
-}
-
-.team-member {
-    display: inline-block;
-    width: 20%;
-    margin: 1em;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-}
-
-.team-member img {
-    width: 100%;
-    height: 100%;
-}
-
-.team-member h3 {
-    margin: 0.5em 0;
-    color: #460F9B;
-}
-
-.team-member p {
-    padding: 0 1em 1em;
-    color: #666;
-}
-
-#project, #team {
-    padding: 2em;
-    text-align: center;
-}
-
-#team h2 {
-    color: #333;
-}
-
-
-
-#project ul {
-    list-style-type: none;
-}
-
-#title-entreprise, #objectifs > .info-left h2 {
-    flex: 1; /* 1/4 de la box */
-    color: #8158BF;
+nav ul li a {
+    color: #8158bf; /* Couleur du texte des catégories */
+    text-decoration: none;
     font-weight: bold;
-    display: flex;
-    font-size: 2em;
-    padding: 1em;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    left: 0;
-    background-color: #efeded;
-    overflow: hidden;
-    position: relative;
-    border-radius: 20px;
-    align-items: center;
-    padding: 30px;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-#title-entreprise:first-child{
-    margin-top:0;
+
+nav ul li a:hover {
+  text-decoration: underline;
+  color: #8158bf;
 }
-#title-entreprise{
-    margin: 4em 0;
-}
-.about-us > p {
-    max-width: none;
-}
-.about-us > p, #project > p {
-    text-align: right;
-    width: 80%;
-    right: 0;
-    margin-left: 10em;
-    line-height: 2;
+  
+  .account-btn {
+    background-color: #8158bf; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 1em;
+    text-decoration: none;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color: #5a5858;
-    font-size: 1em;
-    font-weight: 900;
-    letter-spacing: 0;
-    height: auto;
 }
+  
+  .account-btn:hover {
+    text-decoration: none;
+    background-color: #68409A;
+    color: white;
+  }
+  
+  .info-box {
+      background-color: #f0ecec; /* Couleur de fond de la box */
+      display: flex;
+      padding: 20px;
+      margin: 40px auto; /* Espacement en haut et centré horizontalement */
+      border-radius: 30px; /* Bords plus arrondis de la box */
+      max-width: 50%; /* Réduit la largeur de la box */
+  }
+  
+  .info-left {
+      flex: 1; /* 1/4 de la box */
+      color: #8158BF;
+      font-size: 32px; /* Augmente la taille du texte */
+      font-weight: bold;
+      display: flex;
+      align-items: center; /* Centrer verticalement */
+      justify-content: center; /* Centrer horizontalement */
+      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  }
+  
+  .box-logo {
+      height: 40px; /* Ajustez la taille du logo si nécessaire */
+      margin-right: 10px;
+  }
+  
+  .info-right {
+      flex: 3; /* 3/4 de la box */
+      color: #484444;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column; /* Aligne le texte verticalement */
+      align-items: flex-start; /* Aligne le texte à gauche */
+      justify-content: center; /* Centre le texte verticalement */
+      padding-left: 20px; /* Espacement entre les deux zones */
+  }
+  
+  .simple {
+      color: #460F9B;
+      font-weight: bold;
+  }
+  
+  .efficace {
+      color: #8158BF;
+      font-weight: bold;
+  }
+  
+  .indispensable {
+      color: #F0ACDB;
+      font-weight: bold;
+  }
+  
+  .tagline {
+      text-align: center;
+      margin: 20px 0;
+      color: #F0ACDB; /* Couleur de la phrase */
+      font-style: italic; /* Italique */
+  }
+  
+  h1 {
+      margin-bottom: 20px;
+      color: #484444; /* Couleur de la phrase */
+  }
+  
+  form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+  
+  input[type="file"] {
+      display: none; /* Masquer le champ de fichier par défaut */
+  }
+  
+  .upload-btn {
+      display: inline-block;
+      background-color: #8158bf; /* Couleur de fond du bouton */
+      color: white; /* Couleur du texte */
+      padding: 30px;
+      border-radius: 20px; /* Bords légèrement arrondis */
+      cursor: pointer;
+      width: 100%;
+      max-width: 400px;
+      height: 35px; /* Réduire l'épaisseur de la bannière */
+      font-family: "Inter-Bold", Helvetica, Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      border: 2px solid black;
+      position: relative;
+  }
+  
+  .upload-btn:hover {
+      background-color: #68409A; /* Couleur du bouton au survol */
+  }
 
-#team > h2 {
+/* CSS Milieu de la page */
+
+.slogan {
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 755px; /* Maximum width to maintain design consistency */
+    margin: 13px auto; /* Center the element horizontally */
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    color:#F0ACDB;
-    font-weight: 900;
-}
-#team {
-    margin-bottom: 5em;
-}
-#objectifs{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#objectifs > .tab{
-    width: 90%;
-    height: auto;
-    background-color: white;
-    overflow: hidden;
-
-    border-radius: 20px;
-    
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-#objectifs  ul.tab {
-    list-style-type: none;
-    align-items: center;
-    padding: 2em;
-    margin: 0;
-}
-
-#objectifs  ul.tab > li{
-    align-items: center;
-}
-
-#objectifs  li {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    color: #5a5858;
-    font-size: 1em;
+    font-style: italic;
+    color: #8158bf;
+    font-size: 18px;
+    text-align: center;
+    line-height: 13px;
     font-weight: 600;
+    letter-spacing: 0;
+    position: relative; /* Change to relative for proper positioning in flow */
+    
+  }
+  
+  .line-slogan {
+    width: 100%; /* Largeur responsive */
+    max-width: 140px; /* Largeur maximale pour la cohérence du design */
+    height: 1px;
+    margin: auto;
+    margin-top: -7px; /* Centre l'élément horizontalement */
+    position: relative; /* Positionnement relatif pour l'alignement correct */
+    background-color: #8158bf; /* Couleur pour la ligne */
+    display: block;
+  }
+
+  .titre1 {
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 12em; /* Maximum width to maintain design consistency */
+    margin: auto;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #000000;
+    font-size: 1.7em;
+    text-align: center;
+    line-height: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    position: relative; /* Change to relative for proper positioning in flow */
+    top: 4.5em;
+    left: -15em;
+  }
+
+  .texte-rose{
+    color: #F0ACDB;
+  }
+
+  .texte-violet{
+    color: #8158bf;
+  }
+
+  .line-titre1 {
+    width: 100%; /* Largeur responsive */
+    max-width: 110px; /* Largeur maximale pour la cohérence du design */
+    height: 1px;
+    margin: auto;
+    margin-top: -7px; /* Centre l'élément horizontalement */
+    position: relative; /* Positionnement relatif pour l'alignement correct */
+    background-color: #F0ACDB; /* Couleur pour la ligne */
+    display: block;
+    top: 8.7em;
+    left: -26.1em;
+  }
+
+  .titre2 {
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 10em; /* Maximum width to maintain design consistency */
+    margin: auto; /* Center the element horizontally */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #000000;
+    font-size: 1.6em;
+    text-align: center;
+    line-height: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    position: relative; /* Change to relative for proper positioning in flow */
+    top: 6em;
+    left: -10em;
+  }
+
+  .line-titre2 {
+    width: 100%; /* Largeur responsive */
+    max-width: 90px; /* Largeur maximale pour la cohérence du design */
+    height: 1px;
+    margin: auto;
+    margin-top: -7px; /* Centre l'élément horizontalement */
+    position: relative; /* Positionnement relatif pour l'alignement correct */
+    background-color: #F0ACDB; /* Couleur pour la ligne */
+    display: block;
+    top: 10.8em;
+    left: -14.1em;
+  }
+
+  #team {
+    padding: 2em;
+    text-align: center;
+}
+
+  .equipe {
+    display: inline-block;
+    margin: 0.5em;
+    align-items: center;
+    width: 100%;
+    max-width: 18em;
+    text-align: center;
+    position: relative;
+    top: 11em;
+    }   
+
+.img {
+    border-radius: 100%;
+    width: 100%;
+    max-width: 13em;
+    height: 100%;
+    height: 14em;
+    position: relative;
+    margin: 10px auto;
     margin-bottom: 2em;
 }
 
-#objectifs  strong {
-    text-align: left;
-    font-weight: bold;
-    margin-right: 3em;
-    left: 0;
-}
-
-#objectifs  .fa {
-    font-size: 1em;
-    margin-right: 1em;
-    color:#F0ACDB
-}
-
-#objectifs p {
-    text-align: right;
-    margin:4em;
-    
-    max-width: 100%;
+.titre-CEO {
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 10em; /* Maximum width to maintain design consistency */
+    margin: auto; /* Center the element horizontally */
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    
+    color: #8158bf;
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 13px;
+    font-weight: 500;
     letter-spacing: 0;
-    height: auto;
+    position: relative; /* Change to relative for proper positioning in flow */
+    top: -0.5em;
+    margin-bottom: 1em;
+  }
+
+  .prenom {
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 10em; /* Maximum width to maintain design consistency */
+    margin: auto; /* Center the element horizontally */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: black;
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    position: relative; /* Change to relative for proper positioning in flow */
+    top: -0.5em;
+    margin-bottom: 2em;
+  }
+
+  .paragraphe {
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 14em; /* Maximum width to maintain design consistency */
+    margin: auto; /* Center the element horizontally */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: black;
+    font-size: 1em;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.5em;
+    letter-spacing: 0.34px;
+    position: relative; /* Change to relative for proper positioning in flow */
+    top: -0.5em;
+  }
+
+  .icones {
+    display:inline-block;
+    width: 100%;
+    max-width: 3em;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    top: 1em;
+    }  
+
+.icones .icone1 {
+    width: 100%;
+    max-width: 1.5em;
+    position: relative;
+    margin: auto;
+    left: -1.5em;
 }
 
-.text-about-us{
+.icones .icone2 {
+    width: 100%;
+    max-width: 2.1em;
+    position: relative;
+    margin: auto;
+    top: -2em;
+    right: -1.5em;
+}
+
+    #motivation {
+        padding: 2em;
+        text-align: center;
+        left: 3em;
+        right: 3em;
+    }
+
+    .motivation {
+        padding: 2em;
+        margin: 1em;
+        width: 100%;
+        max-width: 33em;
+        text-align: center;
+        display: inline-block;
+        align-items: center;
+        position: relative;
+        top: 11em;
+    }
+
+    .uqac {
+        width: 100%;
+        max-width: 30em;
+        height: 100%;
+        position: relative;
+        margin: 10px auto;
+        align-items: center;
+        left: 2em;
+    }
+
+    .titre3 {
+        width: 100%; /* Change to 100% for responsive width */
+        max-width: 33em; /* Maximum width to maintain design consistency */
+        margin: auto; /* Center the element horizontally */
+        font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+        color: #000000;
+        font-size: 1.8em;
+        text-align: right;
+        line-height: 13px;
+        font-weight: 500;
+        letter-spacing: 0;
+        position: relative; /* Change to relative for proper positioning in flow */
+        top: -5em;
+        right: 1.7em;
+      }
+
+      .line-titre3 {
+        width: 100%; /* Largeur responsive */
+        max-width: 120px; /* Largeur maximale pour la cohérence du design */
+        height: 1px;
+        margin: auto;
+        margin-top: -7px; /* Centre l'élément horizontalement */
+        position: relative; /* Positionnement relatif pour l'alignement correct */
+        background-color: #F0ACDB; /* Couleur pour la ligne */
+        display: block;
+        top: -7.7em;
+        left: 7em;
+      }
+
+    .paragraphe1 {
+        width: 100%; /* Change to 100% for responsive width */
+        max-width: 33em; /* Maximum width to maintain design consistency */
+        margin: auto; /* Center the element horizontally */
+        font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+        color: black;
+        font-size: 1em;
+        text-align: justify;
+        font-weight: 400;
+        line-height: 1.5em;
+        letter-spacing: 0.34px;
+        position: relative; /* Change to relative for proper positioning in flow */
+        padding-bottom: 3em;
+        top: -5em;
+        right: 3em;
+      }
+
+      .paragraphe2 {
+        width: 100%; /* Change to 100% for responsive width */
+        max-width: 33em; /* Maximum width to maintain design consistency */
+        margin: auto; /* Center the element horizontally */
+        font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+        color: black;
+        font-size: 1em;
+        text-align: justify;
+        font-weight: 400;
+        line-height: 1.5em;
+        letter-spacing: 0.34px;
+        position: relative; /* Change to relative for proper positioning in flow */
+        top: -5em;
+        right: 3em;
+      }
+
+      #creation {
+        padding: 2em;
+        text-align: center;
+        left: 3em;
+        right: 3em;
+    }
+
+    .creation {
+        padding: 2em;
+        margin: 1em;
+        width: 100%;
+        max-width: 36em;
+        text-align: center;
+        display: inline-block;
+        align-items: center;
+        position: relative;
+        left: 3.5em;
+    }
+
+      .titre4 {
+        width: 100%; /* Change to 100% for responsive width */
+        max-width: 33em; /* Maximum width to maintain design consistency */
+        margin: auto; /* Center the element horizontally */
+        font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+        color: #000000;
+        font-size: 1.8em;
+        text-align: left;
+        line-height: 13px;
+        font-weight: 500;
+        letter-spacing: 0;
+        position: relative; /* Change to relative for proper positioning in flow */
+        top: 4em;
+        left: 2em;
+      }
+
+      .line-titre4 {
+        width: 100%; /* Largeur responsive */
+        max-width: 70px; /* Largeur maximale pour la cohérence du design */
+        height: 1px;
+        margin: auto;
+        margin-top: -7px; /* Centre l'élément horizontalement */
+        position: relative; /* Positionnement relatif pour l'alignement correct */
+        background-color: #F0ACDB; /* Couleur pour la ligne */
+        display: block;
+        top: 8.6em;
+        left: -6.5em;
+      }
+
+      .paragraphe3 {
+        width: 100%; /* Change to 100% for responsive width */
+        max-width: 36em; /* Maximum width to maintain design consistency */
+        margin: auto; /* Center the element horizontally */
+        font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+        color: black;
+        font-size: 1em;
+        text-align: justify;
+        font-weight: 400;
+        line-height: 1.5em;
+        letter-spacing: 0.34px;
+        position: relative; /* Change to relative for proper positioning in flow */
+        padding-bottom: 3em;
+        top: 10em;
+        left: 3.6em;
+      }
+
+      .paragraphe4 {
+        width: 100%; /* Change to 100% for responsive width */
+        max-width: 36em; /* Maximum width to maintain design consistency */
+        margin: auto; /* Center the element horizontally */
+        font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+        color: black;
+        font-size: 1em;
+        text-align: justify;
+        font-weight: 400;
+        line-height: 1.5em;
+        letter-spacing: 0.34px;
+        position: relative; /* Change to relative for proper positioning in flow */
+        top: 10em;
+        left: 3.6em;
+      }
+
+
+      .logo-VeriFile {
+        width: 100%;
+        max-width: 15em;
+        height: 100%;
+        position: relative;
+        margin: 10px auto;
+        top: 7.8em;
+        left: -3.5em;
+        align-items: center;
+    }
+
+    .titre5 {
+        width: 100%; /* Change to 100% for responsive width */
+        max-width: 33em; /* Maximum width to maintain design consistency */
+        margin: auto; /* Center the element horizontally */
+        font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+        color: #8158bf; 
+        font-size: 3em;
+        text-align: left;
+        line-height: 13px;
+        font-weight: 600;
+        letter-spacing: 0;
+        position: relative; /* Change to relative for proper positioning in flow */
+        top: 3em;
+        left: 3em;
+      }
+
+      /* FIN CSS Milieu */
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px 0;
+    position: relative;
+    top: 11em;
+}
+
+  .footer-links-index {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 11px;
+    color: #484444;
+    position: relative;
+    top: 1em;
+    
+}
+
+.footer-links-index a {
+    color: #484444;
+    text-decoration: none;
+}
+
+.footer-links-index a:hover {
+    text-decoration: underline;
+}
+
+.footer-copyright-index {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    font-size: 11px;
+    color: #484444;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+.chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #8158BF;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: bounce 2s infinite;
+}
+
+.chatbot-container {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    display: none;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    width: 24em;
+    max-height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.chatbot-header {
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    background-color: #8158BF;
+    color: white;
+    padding: 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-#objectifs img, .text-about-us img{
-    width: 10em;
-    height: 10em;
-    margin-left: 10em;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo-entreprise{
-    width: 25%;
-    height: auto;
-    margin-top: 4em;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 1em;
-    margin-bottom: 4em;
+.chatbot-header > h2{
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+.chatbot-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom-left-radius: 10px;
+    font-size: 16px;
+}
+
+.chatbot-input button {
+    background-color: #D08AB3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom-right-radius: 10px;
+}
+
+.chatbot-input button:hover {
+    background-color: #372c71;
+}
+
+.message {
+    margin: 10px 0;
+}
+
+.user-message {
+    text-align: right;
+    color: #460F9B;
+}
+
+.bot-message {
+    text-align: left;
+    color: #484444;
 }

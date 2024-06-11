@@ -30,69 +30,72 @@
   
   
   header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      padding: 10px 20px;
-      border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
-      color: #8158bf;
-  }
-  
-  .logo {
-      display: flex;
-      align-items: center;
-  }
-  
-  .logo img {
-      height: 40px;
-      margin-right: 10px;
-  }
-  
-  .logo span {
-      font-weight: bold;
-      font-size: 24px;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      color: #8158bf;
-  }
-  
-  .logo-link {
-      text-decoration: none; /* Supprime le soulignement */
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-      color: #8158bf;
-  }
-  
-  .logo-link:hover {
-      color: #460F9B; /* Change la couleur au survol */
-  }
-  
-  nav {
-      display: flex;
-      align-items: center;
-  }
-  
-  nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
-  }
-  
-  nav ul li {
-      margin: 0 15px;
-  }
-  
-  nav ul li a {
-      color: #8158bf; /* Couleur du texte des catégories */
-      text-decoration: none;
-      font-weight: bold;
-      font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-  }
-  
-  nav ul li a:hover {
-      text-decoration: underline;
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
+    color: #8158bf;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+    margin-top: -1px;
+    margin-bottom: 6.5px;
+}
+
+.logo span {
+    font-weight: bold;
+    font-size: 24px;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #8158bf;
+}
+
+.logo-link {
+    text-decoration: none; /* Supprime le soulignement */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #8158bf;
+}
+
+.logo-link:hover {
+    color: #460F9B; /* Change la couleur au survol */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-right: 15px; /* Ajoute un espacement entre le dernier élément du menu et le bouton Mon Compte */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #8158bf; /* Couleur du texte des catégories */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+  color: #8158bf;
+}
   
   .account-btn {
     background-color: #8158bf; /* Couleur de fond du bouton */
@@ -403,12 +406,13 @@
     position: relative;
     width: 100%;
     height: auto;
+    top: -0.05em;
   }
-  
+
   .question .d-couvrez-la {
     width: 100%; /* Change to 100% for responsive width */
     max-width: 755px; /* Maximum width to maintain design consistency */
-    margin: 20px auto; /* Center the element horizontally */
+    margin: 13px auto; /* Center the element horizontally */
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     font-style: italic;
     color: #8158bf;
@@ -422,9 +426,9 @@
   
   .question .line {
     width: 100%; /* Largeur responsive */
-    max-width: 300px; /* Largeur maximale pour la cohérence du design */
+    max-width: 140px; /* Largeur maximale pour la cohérence du design */
     height: 1px;
-    margin: 0 auto; /* Centre l'élément horizontalement */
+    margin: -7px auto; /* Centre l'élément horizontalement */
     position: relative; /* Positionnement relatif pour l'alignement correct */
     background-color: #8158bf; /* Couleur pour la ligne */
     display: block;
@@ -439,7 +443,7 @@
     font-size: 2.2em;
     text-align: center;
     line-height: 13px;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0;
     position: relative; /* Change to relative for proper positioning in flow */
     top: 3em;
@@ -458,7 +462,7 @@
     font-size: 1.5em;
     text-align: center;
     line-height: 13px;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0;
     position: relative; /* Change to relative for proper positioning in flow */
     top: 3em;

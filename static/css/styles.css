@@ -411,12 +411,13 @@
   position: relative;
   width: 100%;
   height: auto;
+  top: -0.05em;
 }
 
-.index .d-couvrez-la {
+.d-couvrez-la {
   width: 100%; /* Change to 100% for responsive width */
   max-width: 755px; /* Maximum width to maintain design consistency */
-  margin: 20px auto; /* Center the element horizontally */
+  margin: 13px auto; /* Center the element horizontally */
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-style: italic;
   color: #8158bf;
@@ -426,13 +427,14 @@
   font-weight: 600;
   letter-spacing: 0;
   position: relative; /* Change to relative for proper positioning in flow */
+  
 }
 
-.index .line {
+.line {
   width: 100%; /* Largeur responsive */
-  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  max-width: 140px; /* Largeur maximale pour la cohérence du design */
   height: 1px;
-  margin: 0 auto; /* Centre l'élément horizontalement */
+  margin: -7px auto; /* Centre l'élément horizontalement */
   position: relative; /* Positionnement relatif pour l'alignement correct */
   background-color: #8158bf; /* Couleur pour la ligne */
   display: block;
@@ -608,7 +610,6 @@
     text-align: center;
     color: black;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-    
 }
 
 .message-btn {
@@ -629,7 +630,7 @@
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     position:relative;
     font-size: 20px;
-    margin-top: -3%;
+    margin-top: 15%;
 }
 
 .info-message-pourquoi {
@@ -651,7 +652,7 @@
   position: relative; /* Positionnement relatif pour l'alignement correct */
   background-color: #8158bf; /* Couleur pour la ligne */
   display: block;
-  margin-top: -2%;
+  margin-top: -4%;
 }
 
 .line-pourquoi {
@@ -781,7 +782,8 @@
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     font-size: 11px;
     color: #484444;
-    
+    position: relative;
+    top: 1em;
 }
 
 .footer-links-index a {

@@ -17,17 +17,18 @@ main {
     font-weight: 600;
     letter-spacing: 0;
     position: relative;
-    margin-top: 1px;
+    margin-top: -7px;
 }
 
 .contact-section .line {
   width: 100%; /* Largeur responsive */
-  max-width: 300px; /* Largeur maximale pour la cohérence du design */
+  max-width: 140px; /* Largeur maximale pour la cohérence du design */
   height: 1px;
   margin: 0 auto; /* Centre l'élément horizontalement */
   position: relative; /* Positionnement relatif pour l'alignement correct */
   background-color: #8158bf; /* Couleur pour la ligne */
   display: block;
+  margin-top: -14px;
 }
 
 .contact-section h1 {
@@ -36,7 +37,12 @@ main {
     margin-top: 50px; 
     position: relative;
     display: inline-block;
+    font-weight: 500;
 }
+
+.texte-rose{
+    color: #F0ACDB;
+  }
 
 .highlight-image {
     margin-top: -25px; 

@@ -16,9 +16,34 @@ main {
 
 h1 {
     font-size: 2em;
-    margin: 10vh 2vh;
+    margin: auto;
+    margin-top: 10vh;
     color: #000;
     text-align: center;
+    position: relative;
+    left: -1em;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 2em;
+    margin-bottom: 10vh;
+    margin-top: 1vh;
+    color: #000;
+    text-align: center;
+    position: relative;
+    right: -3em;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 2em;
+    margin: auto;
+    margin-top: 10vh;
+    color: #000;
+    text-align: center;
+    position: relative;
+    font-weight: 500;
 }
 
 .highlight.confiance {
