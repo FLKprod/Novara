@@ -45,8 +45,9 @@
         {% else %}
             <a href="{{ url_for('connexion') }}" class="btn btn-primary account-btn">Se Connecter</a>
         {% endif %}
-        <h2>Changer le Mot de passe</h2>
+       
         <form method="POST" action="{{ url_for('change_password') }}" class="change-password-form">
+            <h2>Changer le Mot de passe</h2>
             {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.old_password.label }}

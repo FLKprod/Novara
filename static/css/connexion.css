@@ -112,7 +112,7 @@ h1 {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
-    width: 90%; /* Largeur ajustée pour compenser la largeur du padding */
+    width: 90%; 
 }
 
 .connect input[type="checkbox"] {
@@ -145,50 +145,6 @@ h1 {
     background-color: #8158BF;
 }
 
-.footer {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-}
-
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 5px;
-}
-
-.footer-banner img {
-    width: 100%;
-    max-width: 600px;
-}
-
-.footer-banner {
-    margin: 20px 0;
-}
-
-.footer-copyright {
-    margin: 10px 0;
-}
-
-
-.entete-form{
-    display: flex;
-    max-width: 90%;
-    flex-direction: row;
-}
-.entete-form > input{
-    width: 50%;
-
-}
-.entete-form > #email{
-    width: 50%;
-    margin-left: 1em;
-
-}
 
 .connexion, .inscription {
     width: 100%;
@@ -380,3 +336,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.account-info > p {
+    font-size: 1em;
+  }
