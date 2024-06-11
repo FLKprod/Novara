@@ -170,7 +170,7 @@ def inscription():
     form = RegistrationForm()
     if form.validate_on_submit():
         # Chiffrer le mail
-        encrypted_email = cipher_suite.encrypt(form.email.data.encode('utf-8'))
+        encrypted_email =form.email.data
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         enterprise = form.entreprise.data
 

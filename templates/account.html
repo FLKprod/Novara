@@ -37,7 +37,7 @@
         {% if current_user.is_authenticated %}
     <div class="account-info">
         <p>Bienvenue, {{ current_user.username }} !</p>
-        <p>Email: {{ cipher_suite.decrypt(current_user.email).decode('utf-8') }}</p>
+        <p>Email: {{ current_user.email }}</p>
         <p>Entreprise: {{ current_user.entreprise }}</p>
         <!-- Ajoutez d'autres informations du compte ici -->
         <a href="{{ url_for('logout') }}" class="btn btn-secondary">Se Déconnecter</a>
