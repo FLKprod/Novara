@@ -1,3 +1,71 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  border-bottom: 1px solid #d3d3d3; /* Ligne fine gris clair */
+  color: #8158bf;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+  margin-top: -1px;
+  margin-bottom: 6.5px;
+}
+
+.logo span {
+  font-weight: bold;
+  font-size: 24px;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #8158bf;
+}
+
+.logo-link {
+  text-decoration: none; /* Supprime le soulignement */
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  color: #8158bf;
+}
+
+.logo-link:hover {
+  color: #460F9B; /* Change la couleur au survol */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-right: 15px; /* Ajoute un espacement entre le dernier Ã©lÃ©ment du menu et le bouton Mon Compte */
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #8158bf; /* Couleur du texte des catÃ©gories */
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+nav ul li a:hover {
+text-decoration: underline;
+color: #8158bf;
+}
+
 /* Page Accueil " */
 .accueil {
   background-color: #ffffff;
