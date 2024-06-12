@@ -194,6 +194,8 @@ footer {
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   font-size: 20px;
   font-weight: 500;
+  width: 100%;
+  max-width: 30em;
   color: #000;
   margin: 0;
 }
