@@ -59,8 +59,8 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
 
     var resultDiv=document.getElementById('result')
     console.log(document.getElementById('urlInput').value)
-    url = document.getElementById('urlInput').value;
-    url = ensureWWW(url);
+    url_sans_www = document.getElementById('urlInput').value;
+    url = ensureWWW(url_sans_www);
     // Supprimer une partie de la page HTML
     const elementsToRemove = document.querySelectorAll('.remove-on-upload');
     elementsToRemove.forEach(element => element.remove());
@@ -124,7 +124,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                                 accept: 'application/json',
                                 'content-type': 'application/x-www-form-urlencoded'
                             },
-                            body: new URLSearchParams({ url: url })
+                            body: new URLSearchParams({ url: url_sans_www })
                         })
                         .then(response => response.json())
                         .then(data => {
