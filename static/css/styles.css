@@ -458,7 +458,7 @@
   background-color: #8158bf;
 }
 
-.protection .carré {
+.carré {
   width: 100%; /* Largeur responsive */
   max-width: 200px; /* Largeur maximale pour la cohérence du design */
   height: 50px; /* Hauteur auto pour la responsivité */
