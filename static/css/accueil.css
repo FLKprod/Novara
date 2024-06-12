@@ -66,6 +66,35 @@ text-decoration: underline;
 color: #8158bf;
 }
 
+footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 10px 0;
+  position: relative;
+  top: 3em;
+}
+
+.footer-links {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-size: 12px;
+  color: #484444;
+}
+
+.footer-links a {
+  color: #484444;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-copyright {
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+  font-size: 12px;
+  color: #484444;
+}
+
 /* Page Accueil " */
 .accueil {
   background-color: #ffffff;
