@@ -21,6 +21,7 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
+      width:100%;
       overflow: auto;
       scrollbar-width: none; /* Masquer la barre de défilement */
   }
@@ -32,6 +33,7 @@
   
   
   header {
+    
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -322,7 +324,6 @@
       box-shadow: 0 0 10px rgba(255, 76, 76, 0.5);
   }
   
-  /* Styles existants */
   
   .secure-message {
       text-align: center;
@@ -457,7 +458,7 @@
   background-color: #8158bf;
 }
 
-.index .carré {
+.protection .carré {
   width: 100%; /* Largeur responsive */
   max-width: 200px; /* Largeur maximale pour la cohérence du design */
   height: 50px; /* Hauteur auto pour la responsivité */
@@ -783,7 +784,6 @@
     font-size: 11px;
     color: #484444;
     position: relative;
-    top: 1em;
 }
 
 .footer-links-index a {

@@ -125,10 +125,16 @@ def change_password():
             current_user.password = hashed_password
             db.session.commit()
             flash('Your password has been updated!', 'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('account'))
         else:
             flash('Incorrect old password. Please try again.', 'danger')
-            return render_template('account.html', form=form)
+    else:
+        # Vérifier et flasher les erreurs du formulaire
+        if form.errors:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    flash(f"{error}", 'danger')
+    return render_template('account.html', form=form)
 
 
 @app.route('/connexion', methods=['GET', 'POST'])
@@ -170,11 +176,8 @@ def inscription():
     form = RegistrationForm()
     if form.validate_on_submit():
         # Chiffrer le mail
-<<<<<<< Updated upstream
-        encrypted_email =form.email.data
-=======
+
         encrypted_email = form.email.data
->>>>>>> Stashed changes
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         enterprise = form.entreprise.data
 

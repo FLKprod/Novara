@@ -19,9 +19,9 @@
         <nav>
             <ul>
                 <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
-                <li><a href="{{ url_for('apropos') }}">À Propos</a></li>
                 <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
                 <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('avis') }}">Avis</a></li>
             </ul>
             {% if current_user.is_authenticated %}
             <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->

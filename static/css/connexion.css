@@ -1,61 +1,17 @@
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-header {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.logo-link {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-
-
-.content > p {
+p {
     font-size: 1em;
     font-weight: 600;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
+header {
+    width: 100%;
+}
+
+.content {
+    margin-top: 2em;
 }
 
 .alert {
-    color: #8158BF; /* Couleur du texte VeriFile */
     font-weight: bold;
     font-size: 24px;
 }
@@ -90,17 +46,10 @@ h1 {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.register #email{
-    margin-left: 1em;
-}
-
-.register #password,
-.register #entreprise,
-.register #confirm_password{
     width: auto;
 }
+
+
 
 
 
@@ -185,19 +134,9 @@ p {
     color: #666;
 }
 
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #333;
-}
 
 .form-control {
+    width: 50%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -268,25 +207,81 @@ a:hover {
     color: #721c24;
 }
 
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f9;
-}
 
+.change-password-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
+    margin-left: 3em;
+}
 .account-info, .change-password-form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #484444;
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
+}
+
+.account-info{
+    display: flex;
+    flex-direction: column;
+    align-items:baseline !important;
+}
+
+.content > h2 {
+    margin-left: 1em !important;
+    text-align: left;
+    font-size: 46px;
+    font-weight: 700;
+    color: #8158bf;
+    margin: 0;
+}
+
+
+
+.info, .form-group{
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    text-align: left;
+    margin-left: 2em;
+    font-weight:100;
+}
+
+.form-group{
+    width: 100%;
+}
+.form-group > label{
+    font-size: 1.5em;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.entete-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-info p > i{
+    font-size: 1em;
+    color: #8158bf;
+    text-align: left;
+    margin-left: 3em;
+}
+
+.account-info > p {
+    color: #484444;
+    font-size: 1.5em;
+}
+
+.sous-titre > p{
+    margin-left: 0;
+    text-align: left;
+    font-weight:bold;
 }
 
 h2 {
@@ -320,7 +315,9 @@ p {
 }
 
 .btn-secondary {
-    background-color: #ccc;
+    left: 0;
+    margin-left: 3em;
+    background-color: #721c24;
 }
 
 .text-danger {
@@ -336,7 +333,3 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
-.account-info > p {
-    font-size: 1em;
-  }

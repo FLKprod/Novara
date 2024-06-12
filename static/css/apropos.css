@@ -10,7 +10,7 @@
 }
 
 .extention_chrome h2,.extention_chrome h3{
-    flex: 1; /* 1/4 de la box */
+    flex: 1;
     color: #8158BF;
     font-weight: bold;
     display: flex;
@@ -28,7 +28,9 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 3em;
 }
-
+.footer-links-index {
+    top:0;
+}
 .extention_chrome p {
     color: #666;
     font-size: 1em;
