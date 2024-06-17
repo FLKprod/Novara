@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    const userInput = document.getElementById('userInput');
+    userInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+});
+
 function toggleChatbot() {
     const chatbotContainer = document.getElementById('chatbotContainer');
     if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
@@ -13,8 +23,7 @@ async function sendMessage() {
 
     displayMessage('Utilisateur', userInput);
 
-    const apiKey = process.env.gpt;
-     // Remplacez par votre clé API OpenAI
+    const apiKey = 'XXXXX'; // Remplacez par votre clé API OpenAI
 
     const headers = {
         'Content-Type': 'application/json',
@@ -23,7 +32,10 @@ async function sendMessage() {
 
     const body = {
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: userInput }, {role: "system", content: "Vous êtes un assistant spécialisé en cybersécurité. Répondez uniquement aux questions concernant la cybersécurité , les attaques informatique , les toute autres question qui en rapport avec la securite informatique. Si la question ne concerne pas la ennoces, répondez par 'Je suis désolé, mais je ne suis pas programmé pour cette opération.'"}]
+        messages: [
+            { role: "user", content: userInput },
+            { role: "system", content: "Vous êtes un assistant spécialisé en cybersécurité. Répondez uniquement aux questions concernant la cybersécurité , les attaques informatique , les toute autres question qui en rapport avec la securite informatique. Si la question ne concerne pas la ennoces, répondez par 'Je suis désolé, mais je ne suis pas programmé pour cette opération.'" }
+        ]
     };
 
     try {
