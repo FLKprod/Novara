@@ -73,3 +73,42 @@ Les prototypes incluent la page d'accueil, les interfaces de connexion et d'insc
 
 Pour plus d'informations, veuillez consulter le document détaillé ou contacter notre équipe.
 
+# Installation de l'Application
+
+Ce guide vous aidera à installer et à démarrer l'application sur votre système local.
+
+## Prérequis
+
+Avant de commencer, assurez-vous d'avoir installé un éditeur de code, tel que Visual Studio Code, et que Python est installé sur votre machine.
+
+## Étapes d'Installation
+
+1. **Téléchargement du fichier :**
+   - Accédez à la page GitHub du projet et téléchargez le dernier fichier de l'application en cliquant sur *Clone or download* puis sur *Download ZIP*.
+
+2. **Préparation de l'environnement :**
+   - Décompressez le fichier téléchargé et ouvrez le dossier avec Visual Studio Code.
+
+3. **Installation des dépendances :**
+   - Ouvrez un terminal dans Visual Studio Code (Terminal > New Terminal).
+   - Exécutez la commande suivante pour installer les bibliothèques nécessaires :
+     ```
+     pip install -r requirements.txt
+     ```
+
+4. **Lancement de l'application :**
+   - Dans le terminal, lancez l'application avec la commande suivante :
+     ```
+     python app.py
+     ```
+   - Assurez-vous que l'application est configurée pour s'exécuter sur le port 5000. Si ce n'est pas le cas, vous pouvez modifier le fichier `app.py` pour définir le port approprié.
+
+## Accès à l'Application
+
+Après avoir lancé l'application, ouvrez un navigateur et accédez à `http://localhost:5000` pour commencer à utiliser l'application.
+
+## Support
+
+Pour toute question ou problème lors de l'installation ou de l'utilisation de l'application, n'hésitez pas à créer une issue sur la page GitHub du projet.
+
+
