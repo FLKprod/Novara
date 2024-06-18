@@ -17,12 +17,14 @@ from flask_login import LoginManager, UserMixin, login_user, current_user, logou
 from forms import RegistrationForm, LoginForm, ChangePasswordForm
 from models import User, URL, db, bcrypt
 from urllib.parse import urlparse
+from openai import OpenAI
 
 app = Flask(__name__)
 
 API_KEY = '35ff4fd90a69e29c7a77d726681f10e1d802d3f3bfb609cf1b263dc4590b8723'
 UPLOAD_FILE = 'https://www.virustotal.com/api/v3/files'
 ANALYSIS_FILE = 'https://www.virustotal.com/api/v3/analyses/'
+os.environ['OPENAI_API_KEY'] = 'sk-proj-2Yrz1XI88prNPWJ9YfzJT3BlbkFJtQOmOdKbhwJANYR2d71J'
 
 app.config['SECRET_KEY'] = "b'k\xec\t\x024\xff\x15\x993\x02\xf9\\\xca\x08\xcaKs\x8b\xcb\xd2bs\xaeF'"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -322,6 +324,32 @@ def upload_url():
         attempts += 1
 
     return jsonify({'error': 'Analysis timed out'}), 408
+
+@app.route('/sendMessage', methods=['POST'])
+def send_message():
+    data = request.json
+    user_input = data.get('message')
+    if not user_input:
+        return jsonify({'error': 'No message provided'}), 400
+
+    # Obtenez la réponse du chatbot en utilisant le module openai
+    response = get_chatbot_response(user_input)
+    return jsonify({'response': response})
+
+def get_chatbot_response(user_input):
+    try:
+        client = OpenAI()
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {'role': "user", 'content': user_input},
+                {'role': "system", 'content': "Vous êtes un assistant spécialisé en cybersécurité. Répondez uniquement aux questions concernant la cybersécurité."}
+            ]
+        )
+        # Retourne la réponse du modèle
+        return response.choices[0].message.content
+    except Exception as e:
+        return f'Erreur lors de la connexion à l\'API OpenAI: {str(e)}'
     
 if __name__ == '__main__':
     with app.app_context():
