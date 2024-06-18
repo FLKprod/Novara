@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             sendMessage();
         }
     });
+
+    // Charger les messages sauvegardés à l'initialisation
+    loadMessages();
 });
 
 function toggleChatbot() {
@@ -23,23 +26,16 @@ async function sendMessage() {
 
     displayMessage('Utilisateur', userInput);
 
-    const apiKey = 'XXXXX'; // Remplacez par votre clé API OpenAI
-
     const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'Content-Type': 'application/json'
     };
 
     const body = {
-        model: "gpt-3.5-turbo",
-        messages: [
-            { role: "user", content: userInput },
-            { role: "system", content: "Vous êtes un assistant spécialisé en cybersécurité. Répondez uniquement aux questions concernant la cybersécurité , les attaques informatique , les toute autres question qui en rapport avec la securite informatique. Si la question ne concerne pas la ennoces, répondez par 'Je suis désolé, mais je ne suis pas programmé pour cette opération.'" }
-        ]
+        message: userInput
     };
 
     try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('/sendMessage', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body)
@@ -50,7 +46,7 @@ async function sendMessage() {
         }
 
         const data = await response.json();
-        const botResponse = data.choices[0].message.content;
+        const botResponse = data.response;
         displayMessage('VeriFile', botResponse);
     } catch (error) {
         console.error('Erreur:', error);
@@ -67,4 +63,20 @@ function displayMessage(type, message) {
     messageElement.innerHTML = `<strong style="color:#460F9B">${type}:</strong> ${message}`;
     chatbotMessages.appendChild(messageElement);
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+    // Sauvegarder le message dans le localStorage
+    saveMessage(type, message);
+}
+
+function saveMessage(type, message) {
+    const existingMessages = JSON.parse(localStorage.getItem('chatbotMessages')) || [];
+    existingMessages.push({ type, message });
+    localStorage.setItem('chatbotMessages', JSON.stringify(existingMessages));
+}
+
+function loadMessages() {
+    const messages = JSON.parse(localStorage.getItem('chatbotMessages')) || [];
+    messages.forEach(msg => {
+        displayMessage(msg.type, msg.message);
+    });
 }
