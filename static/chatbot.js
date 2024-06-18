@@ -23,6 +23,7 @@ function toggleChatbot() {
 async function sendMessage() {
     const userInput = document.getElementById('userInput').value;
     if (userInput.trim() === '') return;
+    document.getElementById('userInput').value = '';
 
     displayMessage('Utilisateur', userInput);
 
@@ -52,8 +53,6 @@ async function sendMessage() {
         console.error('Erreur:', error);
         displayMessage('VeriFile', 'Désolé, une erreur est survenue.');
     }
-
-    document.getElementById('userInput').value = '';
 }
 
 function displayMessage(type, message) {
