@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     // Charger les messages sauvegardés à l'initialisation
-    loadMessages();
+    //loadMessages();
 });
 
 function toggleChatbot() {
