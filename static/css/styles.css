@@ -834,7 +834,7 @@
     bottom: 1em;
     right: 1em;
     width: 24em;
-    max-height: 400px;
+    max-height: 90vh;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 10px;
