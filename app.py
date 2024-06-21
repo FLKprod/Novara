@@ -14,17 +14,19 @@ from sendgrid.helpers.mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
+from flask_socketio import SocketIO, emit
 from forms import RegistrationForm, LoginForm, ChangePasswordForm
 from models import User, URL, db, bcrypt
 from urllib.parse import urlparse
 from openai import OpenAI
+
 
 app = Flask(__name__)
 
 API_KEY = '35ff4fd90a69e29c7a77d726681f10e1d802d3f3bfb609cf1b263dc4590b8723'
 UPLOAD_FILE = 'https://www.virustotal.com/api/v3/files'
 ANALYSIS_FILE = 'https://www.virustotal.com/api/v3/analyses/'
-os.environ['OPENAI_API_KEY'] = 'sk-proj-2Yrz1XI88prNPWJ9YfzJT3BlbkFJtQOmOdKbhwJANYR2d71J'
+os.environ['OPENAI_API_KEY'] = 'METTRE CLE OPENAI ICI'
 
 app.config['SECRET_KEY'] = "b'k\xec\t\x024\xff\x15\x993\x02\xf9\\\xca\x08\xcaKs\x8b\xcb\xd2bs\xaeF'"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -37,14 +39,18 @@ bcrypt.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+login_manager.login_view = 'connexion'
+
 key = Fernet.generate_key()
 cipher_suite = Fernet(key)
-
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
+socketio = SocketIO(app)
+
 @app.route('/')
+@login_required
 def index():
     app.logger.debug('Serving index.html')
     return render_template('index.html')
@@ -324,32 +330,31 @@ def upload_url():
         attempts += 1
 
     return jsonify({'error': 'Analysis timed out'}), 408
+@socketio.on('message_from_client')
+def handle_message(data):
+    user_input = data['message']
+    client = OpenAI()
 
-@app.route('/sendMessage', methods=['POST'])
-def send_message():
-    data = request.json
-    user_input = data.get('message')
-    if not user_input:
-        return jsonify({'error': 'No message provided'}), 400
-
-    # Obtenez la réponse du chatbot en utilisant le module openai
-    response = get_chatbot_response(user_input)
-    return jsonify({'response': response})
-
-def get_chatbot_response(user_input):
     try:
         client = OpenAI()
-        response = client.chat.completions.create(
+        completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {'role': "user", 'content': user_input},
                 {'role': "system", 'content': "Vous êtes un assistant spécialisé en cybersécurité. Répondez uniquement aux questions concernant la cybersécurité."}
-            ]
+            ],
+            stream=True
         )
-        # Retourne la réponse du modèle
-        return response.choices[0].message.content
+        # Suppose there's a way to determine the end of the message
+        for i, chunk in enumerate(completion):
+            if chunk.choices[0].delta.content :
+                emit('message_from_server', {'text': chunk.choices[0].delta.content, 'more': True})
+            else:
+                emit('message_from_server', {'text': '', 'more': False})
     except Exception as e:
-        return f'Erreur lors de la connexion à l\'API OpenAI: {str(e)}'
+        emit('message_from_server', {'text': f'Erreur lors de la connexion à l\'API OpenAI: {str(e)}', 'more': False})
+    
+    
     
 if __name__ == '__main__':
     with app.app_context():
