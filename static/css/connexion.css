@@ -5,6 +5,10 @@ footer {
     position: relative;
     top: 3em;
   }
+
+  .footer-links-index{
+    margin-bottom: 20px;
+  }
   
   .footer-links {
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
@@ -193,7 +197,7 @@ p {
 
 .btn {
     display: inline-block;
-    background-color: #af52de;
+    background-color: #8158BF;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -203,7 +207,7 @@ p {
 }
 
 .btn-primary {
-    background-color: #af52de;
+    background-color: #8158BF;
 }
 
 .text-danger {
@@ -212,7 +216,7 @@ p {
 }
 
 a {
-    color: #af52de;
+    color: #8158BF;
     text-decoration: none;
 }
 
@@ -330,7 +334,7 @@ p {
 
 .btn {
     display: inline-block;
-    background-color: #af52de;
+    background-color: #8158BF;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -340,7 +344,7 @@ p {
 }
 
 .btn-primary {
-    background-color: #af52de;
+    background-color: #8158BF;
 }
 
 .btn-secondary {
@@ -355,7 +359,7 @@ p {
 }
 
 a {
-    color: #af52de;
+    color: #8158BF;
     text-decoration: none;
 }
 
