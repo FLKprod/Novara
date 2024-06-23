@@ -220,36 +220,35 @@ def upload_file():
         app.logger.info(f'Uploading file: {file.filename}')
         files = {'file': (file.filename, file.read())}
         headers = {'x-apikey': API_KEY}
-        response = requests.post(UPLOAD_FILE, files=files, headers=headers)
-        
-        if response.status_code == 200:
-            analysis_id = response.json()['data']['id']
-            app.logger.info(f'File uploaded successfully. Analysis ID: {analysis_id}')
-            
-            max_attempts = 30
-            attempts = 1  # Start from 1 to directly emit 10%
-            while attempts <= max_attempts:
-                result_response = requests.get(f'{ANALYSIS_FILE}{analysis_id}', headers=headers)
-                if result_response.status_code == 200:
-                    result_json = result_response.json()
-                    status = result_json['data']['attributes']['status']
-                    app.logger.debug(f'Analysis status: {status}')
-                    socketio.emit('update_progress', {'progress': attempts * 10})
-                    if status == 'completed':
-                        app.logger.info('Analysis completed')
-                        socketio.emit('update_progress', {'progress': 100})
-                        return jsonify(result_json)
-                    elif status == 'queued':
-                        app.logger.info('Analysis queued')
+        with requests.post(UPLOAD_FILE, files=files, headers=headers) as response:
+            if response.status_code == 200:
+                analysis_id = response.json()['data']['id']
+                app.logger.info(f'File uploaded successfully. Analysis ID: {analysis_id}')
                 
-                attempts += 1
-                time.sleep(15)
-            
-            app.logger.error('Analysis timed out')
-            return jsonify({'error': 'Analysis timed out'}), 408
-        else:
-            app.logger.error(f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}')
-            return jsonify({'error': f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}'}), response.status_code
+                max_attempts = 30
+                attempts = 1  # Start from 1 to directly emit 10%
+                while attempts <= max_attempts:
+                    with requests.get(f'{ANALYSIS_FILE}{analysis_id}', headers=headers) as result_response:
+                        if result_response.status_code == 200:
+                            result_json = result_response.json()
+                            status = result_json['data']['attributes']['status']
+                            app.logger.debug(f'Analysis status: {status}')
+                            socketio.emit('update_progress', {'progress': attempts * 10})
+                            if status == 'completed':
+                                app.logger.info('Analysis completed')
+                                socketio.emit('update_progress', {'progress': 100}) 
+                                return jsonify(result_json)
+                            elif status == 'queued':
+                                app.logger.info('Analysis queued')
+                    
+                    attempts += 1
+                    time.sleep(15)
+                
+                app.logger.error('Analysis timed out')
+                return jsonify({'error': 'Analysis timed out'}), 408
+            else:
+                app.logger.error(f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}')
+                return jsonify({'error': f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}'}), response.status_code
     
     app.logger.error('Unknown error')
     return jsonify({'error': 'Unknown error'}), 400
