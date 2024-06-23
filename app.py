@@ -20,7 +20,6 @@ from models import User, URL, db, bcrypt
 from urllib.parse import urlparse
 from openai import OpenAI
 
-
 app = Flask(__name__)
 
 API_KEY = '35ff4fd90a69e29c7a77d726681f10e1d802d3f3bfb609cf1b263dc4590b8723'
@@ -228,15 +227,17 @@ def upload_file():
             app.logger.info(f'File uploaded successfully. Analysis ID: {analysis_id}')
             
             max_attempts = 30
-            attempts = 0
-            while attempts < max_attempts:
+            attempts = 1  # Start from 1 to directly emit 10%
+            while attempts <= max_attempts:
                 result_response = requests.get(f'{ANALYSIS_FILE}{analysis_id}', headers=headers)
                 if result_response.status_code == 200:
                     result_json = result_response.json()
                     status = result_json['data']['attributes']['status']
                     app.logger.debug(f'Analysis status: {status}')
+                    socketio.emit('update_progress', {'progress': attempts * 10})
                     if status == 'completed':
                         app.logger.info('Analysis completed')
+                        socketio.emit('update_progress', {'progress': 100})
                         return jsonify(result_json)
                     elif status == 'queued':
                         app.logger.info('Analysis queued')
@@ -291,7 +292,6 @@ def add_blacklist_url():
     db.session.commit()
     return jsonify({'message': 'URL added to blacklist'}), 201
 
-
 # Route pour soumettre l'URL pour analyse
 @app.route('/uploadurl', methods=['POST'])
 def upload_url():
@@ -330,6 +330,7 @@ def upload_url():
         attempts += 1
 
     return jsonify({'error': 'Analysis timed out'}), 408
+
 @socketio.on('message_from_client')
 def handle_message(data):
     user_input = data['message']
@@ -353,12 +354,8 @@ def handle_message(data):
                 emit('message_from_server', {'text': '', 'more': False})
     except Exception as e:
         emit('message_from_server', {'text': f'Erreur lors de la connexion à l\'API OpenAI: {str(e)}', 'more': False})
-    
-    
-    
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
-  
