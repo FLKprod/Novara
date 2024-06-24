@@ -279,7 +279,6 @@ def check_hash_bdd():
 
 @app.route('/check_url_blackbdd', methods=['POST'])
 def check_url_blackbdd():
-    url = request.form.get('url')
     url_input = request.form.get('url')
     if not url_input:
         return jsonify({'error': 'No URL provided'}), 400
@@ -298,13 +297,12 @@ def check_url_blackbdd():
     url_record = blackURL.query.filter(blackURL.url.contains(base_domain)).first()
     
     if url_record:
-        return jsonify({'exists': True, 'message': 'URL already present in the database'})
         return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
     else:
        return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
 
 
-    # Si l'URL n'est pas présente, retournez une réponse indiquant qu'elle n'existe pas
+
 
 @app.route('/check_url_whitebdd', methods=['POST'])
 def check_url_whitebdd():
