@@ -14,15 +14,18 @@ from sendgrid.helpers.mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
+from flask_socketio import SocketIO, emit
 from forms import RegistrationForm, LoginForm, ChangePasswordForm
 from models import User, blackURL,whiteURL, db, bcrypt, Hash
 from urllib.parse import urlparse
+from openai import OpenAI
 
 app = Flask(__name__)
 
 API_KEY = '35ff4fd90a69e29c7a77d726681f10e1d802d3f3bfb609cf1b263dc4590b8723'
 UPLOAD_FILE = 'https://www.virustotal.com/api/v3/files'
 ANALYSIS_FILE = 'https://www.virustotal.com/api/v3/analyses/'
+os.environ['OPENAI_API_KEY'] = 'METTRE CLE OPENAI ICI'
 
 app.config['SECRET_KEY'] = "b'k\xec\t\x024\xff\x15\x993\x02\xf9\\\xca\x08\xcaKs\x8b\xcb\xd2bs\xaeF'"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -38,14 +41,18 @@ bcrypt.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+login_manager.login_view = 'connexion'
+
 key = Fernet.generate_key()
 cipher_suite = Fernet(key)
-
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
+socketio = SocketIO(app)
+
 @app.route('/')
+@login_required
 def index():
     app.logger.debug('Serving index.html')
     return render_template('index.html')
@@ -217,34 +224,35 @@ def upload_file():
         app.logger.info(f'Uploading file: {file.filename}')
         files = {'file': (file.filename, file.read())}
         headers = {'x-apikey': API_KEY}
-        response = requests.post(UPLOAD_FILE, files=files, headers=headers)
-        
-        if response.status_code == 200:
-            analysis_id = response.json()['data']['id']
-            app.logger.info(f'File uploaded successfully. Analysis ID: {analysis_id}')
-            
-            max_attempts = 30
-            attempts = 0
-            while attempts < max_attempts:
-                result_response = requests.get(f'{ANALYSIS_FILE}{analysis_id}', headers=headers)
-                if result_response.status_code == 200:
-                    result_json = result_response.json()
-                    status = result_json['data']['attributes']['status']
-                    app.logger.debug(f'Analysis status: {status}')
-                    if status == 'completed':
-                        app.logger.info('Analysis completed')
-                        return jsonify(result_json)
-                    elif status == 'queued':
-                        app.logger.info('Analysis queued')
+        with requests.post(UPLOAD_FILE, files=files, headers=headers) as response:
+            if response.status_code == 200:
+                analysis_id = response.json()['data']['id']
+                app.logger.info(f'File uploaded successfully. Analysis ID: {analysis_id}')
                 
-                attempts += 1
-                time.sleep(15)
-            
-            app.logger.error('Analysis timed out')
-            return jsonify({'error': 'Analysis timed out'}), 408
-        else:
-            app.logger.error(f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}')
-            return jsonify({'error': f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}'}), response.status_code
+                max_attempts = 30
+                attempts = 1  # Start from 1 to directly emit 10%
+                while attempts <= max_attempts:
+                    with requests.get(f'{ANALYSIS_FILE}{analysis_id}', headers=headers) as result_response:
+                        if result_response.status_code == 200:
+                            result_json = result_response.json()
+                            status = result_json['data']['attributes']['status']
+                            app.logger.debug(f'Analysis status: {status}')
+                            socketio.emit('update_progress', {'progress': attempts * 10})
+                            if status == 'completed':
+                                app.logger.info('Analysis completed')
+                                socketio.emit('update_progress', {'progress': 100}) 
+                                return jsonify(result_json)
+                            elif status == 'queued':
+                                app.logger.info('Analysis queued')
+                    
+                    attempts += 1
+                    time.sleep(15)
+                
+                app.logger.error('Analysis timed out')
+                return jsonify({'error': 'Analysis timed out'}), 408
+            else:
+                app.logger.error(f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}')
+                return jsonify({'error': f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}'}), response.status_code
     
     app.logger.error('Unknown error')
     return jsonify({'error': 'Unknown error'}), 400
@@ -389,7 +397,31 @@ def upload_url():
         attempts += 1
 
     return jsonify({'error': 'Analysis timed out'}), 408
-    
+
+@socketio.on('message_from_client')
+def handle_message(data):
+    user_input = data['message']
+    client = OpenAI()
+
+    try:
+        client = OpenAI()
+        completion = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {'role': "user", 'content': user_input},
+                {'role': "system", 'content': "Vous êtes un assistant spécialisé en cybersécurité. Répondez uniquement aux questions concernant la cybersécurité."}
+            ],
+            stream=True
+        )
+        # Suppose there's a way to determine the end of the message
+        for i, chunk in enumerate(completion):
+            if chunk.choices[0].delta.content :
+                emit('message_from_server', {'text': chunk.choices[0].delta.content, 'more': True})
+            else:
+                emit('message_from_server', {'text': '', 'more': False})
+    except Exception as e:
+        emit('message_from_server', {'text': f'Erreur lors de la connexion à l\'API OpenAI: {str(e)}', 'more': False})
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

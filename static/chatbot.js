@@ -1,3 +1,16 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    const userInput = document.getElementById('userInput');
+    userInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+
+    // Charger les messages sauvegardés à l'initialisation
+    //loadMessages();
+});
+
 function toggleChatbot() {
     const chatbotContainer = document.getElementById('chatbotContainer');
     if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
@@ -7,46 +20,39 @@ function toggleChatbot() {
     }
 }
 
-async function sendMessage() {
+var socket = io();
+var currentParagraph = null;
+
+socket.on('connect', function() {
+    console.log('Connected to the server.');
+});
+
+socket.on('message_from_server', function(data) {
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    if (!currentParagraph && data.text != '') {
+        currentParagraph = document.createElement("p");
+        currentParagraph.innerHTML = `<strong style="color:#460F9B">VeriFile: </strong>`;
+        document.getElementById('chatbotMessages').appendChild(currentParagraph);
+    }
+
+    if (!data.more) {
+        currentParagraph = null; // Reset for next message
+    } else{
+        currentParagraph.innerHTML += data.text;
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+});
+
+function sendMessage() {
     const userInput = document.getElementById('userInput').value;
     if (userInput.trim() === '') return;
+    document.getElementById('userInput').value = '';
 
     displayMessage('Utilisateur', userInput);
 
-    const apiKey = process.env.gpt;
-     // Remplacez par votre clé API OpenAI
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-    };
-
-    const body = {
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: userInput }, {role: "system", content: "Vous êtes un assistant spécialisé en cybersécurité. Répondez uniquement aux questions concernant la cybersécurité , les attaques informatique , les toute autres question qui en rapport avec la securite informatique. Si la question ne concerne pas la ennoces, répondez par 'Je suis désolé, mais je ne suis pas programmé pour cette opération.'"}]
-    };
-
-    try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(body)
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erreur HTTP! statut: ${response.status}`);
-        }
-
-        const data = await response.json();
-        const botResponse = data.choices[0].message.content;
-        displayMessage('VeriFile', botResponse);
-    } catch (error) {
-        console.error('Erreur:', error);
-        displayMessage('VeriFile', 'Désolé, une erreur est survenue.');
-    }
-
-    document.getElementById('userInput').value = '';
+    socket.emit('message_from_client', { message: userInput });
 }
+
 
 function displayMessage(type, message) {
     const chatbotMessages = document.getElementById('chatbotMessages');
@@ -55,4 +61,20 @@ function displayMessage(type, message) {
     messageElement.innerHTML = `<strong style="color:#460F9B">${type}:</strong> ${message}`;
     chatbotMessages.appendChild(messageElement);
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+    // Sauvegarder le message dans le localStorage
+    saveMessage(type, message);
+}
+
+function saveMessage(type, message) {
+    const existingMessages = JSON.parse(localStorage.getItem('chatbotMessages')) || [];
+    existingMessages.push({ type, message });
+    localStorage.setItem('chatbotMessages', JSON.stringify(existingMessages));
+}
+
+function loadMessages() {
+    const messages = JSON.parse(localStorage.getItem('chatbotMessages')) || [];
+    messages.forEach(msg => {
+        displayMessage(msg.type, msg.message);
+    });
 }

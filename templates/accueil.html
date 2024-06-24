@@ -83,6 +83,23 @@
             </div>
           </div>
         </div>
+
+        <div class="chatbot-icon" onclick="toggleChatbot()">
+          💬
+      </div>
+      <div class="chatbot-container" id="chatbotContainer">
+          <div class="chatbot-header">
+              <h2>VeriFile</h2>
+              <button class="close-btn" onclick="toggleChatbot()">×</button>
+          </div>
+          <div class="chatbot-messages" id="chatbotMessages">
+              <!-- Messages will appear here -->
+          </div>
+          <div class="chatbot-input">
+              <input type="text" id="userInput" placeholder="Tapez votre message...">
+              <button onclick="sendMessage()">Envoyer</button>
+          </div>
+        </div>
       </div>
     <footer>
         <div class="footer-links">
@@ -94,24 +111,11 @@
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
     </footer>
 
-  <div class="chatbot-icon-accueil" onclick="toggleChatbot()">
-      💬
-  </div>
-  <div class="chatbot-container" id="chatbotContainer">
-      <div class="chatbot-header">
-          <h2>VeriFile</h2>
-          <button class="close-btn" onclick="toggleChatbot()">×</button>
-      </div>
-      <div class="chatbot-messages" id="chatbotMessages">
-          <!-- Messages will appear here -->
-      </div>
-      <div class="chatbot-input">
-          <input type="text" id="userInput" placeholder="Tapez votre message...">
-          <button onclick="sendMessage()">Envoyer</button>
-      </div>
-    </div>
+  
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

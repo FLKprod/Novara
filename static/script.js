@@ -27,11 +27,9 @@ document.getElementById('fileInput').addEventListener('change', async function(e
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
 
-    // Supprimer une partie de la page HTML
     const elementsToRemove = document.querySelectorAll('.remove-on-upload');
     elementsToRemove.forEach(element => element.remove());
 
-    // Afficher un message de chargement avec une classe et une image gif
     const resultDiv = document.getElementById('result');
 
     const file = event.target.files[0];
@@ -135,18 +133,49 @@ document.getElementById('fileInput').addEventListener('change', async function(e
 
 document.getElementById('urlInput').addEventListener('change', function(event) {
 
-    var resultDiv=document.getElementById('result')
-    console.log(document.getElementById('urlInput').value)
-    url_sans_www = document.getElementById('urlInput').value;
-    url = ensureWWW(url_sans_www);
-    // Supprimer une partie de la page HTML
+function animateProgressBar(targetProgress) {
+    const progressBar = document.getElementById('progressBar');
+    const currentProgress = parseFloat(progressBar.style.width) || 0;  // Ensure it's a number or default to 0
+    const step = (targetProgress - currentProgress) / 10;
+
+    function updateProgress() {
+        let newProgress = parseFloat(progressBar.style.width) || 0;  // Ensure it's a number or default to 0
+        newProgress += step;
+        if (newProgress > targetProgress) {
+            newProgress = targetProgress;
+        }
+        progressBar.style.width = newProgress + '%';
+        progressBar.textContent = Math.round(newProgress) + '%';
+
+        if (newProgress < targetProgress) {
+            requestAnimationFrame(updateProgress);
+        }
+    }
+
+    requestAnimationFrame(updateProgress);
+}});
+
+document.getElementById('urlInput').addEventListener('change', function(event) {
+    const resultDiv = document.getElementById('result');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const url_sans_www = document.getElementById('urlInput').value;
+    const url = ensureWWW(url_sans_www);
+
     const elementsToRemove = document.querySelectorAll('.remove-on-upload');
     elementsToRemove.forEach(element => element.remove());
 
-    resultDiv.innerHTML = `
-        <img class="loading-gif" src="${loadingGifPath}" alt="Chargement...">
-        <div class="loading-message">Analyse en cours...</div>
-    `;
+    resultDiv.innerHTML = 
+        `<img class="loading-gif" src="${loadingGifPath}" alt="Chargement...">
+        <div class="loading-message">Analyse en cours...</div>`;
+
+    progressContainer.style.display = 'block';
+
+    const socket = io.connect();
+
+    socket.on('update_progress', function(data) {
+        animateProgressBar(data.progress);
+    });
 
     fetch('/check_url_blackbdd', {
         method: 'POST',
@@ -163,21 +192,17 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
             resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
             resultDiv.innerHTML = resultsHtml;
             console.log("L'URL est déjà présente dans la base de données. Pas besoin de la soumettre pour analyse.");
-            // Vous pouvez ajouter ici le code pour afficher un message ou effectuer d'autres actions si nécessaire
         } else {
-            console.log("/uploadurl")
-            // Si l'URL n'est pas présente dans la base de données, la soumettre pour analyse
             fetch('/uploadurl', {
                 method: 'POST',
                 headers: {
-                accept: 'application/json',
-                'content-type': 'application/x-www-form-urlencoded'
+                    accept: 'application/json',
+                    'content-type': 'application/x-www-form-urlencoded'
                 },
                 body: new URLSearchParams({url: url})
             })
             .then(response => response.json())
             .then(data => {
-                
                 if (data.error) {
                     resultDiv.textContent = `Erreur : ${data.error}`;
                 } else {
@@ -193,7 +218,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                         }
                     }
                     resultsHtml += '</ul>';
-        
+
                     if (detected) {
                         resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
                         fetch('/add_blacklist_url', {
@@ -216,7 +241,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                         resultsHtml += '<p class="line-" src="${barrePath}" alt="line"></p>';
                         resultsHtml += '<p class="info-message">Ces questions nous permettront d\'évaluer plus précisément le niveau de confiance à accorder à votre fichier. Votre participation est cruciale pour garantir une protection optimale contre les menaces potentielles.</p>';
                     }
-        
+
                     resultDiv.innerHTML = resultsHtml;
                 }
             })
@@ -226,15 +251,15 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     .catch(err => console.error(err));
 });
 
-
-
-        
-
-    function ensureWWW(url) {
-        url = url.trim();
-        // Ensure the URL starts with https:// or http://
-        if (!url.startsWith('https://') && !url.startsWith('http://')) {
-            url = 'https://' + url;
+function ensureWWW(url) {
+    url = url.trim();
+    if (!url.startsWith('https://') && !url.startsWith('http://')) {
+        url = 'https://' + url;
+    }
+    if (!url.startsWith('https://www.') && !url.startsWith('http://www.')) {
+        const urlObj = new URL(url);
+        if (!urlObj.hostname.startsWith('www.')) {
+            urlObj.hostname = 'www.' + urlObj.hostname;
         }
         
         // Check if the URL starts with https://www. or http://www.
@@ -253,4 +278,4 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
         // Return the original URL if already correct
         return url;
     }
-
+}

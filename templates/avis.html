@@ -34,8 +34,8 @@
         <p class="d-couvrez-la">Trust your files, with VeriFile</p>
         <img class="line" src="" />
         <section class="testimonial-section">
-            <h1>Ils nous ont fait <span class="highlight confiance">confiance,</span></h1>
-            <h3>pourquoi pas <span class="highlight vous">vous</span> ?</h3>
+            <h1 class="main-title">Ils nous ont fait <span class="highlight confiance">confiance,</span></h1>
+            <h3 class="subtitle">pourquoi pas <span class="highlight vous">vous</span> ?</h3>
 
             <div class="sector">
                 <h2 class="left-align">Secteur bancaire</h2>
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <h4>et même vous, <span class="highlight particuliers">les particuliers</span></h4>
+            <h4 class="highlight-section">et même vous, <span class="highlight particuliers">les particuliers</span></h4>
 
             <div class="particuliers-section">
                 <div class="testimonial particulier">
@@ -84,6 +84,24 @@
                     </div>
                 </div>
             </div>
+        </section>
+        
+        <h1 class="review-title">Laissez votre <span class="highlight avis">avis</span></h1>
+
+        <section class="review-section">
+            <form>
+                <div class="form-group">
+                    <input type="text" id="prenom" name="prenom" placeholder="Prénom">
+                    <input type="text" id="nom" name="nom" placeholder="Nom">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <textarea id="avis" name="avis" placeholder="VeriFile..."></textarea>
+                </div>
+                <button type="submit">Envoyer</button>
+            </form>
         </section>
     </main>
 
@@ -116,5 +134,8 @@
       </div>
       
     <script src="{{ url_for('static', filename='contact.js') }}"></script>
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
