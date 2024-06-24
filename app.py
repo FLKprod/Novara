@@ -280,46 +280,55 @@ def check_hash_bdd():
 @app.route('/check_url_blackbdd', methods=['POST'])
 def check_url_blackbdd():
     url = request.form.get('url')
-    if not url:
+    url_input = request.form.get('url')
+    if not url_input:
         return jsonify({'error': 'No URL provided'}), 400
-    parsed_url = urlparse(url)
+
+    parsed_url = urlparse(url_input)
+    # Extraire le nom de domaine sans extension
     parts = parsed_url.hostname.split('.')
-    
-        # Check if there is an extension to remove
     if len(parts) > 2:
-        # Remove the last part (extension)
+        # Enlever l'extension
         parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
-    print(parsed_url)
-    # Vérifiez si l'URL est déjà présente dans la base de données secondaire avec une comparaison stricte
-    url_record = URL.query.filter_by(url=url).first()
+    
+    base_domain = parsed_url.hostname
+    print(f"URL de base après parsing : {base_domain}")
+
+    # Rechercher dans la base de données
+    url_record = blackURL.query.filter(blackURL.url.contains(base_domain)).first()
+    
     if url_record:
         return jsonify({'exists': True, 'message': 'URL already present in the database'})
+        return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
+    else:
+       return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
+
 
     # Si l'URL n'est pas présente, retournez une réponse indiquant qu'elle n'existe pas
-    return jsonify({'exists': False, 'message': 'URL not found in the database'})
 
 @app.route('/check_url_whitebdd', methods=['POST'])
-def check_url_bdd():
-    url = request.form.get('url')
-    if not url:
+def check_url_whitebdd():
+    url_input = request.form.get('url')
+    if not url_input:
         return jsonify({'error': 'No URL provided'}), 400
-    parsed_url = urlparse(url)
+
+    parsed_url = urlparse(url_input)
+    # Extraire le nom de domaine sans extension
     parts = parsed_url.hostname.split('.')
-    
-        # Check if there is an extension to remove
     if len(parts) > 2:
-        # Remove the last part (extension)
+        # Enlever l'extension
         parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
-    print(parsed_url)
-    # Vérifiez si l'URL est déjà présente dans la base de données secondaire avec une comparaison stricte
-    url_record = URL.query.filter_by(url=url).first()
+    
+    base_domain = parsed_url.hostname
+    print(f"URL de base après parsing : {base_domain}")
+
+    # Rechercher dans la base de données
+    url_record = whiteURL.query.filter(whiteURL.url.contains(base_domain)).first()
+    
     if url_record:
-        return jsonify({'exists': True, 'message': 'URL already present in the database'})
-
-    # Si l'URL n'est pas présente, retournez une réponse indiquant qu'elle n'existe pas
-    return jsonify({'exists': False, 'message': 'URL not found in the database'})
-
-
+        return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
+    else:
+       return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
 
 @app.route('/add_blacklist_url', methods=['POST'])
 def add_blacklist_url():
@@ -328,12 +337,12 @@ def add_blacklist_url():
         return jsonify({'error': 'No URL provided'}), 400
 
     # Vérifiez si l'URL est déjà dans la base de données
-    url_record = URL.query.filter_by(url=url).first()
+    url_record = blackURL.query.filter_by(url=url).first()
     if url_record:
         return jsonify({'message': 'URL already in the blacklist'}), 200
 
     # Ajouter l'URL à la base de données
-    new_url = URL(url=url)
+    new_url = blackURL(url=url)
     db.session.add(new_url)
     db.session.commit()
     return jsonify({'message': 'URL added to blacklist'}), 201
