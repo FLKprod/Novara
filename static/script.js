@@ -1,4 +1,29 @@
-document.getElementById('fileInput').addEventListener('change', function(event) {
+async function calculateFileHash(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const arrayBuffer = e.target.result;
+            crypto.subtle.digest('SHA-256', arrayBuffer).then(hashBuffer => {
+                const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convertir en tableau d'octets
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // Convertir en chaîne hexadécimale
+                resolve(hashHex);
+            }).catch(error => {
+                console.error('Hashing error:', error);
+                document.getElementById('result').innerText = 'An error occurred while hashing the file';
+                reject(error);
+            });
+        };
+        reader.onerror = function(error) {
+            reject(error);
+        };
+        reader.readAsArrayBuffer(file);
+    });
+}
+
+
+
+
+document.getElementById('fileInput').addEventListener('change', async function(event) {
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
 
@@ -8,53 +33,106 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
 
     // Afficher un message de chargement avec une classe et une image gif
     const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = `
-        <img class="loading-gif" src="${loadingGifPath}" alt="Chargement...">
-        <div class="loading-message">Analyse en cours...</div>
-    `;
 
+    const file = event.target.files[0];
 
-    fetch('/uploadfile', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.text().then(text => { throw new Error(text) });
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.error) {
-            resultDiv.innerHTML = `<p>Erreur : ${data.error}</p>`;
-        } else {
-            const results = data.data.attributes.results;
-            let detected = false;
-            let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-            resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
-            resultsHtml += '<ul>';
-            for (const [key, value] of Object.entries(results)) {
-                if (value.result && value.result !== 'clean') {
-                    resultsHtml += `<li><strong>${key}</strong>: ${value.result}</li>`;
-                    detected = true;
-                }
-            }
-            resultsHtml += '</ul>';
+    try {
+        // Attendre que le hash soit calculé
+        const hashHex = await calculateFileHash(file);
 
-            if (detected) {
+        // Log le hash ici
+        console.log(hashHex);
+
+        // Vérifier si le hash est déjà présent dans la base de données
+        const params = new URLSearchParams();
+        params.append('hash', hashHex);
+
+        fetch('/check_hash_bdd', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params.toString()
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
                 resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
+                resultDiv.innerHTML = resultsHtml;
+                console.log("Le Hash du fichier est déjà présent dans la base de données. Pas besoin de le soumettre pour analyse.");
+                // Vous pouvez ajouter ici le code pour afficher un message ou effectuer d'autres actions si nécessaire
             } else {
-                resultsHtml += '<p class="info-message">Le fichier semble ne pas être malveillant. Pour en être certain, veuillez répondre aux questions de sécurité.</p>';
-                resultsHtml += '<div class="result-status"><a href="/question" class="status-link orange"><span class="status-indicator orange"></span> <p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
+                resultDiv.innerHTML = `
+                    <img class="loading-gif" src="${loadingGifPath}" alt="Chargement...">
+                    <div class="loading-message">Analyse en cours...</div>
+                `;
+                // Si le hash n'est pas présent dans la base de données, uploader le fichier pour analyse
+                fetch('/uploadfile', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text) });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        resultDiv.innerHTML = `<p>Erreur : ${data.error}</p>`;
+                    } else {
+                        const results = data.data.attributes.results;
+                        let detected = false;
+                        let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
+                        resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
+                        resultsHtml += '<ul>';
+                        for (const [key, value] of Object.entries(results)) {
+                            if (value.result && value.result !== 'clean') {
+                                resultsHtml += `<li><strong>${key}</strong>: ${value.result}</li>`;
+                                detected = true;
+                            }
+                        }
+                        resultsHtml += '</ul>';
+
+                        if (detected) {
+                            resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
+                            // Ajouter le hash à la liste noire
+                            fetch('/add_blacklist_hash', {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/x-www-form-urlencoded'
+                                },
+                                body: new URLSearchParams({ hash: hashHex })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Hash ajouté à la liste noire:', data.message);
+                            })
+                            .catch(err => console.error('Erreur lors de l\'ajout du hash à la liste noire:', err));
+                        } else {
+                            resultsHtml += '<p class="info-message">Le fichier semble ne pas être malveillant. Pour en être certain, veuillez répondre aux questions de sécurité.</p>';
+                            resultsHtml += '<div class="result-status"><a href="/question" class="status-link orange"><span class="status-indicator orange"></span> <p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
+                        }
+                        resultDiv.innerHTML = resultsHtml;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    resultDiv.innerHTML = 'Une erreur est survenue : ' + error.message;
+                });
             }
-            resultDiv.innerHTML = resultsHtml;
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        resultDiv.innerHTML = 'An error occurred: ' + error.message;
-    });
+        })
+        .catch(err => console.error(err));
+    } catch (error) {
+        console.error('Erreur lors du calcul du hash:', error);
+        resultDiv.innerText = 'Une erreur est survenue lors du calcul du hash du fichier';
+    }
 });
+
+
 document.getElementById('urlInput').addEventListener('change', function(event) {
 
     var resultDiv=document.getElementById('result')
@@ -70,7 +148,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
         <div class="loading-message">Analyse en cours...</div>
     `;
 
-    fetch('/check_url_bdd', {
+    fetch('/check_url_blackbdd', {
         method: 'POST',
         headers: {
             accept: 'application/json',
@@ -175,3 +253,4 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
         // Return the original URL if already correct
         return url;
     }
+

@@ -52,7 +52,7 @@
                 <div class="right-wrapper">
                     <div class="right-side">
                         <h2>Qui êtes-vous ?</h2>
-                        <form id="ContactForm">
+                        <form id="ContactForm" enctype="multipart/form-data">
                             <div class="name-fields">
                                 <input type="text" id="prenom" name="prenom" placeholder="Prénom">
                                 <input type="text" id="nom" name="nom" placeholder="Nom">
@@ -74,9 +74,14 @@
                             <div class="message-fields">
                                 <textarea name="message" id="message" placeholder="Votre message..."></textarea>
                             </div>
+                            <div class="file-field">
+                                <label for="fichier">Choisir un fichier à télécharger :</label>
+                                <input type="file" id="fichier" name="fichier">
+                            </div>
                             <button type="submit">Envoyer</button>
                             <h2 id="reponse-server"></h2>
                         </form>
+                        
                     </div>
                 </div>
             </div>

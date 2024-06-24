@@ -15,7 +15,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from forms import RegistrationForm, LoginForm, ChangePasswordForm
-from models import User, URL, db, bcrypt
+from models import User, blackURL,whiteURL, db, bcrypt, Hash
 from urllib.parse import urlparse
 
 app = Flask(__name__)
@@ -27,7 +27,10 @@ ANALYSIS_FILE = 'https://www.virustotal.com/api/v3/analyses/'
 app.config['SECRET_KEY'] = "b'k\xec\t\x024\xff\x15\x993\x02\xf9\\\xca\x08\xcaKs\x8b\xcb\xd2bs\xaeF'"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_BINDS'] = {
-    'secondary': 'sqlite:///secondary.db'
+    'black-urls': 'sqlite:///black-urls.db',
+    'white-urls': 'sqlite:///white-urls.db',
+    'secondary': 'sqlite:///black-urls.db',
+    'file': 'sqlite:///file.db'
 }
 
 db.init_app(app)
@@ -169,6 +172,7 @@ def connexion():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash('Vous etes bien deconnecté', 'danger')
     return redirect(url_for('connexion'))  
 
 @app.route('/inscription', methods=['GET', 'POST'])
@@ -245,7 +249,48 @@ def upload_file():
     app.logger.error('Unknown error')
     return jsonify({'error': 'Unknown error'}), 400
 
-@app.route('/check_url_bdd', methods=['POST'])
+
+@app.route('/check_hash_bdd', methods=['POST'])
+def check_hash_bdd():
+    hash_value = request.form.get('hash')  # Utiliser un nom de variable différent ici
+
+    if not hash_value:
+        return jsonify({'error': 'No hash provided'}), 400
+
+    hash_record = Hash.query.filter_by(hash=hash_value).first()
+
+    if hash_record:
+        return jsonify({'exists': True, 'message': 'Hash already present in the database'})
+
+    # Si le hash n'est pas présent, retournez une réponse indiquant qu'il n'existe pas
+    return jsonify({'exists': False, 'message': 'Hash not found in the database'})
+
+
+
+
+
+@app.route('/check_url_blackbdd', methods=['POST'])
+def check_url_blackbdd():
+    url = request.form.get('url')
+    if not url:
+        return jsonify({'error': 'No URL provided'}), 400
+    parsed_url = urlparse(url)
+    parts = parsed_url.hostname.split('.')
+    
+        # Check if there is an extension to remove
+    if len(parts) > 2:
+        # Remove the last part (extension)
+        parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
+    print(parsed_url)
+    # Vérifiez si l'URL est déjà présente dans la base de données secondaire avec une comparaison stricte
+    url_record = URL.query.filter_by(url=url).first()
+    if url_record:
+        return jsonify({'exists': True, 'message': 'URL already present in the database'})
+
+    # Si l'URL n'est pas présente, retournez une réponse indiquant qu'elle n'existe pas
+    return jsonify({'exists': False, 'message': 'URL not found in the database'})
+
+@app.route('/check_url_whitebdd', methods=['POST'])
 def check_url_bdd():
     url = request.form.get('url')
     if not url:
@@ -266,6 +311,8 @@ def check_url_bdd():
     # Si l'URL n'est pas présente, retournez une réponse indiquant qu'elle n'existe pas
     return jsonify({'exists': False, 'message': 'URL not found in the database'})
 
+
+
 @app.route('/add_blacklist_url', methods=['POST'])
 def add_blacklist_url():
     url = request.form.get('url')
@@ -282,6 +329,26 @@ def add_blacklist_url():
     db.session.add(new_url)
     db.session.commit()
     return jsonify({'message': 'URL added to blacklist'}), 201
+
+
+@app.route('/add_blacklist_hash', methods=['POST'])
+def add_blacklist_hash():
+    hash = request.form.get('hash')
+    if not hash:
+        return jsonify({'error': 'No URL provided'}), 400
+
+    # Vérifiez si l'URL est déjà dans la base de données
+    hash_record = URL.query.filter_by(hash=hash).first()
+    if hash_record:
+        return jsonify({'message': 'URL already in the blacklist'}), 200
+
+    # Ajouter l'URL à la base de données
+    new_hash = URL(hash=hash)
+    db.session.add(new_hash)
+    db.session.commit()
+    return jsonify({'message': 'URL added to blacklist'}), 201
+
+
 
 
 # Route pour soumettre l'URL pour analyse
@@ -327,5 +394,3 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
-  

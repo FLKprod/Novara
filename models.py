@@ -28,7 +28,18 @@ class User(db.Model, UserMixin):
         self.lock_until = None
         db.session.commit()
 
-class URL(db.Model):
-    __bind_key__ = 'secondary'
+class blackURL(db.Model):
+    __bind_key__ = 'black-urls'
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(2083), unique=True, nullable=False)
+
+class whiteURL(db.Model):
+    __bind_key__ = 'white-urls'
+    id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(2083), unique=True, nullable=False)
+
+class Hash(db.Model):
+    __bind_key__ = 'file'
+    __tablename__ = 'hash'
+    id = db.Column(db.Integer, primary_key=True)
+    hash = db.Column(db.String(64), unique=True, nullable=False)
