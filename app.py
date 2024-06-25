@@ -284,24 +284,18 @@ def check_url_blackbdd():
         return jsonify({'error': 'No URL provided'}), 400
 
     parsed_url = urlparse(url_input)
-    # Extraire le nom de domaine sans extension
     parts = parsed_url.hostname.split('.')
     if len(parts) > 2:
-        # Enlever l'extension
         parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
     
     base_domain = parsed_url.hostname
-    print(f"URL de base après parsing : {base_domain}")
-
-    # Rechercher dans la base de données
     url_record = blackURL.query.filter(blackURL.url.contains(base_domain)).first()
     
     if url_record:
+        socketio.emit('update_progress', {'progress': 100}, namespace='/')  # Ajout du namespace si nécessaire
         return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
     else:
        return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
-
-
 
 
 @app.route('/check_url_whitebdd', methods=['POST'])
@@ -311,22 +305,19 @@ def check_url_whitebdd():
         return jsonify({'error': 'No URL provided'}), 400
 
     parsed_url = urlparse(url_input)
-    # Extraire le nom de domaine sans extension
     parts = parsed_url.hostname.split('.')
     if len(parts) > 2:
-        # Enlever l'extension
         parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
     
     base_domain = parsed_url.hostname
-    print(f"URL de base après parsing : {base_domain}")
-
-    # Rechercher dans la base de données
     url_record = whiteURL.query.filter(whiteURL.url.contains(base_domain)).first()
     
     if url_record:
+        socketio.emit('update_progress', {'progress': 100}, namespace='/')  # Ajout du namespace si nécessaire
         return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
     else:
        return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
+
 
 @app.route('/add_blacklist_url', methods=['POST'])
 def add_blacklist_url():

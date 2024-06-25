@@ -92,24 +92,20 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     const url_input = event.target.value;
     const url = ensureWWW(url_input);
 
-    // Supprimer les éléments précédents
     const elementsToRemove = document.querySelectorAll('.remove-on-upload');
     elementsToRemove.forEach(element => element.remove());
 
-    // Afficher l'indicateur de chargement
     resultDiv.innerHTML = `
         <img class="loading-gif" src="${loadingGifPath}" alt="Chargement...">
         <div class="loading-message">Analyse en cours...</div>`;
 
     progressContainer.style.display = 'block';
 
-    // Se connecter au socket pour la progression (si nécessaire)
     const socket = io.connect();
     socket.on('update_progress', function(data) {
         animateProgressBar(data.progress);
     });
 
-    // Envoyer la requête POST pour vérifier l'URL dans la base de données
     fetch('/check_url_blackbdd', {
         method: 'POST',
         headers: {
@@ -120,6 +116,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     .then(response => response.json())
     .then(data => {
         if (data.exists) {
+            socket.emit('update_progress', {progress: 100});
             let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
             resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
             resultDiv.innerHTML = resultsHtml;
@@ -135,8 +132,9 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
             .then(response => response.json())
             .then(data => {
                 if (data.exists) {
+                    socket.emit('update_progress', {progress: 100});
                     let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-                    resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>OK</span></a></div>';
+                    resultsHtml += '<div class="result-status"><a href="#" class="status-link green"><span class="status-indicator green"></span> <span>OK</span></a></div>';
                     resultDiv.innerHTML = resultsHtml;
                 } else {
                     fetch('/uploadurl', {
@@ -188,13 +186,13 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                             resultDiv.innerHTML = resultsHtml;
                         }
                     })
-                    .catch(err => console.error(err)); // Ici est correct
+                    .catch(err => console.error(err));
                 }
             })
-            .catch(err => console.error(err)); // Ici était le problème
+            .catch(err => console.error(err));
         }
     })
-    .catch(err => console.error(err)); // Correction de la parenthèse en trop ici
+    .catch(err => console.error(err));
 });
 
 
