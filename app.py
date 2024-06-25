@@ -380,30 +380,33 @@ def upload_url():
     headers = {
         'x-apikey': API_KEY,
     }
-    
+
     # Step 1: Submit URL for scanning
     response = requests.post(f'https://www.virustotal.com/api/v3/urls', headers=headers, data={'url': url})
     if response.status_code != 200:
         return jsonify({'error': 'Error submitting URL for analysis'}), response.status_code
-    
+
     response_json = response.json()
     analysis_id = response_json['data']['id']
 
     # Step 2: Retrieve the analysis results
     max_attempts = 30
-    attempts = 0
-    while attempts < max_attempts:
+    attempts = 1  # Start from 1 to directly emit 10%
+    while attempts <= max_attempts:
         result_response = requests.get(f'https://www.virustotal.com/api/v3/analyses/{analysis_id}', headers=headers)
         if result_response.status_code == 200:
             result_json = result_response.json()
             status = result_json['data']['attributes']['status']
+            socketio.emit('update_progress', {'progress': attempts * 10})
             if status == 'completed':
+                socketio.emit('update_progress', {'progress': 100})
                 return jsonify(result_json)
             elif status == 'queued':
                 time.sleep(10)
         attempts += 1
 
     return jsonify({'error': 'Analysis timed out'}), 408
+
 
 @socketio.on('message_from_client')
 def handle_message(data):

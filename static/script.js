@@ -90,9 +90,8 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     const progressContainer = document.getElementById('progressContainer');
     const progressBar = document.getElementById('progressBar');
     const url_input = event.target.value;
-    console.log(url_input)
     const url = ensureWWW(url_input);
-    console.log(url)
+
     // Supprimer les éléments précédents
     const elementsToRemove = document.querySelectorAll('.remove-on-upload');
     elementsToRemove.forEach(element => element.remove());
@@ -109,9 +108,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     socket.on('update_progress', function(data) {
         animateProgressBar(data.progress);
     });
-    
 
-    console.log(url)
     // Envoyer la requête POST pour vérifier l'URL dans la base de données
     fetch('/check_url_blackbdd', {
         method: 'POST',
@@ -122,16 +119,11 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('VERIF BLACKLIST')
         if (data.exists) {
-            console.log('dans la liste')
             let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
             resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
             resultDiv.innerHTML = resultsHtml;
-            console.log("L'URL est déjà présente dans la base de données. Pas besoin de la soumettre pour analyse.");
-            
         } else {
-            console.log('pas dedans')
             fetch('/check_url_whitebdd', {
                 method: 'POST',
                 headers: {
@@ -142,13 +134,10 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
             })
             .then(response => response.json())
             .then(data => {
-                console.log('VERIF WHITELIST')
                 if (data.exists) {
-                    console.log('dans la liste');
                     let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-                    resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>C est bon cha</span></a></div>';
+                    resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>OK</span></a></div>';
                     resultDiv.innerHTML = resultsHtml;
-                    console.log("L'URL est déjà présente dans la base de données. Pas besoin de la soumettre pour analyse.");
                 } else {
                     fetch('/uploadurl', {
                         method: 'POST',
@@ -160,7 +149,6 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        console.log('api pour l url')
                         if (data.error) {
                             resultDiv.textContent = `Erreur : ${data.error}`;
                         } else {
@@ -195,9 +183,6 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                             } else {
                                 resultsHtml += '<p class="info-message">L\'Url semble ne pas être malveillant. Pour en être certain, veuillez répondre aux questions de sécurité.</p>';
                                 resultsHtml += '<div class="result-status"><a href="/question" class="status-link orange"><span class="status-indicator orange"></span> <p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
-                                resultsHtml += '<p class="info-message-pourquoi">Pourquoi répondre aux questions de sécurité ?</p>';
-                                resultsHtml += '<p class="line-" src="${barrePath}" alt="line"></p>';
-                                resultsHtml += '<p class="info-message">Ces questions nous permettront d\'évaluer plus précisément le niveau de confiance à accorder à votre fichier. Votre participation est cruciale pour garantir une protection optimale contre les menaces potentielles.</p>';
                             }
 
                             resultDiv.innerHTML = resultsHtml;
@@ -211,6 +196,8 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     })
     .catch(err => console.error(err)); // Correction de la parenthèse en trop ici
 });
+
+
 
 function ensureWWW(url) {
     url = url.trim();
