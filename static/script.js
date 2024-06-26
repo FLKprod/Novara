@@ -160,6 +160,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                     })
                     .then(response => response.json())
                     .then(data => {
+                        socket.emit('update_progress', {progress: 100});  // Emit 100% progress on receiving the response
                         if (data.error) {
                             resultDiv.textContent = `Erreur : ${data.error}`;
                         } else {
@@ -207,6 +208,28 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     })
     .catch(err => console.error(err));
 });
+
+function animateProgressBar(targetProgress) {
+    const progressBar = document.getElementById('progressBar');
+    const currentProgress = parseFloat(progressBar.style.width) || 0;  // Ensure it's a number or default to 0
+    const step = (targetProgress - currentProgress) / 10;
+
+    function updateProgress() {
+        let newProgress = parseFloat(progressBar.style.width) || 0;  // Ensure it's a number or default to 0
+        newProgress += step;
+        if (newProgress > targetProgress) {
+            newProgress = targetProgress;
+        }
+        progressBar.style.width = newProgress + '%';
+        progressBar.textContent = Math.round(newProgress) + '%';
+
+        if (newProgress < targetProgress) {
+            requestAnimationFrame(updateProgress);
+        }
+    }
+
+    requestAnimationFrame(updateProgress);
+}
 
 function ensureWWW(url) {
     url = url.trim();
