@@ -4,7 +4,6 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
         window.location.href = "/connexion";
         return;
     }
-
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
 
@@ -44,8 +43,8 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
         } else {
             const results = data.data.attributes.results;
             let detected = false;
-            let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-            resultsHtml += `<p class="line-resultat" src="${barrePath}" alt="line"></p>`;
+
+            let resultsHtml = '<p class="info-message-resultat">Analyse terminée</p>';
             resultsHtml += '<ul>';
             for (const [key, value] of Object.entries(results)) {
                 if (value.result && value.result !== 'clean') {
@@ -56,11 +55,18 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             resultsHtml += '</ul>';
 
             if (detected) {
-                resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
+                resultsHtml += '<p class="info-message">L\'analyse du fichier est complète et une menace a été détectée. Nous vous déconseillons fortement d\'ouvrir ou d\'utiliser ce fichier.</p>';
+                resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
             } else {
-                resultsHtml += '<p class="info-message">Le fichier semble ne pas être malveillant. Pour en être certain, veuillez répondre aux questions de sécurité.</p>';
-                resultsHtml += '<div class="result-status"><a href="/question" class="status-link orange"><span class="status-indicator orange"></span> <p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
-            }
+                progressContainer.style.display = 'none';
+                resultsHtml += '<p class="info-message">L\'analyse du fichier est complète et aucune menace ne semble avoir été détectée. Pour confirmer cette conclusion, veuillez répondre à quelques questions de sécurité.</p>';
+                resultsHtml += '<div class="result-status"><a href="/question" class="status-link orange"><p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
+                resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
+                resultsHtml += '<p class="ou-message">ou</p>';
+                resultsHtml += '<p class="line-resultat2" src="${barrePath}" alt="line"></p>';
+                resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
+            
+            }   
             resultDiv.innerHTML = resultsHtml;
         }
     })
@@ -130,8 +136,9 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     .then(data => {
         if (data.exists) {
             socket.emit('update_progress', {progress: 100});
-            let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-            resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
+            let resultsHtml = '<p class="info-message-resultat">Analyse terminée</p>';
+            resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et une menace a été détectée. Nous vous déconseillons fortement d\'utiliser cette url.</p>';
+            resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
             resultDiv.innerHTML = resultsHtml;
         } else {
             fetch('/check_url_whitebdd', {
@@ -146,8 +153,13 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
             .then(data => {
                 if (data.exists) {
                     socket.emit('update_progress', {progress: 100});
-                    let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-                    resultsHtml += '<div class="result-status"><a href="#" class="status-link green"><span class="status-indicator green"></span> <span>OK</span></a></div>';
+                    let resultsHtml = '<p class="info-message-resultat">Analyse terminée</p>';
+                    resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et aucune menace a été détectée. Toutefois, veuillez répondre aux questions de sécurité pour en être sûr.</p>';
+                    resultsHtml += '<div class="result-status"><a href="/url" class="status-link orange"><p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
+                    resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
+                    resultsHtml += '<p class="ou-message">ou</p>';
+                    resultsHtml += '<p class="line-resultat2" src="${barrePath}" alt="line"></p>';
+                    resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
                     resultDiv.innerHTML = resultsHtml;
                 } else {
                     fetch('/uploadurl', {
@@ -160,13 +172,13 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                     })
                     .then(response => response.json())
                     .then(data => {
+                        socket.emit('update_progress', {progress: 100});  // Emit 100% progress on receiving the response
                         if (data.error) {
                             resultDiv.textContent = `Erreur : ${data.error}`;
                         } else {
                             const results = data.data.attributes.results;
                             let detected = false;
-                            let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-                            resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
+                            let resultsHtml = '<p class="info-message-resultat">Analyse terminée</p>';
                             resultsHtml += '<ul>';
                             for (const [key, value] of Object.entries(results)) {
                                 if (value.result && value.result !== 'clean' && value.result !== 'unrated') {
@@ -177,7 +189,8 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                             resultsHtml += '</ul>';
 
                             if (detected) {
-                                resultsHtml += '<div class="result-status"><a href="#" class="status-link red"><span class="status-indicator red"></span> <span>Ne pas ouvrir</span></a></div>';
+                                resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et une menace a été détectée. Nous vous déconseillons fortement d\'utiliser cette url.</p>';
+                                resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
                                 fetch('/add_blacklist_url', {
                                     method: 'POST',
                                     headers: {
@@ -192,9 +205,14 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                                 })
                                 .catch(err => console.error('Error adding URL to blacklist:', err));
                             } else {
-                                resultsHtml += '<p class="info-message">L\'Url semble ne pas être malveillant. Pour en être certain, veuillez répondre aux questions de sécurité.</p>';
-                                resultsHtml += '<div class="result-status"><a href="/question" class="status-link orange"><span class="status-indicator orange"></span> <p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
-                            }
+                                progressContainer.style.display = 'none';
+                                resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et aucune menace ne semble avoir été détectée. Pour confirmer cette conclusion, veuillez répondre à quelques questions de sécurité.</p>';
+                                resultsHtml += '<div class="result-status"><a href="/url" class="status-link orange"><p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
+                                resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
+                                resultsHtml += '<p class="ou-message">ou</p>';
+                                resultsHtml += '<p class="line-resultat2" src="${barrePath}" alt="line"></p>';
+                                resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
+                            }   
 
                             resultDiv.innerHTML = resultsHtml;
                         }
@@ -207,6 +225,28 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     })
     .catch(err => console.error(err));
 });
+
+function animateProgressBar(targetProgress) {
+    const progressBar = document.getElementById('progressBar');
+    const currentProgress = parseFloat(progressBar.style.width) || 0;  // Ensure it's a number or default to 0
+    const step = (targetProgress - currentProgress) / 10;
+
+    function updateProgress() {
+        let newProgress = parseFloat(progressBar.style.width) || 0;  // Ensure it's a number or default to 0
+        newProgress += step;
+        if (newProgress > targetProgress) {
+            newProgress = targetProgress;
+        }
+        progressBar.style.width = newProgress + '%';
+        progressBar.textContent = Math.round(newProgress) + '%';
+
+        if (newProgress < targetProgress) {
+            requestAnimationFrame(updateProgress);
+        }
+    }
+
+    requestAnimationFrame(updateProgress);
+}
 
 function ensureWWW(url) {
     url = url.trim();
