@@ -36,43 +36,43 @@
         <p class="titre1">Vous avez trouvé cette <span class="texte-rose">URL</span></p> 
         <img class="line3" src="" />
         <div class="group-question1">
-            <p class="texte">Connaissez-vous l’expéditeur du courriel ?</p> 
+            <p class="texte">L'URL contient-elle des caractères ou des symboles inhabituels ?</p> 
             <div class="oui-btn" id="oui-question1">
-                <button class="status-btn-oui" onclick="answerQuestion('question1', true, 'oui-question1')">
-                    <p class="message-oui">Oui</p>
+                <button class="status-btn-oui" onclick="answerQuestion('question1', true, 'oui-question1', 'oui1')">
+                    <p class="message-oui" id="oui1">Oui</p>
                 </button>
             </div>  
             <div class="non-btn" id="non-question1">
-                <button class="status-btn-non" onclick="answerQuestion('question1', false, 'non-question1')">
-                    <p class="message-non">Non</p>
+                <button class="status-btn-non" onclick="answerQuestion('question1', false, 'non-question1', 'non1')">
+                    <p class="message-non" id="non1">Non</p>
                 </button>
             </div>
         </div> 
     
         <div class="group-question2">
-            <p class="texte">Le nom de la pièce jointe, a-t-il un rapport avec un projet en cours ?</p> 
+            <p class="texte">Avez-vous visité un site similaire à celui-ci auparavant ?</p> 
             <div class="oui-btn" id="oui-question2">
-                <button class="status-btn-oui" onclick="answerQuestion('question2', true, 'oui-question2')">
-                    <p class="message-oui">Oui</p>
+                <button class="status-btn-oui" onclick="answerQuestion('question2', true, 'oui-question2', 'oui2')">
+                    <p class="message-oui" id="oui2">Oui</p>
                 </button>
             </div>  
             <div class="non-btn" id="non-question2">
-                <button class="status-btn-non" onclick="answerQuestion('question2', false, 'non-question2')">
-                    <p class="message-non">Non</p>
+                <button class="status-btn-non" onclick="answerQuestion('question2', false, 'non-question2', 'non2')">
+                    <p class="message-non" id="non2">Non</p>
                 </button>
             </div>
         </div> 
     
         <div class="group-question3">
-            <p class="texte">La structure de l’adresse courriel, est-elle habituelle ?</p> 
+            <p class="texte">Avez-vous remarqué des fautes d'orthographe ou des erreurs grammaticales dans l'URL ou le message associé ?</p> 
             <div class="oui-btn" id="oui-question3">
-                <button class="status-btn-oui" onclick="answerQuestion('question3', true, 'oui-question3')">
-                    <p class="message-oui">Oui</p>
+                <button class="status-btn-oui" onclick="answerQuestion('question3', true, 'oui-question3', 'oui3')">
+                    <p class="message-oui" id="oui3">Oui</p>
                 </button>
             </div>  
             <div class="non-btn" id="non-question3">
-                <button class="status-btn-non" onclick="answerQuestion('question3', false, 'non-question3')">
-                    <p class="message-non">Non</p>
+                <button class="status-btn-non" onclick="answerQuestion('question3', false, 'non-question3', 'non3')">
+                    <p class="message-non" id="non3">Non</p>
                 </button>
             </div>
         </div>

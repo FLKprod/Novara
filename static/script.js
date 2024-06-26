@@ -13,6 +13,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
     const resultDiv = document.getElementById('result');
     const progressContainer = document.getElementById('progressContainer');
     const progressBar = document.getElementById('progressBar');
+    var imageUrl = '/static/img/warning.gif';
 
     resultDiv.innerHTML = 
         `<img class="loading-gif" src="${loadingGifPath}" alt="Chargement...">
@@ -55,6 +56,8 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             resultsHtml += '</ul>';
 
             if (detected) {
+                progressContainer.style.display = 'none';
+                let resultsHtml = '<img class="warning-gif" src="' + imageUrl + '" />';
                 resultsHtml += '<p class="info-message">L\'analyse du fichier est complète et une menace a été détectée. Nous vous déconseillons fortement d\'ouvrir ou d\'utiliser ce fichier.</p>';
                 resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
             } else {
@@ -110,6 +113,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     const progressBar = document.getElementById('progressBar');
     const url_input = event.target.value;
     const url = ensureWWW(url_input);
+    var imageUrl = '/static/img/warning.gif';
 
     const elementsToRemove = document.querySelectorAll('.remove-on-upload');
     elementsToRemove.forEach(element => element.remove());
@@ -136,7 +140,9 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     .then(data => {
         if (data.exists) {
             socket.emit('update_progress', {progress: 100});
-            let resultsHtml = '<p class="info-message-resultat">Analyse terminée</p>';
+            progressContainer.style.display = 'none';
+            let resultsHtml = '<img class="warning-gif" src="' + imageUrl + '" />';
+            resultsHtml += '<p class="info-message-resultat">Analyse terminée</p>';
             resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et une menace a été détectée. Nous vous déconseillons fortement d\'utiliser cette url.</p>';
             resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
             resultDiv.innerHTML = resultsHtml;
@@ -153,6 +159,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
             .then(data => {
                 if (data.exists) {
                     socket.emit('update_progress', {progress: 100});
+                    progressContainer.style.display = 'none';
                     let resultsHtml = '<p class="info-message-resultat">Analyse terminée</p>';
                     resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et aucune menace a été détectée. Toutefois, veuillez répondre aux questions de sécurité pour en être sûr.</p>';
                     resultsHtml += '<div class="result-status"><a href="/url" class="status-link orange"><p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
@@ -189,6 +196,8 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                             resultsHtml += '</ul>';
 
                             if (detected) {
+                                progressContainer.style.display = 'none';
+                                resultsHtml = '<img class="warning-gif" src="' + imageUrl + '" />';
                                 resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et une menace a été détectée. Nous vous déconseillons fortement d\'utiliser cette url.</p>';
                                 resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
                                 fetch('/add_blacklist_url', {

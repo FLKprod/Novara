@@ -35,13 +35,23 @@
             <p class="d-couvrez-la">Trust your files, with VeriFile</p>
             <img class="line" src="" />
             <h1>Démarrons une <span class="texte-rose">discussion</span></h1>
-            <img class="line-rose" style="color: #F0ACDB;" src="" />
+            <div class="highlight-image">
+                <img src="{{ url_for('static', filename='img/surlignage.png') }}" alt="Surlignage">
+            </div>
             
             <div class="contact-container">
+                <div class="left-wrapper">
+                    <div class="left-side">
+                        <h2 style="color: #8158bf;">VeriFile</h2>
+                        <p style="font-size: 16px; text-align: center; width: 100%; max-width: 400px;">Chez VeriFile, nous nous engageons à répondre à toutes vos questions et préoccupations dans un délai de 24 heures.</p>
+                        <p><strong style="font-size: 18px;">Votre satisfaction est notre priorité.</strong></p>
+                        <img src="{{ url_for('static', filename='img/communications.gif') }}" alt="Communications GIF" class="gif-image">
+                    </div>
+                </div>
                 <div class="right-wrapper">
                     <div class="right-side">
                         <h2>Qui êtes-vous ?</h2>
-                        <form id="ContactForm" enctype="multipart/form-data">
+                        <form id="ContactForm">
                             <div class="name-fields">
                                 <input type="text" id="prenom" name="prenom" placeholder="Prénom">
                                 <input type="text" id="nom" name="nom" placeholder="Nom">
@@ -63,14 +73,9 @@
                             <div class="message-fields">
                                 <textarea name="message" id="message" placeholder="Votre message..."></textarea>
                             </div>
-                            <div class="file-field">
-                                <label for="fichier">Choisir un fichier à télécharger :</label>
-                                <input type="file" id="fichier" name="fichier">
-                            </div>
                             <button type="submit">Envoyer</button>
                             <h2 id="reponse-server"></h2>
                         </form>
-                        
                     </div>
                 </div>
             </div>
@@ -106,8 +111,5 @@
       </div>
 
     <script src="{{ url_for('static', filename='contact.js') }}"></script>
-    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
-    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

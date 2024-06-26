@@ -490,7 +490,7 @@ color: #000000;
 line-height: 13px;
 position: relative; /* Change to relative for proper positioning in flow */
 top: 4em;
-left: -11.6em;
+left: -4.6em;
 }
 
 .group-question2{
@@ -499,7 +499,7 @@ color: #000000;
 line-height: 13px;
 position: relative; /* Change to relative for proper positioning in flow */
 top: 4em;
-left: -3.3em;
+left: -7.1em;
 }
 
 .group-question3{
@@ -508,7 +508,7 @@ left: -3.3em;
   line-height: 13px;
   position: relative; /* Change to relative for proper positioning in flow */
   top: 4em;
-  left: -8em;
+  left: -0.92em;
   }
 
 .texte{
@@ -644,7 +644,7 @@ left: -3.3em;
 
 .paragraphe1{
 width: 100%; /* Change to 100% for responsive width */
-max-width: 26em; /* Maximum width to maintain design consistency */
+max-width: 27em; /* Maximum width to maintain design consistency */
 font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 color: #000000;
 font-size: 1.2em;
@@ -653,14 +653,14 @@ line-height: 1.5em;
 letter-spacing: 0.56px;
 font-weight: 500;
 position: relative;
-left: 0em;
+left: 1em;
 bottom: -1em;
 margin-bottom: 2em;
 }
 
 .paragraphe2{
   width: 100%; /* Change to 100% for responsive width */
-  max-width: 26em; /* Maximum width to maintain design consistency */
+  max-width: 27em; /* Maximum width to maintain design consistency */
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   color: #000000;
   font-size: 1.2em;
@@ -669,7 +669,7 @@ margin-bottom: 2em;
   letter-spacing: 0.56px;
   font-weight: 500;
   position: relative;
-  left: 0em;
+  left: 1em;
   margin-bottom: 2em;
   }
 

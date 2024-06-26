@@ -642,23 +642,8 @@ input[type="file"] {
 }
 
 .paragraphe1{
-width: 100%; /* Change to 100% for responsive width */
-max-width: 26em; /* Maximum width to maintain design consistency */
-font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-color: #000000;
-font-size: 1.2em;
-text-align:justify;
-line-height: 1.5em;
-letter-spacing: 0.56px;
-font-weight: 500;
-position: relative;
-left: 0em;
-margin-bottom: 2em;
-}
-
-.paragraphe2{
   width: 100%; /* Change to 100% for responsive width */
-  max-width: 26em; /* Maximum width to maintain design consistency */
+  max-width: 27em; /* Maximum width to maintain design consistency */
   font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
   color: #000000;
   font-size: 1.2em;
@@ -667,9 +652,25 @@ margin-bottom: 2em;
   letter-spacing: 0.56px;
   font-weight: 500;
   position: relative;
-  left: 0em;
+  left: 1em;
+  bottom: -1em;
   margin-bottom: 2em;
   }
+  
+  .paragraphe2{
+    width: 100%; /* Change to 100% for responsive width */
+    max-width: 27em; /* Maximum width to maintain design consistency */
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+    color: #000000;
+    font-size: 1.2em;
+    text-align:justify;
+    line-height: 1.5em;
+    letter-spacing: 0.56px;
+    font-weight: 500;
+    position: relative;
+    left: 1em;
+    margin-bottom: 2em;
+    }
 
 .image{
   position: relative;
