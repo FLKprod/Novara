@@ -384,16 +384,16 @@ def upload_url():
     headers = {
         'x-apikey': API_KEY,
     }
-    
-    # Step 1: Submit URL for scanning
-    response = requests.post(f'https://www.virustotal.com/api/v3/urls', headers=headers, data={'url': url})
+
+    # Étape 1: Soumettre l'URL pour analyse
+    response = requests.post('https://www.virustotal.com/api/v3/urls', headers=headers, data={'url': url})
     if response.status_code != 200:
         return jsonify({'error': 'Error submitting URL for analysis'}), response.status_code
-    
+
     response_json = response.json()
     analysis_id = response_json['data']['id']
 
-    # Step 2: Retrieve the analysis results
+    # Étape 2: Récupérer les résultats de l'analyse
     max_attempts = 30
     attempts = 0
     while attempts < max_attempts:
@@ -402,7 +402,9 @@ def upload_url():
             result_json = result_response.json()
             status = result_json['data']['attributes']['status']
             if status == 'completed':
-                return jsonify(result_json)
+                positives = result_json['data']['attributes']['stats']['malicious']
+                negatives = result_json['data']['attributes']['stats']['undetected']
+                return jsonify({'positives': positives, 'negatives': negatives})
             elif status == 'queued':
                 time.sleep(10)
         attempts += 1
