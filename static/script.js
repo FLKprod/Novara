@@ -1,4 +1,10 @@
 document.getElementById('fileInput').addEventListener('change', function(event) {
+    if (!isAuthenticated) {
+        console.log('User not authenticated, redirecting to login');
+        window.location.href = "/connexion";
+        return;
+    }
+
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
 
@@ -18,6 +24,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
     const socket = io.connect();
 
     socket.on('update_progress', function(data) {
+        console.log('Progress update:', data.progress);
         animateProgressBar(data.progress);
     });
 
@@ -38,7 +45,7 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             const results = data.data.attributes.results;
             let detected = false;
             let resultsHtml = '<p class="info-message-resultat">Résultats de l\'analyse :</p>';
-            resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
+            resultsHtml += `<p class="line-resultat" src="${barrePath}" alt="line"></p>`;
             resultsHtml += '<ul>';
             for (const [key, value] of Object.entries(results)) {
                 if (value.result && value.result !== 'clean') {
@@ -86,6 +93,12 @@ function animateProgressBar(targetProgress) {
 }
 
 document.getElementById('urlInput').addEventListener('change', function(event) {
+    if (!isAuthenticated) {
+        console.log('User not authenticated, redirecting to login');
+        window.location.href = "/connexion";
+        return;
+    }
+
     const resultDiv = document.getElementById('result');
     const progressContainer = document.getElementById('progressContainer');
     const progressBar = document.getElementById('progressBar');
@@ -194,8 +207,6 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     })
     .catch(err => console.error(err));
 });
-
-
 
 function ensureWWW(url) {
     url = url.trim();

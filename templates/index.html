@@ -109,8 +109,11 @@
         </div>
     </footer>
     
-    <script>const loadingGifPath = "{{ url_for('static', filename='img/hourglass.gif') }}";</script>
-    <script>const barrePath = "";</script>
+    <script>
+        const isAuthenticated = {{ current_user.is_authenticated | tojson }};
+        const loadingGifPath = "{{ url_for('static', filename='img/hourglass.gif') }}";
+        const barrePath = "";
+    </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
     <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous"></script>

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, flash
+from flask import Flask, request, jsonify, render_template, flash, redirect, url_for
 from io import BytesIO
 import requests
 import time
@@ -16,7 +16,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from flask_socketio import SocketIO, emit
 from forms import RegistrationForm, LoginForm, ChangePasswordForm
-from models import User, blackURL,whiteURL, db, bcrypt, Hash
+from models import User, blackURL, whiteURL, db, bcrypt, Hash
 from urllib.parse import urlparse
 from openai import OpenAI
 
@@ -52,7 +52,6 @@ logging.basicConfig(level=logging.DEBUG)
 socketio = SocketIO(app)
 
 @app.route('/')
-@login_required
 def index():
     app.logger.debug('Serving index.html')
     return render_template('index.html')
@@ -120,10 +119,9 @@ def avis():
 @app.route('/account')
 @login_required
 def account():
-    app.logger.debug('Serving apropos.html')
-    
+    app.logger.debug('Serving account.html')
     form = ChangePasswordForm()
-    return render_template('account.html',form=form) 
+    return render_template('account.html', form=form)
 
 @app.route('/change_password', methods=['GET', 'POST'])
 @login_required
@@ -151,15 +149,11 @@ def change_password():
 def connexion():
     form = LoginForm()
     if form.validate_on_submit():
-
         user = User.query.filter_by(username=form.username.data).first()
-
         if user:
-
             if user.is_locked():
                 flash('Votre compte est verrouillé. Veuillez réessayer plus tard.', 'danger')
                 return render_template('connexion.html', form=form)
-
             if bcrypt.check_password_hash(user.password, form.password.data):
                 user.reset_failed_attempts()
                 login_user(user, remember=form.remember.data)
@@ -186,40 +180,38 @@ def logout():
 def inscription():
     form = RegistrationForm()
     if form.validate_on_submit():
-        # Chiffrer le mail
-
         encrypted_email = form.email.data
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         enterprise = form.entreprise.data
-
-        # Créer un nouvel utilisateur avec le mail chiffré et les hachages
         user = User(username=form.username.data, email=encrypted_email, password=hashed_password, entreprise=enterprise, failed_attempts=0)
         db.session.add(user)
         db.session.commit()
-
         flash('Votre compte a été créé avec succès !', 'success')
         return redirect(url_for('connexion'))
     return render_template('inscription.html', title='Register', form=form)
 
 @login_manager.user_loader
 def load_user(user_id):
-    # Chargez et retournez l'utilisateur à partir de la base de données en utilisant l'ID fourni
-    return User.query.get(int(user_id))  # Assurez-vous d'avoir défini la classe User et sa structure
+    return User.query.get(int(user_id))
 
 @app.route('/uploadfile', methods=['POST'])
 def upload_file():
+    if not current_user.is_authenticated:
+        app.logger.debug('User not authenticated, redirecting to login')
+        return redirect(url_for('connexion'))
+
     app.logger.debug('Upload endpoint hit')
-    
+
     if 'file' not in request.files:
-        app.logger.error('No file part')
+        app.logger.error('No file part in the request')
         return jsonify({'error': 'No file part'}), 400
-    
+
     file = request.files['file']
-    
+
     if file.filename == '':
         app.logger.error('No selected file')
         return jsonify({'error': 'No selected file'}), 400
-    
+
     if file:
         app.logger.info(f'Uploading file: {file.filename}')
         files = {'file': (file.filename, file.read())}
@@ -228,7 +220,7 @@ def upload_file():
             if response.status_code == 200:
                 analysis_id = response.json()['data']['id']
                 app.logger.info(f'File uploaded successfully. Analysis ID: {analysis_id}')
-                
+
                 max_attempts = 30
                 attempts = 1  # Start from 1 to directly emit 10%
                 while attempts <= max_attempts:
@@ -240,42 +232,33 @@ def upload_file():
                             socketio.emit('update_progress', {'progress': attempts * 10})
                             if status == 'completed':
                                 app.logger.info('Analysis completed')
-                                socketio.emit('update_progress', {'progress': 100}) 
+                                socketio.emit('update_progress', {'progress': 100})
                                 return jsonify(result_json)
                             elif status == 'queued':
                                 app.logger.info('Analysis queued')
-                    
+
                     attempts += 1
                     time.sleep(15)
-                
+
                 app.logger.error('Analysis timed out')
                 return jsonify({'error': 'Analysis timed out'}), 408
             else:
                 app.logger.error(f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}')
                 return jsonify({'error': f'Failed to upload file to VirusTotal. Status code: {response.status_code}, Response: {response.text}'}), response.status_code
-    
+
     app.logger.error('Unknown error')
     return jsonify({'error': 'Unknown error'}), 400
 
 
 @app.route('/check_hash_bdd', methods=['POST'])
 def check_hash_bdd():
-    hash_value = request.form.get('hash')  # Utiliser un nom de variable différent ici
-
+    hash_value = request.form.get('hash')
     if not hash_value:
         return jsonify({'error': 'No hash provided'}), 400
-
     hash_record = Hash.query.filter_by(hash=hash_value).first()
-
     if hash_record:
         return jsonify({'exists': True, 'message': 'Hash already present in the database'})
-
-    # Si le hash n'est pas présent, retournez une réponse indiquant qu'il n'existe pas
     return jsonify({'exists': False, 'message': 'Hash not found in the database'})
-
-
-
-
 
 @app.route('/check_url_blackbdd', methods=['POST'])
 def check_url_blackbdd():
@@ -292,11 +275,10 @@ def check_url_blackbdd():
     url_record = blackURL.query.filter(blackURL.url.contains(base_domain)).first()
     
     if url_record:
-        socketio.emit('update_progress', {'progress': 100}, namespace='/')  # Ajout du namespace si nécessaire
+        socketio.emit('update_progress', {'progress': 100}, namespace='/')
         return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
     else:
        return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
-
 
 @app.route('/check_url_whitebdd', methods=['POST'])
 def check_url_whitebdd():
@@ -313,11 +295,10 @@ def check_url_whitebdd():
     url_record = whiteURL.query.filter(whiteURL.url.contains(base_domain)).first()
     
     if url_record:
-        socketio.emit('update_progress', {'progress': 100}, namespace='/')  # Ajout du namespace si nécessaire
+        socketio.emit('update_progress', {'progress': 100}, namespace='/')
         return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
     else:
        return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
-
 
 @app.route('/add_blacklist_url', methods=['POST'])
 def add_blacklist_url():
@@ -325,17 +306,14 @@ def add_blacklist_url():
     if not url:
         return jsonify({'error': 'No URL provided'}), 400
 
-    # Vérifiez si l'URL est déjà dans la base de données
     url_record = blackURL.query.filter_by(url=url).first()
     if url_record:
         return jsonify({'message': 'URL already in the blacklist'}), 200
 
-    # Ajouter l'URL à la base de données
     new_url = blackURL(url=url)
     db.session.add(new_url)
     db.session.commit()
     return jsonify({'message': 'URL added to blacklist'}), 201
-
 
 @app.route('/add_blacklist_hash', methods=['POST'])
 def add_blacklist_hash():
@@ -343,61 +321,14 @@ def add_blacklist_hash():
     if not hash:
         return jsonify({'error': 'No URL provided'}), 400
 
-    # Vérifiez si l'URL est déjà dans la base de données
     hash_record = URL.query.filter_by(hash=hash).first()
     if hash_record:
         return jsonify({'message': 'URL already in the blacklist'}), 200
 
-    # Ajouter l'URL à la base de données
     new_hash = URL(hash=hash)
     db.session.add(new_hash)
     db.session.commit()
     return jsonify({'message': 'URL added to blacklist'}), 201
-
-
-
-
-# Route pour soumettre l'URL pour analyse
-@app.route('/uploadurl', methods=['POST'])
-def upload_url():
-    url = request.form.get('url')
-    if not url:
-        return jsonify({'error': 'No URL provided'}), 400
-
-    # Encode l'URL en base64
-    url_bytes = url.encode('utf-8')
-    base64_url = base64.urlsafe_b64encode(url_bytes).decode('utf-8').strip("=")
-
-    headers = {
-        'x-apikey': API_KEY,
-    }
-
-    # Step 1: Submit URL for scanning
-    response = requests.post(f'https://www.virustotal.com/api/v3/urls', headers=headers, data={'url': url})
-    if response.status_code != 200:
-        return jsonify({'error': 'Error submitting URL for analysis'}), response.status_code
-
-    response_json = response.json()
-    analysis_id = response_json['data']['id']
-
-    # Step 2: Retrieve the analysis results
-    max_attempts = 30
-    attempts = 1  # Start from 1 to directly emit 10%
-    while attempts <= max_attempts:
-        result_response = requests.get(f'https://www.virustotal.com/api/v3/analyses/{analysis_id}', headers=headers)
-        if result_response.status_code == 200:
-            result_json = result_response.json()
-            status = result_json['data']['attributes']['status']
-            socketio.emit('update_progress', {'progress': attempts * 10})
-            if status == 'completed':
-                socketio.emit('update_progress', {'progress': 100})
-                return jsonify(result_json)
-            elif status == 'queued':
-                time.sleep(10)
-        attempts += 1
-
-    return jsonify({'error': 'Analysis timed out'}), 408
-
 
 @socketio.on('message_from_client')
 def handle_message(data):
@@ -414,7 +345,6 @@ def handle_message(data):
             ],
             stream=True
         )
-        # Suppose there's a way to determine the end of the message
         for i, chunk in enumerate(completion):
             if chunk.choices[0].delta.content :
                 emit('message_from_server', {'text': chunk.choices[0].delta.content, 'more': True})
@@ -422,6 +352,11 @@ def handle_message(data):
                 emit('message_from_server', {'text': '', 'more': False})
     except Exception as e:
         emit('message_from_server', {'text': f'Erreur lors de la connexion à l\'API OpenAI: {str(e)}', 'more': False})
+
+@login_manager.user_loader
+def load_user(user_id):
+    with db.session() as session:
+        return session.get(User, int(user_id))
 
 if __name__ == '__main__':
     with app.app_context():

@@ -366,3 +366,31 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px; /* Ajuster la marge pour déplacer l'élément plus haut */
+    margin-top: -50px; /* Déplacer l'élément encore plus haut */
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px; /* Taille du logo */
+    margin-right: 15px;
+}
+
+.logo-text {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 36px; /* Taille du texte */
+    color: #8158bf;
+}
+
+
