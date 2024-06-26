@@ -44,6 +44,17 @@ main {
     color: #F0ACDB;
   }
 
+.line-rose {
+  width: 100%; /* Largeur responsive */
+  max-width: 140px; /* Largeur maximale pour la cohérence du design */
+  height: 1px;
+  margin: -20px auto; /* Centre l'élément horizontalement */
+  position: relative; /* Positionnement relatif pour l'alignement correct */
+  background-color: black; /* Couleur pour la ligne */
+  display: block;
+  left: 60px;
+}
+
 .highlight-image {
     margin-top: -25px; 
     margin-left: 10%;
@@ -72,7 +83,7 @@ main {
 
 .left-side {
     text-align: center;
-    padding-right: 200px;
+    padding-right: 60px;
 }
 
 .left-side img {
@@ -111,8 +122,6 @@ main {
 .right-wrapper {
     flex: 0 0 40%;
     display: flex;
-    margin-left: 10px;
-    margin-right: 50px;
 }
 
 .right-side {

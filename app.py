@@ -86,6 +86,11 @@ def question():
     app.logger.debug('Serving question.html')
     return render_template('question.html')
 
+@app.route('/url')
+def url():
+    app.logger.debug('Serving url.html')
+    return render_template('url.html')
+
 @app.route('/email')
 def email():
     app.logger.debug('Serving email.html')

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question - VeriFile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/url.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('index') }}" class="logo-link"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo"></a>
+            <a href="{{ url_for('index') }}" class="logo-link"><span>VeriFile</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
+                <li><a href="{{ url_for('entreprise') }}">Entreprise</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('avis') }}">Avis</a></li>
+            </ul>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
+            {% else %}
+            <a href="{{ url_for('connexion') }}" class="account-btn">Se Connecter</a>  <!-- Texte à afficher si l'utilisateur n'est pas connecté -->
+            {% endif %}
+        </nav>
+    </header>
+    
+    <div class="question">
+        <p class="d-couvrez-la">Trust your files, with VeriFile</p>
+        <img class="line" src="" />
+        <p class="titre1">Vous avez trouvé cette <span class="texte-rose">URL</span></p> 
+        <img class="line3" src="" />
+        <div class="group-question1">
+            <p class="texte">Connaissez-vous l’expéditeur du courriel ?</p> 
+            <div class="oui-btn" id="oui-question1">
+                <button class="status-btn-oui" onclick="answerQuestion('question1', true, 'oui-question1')">
+                    <p class="message-oui">Oui</p>
+                </button>
+            </div>  
+            <div class="non-btn" id="non-question1">
+                <button class="status-btn-non" onclick="answerQuestion('question1', false, 'non-question1')">
+                    <p class="message-non">Non</p>
+                </button>
+            </div>
+        </div> 
+    
+        <div class="group-question2">
+            <p class="texte">Le nom de la pièce jointe, a-t-il un rapport avec un projet en cours ?</p> 
+            <div class="oui-btn" id="oui-question2">
+                <button class="status-btn-oui" onclick="answerQuestion('question2', true, 'oui-question2')">
+                    <p class="message-oui">Oui</p>
+                </button>
+            </div>  
+            <div class="non-btn" id="non-question2">
+                <button class="status-btn-non" onclick="answerQuestion('question2', false, 'non-question2')">
+                    <p class="message-non">Non</p>
+                </button>
+            </div>
+        </div> 
+    
+        <div class="group-question3">
+            <p class="texte">La structure de l’adresse courriel, est-elle habituelle ?</p> 
+            <div class="oui-btn" id="oui-question3">
+                <button class="status-btn-oui" onclick="answerQuestion('question3', true, 'oui-question3')">
+                    <p class="message-oui">Oui</p>
+                </button>
+            </div>  
+            <div class="non-btn" id="non-question3">
+                <button class="status-btn-non" onclick="answerQuestion('question3', false, 'non-question3')">
+                    <p class="message-non">Non</p>
+                </button>
+            </div>
+        </div>
+        
+        <div class="Resultat">
+            <div class="affichage-resultat">
+                <p class="titre2">Consultez l'indice de confiance</p> 
+                <img class="line2" src="" />
+                <img class="image" src="{{ url_for('static', filename='img/fleche.png') }}" />
+                <div class="score" id="score">----</div> 
+                <img class="img" id='img1' src="{{ url_for('static', filename='img/barre80.png') }}" />
+            </div>
+            <div class="affichage-texte">
+                <p class="paragraphe1" id='paragraphe1'>Votre url a obtenu un indice de confiance de <strong>80%</strong>, ce qui est <span class="texte-vert-clair">positif</span>.</p> 
+                <p class="paragraphe2" id='paragraphe2'>Cela signifie que votre url est relativement sûr, mais il peut présenter des risques potentiels. Nous vous recommandons de vérifier attentivement l'url avant de cliquer dessus et de suivre les bonnes pratiques de sécurité pour minimiser les risques.</p> 
+            </div>
+        </div>
+        
+    </div>
+    
+    <footer>
+        <div class="footer-links-index"> 
+            <a href="#">Conditions d'utilisation</a> | 
+            <a href="#">Conditions générales</a> |
+            <a href="{{ url_for('cookies') }}">Politique des cookies</a>
+        </div>
+        <div class="footer-copyright-index">
+            <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
+    </footer>
+    
+    <!-- Inclure le script à la fin du body pour s'assurer qu'il est chargé après les éléments HTML -->
+    <script>
+        var ImageUrl1 = "{{ url_for('static', filename='img/barre99.png') }}";
+        var ImageUrl2 = "{{ url_for('static', filename='img/barre95.png') }}";
+        var ImageUrl3 = "{{ url_for('static', filename='img/barre90.png') }}";
+        var ImageUrl4 = "{{ url_for('static', filename='img/barre85.png') }}";
+        var ImageUrl5 = "{{ url_for('static', filename='img/barre80.png') }}";
+        var ImageUrl6 = "{{ url_for('static', filename='img/barre70.png') }}";
+        var ImageUrl7 = "{{ url_for('static', filename='img/barre60.png') }}";
+        var ImageUrl8 = "{{ url_for('static', filename='img/barre50.png') }}";
+        var ImageUrl9 = "{{ url_for('static', filename='img/barre40.png') }}";
+        var ImageUrl10 = "{{ url_for('static', filename='img/barre20.png') }}";
+
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='questions-url.js') }}"></script>
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

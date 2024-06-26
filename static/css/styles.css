@@ -268,6 +268,14 @@
       padding: -2%;
   }
   
+  .re-do {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20px;
+}
+
   .status-indicator {
       width: 20px;
       height: 19px;
@@ -301,13 +309,13 @@
   
   .status-link.orange {
       color: #460F9B;
-      background-color: white;
+      background-color: #8158BF;
       border: 2px solid black;
       border-radius: 20px;
   }
   
   .status-link.orange:hover {
-      background-color: #D08AB3;
+      background-color: #68409A;
       box-shadow: 0 0 10px rgba(240, 172, 219, 0.5);
   }
   
@@ -396,6 +404,14 @@
   align-items: center;
   width: 100%;
 }
+
+.image{
+    position: relative;
+    top: -0.4em;
+    left: -3em;
+    width: 15%;
+    height: 100%;
+  }
 
 .index .element-index-site-wrapper {
   background-color: #ffffff;
@@ -605,18 +621,28 @@
 
 .info-message {
   width: 100%;
+  max-width: 600px;
+  text-align: center;
+  color: black;
+  font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
+}
+
+.ou-message {
+    width: 100%;
     max-width: 600px;
     text-align: center;
     color: black;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
-}
+    position: relative;
+    top: -0.3em;
+  }
 
 .message-btn {
     width: 100%;
     max-width: 600px;
     text-align: center;
-    color: #8158bf;
-    font-weight: bold;
+    color: white;
+    font-weight: 600;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
@@ -624,12 +650,12 @@
     width: 100%;
     max-width: 600px;
     text-align: center;
-    color: #8158bf;
+    color: black;
     font-weight: bold;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     position:relative;
     font-size: 20px;
-    margin-top: 15%;
+    margin-top: 0%;
 }
 
 .info-message-pourquoi {
@@ -645,14 +671,27 @@
 
 .line-resultat {
   width: 100%; /* Largeur responsive */
-  max-width: 200px; /* Largeur maximale pour la cohérence du design */
-  height: 2px;
+  max-width: 100px; /* Largeur maximale pour la cohérence du design */
+  height: 1px;
   margin: 0 auto; /* Centre l'élément horizontalement */
   position: relative; /* Positionnement relatif pour l'alignement correct */
-  background-color: #8158bf; /* Couleur pour la ligne */
+  background-color: black; /* Couleur pour la ligne */
   display: block;
-  margin-top: -4%;
+  left: -4.4em;
+  top: 1.5em;
 }
+
+.line-resultat2 {
+    width: 100%; /* Largeur responsive */
+    max-width: 100px; /* Largeur maximale pour la cohérence du design */
+    height: 1px;
+    margin: 0 auto; /* Centre l'élément horizontalement */
+    position: relative; /* Positionnement relatif pour l'alignement correct */
+    background-color: black; /* Couleur pour la ligne */
+    display: block;
+    left: +4.4em;
+    top: -2em;
+  }
 
 .line-pourquoi {
   width: 100%; /* Largeur responsive */

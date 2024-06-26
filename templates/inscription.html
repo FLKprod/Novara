@@ -18,7 +18,7 @@
                     <form class="register" method="POST">
                         {{ form.hidden_tag() }}
                         <div>
-                            {{ form.username(class="form-control", size=32, placeholder="Nom d'utilisateur") }}
+                            {{ form.username(class="form-control1", size=32, placeholder="Nom d'utilisateur") }}
                             {% for error in form.username.errors %}
                                 <span class="text-danger">[{{ error }}]</span>
                             {% endfor %}

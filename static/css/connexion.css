@@ -75,7 +75,7 @@ header {
 .register #email,
 .register #entreprise,
 .register #confirm_password {
-    padding: 10px;
+    padding: 9px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -176,6 +176,16 @@ p {
     border-radius: 4px;
 }
 
+.form-control1 {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    left: 8px;
+}
+
 .register #username{
     margin-right: 1em;
 }
@@ -204,6 +214,7 @@ p {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
+    font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
 }
 
 .btn-primary {
@@ -268,7 +279,7 @@ a:hover {
     margin-left: 1em !important;
     text-align: left;
     font-size: 46px;
-    font-weight: 700;
+    font-weight: 400;
     color: #8158bf;
     margin: 0;
 }
@@ -303,7 +314,7 @@ a:hover {
     font-size: 1em;
     color: #8158bf;
     text-align: left;
-    margin-left: 3em;
+    margin-left: 1.5em;
 }
 
 .account-info > p {
@@ -311,10 +322,10 @@ a:hover {
     font-size: 1.5em;
 }
 
-.sous-titre > p{
+.sous-titre {
     margin-left: 0;
     text-align: left;
-    font-weight:bold;
+    font-weight: 400;
 }
 
 h2 {
