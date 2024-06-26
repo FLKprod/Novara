@@ -317,9 +317,7 @@ def check_url_whitebdd():
     parsed_url = urlparse(url_input)
     # Extraire le nom de domaine sans extension
     parts = parsed_url.hostname.split('.')
-    if len(parts) > 2:
-        # Enlever l'extension
-        parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
+
     
     base_domain = parsed_url.hostname
     print(f"URL de base après parsing : {base_domain}")
@@ -404,7 +402,9 @@ def upload_url():
             if status == 'completed':
                 positives = result_json['data']['attributes']['stats']['malicious']
                 negatives = result_json['data']['attributes']['stats']['undetected']
-                return jsonify({'positives': positives, 'negatives': negatives})
+                result_json['positives'] = positives
+                result_json['negatives'] = negatives
+                return jsonify(result_json)
             elif status == 'queued':
                 time.sleep(10)
         attempts += 1
