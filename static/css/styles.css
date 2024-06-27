@@ -273,7 +273,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 20px;
 }
 
   .status-indicator {
@@ -634,7 +633,7 @@
     color: black;
     font-family: "Poppins-SemiBold", Poppins, Arial, sans-serif;
     position: relative;
-    top: -0.3em;
+    top: -0.85em;
   }
 
 .message-btn {
@@ -678,7 +677,7 @@
   background-color: black; /* Couleur pour la ligne */
   display: block;
   left: -4.4em;
-  top: 1.5em;
+  top: 1em;
 }
 
 .line-resultat2 {
@@ -690,7 +689,7 @@
     background-color: black; /* Couleur pour la ligne */
     display: block;
     left: +4.4em;
-    top: -2em;
+    top: -2.6em;
   }
 
 .line-pourquoi {

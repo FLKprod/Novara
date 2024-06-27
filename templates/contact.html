@@ -108,8 +108,12 @@
             <input type="text" id="userInput" placeholder="Tapez votre message...">
             <button onclick="sendMessage()">Envoyer</button>
         </div>
-      </div>
+    </div>
 
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
     <script src="{{ url_for('static', filename='contact.js') }}"></script>
 </body>
 </html>
