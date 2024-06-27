@@ -60,6 +60,10 @@ def index():
     app.logger.debug('Serving index.html')
     return render_template('index.html')
 
+@app.route('/url')
+def url():
+    app.logger.debug('Serving url.html')
+    return render_template('url.html')
 @app.route('/index')
 def to_index():
     app.logger.debug('Serving index.html')
