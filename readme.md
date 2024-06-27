@@ -3,7 +3,6 @@
 <p align="left">
   <img src="/static/img/logo.png" width="200" />
   <br>
-  <i>Logo de mon projet</i>
 </p>
 
 
