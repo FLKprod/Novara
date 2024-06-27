@@ -219,6 +219,7 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
     .catch(err => console.error(err));
 });
 
+
 function animateProgressBar(targetProgress) {
     const progressBar = document.getElementById('progressBar');
     const currentProgress = parseFloat(progressBar.style.width) || 0;  // Ensure it's a number or default to 0

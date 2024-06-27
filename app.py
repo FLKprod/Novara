@@ -56,7 +56,6 @@ logging.basicConfig(level=logging.DEBUG)
 socketio = SocketIO(app)
 
 @app.route('/')
-@login_required
 def index():
     app.logger.debug('Serving index.html')
     return render_template('index.html')
@@ -211,6 +210,7 @@ def load_user(user_id):
     return User.query.get(int(user_id))  # Assurez-vous d'avoir défini la classe User et sa structure
 
 @app.route('/uploadfile', methods=['POST'])
+@login_required
 def upload_file():
     app.logger.debug('Upload endpoint hit')
     
@@ -370,6 +370,7 @@ def add_blacklist_hash():
 
 # Route pour soumettre l'URL pour analyse
 @app.route('/uploadurl', methods=['POST'])
+@login_required
 def upload_url():
     url = request.form.get('url')
     if not url:
@@ -393,23 +394,29 @@ def upload_url():
 
     # Étape 2: Récupérer les résultats de l'analyse
     max_attempts = 30
-    attempts = 0
-    while attempts < max_attempts:
+    attempts = 1  # Commence à 1 pour émettre directement 10%
+    while attempts <= max_attempts:
         result_response = requests.get(f'https://www.virustotal.com/api/v3/analyses/{analysis_id}', headers=headers)
         if result_response.status_code == 200:
             result_json = result_response.json()
             status = result_json['data']['attributes']['status']
+            socketio.emit('update_progress', {'progress': attempts * 10})
             if status == 'completed':
                 positives = result_json['data']['attributes']['stats']['malicious']
                 negatives = result_json['data']['attributes']['stats']['undetected']
                 result_json['positives'] = positives
                 result_json['negatives'] = negatives
+                socketio.emit('update_progress', {'progress': 100})
                 return jsonify(result_json)
             elif status == 'queued':
-                time.sleep(10)
+                app.logger.info('Analysis queued')
         attempts += 1
+        time.sleep(10)
 
     return jsonify({'error': 'Analysis timed out'}), 408
+
+
+
 
 @socketio.on('message_from_client')
 def handle_message(data):
