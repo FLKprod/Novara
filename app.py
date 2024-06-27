@@ -25,7 +25,7 @@ app = Flask(__name__)
 API_KEY = '35ff4fd90a69e29c7a77d726681f10e1d802d3f3bfb609cf1b263dc4590b8723'
 UPLOAD_FILE = 'https://www.virustotal.com/api/v3/files'
 ANALYSIS_FILE = 'https://www.virustotal.com/api/v3/analyses/'
-os.environ['OPENAI_API_KEY'] = 'METTRE CLE OPENAI ICI'
+os.environ['OPENAI_API_KEY'] = 'METTRE LA CLE ICI'
 
 app.config['SECRET_KEY'] = "b'k\xec\t\x024\xff\x15\x993\x02\xf9\\\xca\x08\xcaKs\x8b\xcb\xd2bs\xaeF'"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
