@@ -49,7 +49,9 @@ document.getElementById('fileInput').addEventListener('change', function(event) 
             resultsHtml += '<ul>';
             for (const [key, value] of Object.entries(results)) {
                 if (value.result && value.result !== 'clean') {
-                    resultsHtml += `<li><strong>${key}</strong>: ${value.result}</li>`;
+                    resultsHtml = '<img class="warning-gif" src="' + imageUrl + '" />';
+                    resultsHtml += '<p class="info-message">L\'analyse du fichier est complète et une menace a été détectée. Nous vous déconseillons fortement d\'ouvrir ou d\'utiliser ce fichier.</p>';
+                    resultsHtml += '<div class="re-do"><a href="/index" class="status-link orange"></span> <p class="message-btn">Faire une nouvelle analyse</p></a></div>';
                     detected = true;
                 }
             }
