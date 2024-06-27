@@ -400,7 +400,7 @@ def upload_url():
         if result_response.status_code == 200:
             result_json = result_response.json()
             status = result_json['data']['attributes']['status']
-            socketio.emit('update_progress', {'progress': attempts * 10})
+            socketio.emit('update_progress', {'progress': attempts * 25})
             if status == 'completed':
                 positives = result_json['data']['attributes']['stats']['malicious']
                 negatives = result_json['data']['attributes']['stats']['undetected']
@@ -411,7 +411,7 @@ def upload_url():
             elif status == 'queued':
                 app.logger.info('Analysis queued')
         attempts += 1
-        time.sleep(10)
+        time.sleep(5)
 
     return jsonify({'error': 'Analysis timed out'}), 408
 

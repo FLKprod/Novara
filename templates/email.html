@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/email.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/png">
-
 </head>
 <body>
     <header>
@@ -23,9 +22,9 @@
                 <li><a href="{{ url_for('avis') }}">Avis</a></li>
             </ul>
             {% if current_user.is_authenticated %}
-            <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>  <!-- Afficher le nom de l'utilisateur connecté -->
+            <a href="{{ url_for('account') }}" class="account-btn">{{ current_user.username }}</a>
             {% else %}
-            <a href="{{ url_for('connexion') }}" class="account-btn">Se Connecter</a>  <!-- Texte à afficher si l'utilisateur n'est pas connecté -->
+            <a href="{{ url_for('connexion') }}" class="account-btn">Se Connecter</a>
             {% endif %}
         </nav>
     </header>
@@ -35,6 +34,7 @@
         <img class="line" src="" />
         <p class="titre1">Vous avez reçu ce fichier par <span class="texte-rose">courriel</span></p> 
         <img class="line3" src="" />
+        
         <div class="group-question1">
             <p class="texte">Connaissez-vous l’expéditeur du courriel ?</p> 
             <div class="oui-btn" id="oui-question1">
@@ -91,6 +91,23 @@
             </div>
         </div>
         
+        <h1 class="protection-title">Protégez-vous, <span class="texte-rose">pratiquez-vous</span></h1>
+
+        <div class="new-section">
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='img/jopwell.jpg') }}" alt="Jopwell">
+            </div>
+            <div class="text-container">
+                <ul>
+                    <li>Vérifiez toujours l'expéditeur du courriel et méfiez-vous des adresses suspectes ou inconnues.</li>
+                    <li>Avant d'ouvrir ou de télécharger un fichier, scannez-le avec <a href="http://www.verifile.fr">Verifile</a>.</li>
+                    <li>Évitez de cliquer sur les liens ou d'ouvrir les pièces jointes provenant de courriels non sollicités.</li>
+                    <li>Assurez-vous que votre système d'exploitation et vos applications de sécurité sont à jour pour bénéficier des dernières protections contre les menaces.</li>
+                    <li>Sauvegardez régulièrement vos données pour éviter toute perte en cas d'attaque.</li>
+                </ul>
+                <p>Suivre ces précautions peut réduire considérablement les risques associés aux fichiers reçus par courriel.</p>
+            </div>
+        </div>
     </div>
     
     <footer>
@@ -101,9 +118,9 @@
         </div>
         <div class="footer-copyright-index">
             <p>Copyright © 2024 VeriFile. Tous droits réservés.</p>
+        </div>
     </footer>
     
-    <!-- Inclure le script à la fin du body pour s'assurer qu'il est chargé après les éléments HTML -->
     <script>
         var ImageUrl1 = "{{ url_for('static', filename='img/barre99.png') }}";
         var ImageUrl2 = "{{ url_for('static', filename='img/barre95.png') }}";
@@ -115,7 +132,6 @@
         var ImageUrl8 = "{{ url_for('static', filename='img/barre50.png') }}";
         var ImageUrl9 = "{{ url_for('static', filename='img/barre40.png') }}";
         var ImageUrl10 = "{{ url_for('static', filename='img/barre20.png') }}";
-
     </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='questions-email.js') }}"></script>
