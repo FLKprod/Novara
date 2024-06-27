@@ -21,7 +21,7 @@ VeriFile est une plateforme web collaborative conçue pour renforcer votre sécu
 
 ## Contexte
 
-Le attaUE par pièce jointe infectée ou par site malveillant demeure une méthode privilégiée pour les cybercriminels exploitant la confiance des utilisateurs envers des documents apparemment légitimes. En 2023, ces attaques ont contribué à une augmentation notable des incidents de sécurité, affectant particulièrement les entreprises.
+Le attaque par pièce jointe infectée ou par site malveillant demeure une méthode privilégiée pour les cybercriminels exploitant la confiance des utilisateurs envers des documents apparemment légitimes. En 2023, ces attaques ont contribué à une augmentation notable des incidents de sécurité, affectant particulièrement les entreprises.
 
 ## Notre solution
 
