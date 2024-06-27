@@ -1,6 +1,12 @@
 # VeriFile
 
-VeriFile est une plateforme web collaborative conçue pour renforcer votre sécurité numérique. Elle analyse et quantifie les risques d'origine cyber et aide les organisations à industrialiser leurs programmes de cybersécurité axés sur les risques.
+<p align="left">
+  <img src="/static/img/logo.png" width="200" />
+  <br>
+</p>
+
+
+VeriFile est une plateforme web collaborative conçue pour renforcer votre sécurité contre les attaques de phishing. Elle analyse et quantifie financièrement les risques d'origine cyber et aide les organisations à industrialiser leurs programmes de cybersécurité axés sur les risques.
 
 ## Table des matières
 
