@@ -288,22 +288,27 @@ def check_url_blackbdd():
         return jsonify({'error': 'No URL provided'}), 400
 
     parsed_url = urlparse(url_input)
-    # Extraire le nom de domaine sans extension
+    if not parsed_url.hostname:
+        return jsonify({'error': 'Invalid URL provided'}), 400
+
+    # Extraire le nom de domaine sans sous-domaine
     parts = parsed_url.hostname.split('.')
     if len(parts) > 2:
-        # Enlever l'extension
-        parsed_url = parsed_url._replace(netloc='.'.join(parts[:-1]))
-    
-    base_domain = parsed_url.hostname
+        # Enlever le sous-domaine
+        base_domain = '.'.join(parts[-2:])
+    else:
+        base_domain = parsed_url.hostname
+
     print(f"URL de base après parsing : {base_domain}")
 
     # Requête dans la base de données
     url_record = blackURL.query.filter(blackURL.url.contains(base_domain)).first()
-    
+    print('check bdd black')
     if url_record:
         print('dans la bdd')
         return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
     else:
+        print('pas dans la bdd')
         return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
 
 
