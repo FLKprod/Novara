@@ -1,6 +1,13 @@
 # VeriFile
 
-![Logo de mon projet](/static/img/logo.png)
+![Logo de mon projet]()
+
+<p align="center">
+  <img src="/static/img/logo.png" alt="Logo de mon projet" width="200" />
+  <br>
+  <i>Logo de mon projet</i>
+</p>
+
 
 VeriFile est une plateforme web collaborative conçue pour renforcer votre sécurité contre les attaques de phishing. Elle analyse et quantifie financièrement les risques d'origine cyber et aide les organisations à industrialiser leurs programmes de cybersécurité axés sur les risques.
 
