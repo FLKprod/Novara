@@ -1,7 +1,7 @@
 # VeriFile
 
 <p align="left">
-  <img src="/static/img/logo.png" width="200" />
+  <img src="/static/img/banniere.png" width="200" />
   <br>
 </p>
 
