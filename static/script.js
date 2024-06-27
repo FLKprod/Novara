@@ -198,8 +198,9 @@ document.getElementById('urlInput').addEventListener('change', function(event) {
                                 .catch(err => console.error('Error adding URL to blacklist:', err));
                             } else {
                                 progressContainer.style.display = 'none';
-                                resultsHtml += `<p class="info-message">L'URL est considérée comme dangereuse par ${data.positives} sources sur ${data.total}.</p>`;
-                                resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et aucune menace ne semble avoir été détectée. L URL est considérée comme dangereuse par ${data.positives} sources sur ${data.total}. Pour confirmer cette conclusion, veuillez répondre à quelques questions de sécurité.</p>';
+                                let total = data.positives + data.negatives;
+                                resultsHtml += `<p class="info-message">L'URL est considérée comme dangereuse par ${data.positives} sources sur ${total}.</p>`;
+                                resultsHtml += '<p class="info-message">L\'analyse de l\'url est complète et aucune menace ne semble avoir été détectée. Pour confirmer cette conclusion, veuillez répondre à quelques questions de sécurité.</p>';
                                 resultsHtml += '<div class="result-status"><a href="/url" class="status-link orange"><p class="message-btn">Répondre aux questions de sécurité</p></a></div>';
                                 resultsHtml += '<p class="line-resultat" src="${barrePath}" alt="line"></p>';
                                 resultsHtml += '<p class="ou-message">ou</p>';

@@ -297,13 +297,15 @@ def check_url_blackbdd():
     base_domain = parsed_url.hostname
     print(f"URL de base après parsing : {base_domain}")
 
-    # Rechercher dans la base de données
+    # Requête dans la base de données
     url_record = blackURL.query.filter(blackURL.url.contains(base_domain)).first()
     
     if url_record:
+        print('dans la bdd')
         return jsonify({'exists': True, 'message': 'URL or part of it found in the database'})
     else:
-       return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
+        return jsonify({'exists': False, 'message': 'URL or part of it not found in the database'})
+
 
 
 
