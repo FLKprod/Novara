@@ -1,6 +1,6 @@
 # VeriFile
 
-VeriFile est une plateforme web collaborative conçue pour renforcer votre sécurité contre les attaques de phishing. Elle analyse et quantifie financièrement les risques d'origine cyber et aide les organisations à industrialiser leurs programmes de cybersécurité axés sur les risques.
+VeriFile est une plateforme web collaborative conçue pour renforcer votre sécurité numérique. Elle analyse et quantifie les risques d'origine cyber et aide les organisations à industrialiser leurs programmes de cybersécurité axés sur les risques.
 
 ## Table des matières
 
@@ -15,7 +15,7 @@ VeriFile est une plateforme web collaborative conçue pour renforcer votre sécu
 
 ## Contexte
 
-Le phishing par pièce jointe infectée demeure une méthode privilégiée pour les cybercriminels exploitant la confiance des utilisateurs envers des documents apparemment légitimes. En 2023, ces attaques ont contribué à une augmentation notable des incidents de sécurité, affectant particulièrement les entreprises.
+Le attaUE par pièce jointe infectée ou par site malveillant demeure une méthode privilégiée pour les cybercriminels exploitant la confiance des utilisateurs envers des documents apparemment légitimes. En 2023, ces attaques ont contribué à une augmentation notable des incidents de sécurité, affectant particulièrement les entreprises.
 
 ## Notre solution
 
@@ -34,7 +34,7 @@ VeriFile analyse les pièces jointes et les URLs potentiellement malveillantes, 
 - **Visual Studio Code (VSCode)** : Éditeur de code.
 - **Figma**,**Monday** : Outil de design d'interface utilisateur.
 - **Trello** : Outil de gestion de projet.
-- **Langages de programmation** : HTML, CSS, JavaScript, PHP.
+- **Langages de programmation** : HTML, CSS, JavaScript.
 
 ## Concurrents de VeriFile
 
@@ -48,6 +48,7 @@ VeriFile analyse les pièces jointes et les URLs potentiellement malveillantes, 
 1. **Grandes Entreprises et Corporations** : Secteurs financier, technologique, santé.
 2. **PME et Startups** : Agences de marketing, consultants.
 3. **Secteur Public et Gouvernemental** : Agences gouvernementales, établissements éducatifs.
+4. **Particuliers** : Familles, Etudiants.
 
 ## Tarification proposée pour VeriFile
 
